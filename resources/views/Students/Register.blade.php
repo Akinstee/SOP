@@ -20,15 +20,15 @@
 
         <div class="mb-3">
             <label for="email">Email Address</label>
-            <input type="email" id="email" class="form-control" name="email" placeholder="Email Address" required>
+            <input type="email" id="email" class="block mt-1 w-full" name="email" placeholder="Email Address" required>
         </div>
         <div class="mb-3">
             <label for="password">Password</label>           
-            <input type="password" id="password" class="form-control" name="password" placeholder="Password" required>        
+            <input type="password" id="password" class="block mt-1 w-full" name="password" placeholder="Password" required>        
         </div>   
         <div class="mb-3">           
             <label for="password_confirmation">Confirm Password</label>           
-            <input type="password" id="password_confirmation" class="form-control" name="password_confirmation" placeholder="Confirm Password" required>      
+            <input type="password" id="password_confirmation" class="block mt-1 w-full" name="password_confirmation" placeholder="Confirm Password" required>      
         </div>
 
         <div class="mt-4">
@@ -43,17 +43,17 @@
 
         <div class="mb-3">
             <label for="date_of_birth">Date of Birth</label>
-            <input type="date" id="date_of_birth" class="form-control" name="date_of_birth" required>
+            <input type="date" id="date_of_birth" class="block mt-1 w-full" name="date_of_birth" required>
         </div>
 
         <div class="mb-3">
             <label for="phone_number">Phone Number</label>
-            <input type="tel" id="phone_number" class="form-control" name="phone_number" required>
+            <input type="tel" id="phone_number" class="block mt-1 w-full" name="phone_number" required>
         </div>
 
         <div class="mb-3">
             <label for="available_on_whatsapp">Available on WhatsApp?</label>
-            <select name="available_on_whatsapp" id="available_on_whatsapp" class="form-control" required>
+            <select name="available_on_whatsapp" id="available_on_whatsapp" class="block mt-1 w-full" required>
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
             </select>
@@ -61,19 +61,19 @@
 
         <div class="mb-3">
             <label for="city_from">Which city are you from?</label>
-            <select id="city_from" name="city_from" class="form-control" required>
+            <select id="city_from" name="city_from" class="block mt-1 w-full" required>
                 </select>
         </div>
 
         <div class="mb-3">
             <label for="city_currently_living_in">Which city do you currently live in?</label>
-            <select id="city_currently_living_in" name="city_currently_living_in" class="form-control" required>
+            <select id="city_currently_living_in" name="city_currently_living_in" class="block mt-1 w-full" required>
                 </select>
         </div>
 
         <div class="mb-3">
             <label for="employed">Are you currently employed?</label>
-            <select name="employed" id="employed" class="form-control" required>
+            <select name="employed" id="employed" class="block mt-1 w-full" required>
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
             </select>
@@ -81,7 +81,7 @@
 
         <div class="mb-3">
             <label for="study_status">Are you currently studying?</label>
-            <select name="study_status" id="study_status" class="form-control" required>
+            <select name="study_status" id="study_status" class="block mt-1 w-full" required>
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
             </select>
@@ -89,7 +89,7 @@
 
         <div class="mb-3">
             <label for="has_computer_and_internet">Do you have access to a computer and the internet?</label>
-            <select name="has_computer_and_internet" id="has_computer_and_internet" class="form-control" required>
+            <select name="has_computer_and_internet" id="has_computer_and_internet" class="block mt-1 w-full" required>
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
             </select>
@@ -97,7 +97,7 @@
 
         <div class="mb-3">
             <label for="skill_experience">Skill of Interest Experience?</label>
-            <select name="skill_experience" id="skill_experience" class="form-control" required>
+            <select name="skill_experience" id="skill_experience" class="block mt-1 w-full" required>
                 <option value="none">None</option>
                 <option value="basic">Basic</option>
                 <option value="intermediate">Intermediate</option>
