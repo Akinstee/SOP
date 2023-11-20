@@ -31,7 +31,7 @@ class LoginController extends Controller
     public function studentCheck(Request $request){
 
     }
-}
+
     /**
      * Show the application's login form.
      *
@@ -83,4 +83,4 @@ class LoginController extends Controller
         return redirect('/');
     }
 }
-
+  
