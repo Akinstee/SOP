@@ -4,7 +4,7 @@
 <div class="container">
     <h1>Instructor Registration Form</h1>
 
-    <form method="post" action="{{ route('instructor.register') }}">
+    <form method="post" action="{{ route('instructor.save') }}">
         @csrf
 
         <div class="mb-3">
