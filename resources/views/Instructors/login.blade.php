@@ -1,6 +1,6 @@
 <!-- resources/views/login.blade.php -->
 
-<form method="POST" action="{{ route('login') }}">
+<form method="POST" action="{{ route('instructor.check') }}">
     @csrf
 
     <div>
