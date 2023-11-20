@@ -16,14 +16,10 @@ use App\Http\Controllers\InstructorController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+=======
 //Admin Login Route
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
-
 
 //Students Registration and login Route
 Route::get('/students/create', [StudentController::class, 'create'])->name('students.create');
