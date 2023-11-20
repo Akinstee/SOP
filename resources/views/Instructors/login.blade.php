@@ -4,8 +4,7 @@
     @csrf
 
     <div>
-        <h2 class="text-center"><b>SOPS Student Login</b></h2>
-        <p className="mb-6">Please enter your user information.</p>
+        <h2 class="text-center"><b>SOPS Login</b></h2>
 
         <div class="mt-4">
             <label for="email">Email:</label>
