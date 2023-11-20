@@ -1,6 +1,6 @@
 <!-- resources/views/register.blade.php -->
 
-<form method="POST" action="{{ route('students.store') }}">
+<form method="POST" action="{{ route('student.save') }}">
     @csrf
 
     <div>
@@ -24,14 +24,14 @@
             @error('email') <span class="text-red-500">{{ $message }}</span> @enderror
         </div>
         <div class="mt-4">
-            <label for="password">Password</label>           
+            <label for="password">Password</label>
             <input type="password" id="password" class="block mt-1 w-full" name="password" value="{{ old('password') }}" placeholder="Password" required>
-            @error('password') <span class="text-red-500">{{ $message }}</span> @enderror        
-        </div>   
-        <div class="mt-4">           
-            <label for="password_confirmation">Confirm Password</label>           
-            <input type="password" id="password_confirmation" class="block mt-1 w-full" name="password_confirmation" value="{{ old('password_confirmation') }}" placeholder="Confirm Password" required>    
-            @error('password_confirmation') <span class="text-red-500">{{ $message }}</span> @enderror  
+            @error('password') <span class="text-red-500">{{ $message }}</span> @enderror
+        </div>
+        <div class="mt-4">
+            <label for="password_confirmation">Confirm Password</label>
+            <input type="password" id="password_confirmation" class="block mt-1 w-full" name="password_confirmation" value="{{ old('password_confirmation') }}" placeholder="Confirm Password" required>
+            @error('password_confirmation') <span class="text-red-500">{{ $message }}</span> @enderror
         </div>
 
         <div class="mt-4">

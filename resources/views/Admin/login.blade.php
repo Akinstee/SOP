@@ -1,6 +1,6 @@
 <!-- resources/views/login.blade.php -->
 
-<form method="POST" action="{{ route('login') }}">
+<form method="POST" action="{{ route('admin.check') }}">
     @csrf
 
     <div>
@@ -8,14 +8,20 @@
 
         <div class="mt-4">
             <label for="email">Email:</label>
-            <input id="email" class="block mt-1 w-full" type="email" name="email" value="{{ old('email') }}" required autofocus />
-            @error('email') <span class="text-red-500">{{ $message }}</span> @enderror
+            <input id="email" class="block mt-1 w-full" type="email" name="email" value="{{ old('email') }}"
+                required autofocus />
+            @error('email')
+                <span class="text-red-500">{{ $message }}</span>
+            @enderror
         </div>
 
         <div class="mt-4">
             <label for="password">Password:</label>
-            <input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
-            @error('password') <span class="text-red-500">{{ $message }}</span> @enderror
+            <input id="password" class="block mt-1 w-full" type="password" name="password" required
+                autocomplete="current-password" />
+            @error('password')
+                <span class="text-red-500">{{ $message }}</span>
+            @enderror
         </div>
 
         <div class="mt-4">
@@ -29,7 +35,8 @@
             </button>
 
             @if (Route::has('password.request'))
-                <a class="ml-4 underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
+                <a class="ml-4 underline text-sm text-gray-600 hover:text-gray-900"
+                    href="{{ route('password.request') }}">
                     {{ __('Forgot your password?') }}
                 </a>
             @endif
