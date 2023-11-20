@@ -5,6 +5,8 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\InstructorController;
 
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
