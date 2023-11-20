@@ -8,12 +8,12 @@ use Illuminate\Support\Facades\Hash;
 
 class InstructorController extends Controller
 {
-    public function showRegistrationForm()
+    public function index()
     {
-        return view('instructor.register');
+        return view('instructors.register');
     }
 
-    public function register(Request $request)
+    public function save(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'first_name' => 'required|string|max:255',
