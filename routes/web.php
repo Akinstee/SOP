@@ -7,6 +7,7 @@ use App\Http\Controllers\InstructorController;
 
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
