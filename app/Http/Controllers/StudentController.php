@@ -12,6 +12,12 @@ class StudentController extends Controller
     {
         return view("Students.register");
     }
+
+    public function showRegistrationForm()
+    {
+        return view('students.registration_form');
+    }
+
     public function save(Request $request)
     {
         // Validate the incoming data
@@ -47,4 +53,6 @@ class StudentController extends Controller
 
         return redirect()->back()->with('success', 'Student registered successfully!');
     }
+
+    
 }

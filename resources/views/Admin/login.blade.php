@@ -64,7 +64,7 @@
         }
 
         button:hover {
-            background-color: #45a049; 
+            background-color: #45a049;
         }
 
         .password-link {
@@ -86,7 +86,7 @@
 
 <body>
     <div class="login-container">
-        <form method="POST" action="{{ route('login') }}">
+        <form method="POST" action="{{ route('admin.check') }}">
             @csrf
             <h2>SOPS Login</h2>
 
