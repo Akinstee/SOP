@@ -30,8 +30,8 @@ Route::middleware('guest')->prefix('/admin')->name('admin.')->controller(LoginCo
 
 //Students Registration and login Route
 Route::middleware('guest')->prefix('/student')->name('student.')->controller(StudentController::class)->group(function () {
-    //Route::get('/register', 'index')->name('register');
-    Route::get('/register', 'StudentController@showRegistrationForm')->name('register');
+    Route::get('/register', 'index')->name('register');
+    // Route::get('/register', 'StudentController@showRegistrationForm')->name('register');
     Route::post('/save', 'save')->name('save');
 });
 
