@@ -1,9 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\InstructorController;
+
 
 
 
@@ -50,5 +52,20 @@ Route::middleware('guest')->prefix('/instructor')->name('instructor.')->controll
     Route::get('/register', 'index')->name('register');
     Route::post('/save', 'save')->name('save');
 });
+
+// Homepage Routing
+Route::get('/index', function () {return view('pages.index');})->name('index');
+Route::get('/about', 'AboutController@index')->name('about');
+Route::get('/courses', 'CoursesController@index')->name('courses');
+// ... Repeat for other pages ...
+Route::get('/contact', 'ContactController@index')->name('contact');
+Route::get('/team', 'TeamController@index')->name('team');
+Route::get('/testimonial', 'TestimonialController@index')->name('testimonial');
+Route::get('/404', '404Controller@index')->name('404');
+Route::get('/register', 'registerController@index')->name('register');
+Route::get('/#', '#Controller@index')->name('#');
+Route::get('/privacy', 'privacyController@index')->name('privacy');
+Route::get('/terms', 'termsController@index')->name('terms');
+Route::get('/faqs', 'faqsController@index')->name('faqs');
 
 

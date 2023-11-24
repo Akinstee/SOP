@@ -9,7 +9,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="{{asset('img/favicon.ico')}}" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,14 +21,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="{{ asset('lib/animate/animate.min.css')}}" rel="stylesheet">
+    <link href="{{asset('lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{asset ('css/bootstrap.min.css')}}" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="{{asset ('css/style.css')}}" rel="stylesheet">
 </head>
 
 <body>
@@ -50,22 +50,23 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="index.html" class="nav-item nav-link active">Home</a>
-                <a href="about.html" class="nav-item nav-link">About</a>
-                <a href="courses.html" class="nav-item nav-link">Courses</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                    <div class="dropdown-menu fade-down m-0">
-                        <a href="team.html" class="dropdown-item">Our Team</a>
-                        <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                        <a href="404.html" class="dropdown-item">404 Page</a>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto p-4 p-lg-0">
+                    <a href="{{ url('/') }}" class="nav-item nav-link active">Home</a>
+                    <a href="{{ route('about') }}" class="nav-item nav-link">About</a>
+                    <a href="{{ route('courses') }}" class="nav-item nav-link">Courses</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                        <div class="dropdown-menu fade-down m-0">
+                            <a href="{{ route('team') }}" class="dropdown-item">Our Team</a>
+                            <a href="{{ route('testimonial') }}" class="dropdown-item">Testimonial</a>
+                            <a href="{{ route('404') }}" class="dropdown-item">404 Page</a>
+                        </div>
                     </div>
+                    <a href="{{ route('contact') }}" class="nav-item nav-link">Contact</a>
                 </div>
-                <a href="contact.html" class="nav-item nav-link">Contact</a>
-            </div>
-            <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Join Now<i class="fa fa-arrow-right ms-3"></i></a>
-        </div>
+                <a href="{{ route('register') }}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Join Now<i class="fa fa-arrow-right ms-3"></i></a>
+            </div>            
     </nav>
     <!-- Navbar End -->
 
@@ -321,8 +322,8 @@
                         <div class="position-relative overflow-hidden">
                             <img class="img-fluid" src="img/course-3.jpg" alt="">
                             <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
-                                <a href="#" class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Read More</a>
-                                <a href="#" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Join Now</a>
+                                <a href="{{ route('#') }}" class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Read More</a>
+                                <a href="{{ route('student.register') }}" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Join Now</a>
                             </div>
                         </div>
                         <div class="text-center p-4 pb-0">
@@ -488,11 +489,11 @@
             <div class="row g-5">
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-white mb-3">Quick Link</h4>
-                    <a class="btn btn-link" href="about.php">About Us</a>
-                    <a class="btn btn-link" href="contact.php">Contact Us</a>
-                    <a class="btn btn-link" href="">Privacy Policy</a>
-                    <a class="btn btn-link" href="">Terms & Condition</a>
-                    <a class="btn btn-link" href="">FAQs & Help</a>
+                    <a class="btn btn-link" href="{{ route('about') }}">About Us</a>
+                    <a class="btn btn-link" href="{{ route('contact') }}">Contact Us</a>
+                    <a class="btn btn-link" href="{{ route('privacy') }}">Privacy Policy</a>
+                    <a class="btn btn-link" href="{{ route('terms') }}">Terms & Condition</a>
+                    <a class="btn btn-link" href="{{ route('faqs') }}">FAQs & Help</a>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-white mb-3">Contact</h4>
@@ -548,10 +549,10 @@
                     </div>
                     <div class="col-md-6 text-center text-md-end">
                         <div class="footer-menu">
-                            <a href="index.php">Home</a>
-                            <a href="#">Cookies</a>
-                            <a href="#">Help</a>
-                            <a href="#">FQAs</a>
+                            <a href="{{ route('index') }}">Home</a>
+                            <a href="{{ route('#') }}">Cookies</a>
+                            <a href="{{ route('#') }}">Help</a>
+                            <a href="{{ route('#') }}">FQAs</a>
                         </div>
                     </div>
                 </div>
