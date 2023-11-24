@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\InstructorController;
+use App\Http\Controllers\PagesController;
 
 
 
@@ -55,9 +56,12 @@ Route::middleware('guest')->prefix('/instructor')->name('instructor.')->controll
 
 // Homepage Routing
 Route::get('/index', function () {return view('pages.index');})->name('index');
+
+//Route::get('/index', [PagesController::class, 'index'])->name('pages.index');
+
 Route::get('/about', 'AboutController@index')->name('about');
 Route::get('/courses', 'CoursesController@index')->name('courses');
-// ... Repeat for other pages ...
+
 Route::get('/contact', 'ContactController@index')->name('contact');
 Route::get('/team', 'TeamController@index')->name('team');
 Route::get('/testimonial', 'TestimonialController@index')->name('testimonial');
