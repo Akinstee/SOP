@@ -6,9 +6,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\PagesController;
-
-
-
+use App\Http\Controllers\AboutController;
 
 
 /*
@@ -22,9 +20,9 @@ use App\Http\Controllers\PagesController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::middleware('guest')->prefix('/admin')->name('admin.')->controller(LoginController::class)->group(function () {
     Route::get('/login', 'adminLogin')->name('login');
@@ -55,21 +53,23 @@ Route::middleware('guest')->prefix('/instructor')->name('instructor.')->controll
 });
 
 // Homepage Routing
-Route::get('/index', function () {return view('pages.index');})->name('index');
+Route::get('/', function () {return view('pages.index');})->name('index');
 
 //Route::get('/index', [PagesController::class, 'index'])->name('pages.index');
-
-Route::get('/about', 'AboutController@index')->name('about');
-Route::get('/courses', 'CoursesController@index')->name('courses');
-
-Route::get('/contact', 'ContactController@index')->name('contact');
-Route::get('/team', 'TeamController@index')->name('team');
-Route::get('/testimonial', 'TestimonialController@index')->name('testimonial');
+Route::get('/about', [PagesController::class, 'showAbout'])->name('about');
+Route::get('/courses', [PagesController::class, 'showCourses'])->name('courses');
+Route::get('/contact', [PagesController::class, 'showContact'])->name('contact');
+Route::get('/team', 'PagesController@showTeam')->name('team');
+Route::get('/testimonial', 'PagesController@showTestimonial')->name('testimonial');
 Route::get('/404', '404Controller@index')->name('404');
-Route::get('/register', 'registerController@index')->name('register');
+Route::get('/register', 'RegisterController@index')->name('register');
 Route::get('/#', '#Controller@index')->name('#');
-Route::get('/privacy', 'privacyController@index')->name('privacy');
-Route::get('/terms', 'termsController@index')->name('terms');
-Route::get('/faqs', 'faqsController@index')->name('faqs');
+Route::get('/privacy', 'PageController@showPrivacy')->name('privacy');
+Route::get('/terms', 'PageController@showTerms')->name('terms');
+Route::get('/faqs', 'PageController@showFaqs')->name('faqs');
 
 
+
+
+//Student Dashboard 
+Route::get('/student/dashboard', 'StudentController@dashboard')->name('student.dashboard');
