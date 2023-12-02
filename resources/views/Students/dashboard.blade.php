@@ -1,202 +1,143 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Dashboard</title>
-    <link rel="shortcut icon" href="./images/logo.png">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header>
-        <div class="logo" title="University Management System">
-            <img src="./images/logo.png" alt="">
-            <h2>U<span class="danger">M</span>S</h2>
-        </div>
-        <div class="navbar">
-            <a href="index.html" class="active">
-                <span class="material-icons-sharp">home</span>
-                <h3>Home</h3>
-            </a>
-            <a href="timetable.html" onclick="timeTableAll()">
-                <span class="material-icons-sharp">today</span>
-                <h3>Time Table</h3>
-            </a> 
-            <a href="exam.html">
-                <span class="material-icons-sharp">grid_view</span>
-                <h3>Examination</h3>
-            </a>
-            <a href="password.html">
-                <span class="material-icons-sharp">password</span>
-                <h3>Change Password</h3>
-            </a>
-            <a href="#">
-                <span class="material-icons-sharp" onclick="">logout</span>
-                <h3>Logout</h3>
-            </a>
-        </div>
-        <div id="profile-btn">
-            <span class="material-icons-sharp">person</span>
-        </div>
-        <div class="theme-toggler">
-            <span class="material-icons-sharp active">light_mode</span>
-            <span class="material-icons-sharp">dark_mode</span>
-        </div>
-        
-    </header>
-    <div class="container">
-        <aside>
-            <div class="profile">
-                <div class="top">
-                    <div class="profile-photo">
-                        <img src="./images/profile-1.jpg" alt="">
-                    </div>
-                    <div class="info">
-                        <p>Hey, <b>Mohd_ Ahsan Khan</b> </p>
-                        <small class="text-muted">12115153</small>
-                    </div>
-                </div>
-                <div class="about">
-                    <h5>Course</h5>
-                    <p>BCA(P124). "Bachelor Of Computer Application"</p>
-                    <h5>DOB</h5>
-                    <p>15-Sept-2000</p>
-                    <h5>Contact</h5>
-                    <p>9984675874</p>
-                    <h5>Email</h5>
-                    <p>mahsank111@gmail.com</p>
-                    <h5>Address</h5>
-                    <p>168, Eden Enclave, Kursi Road, Lucknow</p>
-                </div>
+<span style="font-family: verdana, geneva, sans-serif;"><!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <title>Dashboard | By SOP</title>
+      <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}" />
+      <!-- Font Awesome Cdn Link -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+    </head>
+    <body>
+      <div class="container">
+        <nav>
+          <ul>
+            <li><a href="#" class="logo">
+              <img src="/logo.jpg" alt="">
+              <span class="nav-item">DashBoard</span>
+            </a></li>
+            <li><a href="#">
+              <i class="fas fa-home"></i>
+              <span class="nav-item">Home</span>
+            </a></li>
+            <li><a href="">
+                <i class="fas fa-book"></i>
+                <span class="nav-item">My Learning</span>
+              </a></li>
+              <li><a href="">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="nav-item">My Cart</span>
+              </a></li>
+              <li><a href="">
+                <i class="fas fa-heart"></i>
+                <span class="nav-item">Wishlist</span>
+              </a></li>
+              <li><a href="">
+                <i class="fas fa-bell"></i>
+                <span class="nav-item">Notification</span>
+              </a></li>
+              <li><a href="">
+                <i class="fas fa-envelope"></i>
+                <span class="nav-item">Messages</span>
+              </a></li>
+            <li><a href="">
+              <i class="fas fa-user"></i>
+              <span class="nav-item">Profile</span>
+            </a></li>
+            <li><a href="">
+                <i class="fas fa-user-edit"></i>
+                <span class="nav-item">Edit Profile</span>
+              </a></li>
+            <li><a href="">
+              <i class="fas fa-wallet"></i>
+              <span class="nav-item">Wallet</span>
+            </a></li>
+            <li><a href="">
+              <i class="fas fa-chart-bar"></i>
+              <span class="nav-item">Analytics</span>
+            </a></li>
+            <li><a href="">
+              <i class="fas fa-tasks"></i>
+              <span class="nav-item">Tasks</span>
+            </a></li>
+            <li><a href="">
+              <i class="fas fa-cog"></i>
+              <span class="nav-item">Settings</span>
+            </a></li>
+            <li><a href="">
+              <i class="fas fa-question-circle"></i>
+              <span class="nav-item">Help</span>
+            </a></li>
+            <li><a href="" class="logout">
+              <i class="fas fa-sign-out-alt"></i>
+              <span class="nav-item">Log out</span>
+            </a></li>
+          </ul>
+        </nav>
+    
+        <section class="main">
+          <div class="main-top">
+            <h1>Skills</h1>
+            <i class="fas fa-user-cog"></i>
+          </div>
+          <div class="main-skills">
+            <div class="card">
+              <i class="fas fa-laptop-code"></i>
+              <h3>Web developemt</h3>
+              <p>Join Over 1 million Students.</p>
+              <button>Get Started</button>
             </div>
-        </aside>
-
-        <main>
-            <h1>Attendance</h1>
-            <div class="subjects">
-                <div class="eg">
-                    <span class="material-icons-sharp">architecture</span>
-                    <h3>Web Development</h3>
-                    <h2>12/14</h2>
-                    <div class="progress">
-                        <svg><circle cx="38" cy="38" r="36"></circle></svg>
-                        <div class="number"><p>86%</p></div>
-                    </div>
-                    <small class="text-muted">Last 24 Hours</small>
-                </div>
-                <div class="mth">
-                    <span class="material-icons-sharp">functions</span>
-                    <h3>Data Structures</h3>
-                    <h2>27/29</h2>
-                    <div class="progress">
-                        <svg><circle cx="38" cy="38" r="36"></circle></svg>
-                        <div class="number"><p>93%</p></div>
-                    </div>
-                    <small class="text-muted">Last 24 Hours</small>
-                </div>
-                <div class="cs">
-                    <span class="material-icons-sharp">computer</span>
-                    <h3>Operating System</h3>
-                    <h2>27/30</h2>
-                    <div class="progress">
-                        <svg><circle cx="38" cy="38" r="36"></circle></svg>
-                        <div class="number"><p>81%</p></div>
-                    </div>
-                    <small class="text-muted">Last 24 Hours</small>
-                </div>
-                <div class="cg">
-                    <span class="material-icons-sharp">dns</span>
-                    <h3>Soft Skills.......</h3>
-                    <h2>24/25</h2>
-                    <div class="progress">
-                        <svg><circle cx="38" cy="38" r="36"></circle></svg>
-                        <div class="number"><p>96%</p></div>
-                    </div>
-                    <small class="text-muted">Last 24 Hours</small>
-                </div>
-                <div class="net">
-                    <span class="material-icons-sharp">router</span>
-                    <h3>Internet Of Things</h3>
-                    <h2>25/27</h2>
-                    <div class="progress">
-                        <svg><circle cx="38" cy="38" r="36"></circle></svg>
-                        <div class="number"><p>92%</p></div>
-                    </div>
-                    <small class="text-muted">Last 24 Hours</small>
-                </div>
+            <div class="card">
+              <i class="fab fa-wordpress"></i>
+              <h3>WordPress</h3>
+              <p>Join Over 3 million Students.</p>
+              <button>Get Started</button>
             </div>
-
-            <div class="timetable" id="timetable">
-                <div>
-                    <span id="prevDay">&lt;</span>
-                    <h2>Today's Timetable</h2>
-                    <span id="nextDay">&gt;</span>
-                </div>
-                <span class="closeBtn" onclick="timeTableAll()">X</span>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Time</th>
-                            <th>Room No.</th>
-                            <th>Subject</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
+            <div class="card">
+              <i class="fas fa-palette"></i>
+              <h3>graphic design</h3>
+              <p>Join Over 2 million Students.</p>
+              <button>Get Started</button>
             </div>
-        </main>
-
-        <div class="right">
-            <div class="announcements">
-                <h2>Announcements</h2>
-                <div class="updates">
-                    <div class="message">
-                        <p> <b>Academic</b> Summer training internship with Live Projects.</p>
-                        <small class="text-muted">2 Minutes Ago</small>
-                    </div>
-                    <div class="message">
-                        <p> <b>Co-curricular</b> Global internship oportunity by Student organization.</p>
-                        <small class="text-muted">10 Minutes Ago</small>
-                    </div>
-                    <div class="message">
-                        <p> <b>Examination</b> Instructions for Mid Term Examination.</p>
-                        <small class="text-muted">Yesterday</small>
-                    </div>
-                </div>
+            <div class="card">
+              <i class="fab fa-app-store-ios"></i>
+              <h3>IOS dev</h3>
+              <p>Join Over 1 million Students.</p>
+              <button>Get Started</button>
             </div>
-
-            <div class="leaves">
-                <h2>Teachers on leave</h2>
-                <div class="teacher">
-                    <div class="profile-photo"><img src="./images/profile-2.jpeg" alt=""></div>
-                    <div class="info">
-                        <h3>The Professor</h3>
-                        <small class="text-muted">Day Span : Full Day</small>
-                    </div>
+          </div>
+    
+          <section class="main-course">
+            <h1>My courses</h1>
+            <div class="course-box">
+              <ul>
+                <li class="active">In progress</li>
+                <li>explore</li>
+                <li>incoming</li>
+                <li>finished</li>
+              </ul>
+              <div class="course">
+                <div class="box">
+                  <h3>HTML</h3>
+                  <p>80% - progress</p>
+                  <button>continue</button>
+                  <i class="fab fa-html5 html"></i>
                 </div>
-                <div class="teacher">
-                    <div class="profile-photo"><img src="./images/profile-3.jpg" alt=""></div>
-                    <div class="info">
-                        <h3>Lisa Manobal</h3>
-                        <small class="text-muted">Day Span : Half Day</small>
-                    </div>
+                <div class="box">
+                  <h3>CSS</h3>
+                  <p>50% - progress</p>
+                  <button>continue</button>
+                  <i class="fab fa-css3-alt css"></i>
                 </div>
-                <div class="teacher">
-                    <div class="profile-photo"><img src="./images/profile-4.jpeg" alt=""></div>
-                    <div class="info">
-                        <h3>Saif Khan</h3>
-                        <small class="text-muted">Day Span : Full Day</small>
-                    </div>
+                <div class="box">
+                  <h3>JavaScript</h3>
+                  <p>30% - progress</p>
+                  <button>continue</button>
+                  <i class="fab fa-js-square js"></i>
                 </div>
+              </div>
             </div>
-
-        </div>
-    </div>
-
-    <script src="timeTable.js"></script>
-    <script src="app.js"></script>
-</body>
-</html>
+          </section>
+        </section>
+      </div>
+    </body>
+    </html></span>

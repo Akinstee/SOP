@@ -49,6 +49,11 @@ class InstructorController extends Controller
         // Redirect or perform any additional logic after registration
         return redirect()->route('instructor.login')->with('success', 'Registration successful!');
     }
+
+    public function dashboard()
+    {
+        return view('Instructor.dashboard');
+    }
 }
 
 

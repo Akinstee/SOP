@@ -54,5 +54,11 @@ class StudentController extends Controller
         return redirect()->back()->with('success', 'Student registered successfully!');
     }
 
+
+    public function dashboard()
+    {
+        return view('Students.dashboard');
+    }
+
     
 }

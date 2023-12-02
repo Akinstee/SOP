@@ -2,12 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PagesController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\InstructorController;
-use App\Http\Controllers\PagesController;
-use App\Http\Controllers\AboutController;
-
+use App\Models\Instructor;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,4 +73,6 @@ Route::get('/faqs', 'PageController@showFaqs')->name('faqs');
 
 
 //Student Dashboard 
-Route::get('/student/dashboard', 'StudentController@dashboard')->name('student.dashboard');
+Route::get('/student/dashboard', [StudentController::class, 'dashboard'])->name('student.dashboard');
+Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+Route::get('/instructor/dashboard', [InstructorController::class, 'dashboard'])->name('instructor.dashboard');

@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+
 
 class AdminController extends Controller
 {
     public function dashboard()
     {
-        return view('admin.dashboard');
+        return view('Admin.dashboard');
     }
 
     public function manageUsers()
@@ -41,4 +43,9 @@ class AdminController extends Controller
         $user->save();
         return redirect()->route('admin.manage.users')->with('success', 'Admin demoted to user');
     }
+
+    // public function dashboard()
+    // {
+    //     return view('Admin.dashboard');
+    // }
 }
