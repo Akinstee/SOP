@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE php>
 <html lang="en">
 
 <head>
@@ -6,13 +6,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Edumin - Bootstrap Admin Dashboard </title>
+    <title>SOP- Admin Dashboard </title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset("/images/favicon.png") }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset("/img/favicon.png") }}">
     <link rel="stylesheet" href="{{ asset("/vendor/jqvmap/css/jqvmap.min.css") }}">
 	<link rel="stylesheet" href="{{ asset("/vendor/chartist/css/chartist.min.css") }}">
 	<link rel="stylesheet" href="{{ asset("/vendor/bootstrap-select/dist/css/bootstrap-select.min.css") }}">
-    <link rel="stylesheet" href="{{ asset("/css/style.css") }}">
+    <link rel="stylesheet" href="{{ asset("/css/admindashboard.css") }}">
 	<link rel="stylesheet" href="{{ asset("/css/skin-2.css") }}">
 
 </head>
@@ -43,9 +43,9 @@
         ***********************************-->
         <div class="nav-header">
             <a href="{{ url("dashboard.php") }}" class="brand-logo">
-                <img class="logo-abbr" src="{{ asset("/images/logo-white.png") }}" alt="">
-                <img class="logo-compact" src="{{ asset("/images/logo-text-white.png") }}" alt="">
-                <img class="brand-title" src="{{ asset("/images/logo-text-white.png") }}" alt="">
+                <img class="logo-abbr" src="{{ asset("/img/logo-white.png") }}" alt="">
+                {{-- <img class="logo-compact" src="{{ asset("/img/logo-text-white1.png") }}" alt="SOP"> --}}
+                <img class="brand-title" src="{{ asset("/img/logo-text-white1.png") }}" alt="SOP">
             </a>
 
             <div class="nav-control">
@@ -93,7 +93,7 @@
                                             <span class="success"><i class="ti-user"></i></span>
                                             <div class="media-body">
                                                 <a href="{{ url("#") }}">
-                                                    <p><strong>Martin</strong> has added a <strong>customer</strong> Successfully
+                                                    <p><strong>Martin</strong> has added a <strong>Student</strong> Successfully
                                                     </p>
                                                 </a>
                                             </div>
@@ -143,18 +143,18 @@
                             </li>
                             <li class="nav-item dropdown header-profile">
                                 <a class="nav-link" href="{{ url("#") }}" role="button" data-toggle="dropdown">
-                                    <img src="{{ asset("/images/profile/education/pic1.jpg") }}" width="20" alt="">
+                                    <img src="{{ asset("/img/profile/education/pic1.jpg") }}" width="20" alt="">
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <a href="{{ url("app-profile.php") }}" class="dropdown-item ai-icon">
                                         <svg id="icon-user1" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                                         <span class="ml-2">Profile </span>
                                     </a>
-                                    <a href="{{ url("email-inbox.html") }}" class="dropdown-item ai-icon">
+                                    <a href="{{ url("email-inbox.php") }}" class="dropdown-item ai-icon">
                                         <svg id="icon-inbox" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                                         <span class="ml-2">Inbox </span>
                                     </a>
-                                    <a href="{{ url("page-login.html") }}" class="dropdown-item ai-icon">
+                                    <a href="{{ url("login.php") }}" class="dropdown-item ai-icon">
                                         <svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
                                         <span class="ml-2">Logout </span>
                                     </a>
@@ -180,26 +180,21 @@
 							<i class="la la-home"></i>
 							<span class="nav-text">Dashboard</span>
 						</a>
-                        <ul aria-expanded="false">
-                            <li><a href="{{ url("index.html") }}">Dashboard 1</a></li>
-                            <li><a href="{{ url("index-2.html") }}">Dashboard 2</a></li>
-                            <li><a href="{{ url("index-3.html") }}">Dashboard 3</a></li>
-                        </ul>
                     </li>
-					<li><a class="ai-icon" href="{{ url("event-management.html") }}" aria-expanded="false">
+					<li><a class="ai-icon" href="{{ url("event-management.php") }}" aria-expanded="false">
 							<i class="la la-calendar"></i>
 							<span class="nav-text">Event Management</span>
 						</a>
                     </li>
 					<li><a class="has-arrow" href="{{ url("javascript:void()") }}" aria-expanded="false">
 							<i class="la la-user"></i>
-							<span class="nav-text">Professors</span>
+							<span class="nav-text">Instructors</span>
 						</a>
                         <ul aria-expanded="false">
-                            <li><a href="{{ url("all-professors.html") }}">All Professor</a></li>
-                            <li><a href="{{ url("add-professor.html") }}">Add Professor</a></li>
-                            <li><a href="{{ url("edit-professor.html") }}">Edit Professor</a></li>
-                            <li><a href="{{ url("professor-profile.html") }}">Professor Profile</a></li>
+                            <li><a href="{{ url("all-instructor.php") }}">All Instructors</a></li>
+                            <li><a href="{{ url("add-instructor.php") }}">Add Instructors</a></li>
+                            <li><a href="{{ url("edit-instructor.php") }}">Edit Instructors</a></li>
+                            <li><a href="{{ url("instructor-profile.php") }}">Instructors Profile</a></li>
                         </ul>
                     </li>
 					<li><a class="has-arrow" href="{{ url("javascript:void()") }}" aria-expanded="false">
@@ -207,10 +202,10 @@
 							<span class="nav-text">Students</span>
 						</a>
                         <ul aria-expanded="false">
-                            <li><a href="{{ url("all-students.html") }}">All Students</a></li>
-                            <li><a href="{{ url("add-student.html") }}">Add Students</a></li>
-                            <li><a href="{{ url("edit-student.html") }}">Edit Students</a></li>
-                            <li><a href="{{ url("about-student.html") }}">About Students</a></li>
+                            <li><a href="{{ url("all-students.php") }}">All Students</a></li>
+                            <li><a href="{{ url("add-student.php") }}">Add Students</a></li>
+                            <li><a href="{{ url("edit-student.php") }}">Edit Students</a></li>
+                            <li><a href="{{ url("about-student.php") }}">About Students</a></li>
                         </ul>
                     </li>
 					<li><a class="has-arrow" href="{{ url("javascript:void()") }}" aria-expanded="false">
@@ -218,144 +213,48 @@
 							<span class="nav-text">Courses</span>
 						</a>
                         <ul aria-expanded="false">
-                            <li><a href="{{ url("all-courses.html") }}">All Courses</a></li>
-                            <li><a href="{{ url("add-courses.html") }}">Add Courses</a></li>
-                            <li><a href="{{ url("edit-courses.html") }}">Edit Courses</a></li>
-                            <li><a href="{{ url("about-courses.html") }}">About Courses</a></li>
-                        </ul>
-                    </li>
-					<li><a class="has-arrow" href="{{ url("javascript:void()") }}" aria-expanded="false">
-							<i class="la la-book"></i>
-							<span class="nav-text">Library</span>
-						</a>
-                        <ul aria-expanded="false">
-                            <li><a href="{{ url("all-library.html") }}">All Library</a></li>
-                            <li><a href="{{ url("add-library.html") }}">Add Library</a></li>
-                            <li><a href="{{ url("edit-library.html") }}">Edit Library</a></li>
+                            <li><a href="{{ url("all-courses.php") }}">All Courses</a></li>
+                            <li><a href="{{ url("add-courses.php") }}">Add Courses</a></li>
+                            <li><a href="{{ url("edit-courses.php") }}">Edit Courses</a></li>
+                            <li><a href="{{ url("about-courses.php") }}">About Courses</a></li>
                         </ul>
                     </li>
 					<li><a class="has-arrow" href="{{ url("javascript:void()") }}" aria-expanded="false">
 							<i class="la la-building"></i>
-							<span class="nav-text">Departments</span>
+							<span class="nav-text">Categories</span>
 						</a>
                         <ul aria-expanded="false">
-                            <li><a href="{{ url("all-departments.html") }}">All Departments</a></li>
-                            <li><a href="{{ url("add-departments.html") }}">Add Departments</a></li>
-                            <li><a href="{{ url("edit-departments.html") }}">Edit Departments</a></li>
+                            <li><a href="{{ url("all-departments.php") }}">All Categories</a></li>
+                            <li><a href="{{ url("add-departments.php") }}">Add Categories</a></li>
+                            <li><a href="{{ url("edit-departments.php") }}">Edit Categories</a></li>
                         </ul>
-                    </li>
-					<li><a class="has-arrow" href="{{ url("javascript:void()") }}" aria-expanded="false">
-							<i class="la la-users"></i>
-							<span class="nav-text">Staff</span>
-						</a>
-                        <ul aria-expanded="false">
-                            <li><a href="{{ url("all-staff.html") }}">All Staff</a></li>
-                            <li><a href="{{ url("add-staff.html") }}">Add Staff</a></li>
-                            <li><a href="{{ url("edit-staff.html") }}">Edit Staff</a></li>
-                            <li><a href="{{ url("staff-profile.html") }}">Staff Profile</a></li>
-                        </ul>
-                    </li>
-					<li><a class="has-arrow" href="{{ url("javascript:void()") }}" aria-expanded="false">
-							<i class="la la-gift"></i>
-							<span class="nav-text">Holiday</span>
-						</a>
-                        <ul aria-expanded="false">
-                            <li><a href="{{ url("all-holiday.html") }}">All Holiday</a></li>
-                            <li><a href="{{ url("add-holiday.html") }}">Add Holiday</a></li>
-                            <li><a href="{{ url("edit-holiday.html") }}">Edit Holiday</a></li>
-                            <li><a href="{{ url("holiday-calendar.html") }}">Holiday Calendar</a></li>
-                        </ul>
-                    </li>
-					<li><a class="has-arrow" href="{{ url("javascript:void()") }}" aria-expanded="false">
-							<i class="la la-dollar"></i>
-							<span class="nav-text">Fees</span>
-						</a>
-                        <ul aria-expanded="false">
-                            <li><a href="{{ url("fees-collection.html") }}">Fees Collection</a></li>
-                            <li><a href="{{ url("add-fees.html") }}">Add Fees</a></li>
-                            <li><a href="{{ url("fees-receipt.html") }}">Fees Receipt</a></li>
-                        </ul>
-                    </li>					
+                    </li>				
                     <li class="nav-label">Apps</li>
                     <li><a class="has-arrow" href="{{ url("javascript:void()") }}" aria-expanded="false">
 							<i class="la la-users"></i>
 							<span class="nav-text">Apps</span>
 						</a>
                         <ul aria-expanded="false">
-                            <li><a href="{{ url("app-profile.html") }}">Profile</a></li>
+                            <li><a href="{{ url("app-profile.php") }}">Profile</a></li>
                             <li><a class="has-arrow" href="{{ url("javascript:void()") }}" aria-expanded="false">Email</a>
                                 <ul aria-expanded="false">
-                                    <li><a href="{{ url("email-compose.html") }}">Compose</a></li>
-                                    <li><a href="{{ url("email-inbox.html") }}">Inbox</a></li>
-                                    <li><a href="{{ url("email-read.html") }}">Read</a></li>
+                                    <li><a href="{{ url("email-compose.php") }}">Compose</a></li>
+                                    <li><a href="{{ url("email-inbox.php") }}">Inbox</a></li>
+                                    <li><a href="{{ url("email-read.php") }}">Read</a></li>
                                 </ul>
                             </li>
-                            <li><a href="{{ url("app-calender.html") }}">Calendar</a></li>
+                            <li><a href="{{ url("app-calender.php") }}">Calendar</a></li>
 							<li><a class="has-arrow" href="{{ url("javascript:void()") }}" aria-expanded="false">Shop</a>
                                 <ul aria-expanded="false">
-                                    <li><a href="{{ url("ecom-product-grid.html") }}">Product Grid</a></li>
-									<li><a href="{{ url("ecom-product-list.html") }}">Product List</a></li>
-									<li><a href="{{ url("ecom-product-detail.html") }}">Product Details</a></li>
-									<li><a href="{{ url("ecom-product-order.html") }}">Order</a></li>
-									<li><a href="{{ url("ecom-checkout.html") }}">Checkout</a></li>
-									<li><a href="{{ url("ecom-invoice.html") }}">Invoice</a></li>
-									<li><a href="{{ url("ecom-customers.html") }}">Customers</a></li>
+									<li><a href="{{ url("ecom-product-order.php") }}">Order</a></li>
+									<li><a href="{{ url("ecom-checkout.php") }}">Checkout</a></li>
+									<li><a href="{{ url("ecom-invoice.php") }}">Invoice</a></li>
+									<li><a href="{{ url("ecom-customers.php") }}">Students</a></li>
                                 </ul>
                             </li>
                         </ul>
                     </li>
-                    <li><a class="has-arrow ai-icon" href="{{ url("javascript:void()") }}" aria-expanded="false">
-							<i class="la la-signal"></i>
-							<span class="nav-text">Charts</span>
-						</a>
-                        <ul aria-expanded="false">
-                            <li><a href="{{ url("chart-flot.html") }}">Flot</a></li>
-                            <li><a href="{{ url("chart-morris.html") }}">Morris</a></li>
-                            <li><a href="{{ url("chart-chartjs.html") }}">Chartjs</a></li>
-                            <li><a href="{{ url("chart-chartist.html") }}">Chartist</a></li>
-                            <li><a href="{{ url("chart-sparkline.html") }}">Sparkline</a></li>
-                            <li><a href="{{ url("chart-peity.html") }}">Peity</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-label">Components</li>
-                    <li class="mega-menu mega-menu-xl"><a class="has-arrow ai-icon" href="{{ url("javascript:void()") }}" aria-expanded="false">
-							<i class="la la-globe"></i>
-							<span class="nav-text">Bootstrap</span>
-						</a>
-                        <ul aria-expanded="false">
-                            <li><a href="{{ url("ui-accordion.html") }}">Accordion</a></li>
-                            <li><a href="{{ url("ui-alert.html") }}">Alert</a></li>
-                            <li><a href="{{ url("ui-badge.html") }}">Badge</a></li>
-                            <li><a href="{{ url("ui-button.html") }}">Button</a></li>
-                            <li><a href="{{ url("ui-modal.html") }}">Modal</a></li>
-                            <li><a href="{{ url("ui-button-group.html") }}">Button Group</a></li>
-                            <li><a href="{{ url("ui-list-group.html") }}">List Group</a></li>
-                            <li><a href="{{ url("ui-media-object.html") }}">Media Object</a></li>
-                            <li><a href="{{ url("ui-card.html") }}">Cards</a></li>
-                            <li><a href="{{ url("ui-carousel.html") }}">Carousel</a></li>
-                            <li><a href="{{ url("ui-dropdown.html") }}">Dropdown</a></li>
-                            <li><a href="{{ url("ui-popover.html") }}">Popover</a></li>
-                            <li><a href="{{ url("ui-progressbar.html") }}">Progressbar</a></li>
-                            <li><a href="{{ url("ui-tab.html") }}">Tab</a></li>
-                            <li><a href="{{ url("ui-typography.html") }}">Typography</a></li>
-                            <li><a href="{{ url("ui-pagination.html") }}">Pagination</a></li>
-                            <li><a href="{{ url("ui-grid.html") }}">Grid</a></li>
-                        </ul>
-                    </li>
-                    <li><a class="has-arrow" href="{{ url("javascript:void()") }}" aria-expanded="false">
-							<i class="la la-plus-square-o"></i>
-							<span class="nav-text">Plugins</span>
-						</a>
-                        <ul aria-expanded="false">
-                            <li><a href="{{ url("uc-select2.html") }}">Select 2</a></li>
-                            <li><a href="{{ url("uc-nestable.html") }}">Nestedable</a></li>
-                            <li><a href="{{ url("uc-noui-slider.html") }}">Noui Slider</a></li>
-                            <li><a href="{{ url("uc-sweetalert.html") }}">Sweet Alert</a></li>
-                            <li><a href="{{ url("uc-toastr.html") }}">Toastr</a></li>
-                            <li><a href="{{ url("map-jqvmap.html") }}">Jqv Map</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="{{ url("widget-basic.html") }}" aria-expanded="false">
+                    <li><a href="{{ url("widget-basic.php") }}" aria-expanded="false">
 							<i class="la la-desktop"></i>
 							<span class="nav-text">Widget</span>
 						</a></li>
@@ -365,11 +264,8 @@
 							<span class="nav-text">Forms</span>
 						</a>
                         <ul aria-expanded="false">
-                            <li><a href="{{ url("form-element.html") }}">Form Elements</a></li>
-                            <li><a href="{{ url("form-wizard.html") }}">Wizard</a></li>
-                            <li><a href="{{ url("form-editor-summernote.html") }}">Summernote</a></li>
-                            <li><a href="{{ url("form-pickers.html") }}">Pickers</a></li>
-                            <li><a href="{{ url("form-validation-jquery.html") }}">Jquery Validate</a></li>
+                            <li><a href="{{ url("form-pickers.php") }}">Pickers</a></li>
+                            <li><a href="{{ url("form-validation-jquery.php") }}">Jquery Validate</a></li>
                         </ul>
                     </li>
                     <li class="nav-label">Table</li>
@@ -378,8 +274,7 @@
 							<span class="nav-text">Table</span>
 						</a>
                         <ul aria-expanded="false">
-                            <li><a href="{{ url("table-bootstrap-basic.html") }}">Bootstrap</a></li>
-                            <li><a href="{{ url("table-datatable-basic.html") }}">Datatable</a></li>
+                            <li><a href="{{ url("table-datatable-basic.php") }}">Datatable</a></li>
                         </ul>
                     </li>
                     <li class="nav-label">Extra</li>
@@ -388,18 +283,11 @@
 							<span class="nav-text">Pages</span>
 						</a>
                         <ul aria-expanded="false">
-                            <li><a href="{{ url("page-register.html") }}">Register</a></li>
-                            <li><a href="{{ url("page-login.html") }}">Login</a></li>
+                            <li><a href="{{ url("page-register.php") }}">Register</a></li>
+                            <li><a href="{{ url("page-login.php") }}">Login</a></li>
                             <li><a class="has-arrow" href="{{ url("javascript:void()") }}" aria-expanded="false">Error</a>
-                                <ul aria-expanded="false">
-                                    <li><a href="{{ url("page-error-400.html") }}">Error 400</a></li>
-                                    <li><a href="{{ url("page-error-403.html") }}">Error 403</a></li>
-                                    <li><a href="{{ url("page-error-404.html") }}">Error 404</a></li>
-                                    <li><a href="{{ url("page-error-500.html") }}">Error 500</a></li>
-                                    <li><a href="{{ url("page-error-503.html") }}">Error 503</a></li>
-                                </ul>
                             </li>
-                            <li><a href="{{ url("page-lock-screen.html") }}">Lock Screen</a></li>
+                            <li><a href="{{ url("page-lock-screen.php") }}">Lock Screen</a></li>
                         </ul>
                     </li>
 				</ul>
@@ -599,7 +487,7 @@
                                         <li>
                                             <div class="timeline-badge primary"></div>
                                             <a class="timeline-panel text-muted mb-3 d-flex align-items-center" href="{{ url("javascript:void(0);") }}">
-                                                <img class="rounded-circle" alt="image" width="50" src="{{ asset("/images/profile/education/pic1.jpg") }}">
+                                                <img class="rounded-circle" alt="image" width="50" src="{{ asset("/img/profile/education/pic1.jpg") }}">
 												<div class="col">
 													<h5 class="mb-1">Dr sultads Send you Photo</h5>
 													<small class="d-block">29 July 2020 - 02:26 PM</small>
@@ -609,7 +497,7 @@
                                         <li>
                                             <div class="timeline-badge warning"></div>
                                             <a class="timeline-panel text-muted mb-3 d-flex align-items-center" href="{{ url("javascript:void(0);") }}">
-                                                <img class="rounded-circle" alt="image" width="50" src="{{ asset("/images/profile/education/pic2.jpg") }}">
+                                                <img class="rounded-circle" alt="image" width="50" src="{{ asset("/img/profile/education/pic2.jpg") }}">
 												<div class="col">
 													<h5 class="mb-1">Resport created successfully</h5>
 													<small class="d-block">29 July 2020 - 02:26 PM</small>
@@ -619,7 +507,7 @@
                                         <li>
                                             <div class="timeline-badge danger"></div>
                                             <a class="timeline-panel text-muted mb-3 d-flex align-items-center" href="{{ url("javascript:void(0);") }}">
-                                                <img class="rounded-circle" alt="image" width="50" src="{{ asset("/images/profile/education/pic3.jpg") }}">
+                                                <img class="rounded-circle" alt="image" width="50" src="{{ asset("/img/profile/education/pic3.jpg") }}">
 												<div class="col">
 													<h5 class="mb-1">Reminder : Treatment Time!</h5>
 													<small class="d-block">29 July 2020 - 02:26 PM</small>
@@ -629,7 +517,7 @@
 										<li>
                                             <div class="timeline-badge success"></div>
 											<a class="timeline-panel text-muted mb-3 d-flex align-items-center" href="{{ url("javascript:void(0);") }}">
-                                                <img class="rounded-circle" alt="image" width="50" src="{{ asset("/images/profile/education/pic4.jpg") }}">
+                                                <img class="rounded-circle" alt="image" width="50" src="{{ asset("/img/profile/education/pic4.jpg") }}">
 												<div class="col">
 													<h5 class="mb-1">Dr sultads Send you Photo</h5>
 													<small class="d-block">29 July 2020 - 02:26 PM</small>
@@ -639,7 +527,7 @@
                                         <li>
                                             <div class="timeline-badge warning"></div>
 											<a class="timeline-panel text-muted mb-3 d-flex align-items-center" href="{{ url("javascript:void(0);") }}">
-                                                <img class="rounded-circle" alt="image" width="50" src="{{ asset("/images/profile/education/pic5.jpg") }}">
+                                                <img class="rounded-circle" alt="image" width="50" src="{{ asset("/img/profile/education/pic5.jpg") }}">
 												<div class="col">
 													<h5 class="mb-1">Resport created successfully</h5>
 													<small class="d-block">29 July 2020 - 02:26 PM</small>
@@ -649,7 +537,7 @@
                                         <li>
                                             <div class="timeline-badge dark"></div>
                                             <a class="timeline-panel text-muted mb-3 d-flex align-items-center" href="{{ url("javascript:void(0);") }}">
-                                                <img class="rounded-circle" alt="image" width="50" src="{{ asset("/images/profile/education/pic6.jpg") }}">
+                                                <img class="rounded-circle" alt="image" width="50" src="{{ asset("/img/profile/education/pic6.jpg") }}">
 												<div class="col">
 													<h5 class="mb-1">Reminder : Treatment Time!</h5>
 													<small class="d-block">29 July 2020 - 02:26 PM</small>
@@ -659,7 +547,7 @@
                                         <li>
                                             <div class="timeline-badge info"></div>
                                             <a class="timeline-panel text-muted mb-3 d-flex align-items-center" href="{{ url("javascript:void(0);") }}">
-                                                <img class="rounded-circle" alt="image" width="50" src="{{ asset("/images/profile/education/pic7.jpg") }}">
+                                                <img class="rounded-circle" alt="image" width="50" src="{{ asset("/img/profile/education/pic7.jpg") }}">
 												<div class="col">
 													<h5 class="mb-1">Dr sultads Send you Photo</h5>
 													<small class="d-block">29 July 2020 - 02:26 PM</small>
@@ -669,7 +557,7 @@
 										<li>
                                             <div class="timeline-badge danger"></div>
                                             <a class="timeline-panel text-muted mb-3 d-flex align-items-center" href="{{ url("javascript:void(0);") }}">
-                                                <img class="rounded-circle" alt="image" width="50" src="{{ asset("/images/profile/education/pic8.jpg") }}">
+                                                <img class="rounded-circle" alt="image" width="50" src="{{ asset("/img/profile/education/pic8.jpg") }}">
 												<div class="col">
 													<h5 class="mb-1">Resport created successfully</h5>
 													<small class="d-block">29 July 2020 - 02:26 PM</small>
@@ -679,7 +567,7 @@
                                         <li>
                                             <div class="timeline-badge success"></div>
                                             <a class="timeline-panel text-muted mb-3 d-flex align-items-center" href="{{ url("javascript:void(0);") }}">
-                                                <img class="rounded-circle" alt="image" width="50" src="{{ asset("/images/profile/education/pic9.jpg") }}">
+                                                <img class="rounded-circle" alt="image" width="50" src="{{ asset("/img/profile/education/pic9.jpg") }}">
 												<div class="col">
 													<h5 class="mb-1">Reminder : Treatment Time!</h5>
 													<small class="d-block">29 July 2020 - 02:26 PM</small>
@@ -689,7 +577,7 @@
 										<li>
                                             <div class="timeline-badge warning"></div>
 											<a class="timeline-panel text-muted d-flex align-items-center" href="{{ url("javascript:void(0);") }}">
-                                                <img class="rounded-circle" alt="image" width="50" src="{{ asset("/images/profile/education/pic10.jpg") }}">
+                                                <img class="rounded-circle" alt="image" width="50" src="{{ asset("/img/profile/education/pic10.jpg") }}">
 												<div class="col">
 													<h5 class="mb-1">Dr sultads Send you Photo</h5>
 													<small class="d-block">29 July 2020 - 02:26 PM</small>
@@ -725,7 +613,7 @@
                                                     <a href="{{ url("javascript:void(0);") }}">
                                                         <div class="media d-flex align-items-center">
                                                             <div class="avatar avatar-xl mr-2">
-                                                                <img class="rounded-circle img-fluid" src="{{ asset("/images/avatar/5.png") }}" width="30" alt="">
+                                                                <img class="rounded-circle img-fluid" src="{{ asset("/img/avatar/5.png") }}" width="30" alt="">
                                                             </div>
                                                             <div class="media-body">
                                                                 <h5 class="mb-0 fs--1">Ricky Antony</h5>
@@ -738,7 +626,7 @@
                                                 <td><span class="badge badge-rounded badge-primary">DONE</span></td>
                                                 <td class="py-2">30/03/2018</td>
                                                 <td>
-                                                    <a href="{{ url("edit-student.html") }}" class="btn btn-sm btn-primary"><i class="la la-pencil"></i></a>
+                                                    <a href="{{ url("edit-student.php") }}" class="btn btn-sm btn-primary"><i class="la la-pencil"></i></a>
                                                     <a href="{{ url("javascript:void(0);") }}" class="btn btn-sm btn-danger"><i class="la la-trash-o"></i></a>
                                                 </td>
                                             </tr>
@@ -747,7 +635,7 @@
                                                     <a href="{{ url("javascript:void(0);") }}">
                                                         <div class="media d-flex align-items-center">
                                                             <div class="avatar avatar-xl mr-2">
-                                                                <img class="rounded-circle img-fluid" src="{{ asset("/images/avatar/1.png") }}" alt="" width="30">
+                                                                <img class="rounded-circle img-fluid" src="{{ asset("/img/avatar/1.png") }}" alt="" width="30">
                                                             </div>
                                                             <div class="media-body">
                                                                 <h5 class="mb-0 fs--1">Emma Watson</h5>
@@ -760,7 +648,7 @@
                                                 <td><span class="badge badge-rounded badge-warning">Panding</span></td>
                                                 <td class="py-2">11/07/2017</td>
                                                 <td>
-                                                    <a href="{{ url("edit-student.html") }}" class="btn btn-sm btn-primary"><i class="la la-pencil"></i></a>
+                                                    <a href="{{ url("edit-student.php") }}" class="btn btn-sm btn-primary"><i class="la la-pencil"></i></a>
                                                     <a href="{{ url("javascript:void(0);") }}" class="btn btn-sm btn-danger"><i class="la la-trash-o"></i></a>
                                                 </td>
                                             </tr>
@@ -769,7 +657,7 @@
                                                     <a href="{{ url("javascript:void(0);") }}">
                                                         <div class="media d-flex align-items-center">
                                                             <div class="avatar avatar-xl mr-2">
-                                                                <img class="rounded-circle img-fluid" src="{{ asset("/images/avatar/5.png") }}" width="30" alt="">
+                                                                <img class="rounded-circle img-fluid" src="{{ asset("/img/avatar/5.png") }}" width="30" alt="">
                                                             </div>
                                                             <div class="media-body">
                                                                 <h5 class="mb-0 fs--1">Rowen Atkinson</h5>
@@ -782,7 +670,7 @@
                                                 <td><span class="badge badge-rounded badge-primary">DONE</span></td>
                                                 <td class="py-2">05/04/2016</td>
                                                 <td>
-                                                    <a href="{{ url("edit-student.html") }}" class="btn btn-sm btn-primary"><i class="la la-pencil"></i></a>
+                                                    <a href="{{ url("edit-student.php") }}" class="btn btn-sm btn-primary"><i class="la la-pencil"></i></a>
                                                     <a href="{{ url("javascript:void(0);") }}" class="btn btn-sm btn-danger"><i class="la la-trash-o"></i></a>
                                                 </td>
                                             </tr>
@@ -791,7 +679,7 @@
                                                     <a href="{{ url("javascript:void(0);") }}">
                                                         <div class="media d-flex align-items-center">
                                                             <div class="avatar avatar-xl mr-2">
-                                                                <img class="rounded-circle img-fluid" src="{{ asset("/images/avatar/1.png") }}" alt="" width="30">
+                                                                <img class="rounded-circle img-fluid" src="{{ asset("/img/avatar/1.png") }}" alt="" width="30">
                                                             </div>
                                                             <div class="media-body">
                                                                 <h5 class="mb-0 fs--1">Antony Hopkins</h5>
@@ -804,7 +692,7 @@
                                                 <td><span class="badge badge-rounded badge-danger">Suspended</span></td>
                                                 <td class="py-2">05/04/2018</td>
                                                 <td>
-                                                    <a href="{{ url("edit-student.html") }}" class="btn btn-sm btn-primary"><i class="la la-pencil"></i></a>
+                                                    <a href="{{ url("edit-student.php") }}" class="btn btn-sm btn-primary"><i class="la la-pencil"></i></a>
                                                     <a href="{{ url("javascript:void(0);") }}" class="btn btn-sm btn-danger"><i class="la la-trash-o"></i></a>
                                                 </td>
                                             </tr>
@@ -813,7 +701,7 @@
                                                     <a href="{{ url("javascript:void(0);") }}">
                                                         <div class="media d-flex align-items-center">
                                                             <div class="avatar avatar-xl mr-2">
-                                                                <img class="rounded-circle img-fluid" src="{{ asset("/images/avatar/1.png") }}" alt="" width="30">
+                                                                <img class="rounded-circle img-fluid" src="{{ asset("/img/avatar/1.png") }}" alt="" width="30">
                                                             </div>
                                                             <div class="media-body">
                                                                 <h5 class="mb-0 fs--1">Jennifer Schramm</h5>
@@ -826,7 +714,7 @@
                                                 <td><span class="badge badge-rounded badge-warning">Panding</span></td>
                                                 <td class="py-2">17/03/2016</td>
                                                 <td>
-                                                    <a href="{{ url("edit-student.html") }}" class="btn btn-sm btn-primary"><i class="la la-pencil"></i></a>
+                                                    <a href="{{ url("edit-student.php") }}" class="btn btn-sm btn-primary"><i class="la la-pencil"></i></a>
                                                     <a href="{{ url("javascript:void(0);") }}" class="btn btn-sm btn-danger"><i class="la la-trash-o"></i></a>
                                                 </td>
                                             </tr>
@@ -835,7 +723,7 @@
                                                     <a href="{{ url("javascript:void(0);") }}">
                                                         <div class="media d-flex align-items-center">
                                                             <div class="avatar avatar-xl mr-2">
-                                                                <img class="rounded-circle img-fluid" src="{{ asset("/images/avatar/5.png") }}" width="30" alt="">
+                                                                <img class="rounded-circle img-fluid" src="{{ asset("/img/avatar/5.png") }}" width="30" alt="">
                                                             </div>
                                                             <div class="media-body">
                                                                 <h5 class="mb-0 fs--1">Raymond Mims</h5>
@@ -848,7 +736,7 @@
                                                 <td><span class="badge badge-rounded badge-danger">Suspended</span></td>
                                                 <td class="py-2">12/07/2014</td>
                                                 <td>
-                                                    <a href="{{ url("edit-student.html") }}" class="btn btn-sm btn-primary"><i class="la la-pencil"></i></a>
+                                                    <a href="{{ url("edit-student.php") }}" class="btn btn-sm btn-primary"><i class="la la-pencil"></i></a>
                                                     <a href="{{ url("javascript:void(0);") }}" class="btn btn-sm btn-danger"><i class="la la-trash-o"></i></a>
                                                 </td>
                                             </tr>
@@ -857,7 +745,7 @@
                                                     <a href="{{ url("javascript:void(0);") }}">
                                                         <div class="media d-flex align-items-center">
                                                             <div class="avatar avatar-xl mr-2">
-                                                                <img class="rounded-circle img-fluid" src="{{ asset("/images/avatar/1.png") }}" alt="" width="30">
+                                                                <img class="rounded-circle img-fluid" src="{{ asset("/img/avatar/1.png") }}" alt="" width="30">
                                                             </div>
                                                             <div class="media-body">
                                                                 <h5 class="mb-0 fs--1">Michael Jenkins</h5>
@@ -870,7 +758,7 @@
                                                 <td><span class="badge badge-rounded badge-warning">Panding</span></td>
                                                 <td class="py-2">15/06/2014</td>
                                                 <td>
-                                                    <a href="{{ url("edit-student.html") }}" class="btn btn-sm btn-primary"><i class="la la-pencil"></i></a>
+                                                    <a href="{{ url("edit-student.php") }}" class="btn btn-sm btn-primary"><i class="la la-pencil"></i></a>
                                                     <a href="{{ url("javascript:void(0);") }}" class="btn btn-sm btn-danger"><i class="la la-trash-o"></i></a>
                                                 </td>
                                             </tr>
@@ -893,7 +781,7 @@
         ***********************************-->
         <div class="footer">
             <div class="copyright">
-                <p>Copyright © Designed &amp; Developed by <a href="{{ url("../index.htm") }}" target="_blank">DexignLab</a> 2020</p>
+                <p>Copyright © Designed &amp; Developed by <a href="{{ url("../index.htm") }}" target="_blank">WhiteSprout</a> 2023</p>
             </div>
         </div>
         <!--**********************************
@@ -933,8 +821,8 @@
     <script src="{{ asset("/vendor/jquery-sparkline/jquery.sparkline.min.js") }}"></script>
 	
 		<!-- Demo scripts -->
-    <script src="{{ asset("/js/dashboard/dashboard-3.js") }}"></script>
-	
+	<script src="{{ asset('public/js/dashboard/dashboard-3.js') }}"></script>
+
 	<!-- Svganimation scripts -->
     <script src="{{ asset("/vendor/svganimation/vivus.min.js") }}"></script>
     <script src="{{ asset("/vendor/svganimation/svg.animation.js") }}"></script>
