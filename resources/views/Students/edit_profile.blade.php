@@ -73,71 +73,42 @@
             </a></li>
           </ul>
         </nav>
-    
-        <section class="main">
-          <div class="main-top">
-            <h1>Skills</h1>
-            <i class="fas fa-user-cog"></i>
-          </div>
-          <div class="main-skills">
-            <div class="card">
-              <i class="fas fa-laptop-code"></i>
-              <h3>Web developemt</h3>
-              <p>Join Over 1 million Students.</p>
-              <button>Get Started</button>
-            </div>
-            <div class="card">
-              <i class="fab fa-wordpress"></i>
-              <h3>WordPress</h3>
-              <p>Join Over 3 million Students.</p>
-              <button>Get Started</button>
-            </div>
-            <div class="card">
-              <i class="fas fa-palette"></i>
-              <h3>graphic design</h3>
-              <p>Join Over 2 million Students.</p>
-              <button>Get Started</button>
-            </div>
-            <div class="card">
-              <i class="fab fa-app-store-ios"></i>
-              <h3>IOS dev</h3>
-              <p>Join Over 1 million Students.</p>
-              <button>Get Started</button>
-            </div>
-          </div>
-    
-          <section class="main-course">
-            <h1>My courses</h1>
-            <div class="course-box">
-              <ul>
-                <li class="active">In progress</li>
-                <li>explore</li>
-                <li>incoming</li>
-                <li>finished</li>
-              </ul>
-              <div class="course">
-                <div class="box">
-                  <h3>HTML</h3>
-                  <p>80% - progress</p>
-                  <button>continue</button>
-                  <i class="fab fa-html5 html"></i>
+
+        iv class="container">
+        <h1>Edit Student Profile</h1>
+            <form action="{{ route('students.update') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
+        
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" class="form-control" id="name" name="name" value="{{ $student->name }}" readonly>
                 </div>
-                <div class="box">
-                  <h3>CSS</h3>
-                  <p>50% - progress</p>
-                  <button>continue</button>
-                  <i class="fab fa-css3-alt css"></i>
+        
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control" id="email" name="email" value="{{ $student->email }}">
                 </div>
-                <div class="box">
-                  <h3>JavaScript</h3>
-                  <p>30% - progress</p>
-                  <button>continue</button>
-                  <i class="fab fa-js-square js"></i>
+        
+                <div class="form-group">
+                    <label for="phone">Phone Number:</label>
+                    <input type="number" class="form-control" id="phone" name="phone" value="{{ $student->phone }}">
                 </div>
-              </div>
-            </div>
-          </section>
-        </section>
+        
+                <div class="form-group">
+                    <label for="state">State of Residence:</label>
+                    <input type="text" class="form-control" id="state" name="state" value="{{ $student->state }}">
+                </div>
+        
+                <div class="form-group">
+                    <label for="profile_picture">Profile Picture:</label>
+                    <input type="file" class="form-control" id="profile_picture" name="profile_picture">
+                </div>
+        
+                <button type="submit" class="btn btn-primary">Update Profile</button>
+            </form>
+    </div>
+
       </div>
     </body>
     </html></span>

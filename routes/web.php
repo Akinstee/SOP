@@ -70,9 +70,27 @@ Route::get('/terms', 'PageController@showTerms')->name('terms');
 Route::get('/faqs', 'PageController@showFaqs')->name('faqs');
 
 
-
-
-//Student Dashboard 
+//Dashboard 
 Route::get('/student/dashboard', [StudentController::class, 'dashboard'])->name('student.dashboard');
 Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 Route::get('/instructor/dashboard', [InstructorController::class, 'dashboard'])->name('instructor.dashboard');
+
+// Students Profile
+Route::get('/profile', [StudentController::class, 'profile']);
+
+//Route::get('/students/profile', [StudentProfileController::class, 'index'])->name('students.profile');
+
+
+Route::post('/profile/update', [StudentController::class, 'updateProfile']);
+
+// Edit Profile
+Route::get('/edit-profile', [StudentController::class, 'editProfile']);
+
+// Live Class
+Route::get('/live-class', [StudentController::class, 'liveClass']);
+
+// My Certificate
+Route::get('/my-certificate', [StudentController::class, 'myCertificate']);
+
+// My Courses
+Route::get('/my-courses', [StudentController::class, 'myCourses']);
