@@ -84,7 +84,10 @@ Route::get('/profile', [StudentController::class, 'profile']);
 Route::post('/profile/update', [StudentController::class, 'updateProfile']);
 
 // Edit Profile
+//Route::get('/edit-profile', [StudentController::class, 'editProfile']);
+
 Route::get('/edit-profile', [StudentController::class, 'editProfile']);
+Route::post('/edit-profile/update', [StudentController::class, 'updateProfile']);
 
 // Live Class
 Route::get('/live-class', [StudentController::class, 'liveClass']);

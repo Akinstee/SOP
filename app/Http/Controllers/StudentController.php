@@ -66,11 +66,11 @@ class StudentController extends Controller
         return view('students.profile');
     }
 
-    public function editProfile()
-    {
-        // Your logic for the edit profile page
-        return view('students.edit_profile');
-    }
+    // public function editProfile()
+    // {
+    //     // Your logic for the edit profile page
+    //     return view('students.edit_profile');
+    // }
 
     public function liveClass()
     {
@@ -99,15 +99,20 @@ class StudentController extends Controller
     //     return view('students.profile', compact('student'));
     // }
 
-    public function updateProfile(Request $request)
-    {
-        $student = auth()->user(); // Adjust this based on your authentication setup
+    // public function updateProfile(Request $request)
+    // {
+    //     $student = auth()->user(); // Adjust this based on your authentication setup
 
-        // Update student profile logic here
-        // Example: $student->update($request->all());
+    //     // Update student profile logic here
+    //     // Example: $student->update($request->all());
 
-        return redirect('/profile')->with('success', 'Profile updated successfully!');
-    }
+    //     return redirect('/profile')->with('success', 'Profile updated successfully!');
+    // }
+
+
+    
+
+    
 
     
 }
