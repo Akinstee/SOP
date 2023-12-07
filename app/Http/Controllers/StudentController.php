@@ -60,35 +60,35 @@ class StudentController extends Controller
         return view('Students.dashboard');
     }
 
-    public function profile()
-    {
-        // Your logic for the profile page
-        return view('students.profile');
-    }
-
-    // public function editProfile()
+    // public function profile()
     // {
-    //     // Your logic for the edit profile page
-    //     return view('students.edit_profile');
+    //     // Your logic for the profile page
+    //     return view('students.profile');
     // }
 
-    public function liveClass()
-    {
-        // Your logic for the live class page
-        return view('students.live_class');
-    }
+    // // public function editProfile()
+    // // {
+    // //     // Your logic for the edit profile page
+    // //     return view('students.edit_profile');
+    // // }
 
-    public function myCertificate()
-    {
-        // Your logic for the my certificate page
-        return view('students.my_certificate');
-    }
+    // public function liveClass()
+    // {
+    //     // Your logic for the live class page
+    //     return view('students.live_class');
+    // }
 
-    public function myCourses()
-    {
-        // Your logic for the my courses page
-        return view('students.my_courses');
-    }
+    // public function myCertificate()
+    // {
+    //     // Your logic for the my certificate page
+    //     return view('students.my_certificate');
+    // }
+
+    // public function myCourses()
+    // {
+    //     // Your logic for the my courses page
+    //     return view('students.my_courses');
+    // }
 
 
     // public function profile()
@@ -109,7 +109,55 @@ class StudentController extends Controller
     //     return redirect('/profile')->with('success', 'Profile updated successfully!');
     // }
 
+    public function myLearning()
+    {
+        return view('students.my_learning');
+    }
 
+    public function myCart()
+    {
+        return view('students.my_cart');
+    }
+
+    public function wishlist()
+    {
+        return view('students.wishlist');
+    }
+
+    public function notifications()
+    {
+        return view('students.notifications');
+    }
+
+    public function messages()
+    {
+        return view('students.messages');
+    }
+
+    public function profile()
+    {
+        return view('students.profile');
+    }
+
+    public function editProfile()
+    {
+        return view('students.edit_profile');
+    }
+
+    public function wallet()
+    {
+        return view('students.wallet');
+    }
+
+    public function analytics()
+    {
+        return view('students.analytics');
+    }
+
+    public function settings()
+    {
+        return view('students.settings');
+    }
     
 
     

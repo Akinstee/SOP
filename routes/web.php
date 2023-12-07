@@ -1,14 +1,16 @@
 <?php
 
+use App\Models\Instructor;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\InstructorController;
-use App\Models\Instructor;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -97,3 +99,22 @@ Route::get('/my-certificate', [StudentController::class, 'myCertificate']);
 
 // My Courses
 Route::get('/my-courses', [StudentController::class, 'myCourses']);
+
+
+Route::middleware(['auth', 'student'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('student.dashboard');
+
+    Route::get('/my-learning', [DashboardController::class, 'myLearning'])->name('student.my_learning');
+    Route::get('/my-cart', [DashboardController::class, 'myCart'])->name('student.my_cart');
+    Route::get('/wishlist', [DashboardController::class, 'wishlist'])->name('student.wishlist');
+    Route::get('/notifications', [DashboardController::class, 'notifications'])->name('student.notifications');
+    Route::get('/messages', [DashboardController::class, 'messages'])->name('student.messages');
+    Route::get('/profile', [DashboardController::class, 'profile'])->name('student.profile');
+    Route::get('/edit-profile', [DashboardController::class, 'editProfile'])->name('student.edit_profile');
+    Route::get('/wallet', [DashboardController::class, 'wallet'])->name('student.wallet');
+    Route::get('/analytics', [DashboardController::class, 'analytics'])->name('student.analytics');
+    Route::get('/tasks', [DashboardController::class, 'tasks'])->name('student.tasks');
+    Route::get('/settings', [DashboardController::class, 'settings'])->name('student.settings');
+    Route::get('/help', [DashboardController::class, 'help'])->name('student.help');
+    Route::get('/logout', [DashboardController::class, 'logout'])->name('student.logout');
+});
