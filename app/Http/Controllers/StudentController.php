@@ -60,73 +60,22 @@ class StudentController extends Controller
         return view('Students.dashboard');
     }
 
-    // public function profile()
-    // {
-    //     // Your logic for the profile page
-    //     return view('students.profile');
-    // }
-
-    // // public function editProfile()
-    // // {
-    // //     // Your logic for the edit profile page
-    // //     return view('students.edit_profile');
-    // // }
-
-    // public function liveClass()
-    // {
-    //     // Your logic for the live class page
-    //     return view('students.live_class');
-    // }
-
-    // public function myCertificate()
-    // {
-    //     // Your logic for the my certificate page
-    //     return view('students.my_certificate');
-    // }
-
-    // public function myCourses()
-    // {
-    //     // Your logic for the my courses page
-    //     return view('students.my_courses');
-    // }
-
-
-    // public function profile()
-    // {
-    //     // Assuming you have authentication set up, retrieve the authenticated student
-    //     $student = auth()->user(); // Adjust this based on your authentication setup
-
-    //     return view('students.profile', compact('student'));
-    // }
-
-    // public function updateProfile(Request $request)
-    // {
-    //     $student = auth()->user(); // Adjust this based on your authentication setup
-
-    //     // Update student profile logic here
-    //     // Example: $student->update($request->all());
-
-    //     return redirect('/profile')->with('success', 'Profile updated successfully!');
-    // }
-
-    public function myLearning()
+    public function liveClass()
     {
-        return view('students.my_learning');
+        // Your logic for the live class page
+        return view('students.live_class');
     }
 
-    public function myCart()
+    public function myCertificate()
     {
-        return view('students.my_cart');
+        // Your logic for the my certificate page
+        return view('students.my_certificate');
     }
 
-    public function wishlist()
+    public function myCourses()
     {
-        return view('students.wishlist');
-    }
-
-    public function notifications()
-    {
-        return view('students.notifications');
+        // Your logic for the my courses page
+        return view('students.my_courses');
     }
 
     public function messages()
@@ -158,9 +107,7 @@ class StudentController extends Controller
     {
         return view('students.settings');
     }
-    
 
-    
 
     
 }

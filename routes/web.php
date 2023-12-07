@@ -78,18 +78,18 @@ Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('adm
 Route::get('/instructor/dashboard', [InstructorController::class, 'dashboard'])->name('instructor.dashboard');
 
 // Students Profile
-Route::get('/profile', [StudentController::class, 'profile']);
+//Route::get('/profile', [StudentController::class, 'profile']);
 
 //Route::get('/students/profile', [StudentProfileController::class, 'index'])->name('students.profile');
 
 
-Route::post('/profile/update', [StudentController::class, 'updateProfile']);
+//Route::post('/profile/update', [StudentController::class, 'updateProfile']);
 
 // Edit Profile
 //Route::get('/edit-profile', [StudentController::class, 'editProfile']);
 
-Route::get('/edit-profile', [StudentController::class, 'editProfile']);
-Route::post('/edit-profile/update', [StudentController::class, 'updateProfile']);
+// Route::get('/edit-profile', [StudentController::class, 'editProfile']);
+// Route::post('/edit-profile/update', [StudentController::class, 'updateProfile']);
 
 // Live Class
 Route::get('/live-class', [StudentController::class, 'liveClass']);
@@ -101,20 +101,36 @@ Route::get('/my-certificate', [StudentController::class, 'myCertificate']);
 Route::get('/my-courses', [StudentController::class, 'myCourses']);
 
 
-Route::middleware(['auth', 'student'])->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('student.dashboard');
+Route::get('/my-learning', [StudentController::class, 'myLearning'])->name('student.my_learning');
+Route::get('/my-cart', [StudentController::class, 'myCart'])->name('student.my_cart');
+Route::get('/wishlist', [StudentController::class, 'wishlist'])->name('student.wishlist');
+Route::get('/notifications', [StudentController::class, 'notifications'])->name('student.notifications');
+Route::get('/messages', [StudentController::class, 'messages'])->name('student.messages');
 
-    Route::get('/my-learning', [DashboardController::class, 'myLearning'])->name('student.my_learning');
-    Route::get('/my-cart', [DashboardController::class, 'myCart'])->name('student.my_cart');
-    Route::get('/wishlist', [DashboardController::class, 'wishlist'])->name('student.wishlist');
-    Route::get('/notifications', [DashboardController::class, 'notifications'])->name('student.notifications');
-    Route::get('/messages', [DashboardController::class, 'messages'])->name('student.messages');
-    Route::get('/profile', [DashboardController::class, 'profile'])->name('student.profile');
-    Route::get('/edit-profile', [DashboardController::class, 'editProfile'])->name('student.edit_profile');
-    Route::get('/wallet', [DashboardController::class, 'wallet'])->name('student.wallet');
-    Route::get('/analytics', [DashboardController::class, 'analytics'])->name('student.analytics');
-    Route::get('/tasks', [DashboardController::class, 'tasks'])->name('student.tasks');
-    Route::get('/settings', [DashboardController::class, 'settings'])->name('student.settings');
-    Route::get('/help', [DashboardController::class, 'help'])->name('student.help');
-    Route::get('/logout', [DashboardController::class, 'logout'])->name('student.logout');
-});
+Route::get('/profile', [StudentController::class, 'profile'])->name('student.profile');
+    Route::get('/edit-profile', [StudentController::class, 'editProfile'])->name('students.edit_profile');
+    Route::get('/wallet', [StudentController::class, 'wallet'])->name('student.wallet');
+    Route::get('/analytics', [StudentController::class, 'analytics'])->name('student.analytics');
+    Route::get('/tasks', [StudentController::class, 'tasks'])->name('student.tasks');
+    Route::get('/settings', [StudentController::class, 'settings'])->name('student.settings');
+    Route::get('/help', [StudentController::class, 'help'])->name('student.help');
+    Route::get('/logout', [StudentController::class, 'logout'])->name('student.logout');
+
+
+// Route::middleware('auth:student')->group(function () {
+//     Route::get('/dashboard', [DashboardController::class, 'index'])->name('student.dashboard');
+
+//     Route::get('/my-learning', [DashboardController::class, 'myLearning'])->name('student.my_learning');
+//     Route::get('/my-cart', [DashboardController::class, 'myCart'])->name('student.my_cart');
+//     Route::get('/wishlist', [DashboardController::class, 'wishlist'])->name('student.wishlist');
+//     Route::get('/notifications', [DashboardController::class, 'notifications'])->name('student.notifications');
+//     Route::get('/messages', [DashboardController::class, 'messages'])->name('student.messages');
+//     Route::get('/profile', [DashboardController::class, 'profile'])->name('student.profile');
+//     Route::get('/edit-profile', [DashboardController::class, 'editProfile'])->name('student.edit_profile');
+//     Route::get('/wallet', [DashboardController::class, 'wallet'])->name('student.wallet');
+//     Route::get('/analytics', [DashboardController::class, 'analytics'])->name('student.analytics');
+//     Route::get('/tasks', [DashboardController::class, 'tasks'])->name('student.tasks');
+//     Route::get('/settings', [DashboardController::class, 'settings'])->name('student.settings');
+//     Route::get('/help', [DashboardController::class, 'help'])->name('student.help');
+//     Route::get('/logout', [DashboardController::class, 'logout'])->name('student.logout');
+//});
