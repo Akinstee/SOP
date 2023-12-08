@@ -7,16 +7,21 @@ use Illuminate\Routing\Controller;
 
 class PagesController extends Controller
 {
+    // public function index()
+    // {
+    //     // Fetch data from the model if needed
+    //     $data = Page::all(); // Example: fetching all pages
+
+    //     // Pass data to the view
+    //     return view('pages.index', ['data' => $data]);
+    //     // return view('pages.index');
+    // }
+
     public function index()
     {
-        // Fetch data from the model if needed
-        $data = Page::all(); // Example: fetching all pages
-
-        // Pass data to the view
-        return view('pages.index', ['data' => $data]);
-        // return view('pages.index');
+        return view('index');
     }
-
+    
     public function showAbout()
 {
     return view('Pages.about');

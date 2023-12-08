@@ -101,20 +101,19 @@ Route::get('/my-certificate', [StudentController::class, 'myCertificate']);
 Route::get('/my-courses', [StudentController::class, 'myCourses']);
 
 
-Route::get('/my-learning', [StudentController::class, 'myLearning'])->name('student.my_learning');
-Route::get('/my-cart', [StudentController::class, 'myCart'])->name('student.my_cart');
-Route::get('/wishlist', [StudentController::class, 'wishlist'])->name('student.wishlist');
-Route::get('/notifications', [StudentController::class, 'notifications'])->name('student.notifications');
-Route::get('/messages', [StudentController::class, 'messages'])->name('student.messages');
-
-Route::get('/profile', [StudentController::class, 'profile'])->name('student.profile');
-    Route::get('/edit-profile', [StudentController::class, 'editProfile'])->name('students.edit_profile');
-    Route::get('/wallet', [StudentController::class, 'wallet'])->name('student.wallet');
-    Route::get('/analytics', [StudentController::class, 'analytics'])->name('student.analytics');
-    Route::get('/tasks', [StudentController::class, 'tasks'])->name('student.tasks');
-    Route::get('/settings', [StudentController::class, 'settings'])->name('student.settings');
-    Route::get('/help', [StudentController::class, 'help'])->name('student.help');
-    Route::get('/logout', [StudentController::class, 'logout'])->name('student.logout');
+Route::get('/student/my-learning', [StudentController::class, 'myLearning'])->name('student.my_learning');
+Route::get('/student/my-cart', [StudentController::class, 'myCart'])->name('student.my_cart');
+Route::get('/student/wishlist', [StudentController::class, 'wishlist'])->name('student.wishlist');
+Route::get('/student/notifications', [StudentController::class, 'notifications'])->name('student.notifications');
+Route::get('/student/messages', [StudentController::class, 'messages'])->name('student.messages');
+Route::get('/student/profile', [StudentController::class, 'profile'])->name('student.profile');
+    Route::get('/student/edit-profile', [StudentController::class, 'editProfile'])->name('student.edit_profile');
+    Route::get('/student/wallet', [StudentController::class, 'wallet'])->name('student.wallet');
+    Route::get('/student/analytics', [StudentController::class, 'analytics'])->name('student.analytics');
+    Route::get('/student/tasks', [StudentController::class, 'tasks'])->name('student.tasks');
+    Route::get('/student/settings', [StudentController::class, 'settings'])->name('student.settings');
+    Route::get('/student/help', [StudentController::class, 'help'])->name('student.help');
+    Route::get('/student/logout', [StudentController::class, 'logout'])->name('student.logout');
 
 
 // Route::middleware('auth:student')->group(function () {
