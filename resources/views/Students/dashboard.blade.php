@@ -11,7 +11,7 @@
       <div class="container">
         <nav>
           <ul>
-            <li><a href="#" class="logo">
+            <li><a href="{{route('student.dashboard')}}" class="logo">
               <img src="/logo.jpg" alt="">
               <span class="nav-item">DashBoard</span>
             </a></li>
