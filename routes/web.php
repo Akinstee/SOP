@@ -23,10 +23,6 @@ use App\Http\Controllers\InstructorController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Route::middleware('guest')->prefix('/admin')->name('admin.')->controller(LoginController::class)->group(function () {
     Route::get('/login', 'adminLogin')->name('login');
     Route::post('/check', 'adminCheck')->name('check');
@@ -77,20 +73,6 @@ Route::get('/student/dashboard', [StudentController::class, 'dashboard'])->name(
 Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 Route::get('/instructor/dashboard', [InstructorController::class, 'dashboard'])->name('instructor.dashboard');
 
-// Students Profile
-//Route::get('/profile', [StudentController::class, 'profile']);
-
-//Route::get('/students/profile', [StudentProfileController::class, 'index'])->name('students.profile');
-
-
-//Route::post('/profile/update', [StudentController::class, 'updateProfile']);
-
-// Edit Profile
-//Route::get('/edit-profile', [StudentController::class, 'editProfile']);
-
-// Route::get('/edit-profile', [StudentController::class, 'editProfile']);
-// Route::post('/edit-profile/update', [StudentController::class, 'updateProfile']);
-
 // Live Class
 Route::get('/live-class', [StudentController::class, 'liveClass']);
 
@@ -106,7 +88,7 @@ Route::get('/student/my-cart', [StudentController::class, 'myCart'])->name('stud
 Route::get('/student/wishlist', [StudentController::class, 'wishlist'])->name('student.wishlist');
 Route::get('/student/notifications', [StudentController::class, 'notifications'])->name('student.notifications');
 Route::get('/student/messages', [StudentController::class, 'messages'])->name('student.messages');
-Route::get('/student/profile', [StudentController::class, 'profile'])->name('student.profile');
+//Route::get('/student/profile', [StudentController::class, 'profile'])->name('student.profile');
 Route::get('/student/edit-profile', [StudentController::class, 'editProfile'])->name('student.edit_profile');
 Route::get('/student/wallet', [StudentController::class, 'wallet'])->name('student.wallet');
 Route::get('/student/analytics', [StudentController::class, 'analytics'])->name('student.analytics');
@@ -116,20 +98,10 @@ Route::get('/student/help', [StudentController::class, 'help'])->name('student.h
 Route::get('/student/logout', [StudentController::class, 'logout'])->name('student.logout');
 
 
-// Route::middleware('auth:student')->group(function () {
-//     Route::get('/dashboard', [DashboardController::class, 'index'])->name('student.dashboard');
+//Route::get('/student/{student}/profile', [StudentController::class, 'show']);
 
-//     Route::get('/my-learning', [DashboardController::class, 'myLearning'])->name('student.my_learning');
-//     Route::get('/my-cart', [DashboardController::class, 'myCart'])->name('student.my_cart');
-//     Route::get('/wishlist', [DashboardController::class, 'wishlist'])->name('student.wishlist');
-//     Route::get('/notifications', [DashboardController::class, 'notifications'])->name('student.notifications');
-//     Route::get('/messages', [DashboardController::class, 'messages'])->name('student.messages');
-//     Route::get('/profile', [DashboardController::class, 'profile'])->name('student.profile');
-//     Route::get('/edit-profile', [DashboardController::class, 'editProfile'])->name('student.edit_profile');
-//     Route::get('/wallet', [DashboardController::class, 'wallet'])->name('student.wallet');
-//     Route::get('/analytics', [DashboardController::class, 'analytics'])->name('student.analytics');
-//     Route::get('/tasks', [DashboardController::class, 'tasks'])->name('student.tasks');
-//     Route::get('/settings', [DashboardController::class, 'settings'])->name('student.settings');
-//     Route::get('/help', [DashboardController::class, 'help'])->name('student.help');
-//     Route::get('/logout', [DashboardController::class, 'logout'])->name('student.logout');
-//});
+Route::get('/student/profile', [StudentController::class, 'profile'])->name('student.profile');
+
+//Route::get('/student/profile/{id}', [StudentProfileController::class, 'showProfile'])->name('student.profile');
+
+//Route::get('/student/{student}/profile/{id?}', [StudentProfileController::class, 'show'])->name('student.profile');

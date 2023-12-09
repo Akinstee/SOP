@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
 class StudentController extends Controller
@@ -83,10 +84,33 @@ class StudentController extends Controller
         return view('students.messages');
     }
 
+    // public function profile()
+    // {
+    //     return view('students.profile');
+    // }
+
+    // public function show(Student $student)
+    // {
+    //     return view('student.profile', compact('student'));
+    // }
+
     public function profile()
-    {
-        return view('students.profile');
-    }
+{
+    // Fetch necessary data (replace with your logic)
+    $user = auth()->user();
+    $user_status = '?';
+
+    if ($user) {
+        // Return the view with data
+        return view('student.profile', [
+            'user' => $user,
+            'user_status' => $user_status,
+        ]);
+} else {
+    // Redirect to the dashboard when $user is null
+    return redirect()->route('student.dashboard'); // Replace 'dashboard' with your actual dashboard route
+}
+}
 
     public function editProfile()
     {
