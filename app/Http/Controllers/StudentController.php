@@ -127,11 +127,44 @@ class StudentController extends Controller
         return view('students.analytics');
     }
 
-    public function settings()
+    // public function settings()
+    // {
+    //     return view('students.settings');
+    // }
+
+    // public function settings()
+    // {
+    //     // Fetch necessary data or settings (replace with your logic)
+    //     $languages = ['en', 'es', 'fr']; // Example array of supported languages
+    //     $notifications = ['email', 'sms', 'push']; // Example array of notification options
+
+    //     // You can use session or other storage methods for user-specific settings
+    //     // Here, we're using the session to temporarily store user-specific settings
+    //     session([
+    //         'languages' => $languages,
+    //         'notifications' => $notifications,
+    //     ]);
+
+    //     return view('students.settings', [
+    //         'languages' => $languages,
+    //         'notifications' => $notifications,
+    //     ]);
+    // }
+
+    public function settings(Request $request)
     {
-        return view('students.settings');
+        // Validate and save user preferences (replace with your logic)
+        $languages = ['en', 'es', 'fr']; // Example array of supported languages
+        $notifications = ['email', 'sms', 'push'];
+
+        // Save preferences to the database or other storage method
+
+        // Redirect back to the settings page with a success message
+        //return redirect()->route('student.settings')->with('success', 'Settings saved successfully!');
+        return view('students.settings', [
+            'languages' => $languages,
+           'notifications' => $notifications,
+            ]);
     }
-
-
     
 }

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app') --}}
 <span style="font-family: verdana, geneva, sans-serif;">
 <!DOCTYPE html>
     <html lang="en">
