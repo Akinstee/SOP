@@ -172,7 +172,7 @@ class StudentController extends Controller
     public function logout()
 {
     Auth::logout();
-    return Redirect::route('student.dashboard'); // Replace 'home' with your desired redirect path
+    return Redirect::route('index'); // Replace 'home' with your desired redirect path
 }
     
 }
