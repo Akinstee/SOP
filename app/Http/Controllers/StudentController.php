@@ -6,6 +6,8 @@ use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class StudentController extends Controller
 {
@@ -166,5 +168,11 @@ class StudentController extends Controller
            'notifications' => $notifications,
             ]);
     }
+
+    public function logout()
+{
+    Auth::logout();
+    return Redirect::route('student.dashboard'); // Replace 'home' with your desired redirect path
+}
     
 }
