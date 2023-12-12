@@ -22,7 +22,7 @@
                 </div>
                 <a href="{{ route('contact') }}" class="nav-item nav-link">Contact</a>
             </div>
-            <a href="{{ route('register') }}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Join Now<i class="fa fa-arrow-right ms-3"></i></a>
-        </div>            
+            <a href="{{ route('student.register') }}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Join Now<i class="fa fa-arrow-right ms-3"></i></a>
+        </div>
 </nav>
 <!-- Navbar End -->

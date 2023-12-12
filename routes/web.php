@@ -31,7 +31,6 @@ Route::middleware('guest')->prefix('/admin')->name('admin.')->controller(LoginCo
 //Students Registration and login Route
 Route::middleware('guest')->prefix('/student')->name('student.')->controller(StudentController::class)->group(function () {
     Route::get('/register', 'index')->name('register');
-    // Route::get('/register', 'StudentController@showRegistrationForm')->name('register');
     Route::post('/save', 'save')->name('save');
 });
 
@@ -61,14 +60,13 @@ Route::get('/contact', [PagesController::class, 'showContact'])->name('contact')
 Route::get('/team', 'PagesController@showTeam')->name('team');
 Route::get('/testimonial', 'PagesController@showTestimonial')->name('testimonial');
 Route::get('/404', '404Controller@index')->name('404');
-Route::get('/register', 'RegisterController@index')->name('register');
 Route::get('/#', '#Controller@index')->name('#');
 Route::get('/privacy', 'PageController@showPrivacy')->name('privacy');
 Route::get('/terms', 'PageController@showTerms')->name('terms');
 Route::get('/faqs', 'PageController@showFaqs')->name('faqs');
 
 
-//Dashboard 
+//Dashboard
 Route::get('/student/dashboard', [StudentController::class, 'dashboard'])->name('student.dashboard');
 Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 Route::get('/instructor/dashboard', [InstructorController::class, 'dashboard'])->name('instructor.dashboard');

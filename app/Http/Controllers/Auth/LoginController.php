@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,7 +30,29 @@ class LoginController extends Controller
     }
 
     public function studentCheck(Request $request){
+        $validate = $request->validate([
+            'email' => 'required|string',
+            'password' => 'required|min:7|max:25',
+        ]);
+        $validated = $request->only('email', 'password');
+        if (Auth::guard('student')->attempt($validated)) {
+            $user = Student::where('email', $request->input('email'))->first();
+            if ($user->status != 0) {
+                Auth::guard('web')->logout();
 
+                $request->session()->invalidate();
+
+                $request->session()->regenerateToken();
+
+                return redirect()->route('student.login')->withInput()->with('error', 'student Account Is Suspended');
+            } else {
+                $request->session()->regenerate();
+
+                return redirect()->route('student.dashboard')->with('success', 'student Logged In Successfully');
+            }
+        } else {
+            return back()->withInput()->with('error', 'student Detail Is Incorrect');
+        }
     }
 
     /**
@@ -83,4 +106,4 @@ class LoginController extends Controller
         return redirect('/');
     }
 }
-  
+
