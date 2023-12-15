@@ -92,6 +92,7 @@ Route::get('/student/wallet', [StudentController::class, 'wallet'])->name('stude
 Route::get('/student/analytics', [StudentController::class, 'analytics'])->name('student.analytics');
 Route::get('/student/tasks', [StudentController::class, 'tasks'])->name('student.tasks');
 Route::get('/student/settings', [StudentController::class, 'settings'])->name('student.settings');
+//Route::get('/student/help', [StudentController::class, 'help'])->name('student.help');
 Route::get('/student/help', [StudentController::class, 'help'])->name('student.help');
 Route::get('/student/logout', [StudentController::class, 'logout'])->name('student.logout');
 

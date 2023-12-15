@@ -179,6 +179,12 @@ class StudentController extends Controller
         ]);
     }
 
+    public function help()
+    
+    {
+        return view('students.help');
+    }
+
     public function logout()
     {
         Auth::logout();
