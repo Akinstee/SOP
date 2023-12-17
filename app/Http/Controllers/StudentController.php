@@ -96,9 +96,36 @@ class StudentController extends Controller
         return view('students.messages');
     }
 
+    // public function wishlist()
+    // {
+    //     return view('students.wishlist');
+    // }
+
     public function wishlist()
     {
-        return view('students.wishlist');
+        $courses = [
+            [
+                'name' => 'Introduction to Web Development',
+                'description' => 'Learn the basics of web development.',
+                'price' => 49.99,
+                'image' => 'images/course1.jpg',
+            ],
+            [
+                'name' => 'Laravel Fundamentals',
+                'description' => 'Learn the basics ofLaravel 10.',
+                'price' => 99.99,
+                'image' => 'images/course1.jpg',
+            ],
+            [
+                'name' => 'Introduction to Web3 ',
+                'description' => 'Learn the basics of web 3.',
+                'price' => 99.99,
+                'image' => 'images/course1.jpg',
+            ],
+            // Add more courses as needed
+        ];
+
+        return view('students.wishlist', compact('courses'));
     }
 
     public function profile()

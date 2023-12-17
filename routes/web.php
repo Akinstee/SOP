@@ -86,25 +86,17 @@ Route::get('/student/my-cart', [StudentController::class, 'myCart'])->name('stud
 Route::get('/student/wishlist', [StudentController::class, 'wishlist'])->name('student.wishlist');
 Route::get('/student/notifications', [StudentController::class, 'notifications'])->name('student.notifications');
 Route::get('/student/messages', [StudentController::class, 'messages'])->name('student.messages');
-//Route::get('/student/profile', [StudentController::class, 'profile'])->name('student.profile');
 Route::get('/student/edit-profile', [StudentController::class, 'editProfile'])->name('student.edit_profile');
 Route::get('/student/wallet', [StudentController::class, 'wallet'])->name('student.wallet');
 Route::get('/student/analytics', [StudentController::class, 'analytics'])->name('student.analytics');
 Route::get('/student/tasks', [StudentController::class, 'tasks'])->name('student.tasks');
 Route::get('/student/settings', [StudentController::class, 'settings'])->name('student.settings');
-//Route::get('/student/help', [StudentController::class, 'help'])->name('student.help');
 Route::get('/student/help', [StudentController::class, 'help'])->name('student.help');
 Route::get('/student/logout', [StudentController::class, 'logout'])->name('student.logout');
 
 
-//Route::get('/student/{student}/profile', [StudentController::class, 'show']);
 
 Route::post('/student/save-settings', [StudentController::class, 'saveSettings'])->name('student.save_settings');
-
-//Route::get('/student/profile/{id}', [StudentController::class, 'showProfile'])->name('student.profile');
-
-//Route::get('/student/{student}/profile/{id?}', [StudentController::class, 'show'])->name('student.profile');
-
 
 Route::get('/student/profile', [StudentController::class, 'profile'])->name('student.profile');
 Route::post('/student/profile/update', [StudentController::class, 'updateProfile'])->name('profile.update');
