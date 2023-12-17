@@ -131,7 +131,7 @@ class StudentController extends Controller
     public function profile()
     {
         $user = Auth::user();
-        $user_status = null; // Adjust this based on your actual logic for user status
+        $user_status = null; // Adjust this based on the actual logic for user status
 
         return view('students.profile', [
             'user' => $user,

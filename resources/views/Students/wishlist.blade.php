@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/wishlist.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}" />
     <title>Laravel LMS Wishlist</title>
 </head>
 <body>
 
+    <div class="container">
+        @include('layouts.sidebars')
     <div class="wishlist-container">
         <h1>My Wishlist</h1>
 
@@ -23,6 +26,7 @@
             </div>
         @endforeach
 
+    </div>
     </div>
 
 </body>
