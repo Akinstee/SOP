@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Notification;
 
 class StudentController extends Controller
 {
@@ -96,11 +97,6 @@ class StudentController extends Controller
         return view('students.messages');
     }
 
-    // public function wishlist()
-    // {
-    //     return view('students.wishlist');
-    // }
-
     public function wishlist()
     {
         $courses = [
@@ -127,6 +123,31 @@ class StudentController extends Controller
 
         return view('students.wishlist', compact('courses'));
     }
+
+    public function notifications()
+    {
+        // Dummy message for the student
+        $dummyMessage = "Hello, new student! Welcome to our platform.";
+
+        // Save the dummy notification to the database
+        Notification::create([
+            'message' => $dummyMessage,
+            'type' => 'info', // You can use 'info', 'success', 'error', etc. based on your design
+        ]);
+
+        // Fetch notifications from the database
+        $notifications = Notification::orderBy('created_at', 'desc')->get();
+
+        return view('students.notifications', compact('notifications'));
+    }
+
+    // public function notifications()
+    // {
+    //     // Fetch notifications from the database (assuming you have a notifications table)
+    //     $notifications = Notification::orderBy('created_at', 'desc')->get();
+
+    //     return view('students.notifications', compact('notifications'));
+    // }
 
     public function profile()
     {
