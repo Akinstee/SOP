@@ -28,7 +28,7 @@ nav{
 }
 .logo{
   text-align: center;
-  display: flex;
+  display: inline;
   margin: 10px 0 0 10px;
 }
 .logo img{
@@ -62,7 +62,13 @@ nav .fas{
   position: relative;
   top: 12px;
   margin-left: 10px;
+  list-style: none;
 }
+
+.nav, ul, li {
+  list-style: none; /* Remove default list-style (bullet points) */
+}
+
 a:hover{
   background: #eee;
 }

@@ -96,31 +96,54 @@ class StudentController extends Controller
         return view('students.messages');
     }
 
-    // public function profile()
-    // {
-    //     return view('students.profile');
-    // }
-
-    // public function show(Student $student)
-    // {
-    //     return view('student.profile', compact('student'));
-    // }
+    public function wishlist()
+    {
+        return view('students.wishlist');
+    }
 
     public function profile()
     {
-        // Fetch necessary data (replace with your logic)
-        $user = auth()->user();
-        $user_status = '?';
+        $user = Auth::user();
+        $user_status = null; // Adjust this based on your actual logic for user status
 
+        return view('students.profile', [
+            'user' => $user,
+            'user_status' => $user_status,
+        ]);
+    }
+
+    public function updateProfile(Request $request)
+    {
+        // Implement the logic to update the user's profile
+        // You can use $request->input('cf_handle'), $request->input('old'), etc.
+
+        return redirect()->route('students.profile')->with('success', 'Profile updated successfully.');
+    }
+
+    public function updateProfileImage(Request $request)
+    {
+        $user = Auth::user();
+
+        // Check if the user is not null before accessing the 'avatar' property
         if ($user) {
-            // Return the view with data
-            return view('student.profile', [
-                'user' => $user,
-                'user_status' => $user_status,
+            // Validate the uploaded file
+            $request->validate([
+                'avatar' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust file types and size as needed
             ]);
+
+            // Handle file upload
+            if ($request->hasFile('avatar')) {
+                $avatar = $request->file('avatar');
+                $avatarPath = $avatar->store('avatars', 'public'); // Store the file in the 'public/avatars' directory
+                // Update the user's 'avatar' property with the file path
+                $user->avatar = $avatarPath;
+                $user->save();
+            }
+
+            return redirect()->route('students.profile')->with('success', 'Profile image updated successfully.');
         } else {
-            // Redirect to the dashboard when $user is null
-            return redirect()->route('student.dashboard'); // Replace 'dashboard' with your actual dashboard route
+            // Handle the case where the user is null (optional: redirect to login or show an error message)
+            return redirect()->route('login')->with('failure', 'User not authenticated.');
         }
     }
 
@@ -144,24 +167,6 @@ class StudentController extends Controller
     //     return view('students.settings');
     // }
 
-    // public function settings()
-    // {
-    //     // Fetch necessary data or settings (replace with your logic)
-    //     $languages = ['en', 'es', 'fr']; // Example array of supported languages
-    //     $notifications = ['email', 'sms', 'push']; // Example array of notification options
-
-    //     // You can use session or other storage methods for user-specific settings
-    //     // Here, we're using the session to temporarily store user-specific settings
-    //     session([
-    //         'languages' => $languages,
-    //         'notifications' => $notifications,
-    //     ]);
-
-    //     return view('students.settings', [
-    //         'languages' => $languages,
-    //         'notifications' => $notifications,
-    //     ]);
-    // }
 
     public function settings(Request $request)
     {

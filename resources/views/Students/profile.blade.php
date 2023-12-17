@@ -1,269 +1,336 @@
-{{-- @extends('layouts.app') --}}
 <span style="font-family: verdana, geneva, sans-serif;">
-<!DOCTYPE html>
-    <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <title>Dashboard | By SOP</title>
-      <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}" />
-      <!-- Font Awesome Cdn Link -->
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
-      <style>
-            body {
-            background-color: #f8f9fa;
-        }
+    <!DOCTYPE html>
+        <html lang="en">
+        <head>
+          <meta charset="UTF-8" />
+          <title>Dashboard | By SOP</title>
+          <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}" />
+          <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+          <!-- Font Awesome Cdn Link -->
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
 
-        .container {
-            margin-top: 50px; /* Adjust the margin-top as needed */
-        }
+          <link href="{{ asset('img/favicon.png') }}" rel="icon">
+          <link href="{{ asset('img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+          
+          <!-- Google Fonts -->
+          <link href="https://fonts.gstatic.com" rel="preconnect">
+          <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+          
+          <!-- Vendor CSS Files -->
+          <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+          <link href="{{ asset('vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+          <link href="{{ asset('vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+          <link href="{{ asset('vendor/quill/quill.snow.css') }}" rel="stylesheet">
+          <link href="{{ asset('vendor/quill/quill.bubble.css') }}" rel="stylesheet">
+          <link href="{{ asset('vendor/remixicon/remixicon.css') }}" rel="stylesheet">
+          <link href="{{ asset('vendor/simple-datatables/style.css') }}" rel="stylesheet">
+          
+          <!-- Template Main CSS File -->
+          <link href="{{ asset('css/profile.css') }}" rel="stylesheet">
+          
+        </head>
+        <body>
+            
+            
+          <div class="container d-flex m-0">
+            
+            <div class="side"> @include('layouts.sidebars')</div>
 
-        .card {
-            width: 100%;
-            max-width: 600px; /* Adjust the maximum width as needed */
-            margin: 0 auto;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .profile-image img {
-            width: 100%;
-            height: auto;
-            border-radius: 4px;
-        }
-
-        .profile-info {
-            padding: 20px;
-        }
-
-        .profile-info h2 {
-            margin-bottom: 10px;
-        }
-
-        .list-group-item {
-            border: none;
-        }
-      </style>
-    </head>
-    <body>
-      <div class="container">
-        
-        @include('layouts.sidebars')
-
-        <section class="main">
-            <div class="container">
-                @section('css')
-    <style type="text/css">
-        [hidden] {
-            display: none !important;
-        }
-    </style>
-@endsection
-@extends('layouts.sidebar')
-@section('content')
-    @if (Session::has('success'))
-        <div class="alert alert-success">{!! Session::get('success') !!}</div>
-    @endif
-    @if (Session::has('failure'))
-        <div class="alert alert-danger">{!! Session::get('failure') !!}</div>
-    @endif
-    <!--BEGIN CONTENT-->
-    <div class="page-content">
-        <div id="tab-general">
-            <div class="row mbl">
-                <div class="col-lg-12">
-
-                    <div class="col-md-12">
-                        <div id="area-chart-spline" style="width: 100%; height: 300px; display: none;">
+                <section class="section profile ">
+                <div class="">
+                  <div class="col-xl-8">
+          
+                    <div class="card">
+                      <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+          
+                        <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+                        <h2>Kevin Anderson</h2>
+                        <h3>Web Designer</h3>
+                        <div class="social-links mt-2">
+                          <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                          <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                          <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                          <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
                         </div>
+                      </div>
                     </div>
-
-                </div>
-                <div class="col-lg-12">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="row mtl">
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <div class="text-center mbl"><img
-                                                    class="img-responsive img-circle" src="{{$user->avatar}}"
-                                                    alt="Profile Photo"/></div>
-                                        <div class="text-center mbl">
-                                            {!! Form::open(['method' => 'POST', 'route' => ['profile.update_image'] ,'enctype' => 'multipart/form-data' , 'class' => 'form-horizontal']) !!}
-                                            {{ csrf_field() }}
-                                            <label class="btn btn-green">
-                                                @lang('module.change') <input type="file" onchange="this.form.submit()"
-                                                                              name="avatar" hidden><i
-                                                        class="fa fa-upload"></i>
-                                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                            </label>
-                                            {!! Form::close() !!}
-                                        </div>
-                                    </div>
-                                    <table class="table table-striped table-hover">
-                                        <tbody>
-                                        <tr>
-                                            <td>@lang('module.profiles.name')</td>
-                                            <td>{{$user->name}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>@lang('module.profiles.email')</td>
-                                            <td>{{$user->email}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>@lang('module.profiles.status')</td>
-                                            <td><span class="label label-success">Active</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>@lang('module.profiles.code_forces_handle')</td>
-                                            <td>
-                                                <span class="label label-warning">{{$user->cf_handle or 'Not available'}}</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>@lang('module.profiles.member_since')</td>
-                                            <td>{{$user->created_at}}</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="col-md-9">
-                                    <ul class="nav nav-tabs">
-                                        <li class="active"><a href="#tab-edit" data-toggle="tab">@lang('module.edit') @lang('module.bars.sidebar_profile')</a>
-                                        @if($user_status != null)
-                                            <li><a href="#tab-messages" data-toggle="tab">CodeForces @lang('module.bars.sidebar_problems')</a></li>
-                                        @endif
-                                    </ul>
-                                    <div id="generalTabContent" class="tab-content">
-                                        <div id="tab-edit" class="tab-pane fade in active">
-                                            {!! Form::open(['method' => 'POST', 'route' => ['profile.update'] ,'enctype' => 'multipart/form-data' , 'class' => 'form-horizontal']) !!}
-                                            {{ csrf_field() }}
-                                            <h3>@lang('module.profiles.account_settings')</h3>
-
-                                            <div class="form-group"><label
-                                                        class="col-sm-3 control-label">@lang('module.profiles.code_forces_handle')</label>
-                                                <div class="col-sm-9 controls">
-                                                    <div class="row">
-                                                        <div class="col-xs-9"><input type="text" name="cf_handle"
-                                                                                     placeholder="{{$user->cf_handle or trans('module.placeholders.not-available')}}"
-                                                                                     class="form-control"/></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group"><label
-                                                        class="col-sm-3 control-label">@lang('module.profiles.old_password')</label>
-
-                                                <div class="col-sm-9 controls">
-                                                    <div class="row">
-                                                        <div class="col-xs-4"><input type="password" name="old"
-                                                                                     id="password"
-                                                                                     placeholder="@lang('module.placeholders.current-password')"
-                                                                                     class="form-control"/></div>
-                                                    </div>
-                                                    @if ($errors->has('old'))
-                                                        <span class="help-block"><strong>{{ $errors->first('old') }}</strong></span>
-                                                    @endif
-                                                </div>
-
-                                            </div>
-                                            <div class="form-group"><label
-                                                        class="col-sm-3 control-label">@lang('module.profiles.new_password')</label>
-
-                                                <div class="col-sm-9 controls">
-                                                    <div class="row">
-                                                        <div class="col-xs-4"><input type="password" id="password"
-                                                                                     name="password"
-                                                                                     placeholder="@lang('module.profiles.new_password')"
-                                                                                     class="form-control"/></div>
-                                                    </div>
-                                                    @if ($errors->has('password'))
-                                                        <span class="help-block"><strong>{{ $errors->first('password') }}</strong></span>
-                                                    @endif
-                                                </div>
-                                            </div>
-                                            <div class="form-group"><label
-                                                        class="col-sm-3 control-label">@lang('module.profiles.confirm_new_password')</label>
-
-                                                <div class="col-sm-9 controls">
-                                                    <div class="row">
-                                                        <div class="col-xs-4"><input type="password"
-                                                                                     id="password"
-                                                                                     name="password_confirmation"
-                                                                                     placeholder="@lang('module.profiles.confirm_new_password')"
-                                                                                     class="form-control"/></div>
-                                                    </div>
-                                                    @if ($errors->has('password'))
-                                                        <span class="help-block"><strong>{{ $errors->first('password') }}</strong></span>
-                                                    @endif
-                                                </div>
-                                            </div>
-                                            <hr/>
-                                            {!! Form::submit(trans('module.save'), ['class' => 'btn btn-danger']) !!}
-                                            {!! Form::close() !!}
-                                        </div>
-                                        @if($user_status != null)
-                                            <div id="tab-messages" class="tab-pane fade in">
-                                                @if($user_status->status != "FAILED")
-                                                    <div class="list-group">
-                                                        <div class="form-group"><p>Submissions
-                                                                Count: {{$user_solved_count_problems = count($user_status->result)}}</p>
-                                                        </div>
-                                                        <table class="table table-hover" id="datatable">
-                                                            <thead>
-                                                            <tr>
-                                                                <th>#</th>
-                                                                <th>@lang('module.codeforces.problem-title')</th>
-                                                                <th>@lang('module.codeforces.diff')</th>
-                                                                <th>@lang('module.codeforces.status')</th>
-                                                            </tr>
-                                                            </thead>
-                                                            <tbody>
-
-                                                            @for ($j = 0; $j < $user_solved_count_problems;$j++)
-                                                                @if ($user_status->result[$j]->verdict == "OK")
-                                                                    <tr>
-                                                                        <td><a class="btn btn-link" href="http://codeforces.com/problemset/problem/{{$user_status->result[$j]->problem->contestId}}/{{$user_status->result[$j]->problem->index}}">{{$user_status->result[$j]->problem->contestId}}{{$user_status->result[$j]->problem->index}}</a></td>
-                                                                        <td>
-                                                                            <a class="btn btn-link" href="http://codeforces.com/problemset/problem/{{$user_status->result[$j]->problem->contestId}}/{{$user_status->result[$j]->problem->index}}">{{$user_status->result[$j]->problem->name}}</a>
-                                                                        </td>
-                                                                        <td>{{$user_status->result[$j]->problem->index}}</td>
-                                                                        <td>
-                                                                            <span class="label label-sm label-success">Approved</span>
-                                                                        </td>
-                                                                    </tr>
-                                                                @endif
-                                                            @endfor
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                @else
-                                                    <p>{{$user_status->comment}}</p>
-                                                @endif
-                                            </div>
-                                        @endif
-                                    </div>
-                                </div>
+          
+                  </div>
+          
+                  <div class="col-xl-8">
+          
+                    <div class="card">
+                      <div class="card-body pt-3">
+                        <!-- Bordered Tabs -->
+                        <ul class="nav nav-tabs nav-tabs-bordered">
+          
+                          <li class="nav-item">
+                            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Overview</button>
+                          </li>
+          
+                          <li class="nav-item">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Edit Profile</button>
+                          </li>
+          
+                          <li class="nav-item">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings">Settings</button>
+                          </li>
+          
+                          <li class="nav-item">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Change Password</button>
+                          </li>
+          
+                        </ul>
+                        <div class="tab-content pt-2">
+          
+                          <div class="tab-pane fade show active profile-overview" id="profile-overview">
+                            <h5 class="card-title">About</h5>
+                            <p class="small fst-italic">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</p>
+          
+                            <h5 class="card-title">Profile Details</h5>
+          
+                            <div class="row">
+                              <div class="col-lg-3 col-md-4 label ">Full Name</div>
+                              <div class="col-lg-9 col-md-8">Kevin Anderson</div>
                             </div>
-                        </div>
+          
+                            <div class="row">
+                              <div class="col-lg-3 col-md-4 label">Company</div>
+                              <div class="col-lg-9 col-md-8">Lueilwitz, Wisoky and Leuschke</div>
+                            </div>
+          
+                            <div class="row">
+                              <div class="col-lg-3 col-md-4 label">Job</div>
+                              <div class="col-lg-9 col-md-8">Web Designer</div>
+                            </div>
+          
+                            <div class="row">
+                              <div class="col-lg-3 col-md-4 label">Country</div>
+                              <div class="col-lg-9 col-md-8">USA</div>
+                            </div>
+          
+                            <div class="row">
+                              <div class="col-lg-3 col-md-4 label">Address</div>
+                              <div class="col-lg-9 col-md-8">A108 Adam Street, New York, NY 535022</div>
+                            </div>
+          
+                            <div class="row">
+                              <div class="col-lg-3 col-md-4 label">Phone</div>
+                              <div class="col-lg-9 col-md-8">(436) 486-3538 x29071</div>
+                            </div>
+          
+                            <div class="row">
+                              <div class="col-lg-3 col-md-4 label">Email</div>
+                              <div class="col-lg-9 col-md-8">k.anderson@example.com</div>
+                            </div>
+          
+                          </div>
+          
+                          <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
+          
+                            <!-- Profile Edit Form -->
+                            <form>
+                              <div class="row mb-3">
+                                <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
+                                <div class="col-md-8 col-lg-9">
+                                  <img src="assets/img/profile-img.jpg" alt="Profile">
+                                  <div class="pt-2">
+                                    <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
+                                    <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>
+                                  </div>
+                                </div>
+                              </div>
+          
+                              <div class="row mb-3">
+                                <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
+                                <div class="col-md-8 col-lg-9">
+                                  <input name="fullName" type="text" class="form-control" id="fullName" value="Kevin Anderson">
+                                </div>
+                              </div>
+          
+                              <div class="row mb-3">
+                                <label for="about" class="col-md-4 col-lg-3 col-form-label">About</label>
+                                <div class="col-md-8 col-lg-9">
+                                  <textarea name="about" class="form-control" id="about" style="height: 100px">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</textarea>
+                                </div>
+                              </div>
+          
+                              <div class="row mb-3">
+                                <label for="company" class="col-md-4 col-lg-3 col-form-label">Company</label>
+                                <div class="col-md-8 col-lg-9">
+                                  <input name="company" type="text" class="form-control" id="company" value="Lueilwitz, Wisoky and Leuschke">
+                                </div>
+                              </div>
+          
+                              <div class="row mb-3">
+                                <label for="Job" class="col-md-4 col-lg-3 col-form-label">Job</label>
+                                <div class="col-md-8 col-lg-9">
+                                  <input name="job" type="text" class="form-control" id="Job" value="Web Designer">
+                                </div>
+                              </div>
+          
+                              <div class="row mb-3">
+                                <label for="Country" class="col-md-4 col-lg-3 col-form-label">Country</label>
+                                <div class="col-md-8 col-lg-9">
+                                  <input name="country" type="text" class="form-control" id="Country" value="USA">
+                                </div>
+                              </div>
+          
+                              <div class="row mb-3">
+                                <label for="Address" class="col-md-4 col-lg-3 col-form-label">Address</label>
+                                <div class="col-md-8 col-lg-9">
+                                  <input name="address" type="text" class="form-control" id="Address" value="A108 Adam Street, New York, NY 535022">
+                                </div>
+                              </div>
+          
+                              <div class="row mb-3">
+                                <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone</label>
+                                <div class="col-md-8 col-lg-9">
+                                  <input name="phone" type="text" class="form-control" id="Phone" value="(436) 486-3538 x29071">
+                                </div>
+                              </div>
+          
+                              <div class="row mb-3">
+                                <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
+                                <div class="col-md-8 col-lg-9">
+                                  <input name="email" type="email" class="form-control" id="Email" value="k.anderson@example.com">
+                                </div>
+                              </div>
+          
+                              <div class="row mb-3">
+                                <label for="Twitter" class="col-md-4 col-lg-3 col-form-label">Twitter Profile</label>
+                                <div class="col-md-8 col-lg-9">
+                                  <input name="twitter" type="text" class="form-control" id="Twitter" value="https://twitter.com/#">
+                                </div>
+                              </div>
+          
+                              <div class="row mb-3">
+                                <label for="Facebook" class="col-md-4 col-lg-3 col-form-label">Facebook Profile</label>
+                                <div class="col-md-8 col-lg-9">
+                                  <input name="facebook" type="text" class="form-control" id="Facebook" value="https://facebook.com/#">
+                                </div>
+                              </div>
+          
+                              <div class="row mb-3">
+                                <label for="Instagram" class="col-md-4 col-lg-3 col-form-label">Instagram Profile</label>
+                                <div class="col-md-8 col-lg-9">
+                                  <input name="instagram" type="text" class="form-control" id="Instagram" value="https://instagram.com/#">
+                                </div>
+                              </div>
+          
+                              <div class="row mb-3">
+                                <label for="Linkedin" class="col-md-4 col-lg-3 col-form-label">Linkedin Profile</label>
+                                <div class="col-md-8 col-lg-9">
+                                  <input name="linkedin" type="text" class="form-control" id="Linkedin" value="https://linkedin.com/#">
+                                </div>
+                              </div>
+          
+                              <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                              </div>
+                            </form><!-- End Profile Edit Form -->
+          
+                          </div>
+          
+                          <div class="tab-pane fade pt-3" id="profile-settings">
+          
+                            <!-- Settings Form -->
+                            <form>
+          
+                              <div class="row mb-3">
+                                <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Email Notifications</label>
+                                <div class="col-md-8 col-lg-9">
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="changesMade" checked>
+                                    <label class="form-check-label" for="changesMade">
+                                      Changes made to your account
+                                    </label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="newProducts" checked>
+                                    <label class="form-check-label" for="newProducts">
+                                      Information on new products and services
+                                    </label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="proOffers">
+                                    <label class="form-check-label" for="proOffers">
+                                      Marketing and promo offers
+                                    </label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="securityNotify" checked disabled>
+                                    <label class="form-check-label" for="securityNotify">
+                                      Security alerts
+                                    </label>
+                                  </div>
+                                </div>
+                              </div>
+          
+                              <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                              </div>
+                            </form><!-- End settings Form -->
+          
+                          </div>
+          
+                          <div class="tab-pane fade pt-3" id="profile-change-password">
+                            <!-- Change Password Form -->
+                            <form>
+          
+                              <div class="row mb-3">
+                                <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current Password</label>
+                                <div class="col-md-8 col-lg-9">
+                                  <input name="password" type="password" class="form-control" id="currentPassword">
+                                </div>
+                              </div>
+          
+                              <div class="row mb-3">
+                                <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">New Password</label>
+                                <div class="col-md-8 col-lg-9">
+                                  <input name="newpassword" type="password" class="form-control" id="newPassword">
+                                </div>
+                              </div>
+          
+                              <div class="row mb-3">
+                                <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Re-enter New Password</label>
+                                <div class="col-md-8 col-lg-9">
+                                  <input name="renewpassword" type="password" class="form-control" id="renewPassword">
+                                </div>
+                              </div>
+          
+                              <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Change Password</button>
+                              </div>
+                            </form><!-- End Change Password Form -->
+          
+                          </div>
+          
+                        </div><!-- End Bordered Tabs -->
+          
+                      </div>
                     </div>
-
+          
+                  </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <!--END CONTENT-->
-@endsection
-@section('javascript')
-    <script>
-        $(document).ready(function () {
-            $('#datatable').DataTable({
-                responsive: true
-            });
-        });
-    </script>
-@endsection
-        
-              
-        </section>
-      </div>
+              </section>
+
+          </div>
+       
+
+        <!-- Vendor JS Files -->
+        <script src="{{ asset('vendor/apexcharts/apexcharts.min.js') }}"></script>
+        <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ asset('vendor/chart.js/chart.umd.js') }}"></script>
+        <script src="{{ asset('echarts/echarts.min.js') }}"></script>
+        <script src="{{ asset('vendor/quill/quill.min.js') }}"></script>
+        <script src="{{ asset('vendor/simple-datatables/simple-datatables.js') }}"></script>
+        <script src="{{ asset('vendor/tinymce/tinymce.min.js') }}"></script>
+        <script src="{{ asset('vendor/php-email-form/validate.js') }}"></script>
+
+        <!-- Template Main JS File -->
+        <script src="{{ asset('js/main1.js') }}"></script>
+
     </body>
     </html>
   </span>
