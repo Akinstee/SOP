@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Message;
 use App\Models\Student;
+use App\Models\Notification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
-use App\Models\Notification;
 
 class StudentController extends Controller
 {
@@ -92,10 +93,64 @@ class StudentController extends Controller
         return view('students.my_courses');
     }
 
+    // public function messages()
+    // {
+    //     return view('students.messages');
+    // }
+
     public function messages()
     {
-        return view('students.messages');
+        // Dummy chat messages for five different students
+        $studentMessages = [
+            ['student_name' => 'Alice', 'content' => 'Hey, how are you?', 'sender' => 'other'],
+            ['student_name' => 'Bob', 'content' => 'Hi! I\'m doing well, thanks. How about you?', 'sender' => 'own'],
+            ['student_name' => 'Charlie', 'content' => 'Not bad, just busy with work.', 'sender' => 'other'],
+            ['student_name' => 'David', 'content' => 'I understand. Anything exciting happening?', 'sender' => 'own'],
+            ['student_name' => 'Eve', 'content' => 'Just working on some projects. How about you?', 'sender' => 'other'],
+            // Add more dummy messages as needed
+        ];
+
+        // Save dummy messages to the database (for simplicity, not recommended in a real-world scenario)
+        foreach ($studentMessages as $messageData) {
+            Message::create($messageData);
+        }
+
+        // Fetch messages from the database
+        $messagesFromDB = Message::orderBy('created_at', 'asc')->get();
+
+        return view('students.messages', compact('messagesFromDB'));
     }
+
+    // public function messages()
+    // {
+    //     // Dummy chat messages for five different students
+    //     $messages = [
+    //         ['content' => 'Hey, how are you?', 'sender' => 'other'],
+    //         ['content' => 'Hi! I\'m doing well, thanks. How about you?', 'sender' => 'own'],
+    //         ['content' => 'Not bad, just busy with work.', 'sender' => 'other'],
+    //         ['content' => 'I understand. Anything exciting happening?', 'sender' => 'own'],
+    //         ['content' => 'Just working on some projects. How about you?', 'sender' => 'other'],
+    //         // Add more dummy messages as needed
+    //     ];
+
+    //     // Save dummy messages to the database (for simplicity, not recommended in a real-world scenario)
+    //     foreach ($messages as $messageData) {
+    //         Message::create($messageData);
+    //     }
+
+    //     // Fetch messages from the database
+    //     $messagesFromDB = Message::orderBy('created_at', 'asc')->get();
+
+    //     return view('students.messages', compact('messagesFromDB'));
+    // }
+
+    // public function messages()
+    // {
+    //     // Fetch messages from the database
+    //     $messages = Message::orderBy('created_at', 'asc')->get();
+
+    //     return view('students.messages', compact('messages'));
+    // }
 
     public function wishlist()
     {
