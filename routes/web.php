@@ -81,8 +81,8 @@ Route::get('/my-certificate', [StudentController::class, 'myCertificate']);
 Route::get('/my-courses', [StudentController::class, 'myCourses']);
 
 Route::get('/student/dashboard', [StudentController::class, 'dashboard'])->name('student.dashboard');
-Route::get('/student/my-learning', [StudentController::class, 'myLearning'])->name('student.my_learning');
-Route::get('/student/my-cart', [StudentController::class, 'myCart'])->name('student.my_cart');
+Route::get('/student/my-learning', [StudentController::class, 'myLearning'])->name('student.my-learning');
+Route::get('/student/my-cart', [StudentController::class, 'myCart'])->name('student.my-cart');
 Route::get('/student/wishlist', [StudentController::class, 'wishlist'])->name('student.wishlist');
 Route::get('/student/notifications', [StudentController::class, 'notifications'])->name('student.notifications');
 Route::get('/student/messages', [StudentController::class, 'messages'])->name('student.messages');

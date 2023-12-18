@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 use App\Models\Message;
 use App\Models\Student;
+use App\Models\CartItem;
 use App\Models\Notification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -117,7 +118,7 @@ class StudentController extends Controller
     //     // Fetch courses from the database
     //     $coursesFromDB = Course::all();
 
-    //     return view('my_learning', compact('coursesFromDB'));
+    //     return view('students.my-learning', compact('coursesFromDB'));
     // }
 
     public function messages()
@@ -282,6 +283,14 @@ class StudentController extends Controller
     
     {
         return view('students.help');
+    }
+
+    public function myCart()
+    {
+        // Fetch cart items from the database
+        $cartItems = CartItem::all();
+
+        return view('students.my-cart', compact('cartItems'));
     }
 
     public function logout()

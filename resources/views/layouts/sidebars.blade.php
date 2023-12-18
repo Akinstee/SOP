@@ -8,11 +8,11 @@
         <i class="fas fa-home"></i>
         <span class="nav-item">Home</span>
       </a></li>
-      <li><a href="{{route('student.my_learning')}}">
+      <li><a href="{{route('student.my-learning')}}">
           <i class="fas fa-book"></i>
           <span class="nav-item">My Learning</span>
         </a></li>
-        <li><a href="{{route('student.my_cart')}}">
+        <li><a href="{{route('student.my-cart')}}">
           <i class="fas fa-shopping-cart"></i>
           <span class="nav-item">My Cart</span>
         </a></li>
