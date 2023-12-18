@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\FAQ;
 use App\Models\Course;
 use App\Models\Message;
 use App\Models\Student;
@@ -279,11 +280,29 @@ class StudentController extends Controller
         ]);
     }
 
-    public function help()
+    // public function help()
     
+    // {
+    //     return view('students.help');
+    // }
+
+    // public function help()
+    // {
+    //     // Fetch FAQs from the database
+    //     $faqs = FAQ::all();
+
+    //     return view('students.help', compact('faqs'));
+    // }
+
+
+    public function help()
     {
-        return view('students.help');
+        // Fetch FAQs from the database
+        $faqs = FAQ::all();
+
+        return view('students.help', compact('faqs'));
     }
+
 
     public function myCart()
     {

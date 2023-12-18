@@ -15,12 +15,12 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    max-width: 800px;
+    max-width: 1500px;
     margin: 20px auto;
 }
 
 .course {
-    width: 45%;
+    width: calc(25% - 20px);
     margin: 10px;
     padding: 10px;
     border: 1px solid #ddd;

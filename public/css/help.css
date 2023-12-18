@@ -1,0 +1,86 @@
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+  body{
+    background: #dfe9f5;
+  }
+.container {
+    display: flex;
+    margin-top: 20px;
+}
+
+.faq-header {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+.faq-content {
+    width: 80%; /* Adjust the width as needed */
+    padding: 20px;
+}
+
+.faq-question {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.panel {
+    display: none;
+}
+
+.plus {
+    float: left;
+    font-size: 1.5em;
+    padding: 10px;
+    background-color: #3498db;
+    color: #fff;
+    cursor: pointer;
+}
+
+.panel-title {
+    float: left;
+    width: 80%;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.panel-content {
+    clear: both;
+    padding: 10px;
+}
+
+.support-button {
+    background-color: #e74c3c;
+    color: #fff;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 8px;
+}
+
+.support-button a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+.support-button i {
+    font-size: 1.5em;
+    margin-right: 10px;
+}
+
+/* Optional: Animation styles for the support button */
+.support-button:hover {
+    background-color: #c0392b;
+    transform: scale(1.05);
+    transition: background-color 0.3s, transform 0.3s;
+}
