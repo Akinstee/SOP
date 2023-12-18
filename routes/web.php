@@ -34,10 +34,10 @@ Route::middleware('guest')->prefix('/student')->name('student.')->controller(Stu
     Route::post('/save', 'save')->name('save');
 });
 
-Route::middleware('guest')->prefix('/student')->name('student.')->controller(LoginController::class)->group(function () {
-    Route::get('/login', 'studentLogin')->name('login');
-    Route::post('/check', 'studentCheck')->name('check');
-});
+// Route::middleware('guest')->prefix('/student')->name('student.')->controller(LoginController::class)->group(function () {
+//     Route::get('/login', 'studentLogin')->name('login');
+//     Route::post('/check', 'studentCheck')->name('check');
+// });
 
 //Instructor Registration and Login Route
 Route::middleware('guest')->prefix('/instructor')->name('instructor.')->controller(LoginController::class)->group(function () {
@@ -80,7 +80,7 @@ Route::get('/my-certificate', [StudentController::class, 'myCertificate']);
 // My Courses
 Route::get('/my-courses', [StudentController::class, 'myCourses']);
 
-Route::get('/student/dashboard', [StudentController::class, 'dashboard'])->name('student.dashboard');
+//Route::get('/student/dashboard', [StudentController::class, 'dashboard'])->name('student.dashboard');
 Route::get('/student/my-learning', [StudentController::class, 'myLearning'])->name('student.my-learning');
 Route::get('/student/my-cart', [StudentController::class, 'myCart'])->name('student.my-cart');
 Route::get('/student/wishlist', [StudentController::class, 'wishlist'])->name('student.wishlist');
@@ -103,4 +103,15 @@ Route::post('/student/profile/update', [StudentController::class, 'updateProfile
 Route::post('/student/profile/update-image', [StudentController::class, 'updateProfileImage'])->name('profile.update_image');
 
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::middleware('guest')->prefix('/student')->name('student.')->group(function () {
+    Route::get('/login', [StudentController::class, 'studentLogin'])->name('login');
+    Route::post('/check', [StudentController::class, 'studentCheck'])->name('check');
+});
+
+Route::middleware('auth')->prefix('/student')->name('student.dashboard')->group(function () {
+    Route::get('student/dashboard', function () {
+        return view('dashboard');
+    })->name('students.dashboard');
+});

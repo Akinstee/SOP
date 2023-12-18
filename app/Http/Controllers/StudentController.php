@@ -64,13 +64,32 @@ class StudentController extends Controller
 
             // Send confirmation email or perform other actions
 
-            return redirect()->back()->with('success', 'Student registered successfully!');
+            return redirect()->route('student.login')->with('success', 'Student registered successfully!');
         } else {
             return redirect()->back()->with('fail', 'passwords dont match')->withInput();
         }
 
         // Validate the incoming data
     }
+
+    public function studentLogin()
+    {
+        return view('students.login');
+    }
+
+    public function studentCheck(Request $request)
+    {
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            // Authentication passed
+            return redirect()->route('students.dashboard'); // Replace 'dashboard' with your actual dashboard route
+        }
+
+        // Authentication failed
+        return redirect()->route('student.dashboard')->with('error', 'Invalid credentials');
+    }
+
 
 
     public function dashboard()

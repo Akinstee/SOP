@@ -86,6 +86,7 @@
 
 <body>
     <div class="login-container">
+
         <form method="POST" action="{{ route('student.check') }}">
             @csrf
             <h2>SOPS Login</h2>
@@ -117,6 +118,10 @@
                 @endif
             </div>
         </form>
+        
+        @if(session('error'))
+            <p>{{ session('error') }}</p>
+        @endif
     </div>
 </body>
 
