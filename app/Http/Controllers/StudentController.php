@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\Message;
 use App\Models\Student;
 use App\Models\Notification;
@@ -87,15 +88,36 @@ class StudentController extends Controller
         return view('students.my_certificate');
     }
 
-    public function myCourses()
+    public function myLearning()
     {
-        // Your logic for the my courses page
-        return view('students.my_courses');
+        // Fetch courses from the database
+        $courses = Course::all();
+
+        return view('students.my-learning', compact('courses'));
     }
 
-    // public function messages()
+
+    // public function myLearning()
     // {
-    //     return view('students.messages');
+    //     // Dummy courses for tech and marketing-related subjects
+    //     $courses = [
+    //         ['name' => 'Web Development Fundamentals', 'author' => 'John Doe', 'rating' => 4.5, 'price' => 19.99],
+    //         ['name' => 'Digital Marketing Essentials', 'author' => 'Jane Smith', 'rating' => 4.2, 'price' => 24.99],
+    //         ['name' => 'Python Programming for Beginners', 'author' => 'Alan Johnson', 'rating' => 4.8, 'price' => 29.99],
+    //         ['name' => 'Social Media Marketing Mastery', 'author' => 'Emily Brown', 'rating' => 4.6, 'price' => 22.99],
+    //         ['name' => 'JavaScript Advanced Techniques', 'author' => 'Chris Wilson', 'rating' => 4.7, 'price' => 27.99],
+    //         // Add more dummy courses as needed
+    //     ];
+
+    //     // Save dummy courses to the database (for simplicity, not recommended in a real-world scenario)
+    //     foreach ($courses as $courseData) {
+    //         Course::create($courseData);
+    //     }
+
+    //     // Fetch courses from the database
+    //     $coursesFromDB = Course::all();
+
+    //     return view('my_learning', compact('coursesFromDB'));
     // }
 
     public function messages()
@@ -120,37 +142,6 @@ class StudentController extends Controller
 
         return view('students.messages', compact('messagesFromDB'));
     }
-
-    // public function messages()
-    // {
-    //     // Dummy chat messages for five different students
-    //     $messages = [
-    //         ['content' => 'Hey, how are you?', 'sender' => 'other'],
-    //         ['content' => 'Hi! I\'m doing well, thanks. How about you?', 'sender' => 'own'],
-    //         ['content' => 'Not bad, just busy with work.', 'sender' => 'other'],
-    //         ['content' => 'I understand. Anything exciting happening?', 'sender' => 'own'],
-    //         ['content' => 'Just working on some projects. How about you?', 'sender' => 'other'],
-    //         // Add more dummy messages as needed
-    //     ];
-
-    //     // Save dummy messages to the database (for simplicity, not recommended in a real-world scenario)
-    //     foreach ($messages as $messageData) {
-    //         Message::create($messageData);
-    //     }
-
-    //     // Fetch messages from the database
-    //     $messagesFromDB = Message::orderBy('created_at', 'asc')->get();
-
-    //     return view('students.messages', compact('messagesFromDB'));
-    // }
-
-    // public function messages()
-    // {
-    //     // Fetch messages from the database
-    //     $messages = Message::orderBy('created_at', 'asc')->get();
-
-    //     return view('students.messages', compact('messages'));
-    // }
 
     public function wishlist()
     {
