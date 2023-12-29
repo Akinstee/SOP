@@ -1,473 +1,506 @@
-<!DOCTYPE php>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-	
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>SOP- Admin Dashboard </title>
-    <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset("/img/favicon.png") }}">
-    <link rel="stylesheet" href="{{ asset("/vendor/jqvmap/css/jqvmap.min.css") }}">
-	<link rel="stylesheet" href="{{ asset("/vendor/chartist/css/chartist.min.css") }}">
-	<link rel="stylesheet" href="{{ asset("/vendor/bootstrap-select/dist/css/bootstrap-select.min.css") }}">
-    <link rel="stylesheet" href="{{ asset("/css/admindashboard.css") }}">
-	<link rel="stylesheet" href="{{ asset("/css/skin-2.css") }}">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>Admin Dashboard</title>
+    <link rel="shortcut icon" href="{{asset ('/img/favicon.png')}}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700&display=swap"rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('plugins/bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset ('plugins/feather/feather.css')}}">
+    <link rel="stylesheet" href="{{asset ('plugins/icons/flags/flags.css')}}">
+    <link rel="stylesheet" href="{{asset ('/plugins/fontawesome/css/fontawesome.min.css')}}">
+    <link rel="stylesheet" href="{{asset ('/plugins/fontawesome/css/all.min.css')}}">
+    <link rel="stylesheet" href="{{asset ('/css/style32.css')}}">
 </head>
 
 <body>
 
-    <!--*******************
-        Preloader start
-    ********************-->
-    <div id="preloader">
-        <div class="sk-three-bounce">
-            <div class="sk-child sk-bounce1"></div>
-            <div class="sk-child sk-bounce2"></div>
-            <div class="sk-child sk-bounce3"></div>
-        </div>
-    </div>
-    <!--*******************
-        Preloader end
-    ********************-->
+    <div class="main-wrapper">
 
-    <!--**********************************
-        Main wrapper start
-    ***********************************-->
-    <div id="main-wrapper">
+        <!--Header Navbar Start-->
+        <div class="header">
 
-        <!--**********************************
-            Nav header start
-        ***********************************-->
-        <div class="nav-header">
-            <a href="{{ url("dashboard.php") }}" class="brand-logo">
-                <img class="logo-abbr" src="{{ asset("/img/logo-white.png") }}" alt="">
-                {{-- <img class="logo-compact" src="{{ asset("/img/logo-text-white1.png") }}" alt="SOP"> --}}
-                <img class="brand-title" src="{{ asset("/img/logo-text-white1.png") }}" alt="SOP">
+            <div class="header-left">
+                <a href="index.html" class="logo">
+                    <img src="{{asset ('/img/logo.png')}}" alt="Logo">
+                </a>
+                <a href="index.html" class="logo logo-small">
+                    <img src="{{asset ('/img/logo-small.png')}}" alt="Logo" width="30" height="30">
+                </a>
+            </div>
+            <div class="menu-toggle">
+                <a href="javascript:void(0);" id="toggle_btn">
+                    <i class="fas fa-bars"></i>
+                </a>
+            </div>
+
+            <div class="top-nav-search">
+                <form>
+                    <input type="text" class="form-control" placeholder="Search here">
+                    <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+            <a class="mobile_btn" id="mobile_btn">
+                <i class="fas fa-bars"></i>
             </a>
 
-            <div class="nav-control">
-                <div class="hamburger">
-                    <span class="line"></span><span class="line"></span><span class="line"></span>
+            <ul class="nav user-menu">
+                <li class="nav-item dropdown noti-dropdown language-drop me-2">
+                    <a href="#" class="dropdown-toggle nav-link header-nav-list" data-bs-toggle="dropdown">
+                        <img src="{{asset ('/img/icons/header-icon-01.svg')}}" alt="">
+                    </a>
+                    <div class="dropdown-menu ">
+                        <div class="noti-content">
+                            <div>
+                                <a class="dropdown-item" href="javascript:;"><i
+                                        class="flag flag-lr me-2"></i>English</a>
+                                <a class="dropdown-item" href="javascript:;"><i
+                                        class="flag flag-bl me-2"></i>Francais</a>
+                                <a class="dropdown-item" href="javascript:;"><i class="flag flag-cn me-2"></i>Turkce</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown noti-dropdown me-2">
+                    <a href="#" class="dropdown-toggle nav-link header-nav-list" data-bs-toggle="dropdown">
+                        <img src="{{asset ('img/icons/header-icon-05.svg')}}" alt="">
+                    </a>
+                    <div class="dropdown-menu notifications">
+                        <div class="topnav-dropdown-header">
+                            <span class="notification-title">Notifications</span>
+                            <a href="javascript:void(0)" class="clear-noti"> Clear All </a>
+                        </div>
+                        <div class="noti-content">
+                            <ul class="notification-list">
+                                <li class="notification-message">
+                                    <a href="#">
+                                        <div class="media d-flex">
+                                            <span class="avatar avatar-sm flex-shrink-0">
+                                                <img class="avatar-img rounded-circle" alt="User Image"
+                                                    src="{{asset ('/img/profiles/avatar-02.jpg')}}">
+                                            </span>
+                                            <div class="media-body flex-grow-1">
+                                                <p class="noti-details"><span class="noti-title">Carlson Tech</span> has
+                                                    approved <span class="noti-title">your estimate</span></p>
+                                                <p class="noti-time"><span class="notification-time">4 mins ago</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="notification-message">
+                                    <a href="#">
+                                        <div class="media d-flex">
+                                            <span class="avatar avatar-sm flex-shrink-0">
+                                                <img class="avatar-img rounded-circle" alt="User Image"
+                                                    src="{{asset ('/img/profiles/avatar-11.jpg')}}">
+                                            </span>
+                                            <div class="media-body flex-grow-1">
+                                                <p class="noti-details"><span class="noti-title">International Software
+                                                        Inc</span> has sent you a invoice in the amount of <span
+                                                        class="noti-title">$218</span></p>
+                                                <p class="noti-time"><span class="notification-time">6 mins ago</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="notification-message">
+                                    <a href="#">
+                                        <div class="media d-flex">
+                                            <span class="avatar avatar-sm flex-shrink-0">
+                                                <img class="avatar-img rounded-circle" alt="User Image"
+                                                    src="{{asset ('/img/profiles/avatar-17.jpg')}}">
+                                            </span>
+                                            <div class="media-body flex-grow-1">
+                                                <p class="noti-details"><span class="noti-title">John Hendry</span> sent
+                                                    a cancellation request <span class="noti-title">Apple iPhone
+                                                        XR</span></p>
+                                                <p class="noti-time"><span class="notification-time">8 mins ago</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="notification-message">
+                                    <a href="#">
+                                        <div class="media d-flex">
+                                            <span class="avatar avatar-sm flex-shrink-0">
+                                                <img class="avatar-img rounded-circle" alt="User Image"
+                                                    src="{{asset ('/img/profiles/avatar-13.jpg')}}">
+                                            </span>
+                                            <div class="media-body flex-grow-1">
+                                                <p class="noti-details"><span class="noti-title">Mercury Software
+                                                        Inc</span> added a new product <span class="noti-title">Apple
+                                                        MacBook Pro</span></p>
+                                                <p class="noti-time"><span class="notification-time">12 mins ago</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="topnav-dropdown-footer">
+                            <a href="#">View all Notifications</a>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="nav-item zoom-screen me-2">
+                    <a href="#" class="nav-link header-nav-list win-maximize">
+                        <img src="{{asset ('/img/icons/header-icon-04.svg')}}" alt="">
+                    </a>
+                </li>
+
+                <li class="nav-item dropdown has-arrow new-user-menus">
+                    <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+                        <span class="user-img">
+                            <img class="rounded-circle" src="{{asset ('/img/profiles/avatar-01.jpg')}}" width="31"
+                                alt="Temitayo">
+                            <div class="user-text">
+                                <h6>Temitayo</h6>
+                                <p class="text-muted mb-0">Administrator</p>
+                            </div>
+                        </span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="user-header">
+                            <div class="avatar avatar-sm">
+                                <img src="{{asset ('/img/profiles/avatar-01.jpg')}}" alt="User Image"
+                                    class="avatar-img rounded-circle">
+                            </div>
+                            <div class="user-text">
+                                <h6>Temitayo</h6>
+                                <p class="text-muted mb-0">Administrator</p>
+                            </div>
+                        </div>
+                        <a class="dropdown-item" href="{{ route('profile.blade.php')}}">My Profile</a>
+                        <a class="dropdown-item" href="{{ route('inbox.blade.php')}}">Inbox</a>
+                        <a class="dropdown-item" href="{{ route ('login.blade.php')}}">Logout</a>
+                    </div>
+                </li>
+
+            </ul>
+
+        </div>
+        <!--Header Navbar End-->
+
+        <!--Sidebar Header Start -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-inner slimscroll">
+                <div id="sidebar-menu" class="sidebar-menu">
+                    <ul>
+                        <li class="menu-title">
+                            <span>Dashboard</span>
+                        </li>
+                        <li class="submenu active">
+                            <a href="{{ route('dashboard.blade.php') }}">Dashboard</a><i class="feather-grid"></i> <span> Admin</span></a>
+                        </li>
+                        <li class="submenu">
+                            <a href="#"><i class="fas fa-graduation-cap"></i> <span> Students</span> <span
+                                    class="menu-arrow"></span></a>
+                            <ul>
+                                <li><a href="{{ route('students.blade.php')}}">Student List</a></li>
+                                <li><a href="{{ route('student-details.blade.php')}}">Student View</a></li>
+                                <li><a href="{{ route('add-student.blade.php')}}">Student Add</a></li>
+                                <li><a href="{{ route('edit-student.blade.php')}}">Student Edit</a></li>
+                            </ul>
+                        </li>
+                        <li class="submenu">
+                            <a href="#"><i class="fas fa-chalkboard-teacher"></i> <span> Instructors</span> <span
+                                    class="menu-arrow"></span></a>
+                            <ul>
+                                <li><a href="{{route ('teachers.blade.php')}}">Instructor List</a></li>
+                                <li><a href="{{route ('teacher-details.blade.php')}}">Instructor View</a></li>
+                                <li><a href="{{route ('add-teacher.blade.php')}}">Instructor Add</a></li>
+                                <li><a href="{{route ('edit-teacher.blade.php')}}">Instructor Edit</a></li>
+                            </ul>
+                        </li>
+                        <li class="submenu">
+                            <a href="#"><i class="fas fa-book-reader"></i> <span> Courses</span> <span
+                                    class="menu-arrow"></span></a>
+                            <ul>
+                                <li><a href="{{route ('courses.blade.php')}}">Courses List</a></li>
+                                <li><a href="{{route ('add-course.blade.php')}}">Courses Add</a></li>
+                                <li><a href="{{route ('edit-courses.blade.php')}}">Courses Edit</a></li>
+                            </ul>
+                        </li>
+                        <li class="submenu">
+                            <a href="#"><i class="fas fa-clipboard"></i> <span> Invoices</span> <span
+                                    class="menu-arrow"></span></a>
+                            <ul>
+                                <li><a href="invoices.html">Invoices List</a></li>
+                                <li><a href="invoice-grid.html">Invoices Grid</a></li>
+                                <li><a href="add-invoice.html">Add Invoices</a></li>
+                                <li><a href="edit-invoice.html">Edit Invoices</a></li>
+                                <li><a href="view-invoice.html">Invoices Details</a></li>
+                                <li><a href="invoices-settings.html">Invoices Settings</a></li>
+                            </ul>
+                        </li>
+                       
+                        <li class="submenu">
+                            <a href="{{route ('settings.blade.php')}}"><i class="fas fa-shield-alt"></i> <span> Settings </span> <span
+                                    class="menu-arrow"></span></a>
+                            <ul>
+                                <li><a href="{{route ('login.blade.php')}}">Login</a></li>
+                                <li><a href="{{route ('forgot-password.blade.php')}}">Forgot Password</a></li>
+                                <li><a href="{{route ('error-404.blade.php')}}">Error Page</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
-        <!--**********************************
-            Nav header end
-        ***********************************-->
+        <!--Sidebar Header Ends -->
 
-        <!--**********************************
-            Header start
-        ***********************************-->
-        <div class="header">
-            <div class="header-content">
-                <nav class="navbar navbar-expand">
-                    <div class="collapse navbar-collapse justify-content-between">
-                        <div class="header-left">
-                            <div class="search_bar dropdown">
-                                <span class="search_icon p-3 c-pointer" data-toggle="dropdown">
-                                    <i class="mdi mdi-magnify"></i>
-                                </span>
-                                <div class="dropdown-menu p-0 m-0">
-                                    <form>
-                                        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                                    </form>
+        <div class="page-wrapper">
+            <div class="content container-fluid">
+
+                <div class="page-header">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="page-sub-header">
+                                <h3 class="page-title">Welcome Admin!</h3>
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                    <li class="breadcrumb-item active">Admin</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-xl-3 col-sm-6 col-12 d-flex">
+                        <div class="card bg-comman w-100">
+                            <div class="card-body">
+                                <div class="db-widgets d-flex justify-content-between align-items-center">
+                                    <div class="db-info">
+                                        <h6>Students</h6>
+                                        <h3>50055</h3>
+                                    </div>
+                                    <div class="db-icon">
+                                        <img src="{{asset ('/img/icons/dash-icon-01.svg')}}" alt="Dashboard Icon">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
-                        <ul class="navbar-nav header-right">
-                            <li class="nav-item dropdown notification_dropdown">
-                                <a class="nav-link bell ai-icon" href="{{ url("#") }}" role="button" data-toggle="dropdown">
-                                    <svg id="icon-user" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell">
-										<path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
-										<path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-									</svg>
-                                    <div class="pulse-css"></div>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <ul class="list-unstyled">
-                                        <li class="media dropdown-item">
-                                            <span class="success"><i class="ti-user"></i></span>
-                                            <div class="media-body">
-                                                <a href="{{ url("#") }}">
-                                                    <p><strong>Martin</strong> has added a <strong>Student</strong> Successfully
-                                                    </p>
-                                                </a>
-                                            </div>
-                                            <span class="notify-time">3:20 am</span>
-                                        </li>
-                                        <li class="media dropdown-item">
-                                            <span class="primary"><i class="ti-shopping-cart"></i></span>
-                                            <div class="media-body">
-                                                <a href="{{ url("#") }}">
-                                                    <p><strong>Jennifer</strong> purchased Light Dashboard 2.0.</p>
-                                                </a>
-                                            </div>
-                                            <span class="notify-time">3:20 am</span>
-                                        </li>
-                                        <li class="media dropdown-item">
-                                            <span class="danger"><i class="ti-bookmark"></i></span>
-                                            <div class="media-body">
-                                                <a href="{{ url("#") }}">
-                                                    <p><strong>Robin</strong> marked a <strong>ticket</strong> as unsolved.
-                                                    </p>
-                                                </a>
-                                            </div>
-                                            <span class="notify-time">3:20 am</span>
-                                        </li>
-                                        <li class="media dropdown-item">
-                                            <span class="primary"><i class="ti-heart"></i></span>
-                                            <div class="media-body">
-                                                <a href="{{ url("#") }}">
-                                                    <p><strong>David</strong> purchased Light Dashboard 1.0.</p>
-                                                </a>
-                                            </div>
-                                            <span class="notify-time">3:20 am</span>
-                                        </li>
-                                        <li class="media dropdown-item">
-                                            <span class="success"><i class="ti-image"></i></span>
-                                            <div class="media-body">
-                                                <a href="{{ url("#") }}">
-                                                    <p><strong> James.</strong> has added a<strong>customer</strong> Successfully
-                                                    </p>
-                                                </a>
-                                            </div>
-                                            <span class="notify-time">3:20 am</span>
-                                        </li>
-                                    </ul>
-                                    <a class="all-notification" href="{{ url("#") }}">See all notifications <i class="ti-arrow-right"></i></a>
-                                </div>
-                            </li>
-                            <li class="nav-item dropdown header-profile">
-                                <a class="nav-link" href="{{ url("#") }}" role="button" data-toggle="dropdown">
-                                    <img src="{{ asset("/img/profile/education/pic1.jpg") }}" width="20" alt="">
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <a href="{{ url("app-profile.php") }}" class="dropdown-item ai-icon">
-                                        <svg id="icon-user1" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                                        <span class="ml-2">Profile </span>
-                                    </a>
-                                    <a href="{{ url("email-inbox.php") }}" class="dropdown-item ai-icon">
-                                        <svg id="icon-inbox" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                                        <span class="ml-2">Inbox </span>
-                                    </a>
-                                    <a href="{{ url("login.php") }}" class="dropdown-item ai-icon">
-                                        <svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
-                                        <span class="ml-2">Logout </span>
-                                    </a>
-                                </div>
-                            </li>
-                        </ul>
                     </div>
-                </nav>
-            </div>
-        </div>
-        <!--**********************************
-            Header end ti-comment-alt
-        ***********************************-->
+                    <div class="col-xl-3 col-sm-6 col-12 d-flex">
+                        <div class="card bg-comman w-100">
+                            <div class="card-body">
+                                <div class="db-widgets d-flex justify-content-between align-items-center">
+                                    <div class="db-info">
+                                        <h6>Awards</h6>
+                                        <h3>50+</h3>
+                                    </div>
+                                    <div class="db-icon">
+                                        <img src="{{asset ('/img/icons/dash-icon-02.svg')}}" alt="Dashboard Icon">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6 col-12 d-flex">
+                        <div class="card bg-comman w-100">
+                            <div class="card-body">
+                                <div class="db-widgets d-flex justify-content-between align-items-center">
+                                    <div class="db-info">
+                                        <h6>Department</h6>
+                                        <h3>30+</h3>
+                                    </div>
+                                    <div class="db-icon">
+                                        <img src="{{asset ('/img/icons/dash-icon-03.svg')}}" alt="Dashboard Icon">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6 col-12 d-flex">
+                        <div class="card bg-comman w-100">
+                            <div class="card-body">
+                                <div class="db-widgets d-flex justify-content-between align-items-center">
+                                    <div class="db-info">
+                                        <h6>Revenue</h6>
+                                        <h3>$505</h3>
+                                    </div>
+                                    <div class="db-icon">
+                                        <img src="{{asset ('/img/icons/dash-icon-04.svg')}}" alt="Dashboard Icon">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-        <!--**********************************
-            Sidebar start
-        ***********************************-->
-        <div class="dlabnav">
-            <div class="dlabnav-scroll">
-                <ul class="metismenu" id="menu">
-                    <li class="nav-label first">Main Menu</li>
-                    <li><a class="has-arrow" href="{{ url("javascript:void()") }}" aria-expanded="false">
-							<i class="la la-home"></i>
-							<span class="nav-text">Dashboard</span>
-						</a>
-                    </li>
-					<li><a class="ai-icon" href="{{ url("event-management.php") }}" aria-expanded="false">
-							<i class="la la-calendar"></i>
-							<span class="nav-text">Event Management</span>
-						</a>
-                    </li>
-					<li><a class="has-arrow" href="{{ url("javascript:void()") }}" aria-expanded="false">
-							<i class="la la-user"></i>
-							<span class="nav-text">Instructors</span>
-						</a>
-                        <ul aria-expanded="false">
-                            <li><a href="{{ url("all-instructor.php") }}">All Instructors</a></li>
-                            <li><a href="{{ url("add-instructor.php") }}">Add Instructors</a></li>
-                            <li><a href="{{ url("edit-instructor.php") }}">Edit Instructors</a></li>
-                            <li><a href="{{ url("instructor-profile.php") }}">Instructors Profile</a></li>
-                        </ul>
-                    </li>
-					<li><a class="has-arrow" href="{{ url("javascript:void()") }}" aria-expanded="false">
-							<i class="la la-users"></i>
-							<span class="nav-text">Students</span>
-						</a>
-                        <ul aria-expanded="false">
-                            <li><a href="{{ url("all-students.php") }}">All Students</a></li>
-                            <li><a href="{{ url("add-student.php") }}">Add Students</a></li>
-                            <li><a href="{{ url("edit-student.php") }}">Edit Students</a></li>
-                            <li><a href="{{ url("about-student.php") }}">About Students</a></li>
-                        </ul>
-                    </li>
-					<li><a class="has-arrow" href="{{ url("javascript:void()") }}" aria-expanded="false">
-							<i class="la la-graduation-cap"></i>
-							<span class="nav-text">Courses</span>
-						</a>
-                        <ul aria-expanded="false">
-                            <li><a href="{{ url("all-courses.php") }}">All Courses</a></li>
-                            <li><a href="{{ url("add-courses.php") }}">Add Courses</a></li>
-                            <li><a href="{{ url("edit-courses.php") }}">Edit Courses</a></li>
-                            <li><a href="{{ url("about-courses.php") }}">About Courses</a></li>
-                        </ul>
-                    </li>
-					<li><a class="has-arrow" href="{{ url("javascript:void()") }}" aria-expanded="false">
-							<i class="la la-building"></i>
-							<span class="nav-text">Categories</span>
-						</a>
-                        <ul aria-expanded="false">
-                            <li><a href="{{ url("all-departments.php") }}">All Categories</a></li>
-                            <li><a href="{{ url("add-departments.php") }}">Add Categories</a></li>
-                            <li><a href="{{ url("edit-departments.php") }}">Edit Categories</a></li>
-                        </ul>
-                    </li>				
-                    <li class="nav-label">Apps</li>
-                    <li><a class="has-arrow" href="{{ url("javascript:void()") }}" aria-expanded="false">
-							<i class="la la-users"></i>
-							<span class="nav-text">Apps</span>
-						</a>
-                        <ul aria-expanded="false">
-                            <li><a href="{{ url("app-profile.php") }}">Profile</a></li>
-                            <li><a class="has-arrow" href="{{ url("javascript:void()") }}" aria-expanded="false">Email</a>
-                                <ul aria-expanded="false">
-                                    <li><a href="{{ url("email-compose.php") }}">Compose</a></li>
-                                    <li><a href="{{ url("email-inbox.php") }}">Inbox</a></li>
-                                    <li><a href="{{ url("email-read.php") }}">Read</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="{{ url("app-calender.php") }}">Calendar</a></li>
-							<li><a class="has-arrow" href="{{ url("javascript:void()") }}" aria-expanded="false">Shop</a>
-                                <ul aria-expanded="false">
-									<li><a href="{{ url("ecom-product-order.php") }}">Order</a></li>
-									<li><a href="{{ url("ecom-checkout.php") }}">Checkout</a></li>
-									<li><a href="{{ url("ecom-invoice.php") }}">Invoice</a></li>
-									<li><a href="{{ url("ecom-customers.php") }}">Students</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="{{ url("widget-basic.php") }}" aria-expanded="false">
-							<i class="la la-desktop"></i>
-							<span class="nav-text">Widget</span>
-						</a></li>
-                    <li class="nav-label">Forms</li>
-                    <li><a class="has-arrow" href="{{ url("javascript:void()") }}" aria-expanded="false">
-							<i class="la la-file-text"></i>
-							<span class="nav-text">Forms</span>
-						</a>
-                        <ul aria-expanded="false">
-                            <li><a href="{{ url("form-pickers.php") }}">Pickers</a></li>
-                            <li><a href="{{ url("form-validation-jquery.php") }}">Jquery Validate</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-label">Table</li>
-                    <li><a class="has-arrow" href="{{ url("javascript:void()") }}" aria-expanded="false">
-							<i class="la la-table"></i>
-							<span class="nav-text">Table</span>
-						</a>
-                        <ul aria-expanded="false">
-                            <li><a href="{{ url("table-datatable-basic.php") }}">Datatable</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-label">Extra</li>
-                    <li><a class="has-arrow" href="{{ url("javascript:void()") }}" aria-expanded="false">
-							<i class="la la-th-list"></i>
-							<span class="nav-text">Pages</span>
-						</a>
-                        <ul aria-expanded="false">
-                            <li><a href="{{ url("page-register.php") }}">Register</a></li>
-                            <li><a href="{{ url("page-login.php") }}">Login</a></li>
-                            <li><a class="has-arrow" href="{{ url("javascript:void()") }}" aria-expanded="false">Error</a>
-                            </li>
-                            <li><a href="{{ url("page-lock-screen.php") }}">Lock Screen</a></li>
-                        </ul>
-                    </li>
-				</ul>
-            </div>
-        </div>
-        <!--**********************************
-            Sidebar end
-        ***********************************-->
-
-        <!--**********************************
-            Content body start
-        ***********************************-->
-        <div class="content-body">
-            <!-- row -->
-            <div class="container-fluid">
-			
                 <div class="row">
-					<div class="col-xl-3 col-xxl-3 col-sm-6">
-						<div class="widget-stat card bg-primary overflow-hidden">
-							<div class="card-header">
-								<h3 class="card-title text-white">Total Students</h3>
-								<h5 class="text-white mb-0"><i class="fa fa-caret-up"></i> 422</h5>
-							</div>
-							<div class="card-body text-center mt-3">
-								<div class="ico-sparkline">
-									<div id="sparkline12"></div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-xl-3 col-xxl-3 col-sm-6">
-						<div class="widget-stat card bg-success overflow-hidden">
-							<div class="card-header">
-								<h3 class="card-title text-white">New Students</h3>
-								<h5 class="text-white mb-0"><i class="fa fa-caret-up"></i> 357</h5>
-							</div>
-							<div class="card-body text-center mt-4 p-0">
-								<div class="ico-sparkline">
-									<div id="spark-bar-2"></div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-xl-3 col-xxl-3 col-sm-6">
-						<div class="widget-stat card bg-secondary overflow-hidden">
-							<div class="card-header pb-3">
-								<h3 class="card-title text-white">Total Course</h3>
-								<h5 class="text-white mb-0"><i class="fa fa-caret-up"></i> 547</h5>
-							</div>
-							<div class="card-body p-0 mt-2">
-								<div class="px-4"><span class="bar1" data-peity='{ "fill": ["rgb(0, 0, 128)", "rgb(7, 135, 234)"]}'>6,2,8,4,-3,8,1,-3,6,-5,9,2,-8,1,4,8,9,8,2,1</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-xl-3 col-xxl-3 col-sm-6">
-						<div class="widget-stat card bg-danger overflow-hidden">
-							<div class="card-header pb-3">
-								<h3 class="card-title text-white">Fees Collection</h3>
-								<h5 class="text-white mb-0"><i class="fa fa-caret-up"></i> 3280$</h5>
-							</div>
-							<div class="card-body p-0 mt-1">
-								<span class="peity-line-2" data-width="100%">7,6,8,7,3,8,3,3,6,5,9,2,8</span>
-							</div>
-						</div>
-					</div>
-					<div class="col-xl-6 col-xxl-6 col-sm-6">
-						<div class="card">
-							<div class="card-header">
-								<h3 class="card-title">Income/Expense Report</h3>
-							</div>
-							<div class="card-body">
-								<canvas id="barChart_2"></canvas>
-							</div>
-						</div>
-					</div>
-					<div class="col-xl-6 col-xxl-6 col-sm-6">
-						<div class="card">
-							<div class="card-header">
-								<h3 class="card-title">Income/Expense Report</h3>
-							</div>
-							<div class="card-body">
-								 <canvas id="areaChart_1"></canvas>
-							</div>
-						</div>
-					</div>
-					<div class="col-xl-8 col-xxl-8 col-lg-8 col-md-12 col-sm-12">
-                        <div class="card">
+                    <div class="col-md-12 col-lg-6">
+
+                        <div class="card card-chart">
                             <div class="card-header">
-                                <h5 class="card-title">Assign Task</h5>
+                                <div class="row align-items-center">
+                                    <div class="col-6">
+                                        <h5 class="card-title">Overview</h5>
+                                    </div>
+                                    <div class="col-6">
+                                        <ul class="chart-list-out">
+                                            <li><span class="circle-blue"></span>Instructor</li>
+                                            <li><span class="circle-green"></span>Student</li>
+                                            <li class="star-menus"><a href="javascript:;"><i
+                                                        class="fas fa-ellipsis-v"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div id="apexcharts-area"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-12 col-lg-6">
+
+                        <div class="card card-chart">
+                            <div class="card-header">
+                                <div class="row align-items-center">
+                                    <div class="col-6">
+                                        <h5 class="card-title">Number of Students</h5>
+                                    </div>
+                                    <div class="col-6">
+                                        <ul class="chart-list-out">
+                                            <li><span class="circle-blue"></span>Girls</li>
+                                            <li><span class="circle-green"></span>Boys</li>
+                                            <li class="star-menus"><a href="javascript:;"><i
+                                                        class="fas fa-ellipsis-v"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div id="bar"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-6 d-flex">
+
+                        <div class="card flex-fill student-space comman-shadow">
+                            <div class="card-header d-flex align-items-center">
+                                <h5 class="card-title">Star Students</h5>
+                                <ul class="chart-list-out student-ellips">
+                                    <li class="star-menus"><a href="javascript:;"><i class="fas fa-ellipsis-v"></i></a>
+                                    </li>
+                                </ul>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table class="table header-border table-hover verticle-middle">
-                                        <thead>
+                                    <table
+                                        class="table star-student table-hover table-center table-borderless table-striped">
+                                        <thead class="thead-light">
                                             <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">Task</th>
-                                                <th scope="col">Assigned Professors</th>
-                                                <th scope="col">Status</th>
-                                                <th scope="col">Progress</th>
+                                                <th>ID</th>
+                                                <th>Name</th>
+                                                <th class="text-center">Marks</th>
+                                                <th class="text-center">Percentage</th>
+                                                <th class="text-end">Year</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <th>1</th>
-                                                <td>Working Design report</td>
-                                                <td>Herman Beck</td>
-                                                <td><span class="badge badge-rounded badge-primary">DONE</span></td>
-                                                <td>
-                                                    <div class="progress">
-                                                        <div class="progress-bar" style="width: 70%;" role="progressbar">
-															<span class="sr-only">70% Complete</span>
-                                                        </div>
-                                                    </div>
+                                                <td class="text-nowrap">
+                                                    <div>PRE2209</div>
+                                                </td>
+                                                <td class="text-nowrap">
+                                                    <a href="profile.html">
+                                                        <img class="rounded-circle"
+                                                            src="{{asset ('/img/profiles/avatar-02.jpg')}}" width="25"
+                                                            alt="Star Students">
+                                                        John Smith
+                                                    </a>
+                                                </td>
+                                                <td class="text-center">1185</td>
+                                                <td class="text-center">98%</td>
+                                                <td class="text-end">
+                                                    <div>2019</div>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <th>2</th>
-                                                <td>Fees Collection report</td>
-												<td>Emma Watson</td>
-												<td><span class="badge badge-rounded badge-warning">Panding</span></td>
-                                                <td>
-                                                    <div class="progress">
-                                                        <div class="progress-bar bg-warning" style="width: 70%;" role="progressbar">
-															<span class="sr-only">70% Complete</span>
-                                                        </div>
-                                                    </div>
+                                                <td class="text-nowrap">
+                                                    <div>PRE1245</div>
+                                                </td>
+                                                <td class="text-nowrap">
+                                                    <a href="profile.html">
+                                                        <img class="rounded-circle"
+                                                            src="{{asset ('/img/profiles/avatar-01.jpg')}}" width="25"
+                                                            alt="Star Students">
+                                                        Jolie Hoskins
+                                                    </a>
+                                                </td>
+                                                <td class="text-center">1195</td>
+                                                <td class="text-center">99.5%</td>
+                                                <td class="text-end">
+                                                    <div>2018</div>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <th>3</th>
-                                                <td>Management report</td>
-												<td>Mary Adams</td>
-												<td><span class="badge badge-rounded badge-warning">Panding</span></td>
-                                                <td>
-                                                    <div class="progress">
-                                                        <div class="progress-bar bg-warning" style="width: 70%;" role="progressbar">
-															<span class="sr-only">70% Complete</span>
-                                                        </div>
-                                                    </div>
+                                                <td class="text-nowrap">
+                                                    <div>PRE1625</div>
+                                                </td>
+                                                <td class="text-nowrap">
+                                                    <a href="profile.html">
+                                                        <img class="rounded-circle"
+                                                            src="{{asset ('/img/profiles/avatar-03.jpg')}}" width="25"
+                                                            alt="Star Students">
+                                                        Pennington Joy
+                                                    </a>
+                                                </td>
+                                                <td class="text-center">1196</td>
+                                                <td class="text-center">99.6%</td>
+                                                <td class="text-end">
+                                                    <div>2017</div>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <th>4</th>
-                                                <td>Library book status</td>
-												<td>Caleb Richards</td>
-												<td><span class="badge badge-rounded badge-danger">Suspended</span></td>
-                                                <td>
-                                                    <div class="progress">
-                                                        <div class="progress-bar bg-danger" style="width: 70%;" role="progressbar">
-															<span class="sr-only">70% Complete</span>
-                                                        </div>
-                                                    </div>
+                                                <td class="text-nowrap">
+                                                    <div>PRE2516</div>
+                                                </td>
+                                                <td class="text-nowrap">
+                                                    <a href="profile.html">
+                                                        <img class="rounded-circle"
+                                                            src="{{asset ('/img/profiles/avatar-04.jpg')}}" width="25"
+                                                            alt="Star Students">
+                                                        Millie Marsden
+                                                    </a>
+                                                </td>
+                                                <td class="text-center">1187</td>
+                                                <td class="text-center">98.2%</td>
+                                                <td class="text-end">
+                                                    <div>2016</div>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <th>5</th>
-                                                <td>Placement status</td>
-												<td>June Lane</td>
-												<td><span class="badge badge-rounded badge-warning">Panding</span></td>
-                                                <td>
-                                                    <div class="progress">
-                                                        <div class="progress-bar bg-warning" style="width: 70%;" role="progressbar">
-															<span class="sr-only">70% Complete</span>
-                                                        </div>
-                                                    </div>
+                                                <td class="text-nowrap">
+                                                    <div>PRE2209</div>
                                                 </td>
-                                            </tr>
-											<tr>
-                                                <th>6</th>
-                                                <td>Working Design report</td>
-                                                <td>Herman Beck</td>
-                                                <td><span class="badge badge-rounded badge-primary">DONE</span></td>
-                                                <td>
-                                                    <div class="progress">
-                                                        <div class="progress-bar" style="width: 70%;" role="progressbar">
-															<span class="sr-only">70% Complete</span>
-                                                        </div>
-                                                    </div>
+                                                <td class="text-nowrap">
+                                                    <a href="profile.html">
+                                                        <img class="rounded-circle"
+                                                            src="{{asset ('/img/profiles/avatar-05.jpg')}}" width="25"
+                                                            alt="Star Students">
+                                                        John Smith
+                                                    </a>
+                                                </td>
+                                                <td class="text-center">1185</td>
+                                                <td class="text-center">98%</td>
+                                                <td class="text-end">
+                                                    <div>2015</div>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -475,358 +508,135 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
-					<div class="col-xl-4 col-xxl-4 col-lg-4 col-md-12 col-sm-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4 class="card-title">Notifications</h4>
-                            </div>
-                            <div class="card-body"> 
-                                <div class="widget-todo dz-scroll" style="height:370px;" id="DZ_W_Notifications">
-                                    <ul class="timeline">
-                                        <li>
-                                            <div class="timeline-badge primary"></div>
-                                            <a class="timeline-panel text-muted mb-3 d-flex align-items-center" href="{{ url("javascript:void(0);") }}">
-                                                <img class="rounded-circle" alt="image" width="50" src="{{ asset("/img/profile/education/pic1.jpg") }}">
-												<div class="col">
-													<h5 class="mb-1">Dr sultads Send you Photo</h5>
-													<small class="d-block">29 July 2020 - 02:26 PM</small>
-												</div>
-											</a>
-                                        </li>
-                                        <li>
-                                            <div class="timeline-badge warning"></div>
-                                            <a class="timeline-panel text-muted mb-3 d-flex align-items-center" href="{{ url("javascript:void(0);") }}">
-                                                <img class="rounded-circle" alt="image" width="50" src="{{ asset("/img/profile/education/pic2.jpg") }}">
-												<div class="col">
-													<h5 class="mb-1">Resport created successfully</h5>
-													<small class="d-block">29 July 2020 - 02:26 PM</small>
-												</div>
-											</a>
-                                        </li>
-                                        <li>
-                                            <div class="timeline-badge danger"></div>
-                                            <a class="timeline-panel text-muted mb-3 d-flex align-items-center" href="{{ url("javascript:void(0);") }}">
-                                                <img class="rounded-circle" alt="image" width="50" src="{{ asset("/img/profile/education/pic3.jpg") }}">
-												<div class="col">
-													<h5 class="mb-1">Reminder : Treatment Time!</h5>
-													<small class="d-block">29 July 2020 - 02:26 PM</small>
-												</div>
-											</a>
-                                        </li>
-										<li>
-                                            <div class="timeline-badge success"></div>
-											<a class="timeline-panel text-muted mb-3 d-flex align-items-center" href="{{ url("javascript:void(0);") }}">
-                                                <img class="rounded-circle" alt="image" width="50" src="{{ asset("/img/profile/education/pic4.jpg") }}">
-												<div class="col">
-													<h5 class="mb-1">Dr sultads Send you Photo</h5>
-													<small class="d-block">29 July 2020 - 02:26 PM</small>
-												</div>
-											</a>
-                                        </li>
-                                        <li>
-                                            <div class="timeline-badge warning"></div>
-											<a class="timeline-panel text-muted mb-3 d-flex align-items-center" href="{{ url("javascript:void(0);") }}">
-                                                <img class="rounded-circle" alt="image" width="50" src="{{ asset("/img/profile/education/pic5.jpg") }}">
-												<div class="col">
-													<h5 class="mb-1">Resport created successfully</h5>
-													<small class="d-block">29 July 2020 - 02:26 PM</small>
-												</div>
-											</a>
-                                        </li>
-                                        <li>
-                                            <div class="timeline-badge dark"></div>
-                                            <a class="timeline-panel text-muted mb-3 d-flex align-items-center" href="{{ url("javascript:void(0);") }}">
-                                                <img class="rounded-circle" alt="image" width="50" src="{{ asset("/img/profile/education/pic6.jpg") }}">
-												<div class="col">
-													<h5 class="mb-1">Reminder : Treatment Time!</h5>
-													<small class="d-block">29 July 2020 - 02:26 PM</small>
-												</div>
-											</a>
-                                        </li>
-                                        <li>
-                                            <div class="timeline-badge info"></div>
-                                            <a class="timeline-panel text-muted mb-3 d-flex align-items-center" href="{{ url("javascript:void(0);") }}">
-                                                <img class="rounded-circle" alt="image" width="50" src="{{ asset("/img/profile/education/pic7.jpg") }}">
-												<div class="col">
-													<h5 class="mb-1">Dr sultads Send you Photo</h5>
-													<small class="d-block">29 July 2020 - 02:26 PM</small>
-												</div>
-											</a>
-                                        </li>
-										<li>
-                                            <div class="timeline-badge danger"></div>
-                                            <a class="timeline-panel text-muted mb-3 d-flex align-items-center" href="{{ url("javascript:void(0);") }}">
-                                                <img class="rounded-circle" alt="image" width="50" src="{{ asset("/img/profile/education/pic8.jpg") }}">
-												<div class="col">
-													<h5 class="mb-1">Resport created successfully</h5>
-													<small class="d-block">29 July 2020 - 02:26 PM</small>
-												</div>
-											</a>
-                                        </li>
-                                        <li>
-                                            <div class="timeline-badge success"></div>
-                                            <a class="timeline-panel text-muted mb-3 d-flex align-items-center" href="{{ url("javascript:void(0);") }}">
-                                                <img class="rounded-circle" alt="image" width="50" src="{{ asset("/img/profile/education/pic9.jpg") }}">
-												<div class="col">
-													<h5 class="mb-1">Reminder : Treatment Time!</h5>
-													<small class="d-block">29 July 2020 - 02:26 PM</small>
-												</div>
-											</a>
-                                        </li>
-										<li>
-                                            <div class="timeline-badge warning"></div>
-											<a class="timeline-panel text-muted d-flex align-items-center" href="{{ url("javascript:void(0);") }}">
-                                                <img class="rounded-circle" alt="image" width="50" src="{{ asset("/img/profile/education/pic10.jpg") }}">
-												<div class="col">
-													<h5 class="mb-1">Dr sultads Send you Photo</h5>
-													<small class="d-block">29 July 2020 - 02:26 PM</small>
-												</div>
-											</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-						</div>
-					</div>
-					<div class="col-lg-12">
-                        <div class="card">
-							<div class="card-header">
-                                <h4 class="card-title">New Student List </h4>
+                    <div class="col-xl-6 d-flex">
+
+                        <div class="card flex-fill comman-shadow">
+                            <div class="card-header d-flex align-items-center">
+                                <h5 class="card-title ">Student Activity </h5>
+                                <ul class="chart-list-out student-ellips">
+                                    <li class="star-menus"><a href="javascript:;"><i class="fas fa-ellipsis-v"></i></a>
+                                    </li>
+                                </ul>
                             </div>
                             <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-sm mb-0 table-striped">
-                                        <thead>
-                                            <tr>
-												<th class="px-5 py-3">Name</th>
-                                                <th class="py-3">Assigned Professor</th>
-                                                <th class="py-3">Branch</th>
-                                                <th class="py-3">Status</th>
-                                                <th class="py-3">Date Of Admit</th>
-                                                <th class="py-3">Edit</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="customers">
-                                            <tr class="btn-reveal-trigger">
-                                                <td class="p-3">
-                                                    <a href="{{ url("javascript:void(0);") }}">
-                                                        <div class="media d-flex align-items-center">
-                                                            <div class="avatar avatar-xl mr-2">
-                                                                <img class="rounded-circle img-fluid" src="{{ asset("/img/avatar/5.png") }}" width="30" alt="">
-                                                            </div>
-                                                            <div class="media-body">
-                                                                <h5 class="mb-0 fs--1">Ricky Antony</h5>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </td>
-                                                <td class="py-2">Herman Beck</td>
-                                                <td class="py-2">Mechanical</td>
-                                                <td><span class="badge badge-rounded badge-primary">DONE</span></td>
-                                                <td class="py-2">30/03/2018</td>
-                                                <td>
-                                                    <a href="{{ url("edit-student.php") }}" class="btn btn-sm btn-primary"><i class="la la-pencil"></i></a>
-                                                    <a href="{{ url("javascript:void(0);") }}" class="btn btn-sm btn-danger"><i class="la la-trash-o"></i></a>
-                                                </td>
-                                            </tr>
-                                            <tr class="btn-reveal-trigger">
-                                                <td class="p-3">
-                                                    <a href="{{ url("javascript:void(0);") }}">
-                                                        <div class="media d-flex align-items-center">
-                                                            <div class="avatar avatar-xl mr-2">
-                                                                <img class="rounded-circle img-fluid" src="{{ asset("/img/avatar/1.png") }}" alt="" width="30">
-                                                            </div>
-                                                            <div class="media-body">
-                                                                <h5 class="mb-0 fs--1">Emma Watson</h5>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </td>
-                                                <td class="py-2">Emma Watson</td>
-                                                <td class="py-2">Computer</td>
-                                                <td><span class="badge badge-rounded badge-warning">Panding</span></td>
-                                                <td class="py-2">11/07/2017</td>
-                                                <td>
-                                                    <a href="{{ url("edit-student.php") }}" class="btn btn-sm btn-primary"><i class="la la-pencil"></i></a>
-                                                    <a href="{{ url("javascript:void(0);") }}" class="btn btn-sm btn-danger"><i class="la la-trash-o"></i></a>
-                                                </td>
-                                            </tr>
-                                            <tr class="btn-reveal-trigger">
-                                                <td class="p-3">
-                                                    <a href="{{ url("javascript:void(0);") }}">
-                                                        <div class="media d-flex align-items-center">
-                                                            <div class="avatar avatar-xl mr-2">
-                                                                <img class="rounded-circle img-fluid" src="{{ asset("/img/avatar/5.png") }}" width="30" alt="">
-                                                            </div>
-                                                            <div class="media-body">
-                                                                <h5 class="mb-0 fs--1">Rowen Atkinson</h5>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </td>
-                                                <td class="py-2">Mary Adams</td>
-                                                <td class="py-2">Mechanical</td>
-                                                <td><span class="badge badge-rounded badge-primary">DONE</span></td>
-                                                <td class="py-2">05/04/2016</td>
-                                                <td>
-                                                    <a href="{{ url("edit-student.php") }}" class="btn btn-sm btn-primary"><i class="la la-pencil"></i></a>
-                                                    <a href="{{ url("javascript:void(0);") }}" class="btn btn-sm btn-danger"><i class="la la-trash-o"></i></a>
-                                                </td>
-                                            </tr>
-                                            <tr class="btn-reveal-trigger">
-                                                <td class="p-3">
-                                                    <a href="{{ url("javascript:void(0);") }}">
-                                                        <div class="media d-flex align-items-center">
-                                                            <div class="avatar avatar-xl mr-2">
-                                                                <img class="rounded-circle img-fluid" src="{{ asset("/img/avatar/1.png") }}" alt="" width="30">
-                                                            </div>
-                                                            <div class="media-body">
-                                                                <h5 class="mb-0 fs--1">Antony Hopkins</h5>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </td>
-                                                <td class="py-2">Caleb Richards </td>
-                                                <td class="py-2">Computer </td>
-                                                <td><span class="badge badge-rounded badge-danger">Suspended</span></td>
-                                                <td class="py-2">05/04/2018</td>
-                                                <td>
-                                                    <a href="{{ url("edit-student.php") }}" class="btn btn-sm btn-primary"><i class="la la-pencil"></i></a>
-                                                    <a href="{{ url("javascript:void(0);") }}" class="btn btn-sm btn-danger"><i class="la la-trash-o"></i></a>
-                                                </td>
-                                            </tr>
-                                            <tr class="btn-reveal-trigger">
-                                                <td class="p-3">
-                                                    <a href="{{ url("javascript:void(0);") }}">
-                                                        <div class="media d-flex align-items-center">
-                                                            <div class="avatar avatar-xl mr-2">
-                                                                <img class="rounded-circle img-fluid" src="{{ asset("/img/avatar/1.png") }}" alt="" width="30">
-                                                            </div>
-                                                            <div class="media-body">
-                                                                <h5 class="mb-0 fs--1">Jennifer Schramm</h5>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </td>
-                                                <td class="py-2">June Lane</td>
-                                                <td class="py-2">Fees Collection</td>
-                                                <td><span class="badge badge-rounded badge-warning">Panding</span></td>
-                                                <td class="py-2">17/03/2016</td>
-                                                <td>
-                                                    <a href="{{ url("edit-student.php") }}" class="btn btn-sm btn-primary"><i class="la la-pencil"></i></a>
-                                                    <a href="{{ url("javascript:void(0);") }}" class="btn btn-sm btn-danger"><i class="la la-trash-o"></i></a>
-                                                </td>
-                                            </tr>
-                                            <tr class="btn-reveal-trigger">
-                                                <td class="p-3">
-                                                    <a href="{{ url("javascript:void(0);") }}">
-                                                        <div class="media d-flex align-items-center">
-                                                            <div class="avatar avatar-xl mr-2">
-                                                                <img class="rounded-circle img-fluid" src="{{ asset("/img/avatar/5.png") }}" width="30" alt="">
-                                                            </div>
-                                                            <div class="media-body">
-                                                                <h5 class="mb-0 fs--1">Raymond Mims</h5>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </td>
-                                                <td class="py-2">Herman Beck</td>
-                                                <td class="py-2">Computer</td>
-                                                <td><span class="badge badge-rounded badge-danger">Suspended</span></td>
-                                                <td class="py-2">12/07/2014</td>
-                                                <td>
-                                                    <a href="{{ url("edit-student.php") }}" class="btn btn-sm btn-primary"><i class="la la-pencil"></i></a>
-                                                    <a href="{{ url("javascript:void(0);") }}" class="btn btn-sm btn-danger"><i class="la la-trash-o"></i></a>
-                                                </td>
-                                            </tr>
-                                            <tr class="btn-reveal-trigger">
-                                                <td class="p-3">
-                                                    <a href="{{ url("javascript:void(0);") }}">
-                                                        <div class="media d-flex align-items-center">
-                                                            <div class="avatar avatar-xl mr-2">
-                                                                <img class="rounded-circle img-fluid" src="{{ asset("/img/avatar/1.png") }}" alt="" width="30">
-                                                            </div>
-                                                            <div class="media-body">
-                                                                <h5 class="mb-0 fs--1">Michael Jenkins</h5>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </td>
-                                                <td class="py-2">Jennifer Schramm</td>
-                                                <td class="py-2">Mechanical</td>
-                                                <td><span class="badge badge-rounded badge-warning">Panding</span></td>
-                                                <td class="py-2">15/06/2014</td>
-                                                <td>
-                                                    <a href="{{ url("edit-student.php") }}" class="btn btn-sm btn-primary"><i class="la la-pencil"></i></a>
-                                                    <a href="{{ url("javascript:void(0);") }}" class="btn btn-sm btn-danger"><i class="la la-trash-o"></i></a>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                <div class="activity-groups">
+                                    <div class="activity-awards">
+                                        <div class="award-boxs">
+                                            <img src="{{asset ('/img/icons/award-icon-01.svg')}}" alt="Award">
+                                        </div>
+                                        <div class="award-list-outs">
+                                            <h4>1st place in "Chess”</h4>
+                                            <h5>John Doe won 1st place in "Chess"</h5>
+                                        </div>
+                                        <div class="award-time-list">
+                                            <span>1 Day ago</span>
+                                        </div>
+                                    </div>
+                                    <div class="activity-awards">
+                                        <div class="award-boxs">
+                                            <img src="{{asset ('/img/icons/award-icon-02.svg')}}" alt="Award">
+                                        </div>
+                                        <div class="award-list-outs">
+                                            <h4>Participated in "Carrom"</h4>
+                                            <h5>Justin Lee participated in "Carrom"</h5>
+                                        </div>
+                                        <div class="award-time-list">
+                                            <span>2 hours ago</span>
+                                        </div>
+                                    </div>
+                                    <div class="activity-awards">
+                                        <div class="award-boxs">
+                                            <img src="{{asset ('/img/icons/award-icon-03.svg')}}" alt="Award">
+                                        </div>
+                                        <div class="award-list-outs">
+                                            <h4>Internation conference in "St.John School"</h4>
+                                            <h5>Justin Leeattended internation conference in "St.John School"</h5>
+                                        </div>
+                                        <div class="award-time-list">
+                                            <span>2 Week ago</span>
+                                        </div>
+                                    </div>
+                                    <div class="activity-awards mb-0">
+                                        <div class="award-boxs">
+                                            <img src="{{asset ('/img/icons/award-icon-04.svg')}}" alt="Award">
+                                        </div>
+                                        <div class="award-list-outs">
+                                            <h4>Won 1st place in "Chess"</h4>
+                                            <h5>John Doe won 1st place in "Chess"</h5>
+                                        </div>
+                                        <div class="award-time-list">
+                                            <span>3 Day ago</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
-				</div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xl-3 col-sm-6 col-12">
+                        <div class="card flex-fill fb sm-box">
+                            <div class="social-likes">
+                                <p>Like us on facebook</p>
+                                <h6>50,095</h6>
+                            </div>
+                            <div class="social-boxs">
+                                <img src="{{asset ('/img/icons/social-icon-01.svg')}}" alt="Social Icon">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6 col-12">
+                        <div class="card flex-fill twitter sm-box">
+                            <div class="social-likes">
+                                <p>Follow us on twitter</p>
+                                <h6>48,596</h6>
+                            </div>
+                            <div class="social-boxs">
+                                <img src="{{asset ('/img/icons/social-icon-02.svg')}}" alt="Social Icon">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6 col-12">
+                        <div class="card flex-fill insta sm-box">
+                            <div class="social-likes">
+                                <p>Follow us on instagram</p>
+                                <h6>52,085</h6>
+                            </div>
+                            <div class="social-boxs">
+                                <img src="{{asset ('/img/icons/social-icon-03.svg')}}" alt="Social Icon">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6 col-12">
+                        <div class="card flex-fill linkedin sm-box">
+                            <div class="social-likes">
+                                <p>Follow us on linkedin</p>
+                                <h6>69,050</h6>
+                            </div>
+                            <div class="social-boxs">
+                                <img src="{{asset ('/img/icons/social-icon-04.svg')}}" alt="Social Icon">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <footer>
+                <p>Copyright © 2022 WhiteSprout.</p>
+            </footer>
         </div>
-        <!--**********************************
-            Content body end
-        ***********************************-->
-
-
-        <!--**********************************
-            Footer start
-        ***********************************-->
-        <div class="footer">
-            <div class="copyright">
-                <p>Copyright © Designed &amp; Developed by <a href="{{ url("../index.htm") }}" target="_blank">WhiteSprout</a> 2023</p>
-            </div>
-        </div>
-        <!--**********************************
-            Footer end
-        ***********************************-->
-
-		<!--**********************************
-           Support ticket button start
-        ***********************************-->
-
-        <!--**********************************
-           Support ticket button end
-        ***********************************-->
-
-
     </div>
-    <!--**********************************
-        Main wrapper end
-    ***********************************-->
 
-    <!--**********************************
-        Scripts
-    ***********************************-->
-    <!-- Required vendors -->
-<script src="{{ asset("/vendor/global/global.min.js") }}"></script>
-	<script src="{{ asset("/vendor/bootstrap-select/dist/js/bootstrap-select.min.js") }}"></script>
-    <script src="{{ asset("/js/custom.min.js") }}"></script>
-	<script src="{{ asset("/js/dlabnav-init.js") }}"></script>
-
-    <!-- Chart ChartJS plugin files -->
-    <script src="{{ asset("/vendor/chart.js/Chart.bundle.min.js") }}"></script>
-	
-	<!-- Chart piety plugin files -->
-    <script src="{{ asset("/vendor/peity/jquery.peity.min.js") }}"></script>
-	
-	<!-- Chart sparkline plugin files -->
-    <script src="{{ asset("/vendor/jquery-sparkline/jquery.sparkline.min.js") }}"></script>
-	
-		<!-- Demo scripts -->
-	<script src="{{ asset('public/js/dashboard/dashboard-3.js') }}"></script>
-
-	<!-- Svganimation scripts -->
-    <script src="{{ asset("/vendor/svganimation/vivus.min.js") }}"></script>
-    <script src="{{ asset("/vendor/svganimation/svg.animation.js") }}"></script>
-    <script src="{{ asset("/js/styleSwitcher.js") }}"></script>
-	
+    <script src="{{asset ('/js/jquery-3.6.0.min.js')}}"></script>
+    <script src="{{asset ('/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset ('/js/feather.min.js')}}"></script>
+    <script src="{{asset ('/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
+    <script src="{{asset ('/plugins/apexchart/apexcharts.min.js')}}"></script>
+    <script src="{{asset ('/plugins/apexchart/chart-data.js')}}"></script>
+    <script src="{{asset ('/js/script.js')}}"></script>
 </body>
+
 </html>
