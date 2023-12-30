@@ -107,6 +107,7 @@ Route::get('/student/analytics', [StudentController::class, 'analytics'])->name(
 Route::get('/student/tasks', [StudentController::class, 'tasks'])->name('student.tasks');
 Route::get('/student/settings', [StudentController::class, 'settings'])->name('student.settings');
 Route::get('/student/help', [StudentController::class, 'help'])->name('student.help');
+Route::get('/student/live-class', [StudentController::class, 'liveClass'])->name('student.live-class');
 Route::get('/student/logout', [StudentController::class, 'logout'])->name('student.logout');
 
 
@@ -153,12 +154,10 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/admin/invoices', [AdminController::class, 'invoices'])->name('admin.invoices');
 
     Route::get('/admin/settings', [AdminController::class, 'settings'])->name('admin.settings');
-});
+    Route::get('/live-class', [AdminController::class, 'liveClass'])->name('admin.live-class');
 
-//Instructor Dashboard
-// Route::get('/instructor/courses', [InstructorController::class, 'courses'])->name('instructor.courses');
-// Route::get('/instructor/invoices', [InstructorController::class, 'invoices'])->name('instructor.invoices');
-// Route::get('/instructor/settings', [InstructorController::class, 'settings'])->name('instructor.settings');
+    Route::get('/logout', [AdminController::class, 'logout'])->name('admin.logout');
+});
 
 // Route::middleware('auth:instructor')->prefix('/instructor')->name('instructor.')->group(function () {
 Route::middleware(['auth:instructor', 'instructor'])->prefix('/instructor')->name('instructor.')->group(function () {
@@ -176,6 +175,8 @@ Route::middleware(['auth:instructor', 'instructor'])->prefix('/instructor')->nam
     Route::get('/edit-invoice', [InstructorController::class, 'editInvoice'])->name('edit-invoice');
     Route::get('/view-invoice', [InstructorController::class, 'viewInvoice'])->name('view-invoice');
     Route::get('/invoices-settings', [InstructorController::class, 'invoicesSettings'])->name('invoices-settings');
+    Route::get('/live-class', [InstructorController::class, 'liveClass'])->name('instructor.live-class');
+    Route::get('/logout', [AdminController::class, 'logout'])->name('instructor.logout');
 });
 
 

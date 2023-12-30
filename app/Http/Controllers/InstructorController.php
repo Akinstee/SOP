@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 
 class InstructorController extends Controller
@@ -142,9 +143,16 @@ class InstructorController extends Controller
         return view('instructor.error-404');
     }
 
+    public function liveClass()
+    {
+        return view('instructor.live-class');
+    }
     
-    
-
+    public function logout()
+    {
+        Auth::logout();
+        return Redirect::route('index'); // Replace 'home' with your desired redirect path
+    }
 
 }
 

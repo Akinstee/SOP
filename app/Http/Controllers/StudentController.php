@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use function;
 use App\Models\FAQ;
 use App\Models\Course;
 use App\Models\Message;
@@ -208,14 +209,6 @@ class StudentController extends Controller
         return view('students.notifications', compact('notifications'));
     }
 
-    // public function notifications()
-    // {
-    //     // Fetch notifications from the database (assuming you have a notifications table)
-    //     $notifications = Notification::orderBy('created_at', 'desc')->get();
-
-    //     return view('students.notifications', compact('notifications'));
-    // }
-
     public function profile()
     {
         $user = Auth::user();
@@ -277,11 +270,6 @@ class StudentController extends Controller
         return view('students.analytics');
     }
 
-    // public function settings()
-    // {
-    //     return view('students.settings');
-    // }
-
 
     public function settings(Request $request)
     {
@@ -289,30 +277,12 @@ class StudentController extends Controller
         $languages = ['en', 'es', 'fr']; // Example array of supported languages
         $notifications = ['email', 'sms', 'push'];
 
-        // Save preferences to the database or other storage method
-
-        // Redirect back to the settings page with a success message
-        //return redirect()->route('student.settings')->with('success', 'Settings saved successfully!');
+       
         return view('students.settings', [
             'languages' => $languages,
             'notifications' => $notifications,
         ]);
     }
-
-    // public function help()
-    
-    // {
-    //     return view('students.help');
-    // }
-
-    // public function help()
-    // {
-    //     // Fetch FAQs from the database
-    //     $faqs = FAQ::all();
-
-    //     return view('students.help', compact('faqs'));
-    // }
-
 
     public function help()
     {
@@ -335,5 +305,10 @@ class StudentController extends Controller
     {
         Auth::logout();
         return Redirect::route('index'); // Replace 'home' with your desired redirect path
+    }
+
+    public function liveClass()
+    {
+        return view('student.live-class');
     }
 }
