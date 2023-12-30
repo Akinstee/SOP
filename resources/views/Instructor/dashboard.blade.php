@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-    <title>Admin Dashboard</title>
+    <title>Instructor Dashboard</title>
     <link rel="shortcut icon" href="{{asset ('/img/favicon.png')}}">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700&display=swap"rel="stylesheet">
     <link rel="stylesheet" href="{{asset('plugins/bootstrap/css/bootstrap.min.css')}}">
@@ -163,7 +163,7 @@
                                 alt="Temitayo">
                             <div class="user-text">
                                 <h6>Temitayo</h6>
-                                <p class="text-muted mb-0">Administrator</p>
+                                <p class="text-muted mb-0">Instructor</p>
                             </div>
                         </span>
                     </a>
@@ -175,7 +175,7 @@
                             </div>
                             <div class="user-text">
                                 <h6>Temitayo</h6>
-                                <p class="text-muted mb-0">Administrator</p>
+                                <p class="text-muted mb-0">Instructor</p>
                             </div>
                         </div>
                         <a class="dropdown-item" href="profile.html">My Profile</a>
@@ -189,6 +189,7 @@
         </div>
         <!--Header Navbar End-->
 
+        {{-- Sidebar Start --}}
 
         <div class="sidebar" id="sidebar">
             <div class="sidebar-inner slimscroll">
@@ -198,59 +199,35 @@
                             <span>Main Menu</span>
                         </li>
                         <li class="submenu active">
-                            <a href="index.html"><i class="feather-grid"></i> <span> Instructor</span></a>
+                            <a href="{{ route('instructor.dashboard') }}">Dashboard</a><i class="feather-grid"></i> <span> Instructor</span></a>
                             
                         </li>
-                        <li class="submenu">
-                            <a href="#"><i class="fas fa-graduation-cap"></i> <span> Students</span> <span
-                                    class="menu-arrow"></span></a>
-                            <ul>
-                                <li><a href="students.html">Student List</a></li>
-                                <li><a href="student-details.html">Student View</a></li>
-                                <li><a href="add-student.html">Student Add</a></li>
-                                <li><a href="edit-student.html">Student Edit</a></li>
-                            </ul>
-                        </li>
-                        {{-- <li class="submenu">
-                            <a href="#"><i class="fas fa-chalkboard-teacher"></i> <span> Instructors</span> <span
-                                    class="menu-arrow"></span></a>
-                            <ul>
-                                <li><a href="teachers.html">Instructor List</a></li>
-                                <li><a href="teacher-details.html">Instructor View</a></li>
-                                <li><a href="add-teacher.html">Instructor Add</a></li>
-                                <li><a href="edit-teacher.html">Instructor Edit</a></li>
-                            </ul>
-                        </li>
-                         --}}
                         <li class="submenu">
                             <a href="#"><i class="fas fa-book-reader"></i> <span> Courses</span> <span
                                     class="menu-arrow"></span></a>
                             <ul>
-                                <li><a href="subjects.html">Courses List</a></li>
-                                <li><a href="add-subject.html">Courses Add</a></li>
-                                <li><a href="edit-subject.html">Courses Edit</a></li>
+                                <li><a href="{{ route('instructor.courses')}}">Courses List</a></li>
+                                <li><a href="{{ route('instructor.add-course')}}">Courses Add</a></li>
+                                <li><a href="{{ route('instructor.edit-course') }}">Courses Edit</a></li>
                             </ul>
                         </li>
                         <li class="submenu">
                             <a href="#"><i class="fas fa-clipboard"></i> <span> Invoices</span> <span
                                     class="menu-arrow"></span></a>
                             <ul>
-                                <li><a href="invoices.html">Invoices List</a></li>
-                                <li><a href="invoice-grid.html">Invoices Grid</a></li>
-                                <li><a href="add-invoice.html">Add Invoices</a></li>
-                                <li><a href="edit-invoice.html">Edit Invoices</a></li>
-                                <li><a href="view-invoice.html">Invoices Details</a></li>
-                                <li><a href="invoices-settings.html">Invoices Settings</a></li>
+                                <li><a href="{{ route('instructor.invoices')}}">Invoices List</a></li>
+                                <li><a href="{{ route('instructor.add-invoice')}}">Add Invoices</a></li>
+                                <li><a href="{{ route('instructor.edit-invoice')}}">Edit Invoices</a></li>
+                                <li><a href="{{ route('instructor.view-invoice')}}">Invoices Details</a></li>
+                                <li><a href="{{ route('instructor.invoices-settings')}}">Invoices Settings</a></li>
                             </ul>
                         </li>
                         <li class="submenu">
-                            <a href="settings.html"><i class="fas fa-shield-alt"></i> <span> Settings </span> <span
+                            <a href="{{ route('instructor.settings')}}"><i class="fas fa-shield-alt"></i> <span> Settings </span> <span
                                     class="menu-arrow"></span></a>
                             <ul>
-                                <li><a href="login.html">Login</a></li>
-                                <li><a href="register.html">Register</a></li>
-                                <li><a href="forgot-password.html">Forgot Password</a></li>
-                                <li><a href="error-404.html">Error Page</a></li>
+                                <li><a href="{{ route('instructor.forgot-password')}}">Forgot Password</a></li>
+                                <li><a href="{{ route('instructor.error-404')}}">Error Page</a></li>
                             </ul>
                         </li>
                         
@@ -259,6 +236,7 @@
             </div>
         </div>
 
+        {{-- Sidebar Ends --}}
 
         <div class="page-wrapper">
             <div class="content container-fluid">
@@ -267,10 +245,10 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="page-sub-header">
-                                <h3 class="page-title">Welcome Admin!</h3>
+                                <h3 class="page-title">Welcome Instructor!</h3>
                                 <ul class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                    <li class="breadcrumb-item active">Admin</li>
+                                    <a href="{{ route('instructor.dashboard') }}"></a>Home</a></li>
+                                    <li class="breadcrumb-item active">Instructor</li>
                                 </ul>
                             </div>
                         </div>
@@ -284,7 +262,7 @@
                             <div class="card-body">
                                 <div class="db-widgets d-flex justify-content-between align-items-center">
                                     <div class="db-info">
-                                        <h6>Students</h6>
+                                        <h6>Active COurses</h6>
                                         <h3>50055</h3>
                                     </div>
                                     <div class="db-icon">
@@ -299,7 +277,7 @@
                             <div class="card-body">
                                 <div class="db-widgets d-flex justify-content-between align-items-center">
                                     <div class="db-info">
-                                        <h6>Awards</h6>
+                                        <h6>Paid Courses</h6>
                                         <h3>50+</h3>
                                     </div>
                                     <div class="db-icon">
@@ -314,7 +292,7 @@
                             <div class="card-body">
                                 <div class="db-widgets d-flex justify-content-between align-items-center">
                                     <div class="db-info">
-                                        <h6>Department</h6>
+                                        <h6>Free Courses</h6>
                                         <h3>30+</h3>
                                     </div>
                                     <div class="db-icon">
@@ -352,7 +330,7 @@
                                     </div>
                                     <div class="col-6">
                                         <ul class="chart-list-out">
-                                            <li><span class="circle-blue"></span>Teacher</li>
+                                            <li><span class="circle-blue"></span>Instructor</li>
                                             <li><span class="circle-green"></span>Student</li>
                                             <li class="star-menus"><a href="javascript:;"><i
                                                         class="fas fa-ellipsis-v"></i></a></li>
@@ -580,6 +558,7 @@
                     </div>
                 </div>
 
+                {{-- Social media Start --}}
                 <div class="row">
                     <div class="col-xl-3 col-sm-6 col-12">
                         <div class="card flex-fill fb sm-box">
@@ -626,6 +605,8 @@
                         </div>
                     </div>
                 </div>
+
+                {{-- Social media Ends --}}
             </div>
             <footer>
                 <p>Copyright © 2022 WhiteSprout.</p>

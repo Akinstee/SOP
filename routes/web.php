@@ -155,4 +155,28 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/admin/settings', [AdminController::class, 'settings'])->name('admin.settings');
 });
 
-//Route::post('/admin/login', 'AdminController@login')->name('admin.login');
+//Instructor Dashboard
+// Route::get('/instructor/courses', [InstructorController::class, 'courses'])->name('instructor.courses');
+// Route::get('/instructor/invoices', [InstructorController::class, 'invoices'])->name('instructor.invoices');
+// Route::get('/instructor/settings', [InstructorController::class, 'settings'])->name('instructor.settings');
+
+// Route::middleware('auth:instructor')->prefix('/instructor')->name('instructor.')->group(function () {
+Route::middleware(['auth:instructor', 'instructor'])->prefix('/instructor')->name('instructor.')->group(function () {
+    Route::get('/settings', [InstructorController::class, 'settings'])->name('settings');
+    Route::get('/forgot-password', [InstructorController::class, 'forgot-password'])->name('forgot-password');
+    Route::get('/error-404', [InstructorController::class, 'error-404'])->name('error-404');
+    Route::get('/settings', [InstructorController::class, 'settings'])->name('settings');
+    // New routes for courses
+    Route::get('/courses', [InstructorController::class, 'courses'])->name('courses');
+    Route::get('/add-course', [InstructorController::class, 'addCourse'])->name('add-course');
+    Route::get('/edit-course', [InstructorController::class, 'editCourse'])->name('edit-course');
+    // New routes for invoices
+    Route::get('/invoices', [InstructorController::class, 'invoices'])->name('invoices');
+    Route::get('/add-invoice', [InstructorController::class, 'addInvoice'])->name('add-invoice');
+    Route::get('/edit-invoice', [InstructorController::class, 'editInvoice'])->name('edit-invoice');
+    Route::get('/view-invoice', [InstructorController::class, 'viewInvoice'])->name('view-invoice');
+    Route::get('/invoices-settings', [InstructorController::class, 'invoicesSettings'])->name('invoices-settings');
+});
+
+
+

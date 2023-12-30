@@ -48,9 +48,13 @@ return [
             'driver' => 'session',
             'provider' => 'admins',
         ],
-        'teacher' => [
+        // 'teacher' => [
+        //     'driver' => 'session',
+        //     'provider' => 'instructors',
+        // ],
+        'instructor' => [
             'driver' => 'session',
-            'provider' => 'instructors',
+            'provider' => 'instructors', // Change this to your actual instructor provider
         ],
     ],
 
@@ -86,7 +90,7 @@ return [
         ],
         'instructors' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Instructor::class,
+            'model' => App\Models\Instructor::class, // Change this to your actual instructor model
         ],
 
         // 'users' => [

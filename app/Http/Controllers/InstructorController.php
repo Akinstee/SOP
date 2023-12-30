@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Course;
+use App\Models\Invoice;
 use App\Models\Instructor;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -77,12 +79,67 @@ class InstructorController extends Controller
 
     public function dashboard()
     {
-        return view('Instructor.dashboard');
+        return view('instructor.dashboard');
     }
 
     public function instructorLogin()
     {
         return view('instructor.login');
+    }
+
+    public function courses()
+    {
+        // Your controller logic for the 'Courses' menu item
+        // Fetching data from the database
+        $courses = Course::all();
+
+        // Returning the 'courses.blade.php' view with the data
+        return view('instructor.courses', ['courses' => $courses]);
+    }
+
+    public function invoices()
+    {
+        // Your controller logic for the 'Invoices' menu item
+        // Fetching data from the database
+        $invoices = Invoice::all();
+
+        // Returning the 'invoices.blade.php' view with the data
+        return view('instructor.invoices', ['invoices' => $invoices]);
+    }
+
+    public function settings()
+    {
+        // Your controller logic for the 'Settings' menu item
+        // This can be any logic specific to settings
+        // Returning the 'settings.blade.php' view
+        return view('instructor.settings');
+    }
+
+    // Example method for the 'Login' menu item
+    public function loginForm()
+    {
+        // Your controller logic for the 'Login' menu item
+        // This might be a simple login form without specific data
+        // Returning the 'login.blade.php' view
+        return view('instructor.login');
+    }
+
+    // Example method for the 'Forgot Password' menu item
+    public function forgotPasswordForm()
+    {
+        // Your controller logic for the 'Forgot Password' menu item
+        // This might be a simple forgot password form without specific data
+        // Returning the 'forgot-password.blade.php' view
+        return view('instructor.forgot-password');
+    }
+
+    // Example method for the 'Error Page' menu item
+    public function errorPage()
+    {
+        // Your controller logic for the 'Error Page' menu item
+        // This might be a simple error page without specific data
+        // Returning the 'error-404.blade.php' view
+        return view('instructor.error-404');
     }
 
     
