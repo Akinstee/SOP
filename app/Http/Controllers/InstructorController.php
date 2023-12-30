@@ -3,14 +3,16 @@
 namespace App\Http\Controllers;
 use App\Models\Instructor;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class InstructorController extends Controller
 {
     public function index()
     {
-        return view('instructors.register');
+        return view('instructor.register');
     }
 
     public function save(Request $request)
@@ -50,10 +52,43 @@ class InstructorController extends Controller
         return redirect()->route('instructor.login')->with('success', 'Registration successful!');
     }
 
+    public function instructorCheck(Request $request)
+    {
+        $credentials = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        if (Auth::attempt($credentials)) {
+            // Check if the authenticated user has the 'instructor' role
+            if (auth()->user()->hasRole('instructor')) {
+                // Redirect to the instructor dashboard
+                return redirect()->route('instructor.dashboard');
+            }
+
+            // If the user is not an instructor, log them out and show an error message
+            Auth::logout();
+            return redirect()->route('instructor.login')->withInput($request->only('email'))->withErrors(['email' => 'You do not have instructor access.']);
+        }
+
+        // If login fails, redirect back with an error message
+        return redirect()->route('instructor.login')->withInput($request->only('email'))->withErrors(['email' => 'Invalid credentials.']);
+    }
+
     public function dashboard()
     {
         return view('Instructor.dashboard');
     }
+
+    public function instructorLogin()
+    {
+        return view('instructor.login');
+    }
+
+    
+    
+
+
 }
 
 

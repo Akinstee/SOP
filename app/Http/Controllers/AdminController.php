@@ -53,17 +53,41 @@ class AdminController extends Controller
         return view('admin.login');
     }
 
-    public function adminCheck(Request $request)
+    // public function adminCheck(Request $request)
+    // {
+    //     $credentials = $request->only('email', 'password');
+
+    //     if (Auth::attempt($credentials)) {
+    //         // Authentication passed
+    //         return redirect()->route('admin.dashboard'); // Replace 'dashboard' with your actual dashboard route
+    //     }
+
+    //     // Authentication failed
+    //     return redirect()->route('admin.dashboard')->with('error', 'Invalid credentials');
+    // }
+
+
+    public function check(Request $request)
     {
-        $credentials = $request->only('email', 'password');
+        $credentials = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
 
         if (Auth::attempt($credentials)) {
-            // Authentication passed
-            return redirect()->route('admin.dashboard'); // Replace 'dashboard' with your actual dashboard route
+            // Check if the authenticated user has the 'admin' role
+            if (auth()->user()->hasRole('admin')) {
+                // Redirect to the admin dashboard
+                return redirect()->route('admin.dashboard');
+            }
+
+            // If the user is not an admin, log them out and show an error message
+            Auth::logout();
+            return redirect()->back()->withInput($request->only('email'))->withErrors(['email' => 'You do not have admin access.']);
         }
 
-        // Authentication failed
-        return redirect()->route('admin.dashboard')->with('error', 'Invalid credentials');
+        // If login fails, redirect back with an error message
+        return redirect()->back()->withInput($request->only('email'))->withErrors(['email' => 'Invalid credentials.']);
     }
 
 

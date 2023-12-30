@@ -33,6 +33,9 @@ Route::middleware('guest:admin')->prefix('/admin')->name('admin.')->controller(L
     Route::post('/check', [AdminController::class, 'adminCheck'])->name('check');
 });
 
+Route::post('/admin/check', 'AdminController@check')->name('admin.check');
+
+
 //Students Registration and login Route
 Route::middleware('guest')->prefix('/student')->name('student.')->controller(StudentController::class)->group(function () {
     Route::get('/register', 'index')->name('register');
@@ -45,10 +48,17 @@ Route::middleware('guest')->prefix('/student')->name('student.')->controller(Stu
 // });
 
 //Instructor Registration and Login Route
-Route::middleware('guest')->prefix('/instructor')->name('instructor.')->controller(LoginController::class)->group(function () {
+// Route::middleware('guest')->prefix('/instructor')->name('instructor.')->controller(LoginController::class)->group(function () {
+//     Route::get('/login', 'instructorLogin')->name('login');
+//     Route::post('/check', 'instructorCheck')->name('check');
+// });
+
+Route::middleware('guest')->prefix('/instructor')->name('instructor.')->controller(InstructorController::class)->group(function () {
     Route::get('/login', 'instructorLogin')->name('login');
     Route::post('/check', 'instructorCheck')->name('check');
 });
+
+
 
 Route::middleware('guest')->prefix('/instructor')->name('instructor.')->controller(InstructorController::class)->group(function () {
     Route::get('/register', 'index')->name('register');
