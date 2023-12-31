@@ -190,7 +190,7 @@
         <!--Header Navbar End-->
 
         <!--Sidebar Header Start -->
-        <div class="sidebar" id="sidebar">
+        {{-- <div class="sidebar" id="sidebar">
             <div class="sidebar-inner slimscroll">
                 <div id="sidebar-menu" class="sidebar-menu">
                     <ul>
@@ -254,7 +254,8 @@
                     </ul>
                 </div>
             </div>
-        </div>
+        </div> --}}
+        @include('layouts.adminside')
         <!--Sidebar Header Ends -->
 
         <div class="page-wrapper">

@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use function;
+// use function;
+//use function;
 use App\Models\FAQ;
 use App\Models\Course;
 use App\Models\Message;
@@ -307,8 +308,8 @@ class StudentController extends Controller
         return Redirect::route('index'); // Replace 'home' with your desired redirect path
     }
 
-    public function liveClass()
-    {
-        return view('student.live-class');
-    }
+    // public function liveClass()
+    // {
+    //     return view('student.live-class');
+    // }
 }
