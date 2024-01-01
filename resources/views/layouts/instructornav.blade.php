@@ -1,10 +1,10 @@
 <div class="header">
 
     <div class="header-left">
-        <a href="{{ route('dashboard.blade.php')}}" class="logo">
+        <a href="{{ route('instructor.dashboard') }}" class="logo">
             <img src="{{asset ('/img/logo.png')}}" alt="Logo">
         </a>
-        <a href="{{ route('dashboard.blade.php')}}" class="logo logo-small">
+        <a href="{{ route('instructor.dashboard') }}" class="logo logo-small">
             <img src="{{asset ('/img/logo-small.png')}}" alt="Logo" width="30" height="30">
         </a>
     </div>
@@ -156,7 +156,7 @@
                         <p class="text-muted mb-0">Instructor</p>
                     </div>
                 </div>
-                <a class="dropdown-item" href="{{ route('instructor.profile')}}">My Profile</a>
+                <a class="dropdown-item" href="{{ route('instructor.profile') }}">My Profile</a>
                 <a class="dropdown-item" href="{{ route('instructor.inbox')}}">Inbox</a>
                 <a class="dropdown-item" href="{{ route('instructor.login')}}">Logout</a>
             </div>

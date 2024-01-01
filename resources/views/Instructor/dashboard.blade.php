@@ -188,7 +188,7 @@
                                                     <div>PRE2209</div>
                                                 </td>
                                                 <td class="text-nowrap">
-                                                    <a href="profile.html">
+                                                    <a href="{{ route('instructor.profile')}}">
                                                         <img class="rounded-circle"
                                                             src="{{asset ('/img/profiles/avatar-02.jpg')}}" width="25"
                                                             alt="Star Students">
@@ -206,7 +206,7 @@
                                                     <div>PRE1245</div>
                                                 </td>
                                                 <td class="text-nowrap">
-                                                    <a href="profile.html">
+                                                    <a href="{{ route('instructor.profile')}}">
                                                         <img class="rounded-circle"
                                                             src="{{asset ('/img/profiles/avatar-01.jpg')}}" width="25"
                                                             alt="Star Students">
@@ -224,7 +224,7 @@
                                                     <div>PRE1625</div>
                                                 </td>
                                                 <td class="text-nowrap">
-                                                    <a href="profile.html">
+                                                    <a href="{{ route('instructor.profile')}}">
                                                         <img class="rounded-circle"
                                                             src="{{asset ('/img/profiles/avatar-03.jpg')}}" width="25"
                                                             alt="Star Students">
@@ -242,7 +242,7 @@
                                                     <div>PRE2516</div>
                                                 </td>
                                                 <td class="text-nowrap">
-                                                    <a href="profile.html">
+                                                    <a href="{{ route('instructor.profile')}}">
                                                         <img class="rounded-circle"
                                                             src="{{asset ('/img/profiles/avatar-04.jpg')}}" width="25"
                                                             alt="Star Students">
@@ -260,7 +260,7 @@
                                                     <div>PRE2209</div>
                                                 </td>
                                                 <td class="text-nowrap">
-                                                    <a href="profile.html">
+                                                    <a href="{{ route('instructor.profile')}}">
                                                         <img class="rounded-circle"
                                                             src="{{asset ('/img/profiles/avatar-05.jpg')}}" width="25"
                                                             alt="Star Students">

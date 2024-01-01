@@ -154,6 +154,47 @@ class InstructorController extends Controller
         return Redirect::route('index'); // Replace 'home' with your desired redirect path
     }
 
+    // public function profile()
+    // {
+    //     // Get the authenticated instructor
+    //     $instructor = Auth::guard('instructor')->user();
+
+    //     // Check if the instructor is authenticated
+    //     if (!$instructor) {
+    //         return redirect()->route('login'); // Redirect to login if not authenticated
+    //     }
+
+    //     return view('instructor.profile', compact('instructor'));
+    // }
+
+    // public function inbox()
+    // {
+    //     // Get the authenticated instructor's inbox data
+    //     $inboxData = []; // Replace with your inbox fetching logic
+
+    //     // Check if the instructor is authenticated
+    //     if (!Auth::guard('instructor')->check()) {
+    //         return redirect()->route('login'); // Redirect to login if not authenticated
+    //     }
+
+    //     return view('instructor.inbox', compact('inboxData'));
+    // }
+
+    public function inbox()
+    {
+        return view('instructor.inbox');
+    }
+
+    public function profile()
+    {
+        return view('instructor.profile');
+    }
+
+    // public function liveClass()
+    // {
+    //     return view('instructor.live-class');
+    // }
+
 }
 
 

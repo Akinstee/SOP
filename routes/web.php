@@ -176,7 +176,13 @@ Route::middleware(['auth:instructor', 'instructor'])->prefix('/instructor')->nam
     Route::get('/view-invoice', [InstructorController::class, 'viewInvoice'])->name('view-invoice');
     Route::get('/invoices-settings', [InstructorController::class, 'invoicesSettings'])->name('invoices-settings');
     Route::get('/live-class', [InstructorController::class, 'liveClass'])->name('instructor.live-class');
-    Route::get('/logout', [AdminController::class, 'logout'])->name('instructor.logout');
+    Route::get('/logout', [InstructorController::class, 'logout'])->name('instructor.logout');
+    Route::get('/profile', [InstructorController::class, 'profile'])->name('profile');
+    Route::get('/inbox', [InstructorController::class, 'inbox'])->name('inbox');
+    
+    
+    //Route::get('/profile', [InstructorController::class, 'profile'])->name('instructor.profile');
+    //Route::get('/inbox', [InstructorController::class, 'inbox'])->name('instructor.inbox');
 });
 
 
