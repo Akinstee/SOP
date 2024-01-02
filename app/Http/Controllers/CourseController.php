@@ -28,5 +28,10 @@ class CourseController extends Controller
 
         return redirect()->route('instructor.courses')->with('success', 'Course added successfully');
     }
+    public function index()
+    {
+        $courses = Course::all(); // Fetch all courses from the database
+        return view('instructor.courses', compact('courses'));
+    }
 
 }

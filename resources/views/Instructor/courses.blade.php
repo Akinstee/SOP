@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-<title>Preskool - Subjects</title>
+<title>SOPs  - Courses</title>
 
 <link rel="shortcut icon" href="{{ asset('/img/favicon.png') }} ">
 
@@ -40,11 +40,11 @@
             <div class="page-header">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h3 class="page-title">Subjects</h3>
-                        <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('instructor.dashboard')}}">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Subjects</li>
-                    </ul>
+                        <h3 class="page-title">Courses</h3>
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{{ route('instructor.dashboard')}}">Dashboard</a></li>
+                                <li class="breadcrumb-item active">Courses</li>
+                            </ul>
                     </div>
                 </div>
             </div>
@@ -81,11 +81,11 @@
                             <div class="page-header">
                                 <div class="row align-items-center">
                                     <div class="col">
-                                        <h3 class="page-title">Subjects</h3>
+                                        <h3 class="page-title">Courses</h3>
                                     </div>
                                     <div class="col-auto text-end float-end ms-auto download-grp">
                                         <a href="#" class="btn btn-outline-primary me-2"><i class="fas fa-download"></i> Download</a>
-                                        <a href="{{ route('instructor.add-subject')}}" class="btn btn-primary"><i class="fas fa-plus"></i></a>
+                                        <a href="{{ route('instructor.add-course')}}" class="btn btn-primary"><i class="fas fa-plus"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -99,158 +99,12 @@
                                                     <input class="form-check-input" type="checkbox" value="something">
                                                 </div>
                                             </th>
-                                            <th>ID</th>
-                                            <th>Name</th>
-                                            <th>Class</th>
+                                            <th>Course ID</th>
+                                            <th>Course Name</th>
+                                            <th>Course Rating</th>
                                             <th class="text-end">Action</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                            <tr>
-                                                <td>
-                                                    <div class="form-check check-tables">
-                                                        <input class="form-check-input" type="checkbox" value="something">
-                                                    </div>
-                                                </td>
-                                                <td>PRE2209</td>
-                                                <td>
-                                                    <h2>
-                                                        <a>Mathematics</a>
-                                                    </h2>
-                                                </td>
-                                                <td>5</td>
-                                                <td class="text-end">
-                                                    <div class="actions">
-                                                        <a href="javascript:;" class="btn btn-sm bg-success-light me-2">
-                                                            <i class="feather-eye"></i>
-                                                        </a>
-                                                        <a href="{{ route('instructor.edit-subject')}}" class="btn btn-sm bg-danger-light">
-                                                            <i class="feather-edit"></i>
-                                                        </a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="form-check check-tables">
-                                                    <input class="form-check-input" type="checkbox" value="something">
-                                                </div>
-                                            </td>
-                                            <td>PRE2213</td>
-                                            <td>
-                                                <h2>
-                                                    <a>History</a>
-                                                </h2>
-                                            </td>
-                                            <td>6</td>
-                                            <td class="text-end">
-                                                <div class="actions">
-                                                    <a href="javascript:;" class="btn btn-sm bg-success-light me-2">
-                                                    <i class="feather-eye"></i>
-                                                    </a>
-                                                    <a href="{{ route('instructor.edit-subject')}}" class="btn btn-sm bg-danger-light">
-                                                    <i class="feather-edit"></i>
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="form-check check-tables">
-                                                <input class="form-check-input" type="checkbox" value="something">
-                                                </div>
-                                            </td>
-                                        <td>PRE2143</td>
-                                            <td>
-                                                <h2>
-                                                    <a>Science</a>
-                                                </h2>
-                                            </td>
-                                        <td>3</td>
-                                            <td class="text-end">
-                                                <div class="actions">
-                                                    <a href="javascript:;" class="btn btn-sm bg-success-light me-2">
-                                                        <i class="feather-eye"></i>
-                                                    </a>
-                                                    <a href="{{ route('instructor.edit-subject')}}" class="btn btn-sm bg-danger-light">
-                                                        <i class="feather-edit"></i>
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                        <td>
-                                        <div class="form-check check-tables">
-                                        <input class="form-check-input" type="checkbox" value="something">
-                                        </div>
-                                        </td>
-                                        <td>PRE2431</td>
-                                        <td>
-                                        <h2>
-                                        <a>Geography</a>
-                                        </h2>
-                                        </td>
-                                        <td>8</td>
-                                        <td class="text-end">
-                                        <div class="actions">
-                                        <a href="javascript:;" class="btn btn-sm bg-success-light me-2">
-                                        <i class="feather-eye"></i>
-                                        </a>
-                                        <a href="{{ route('instructor.edit-subject')}}" class="btn btn-sm bg-danger-light">
-                                        <i class="feather-edit"></i>
-                                        </a>
-                                        </div>
-                                        </td>
-                                        </tr>
-                                        <tr>
-                                        <td>
-                                        <div class="form-check check-tables">
-                                        <input class="form-check-input" type="checkbox" value="something">
-                                        </div>
-                                        </td>
-                                        <td>PRE1534</td>
-                                        <td>
-                                        <h2>
-                                        <a>Botony</a>
-                                        </h2>
-                                        </td>
-                                        <td>9</td>
-                                        <td class="text-end">
-                                        <div class="actions">
-                                        <a href="javascript:;" class="btn btn-sm bg-success-light me-2">
-                                        <i class="feather-eye"></i>
-                                        </a>
-                                        <a href="edit-subject." class="btn btn-sm bg-danger-light">
-                                        <i class="feather-edit"></i>
-                                        </a>
-                                        </div>
-                                        </td>
-                                        </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="form-check check-tables">
-                                                        <input class="form-check-input" type="checkbox" value="something">
-                                                    </div>
-                                                </td>
-                                                <td>PRE2153</td>
-                                                <td>
-                                                    <h2>
-                                                        <a>English</a>
-                                                    </h2>
-                                                </td>
-                                                <td>4</td>
-                                                <td class="text-end">
-                                                    <div class="actions">
-                                                        <a href="javascript:;" class="btn btn-sm bg-success-light me-2">
-                                                            <i class="feather-eye"></i>
-                                                        </a>
-                                                        <a href="{{ route('instructor.edit-course')}}." class="btn btn-sm bg-danger-light">
-                                                            <i class="feather-edit"></i>
-                                                        </a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                    </tbody>
                                 </table>
                             </div>
                         </div>
