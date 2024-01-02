@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\LoginController;
@@ -180,10 +181,9 @@ Route::middleware(['auth:instructor', 'instructor'])->prefix('/instructor')->nam
     Route::get('/profile', [InstructorController::class, 'profile'])->name('profile');
     Route::get('/inbox', [InstructorController::class, 'inbox'])->name('inbox');
     
-    
-    //Route::get('/profile', [InstructorController::class, 'profile'])->name('instructor.profile');
-    //Route::get('/inbox', [InstructorController::class, 'inbox'])->name('instructor.inbox');
 });
 
 
+Route::get('instructor/add-course', [CourseController::class, 'showForm'])->name('instructor.show_form');
+Route::post('instructor/add-course', [CourseController::class, 'store'])->name('instructor.store_course');
 

@@ -8,8 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Invoice extends Model
 {
     protected $fillable = [
+        'student_name',
         'invoice_number',
         'amount',
+        'issue_date',
         'due_date',
         // Add other fields as needed
     ];
