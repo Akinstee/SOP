@@ -14,7 +14,7 @@
                             class="menu-arrow"></span></a>
                     <ul>
                         <li><a href="{{ route('instructor.courses')}}">Courses List</a></li>
-                        <li><a href="{{ route('instructor.add-course')}}">Courses Add</a></li>
+                        <li><a href="{{ route('instructor.courses')}}">Courses Add</a></li>
                         <li><a href="{{ route('instructor.edit-course') }}">Courses Edit</a></li>
                     </ul>
                 </li>
