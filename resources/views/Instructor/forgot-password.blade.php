@@ -6,8 +6,8 @@
 <title>SOPS - Forgot Password</title>
 <link rel="shortcut icon" href="{{asset ('/img/favicon.png')}}">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700&display=swap"rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('plugins/bootstrap/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset ('plugins/feather/feather.css')}}">
+    <link rel="stylesheet" href="{{asset('/plugins/bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset ('/plugins/feather/feather.css')}}">
     <link rel="stylesheet" href="{{asset ('plugins/icons/flags/flags.css')}}">
     <link rel="stylesheet" href="{{asset ('/plugins/fontawesome/css/fontawesome.min.css')}}">
     <link rel="stylesheet" href="{{asset ('/plugins/fontawesome/css/all.min.css')}}">
@@ -21,14 +21,14 @@
             <div class="container">
                 <div class="loginbox">
                     <div class="login-left">
-                        <img class="img-fluid" src="assets/img/login.png" alt="Logo">
+                        <img class="img-fluid" src="{{ asset('/img/login.png')}}" alt="Logo">
                         </div>
                         <div class="login-right">
                         <div class="login-right-wrap">
                             <h1>Reset Password</h1>
                             <p class="account-subtitle">Let Us Help You</p>
 
-                            <form action="login.html">
+                            <form action="{{ asset('instructor.login') }}">
                                 <div class="form-group">
                                     <label>Enter your registered email address <span class="login-danger">*</span></label>
                                     <input class="form-control" type="text">

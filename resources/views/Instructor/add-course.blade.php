@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="{{asset ('/plugins/fontawesome/css/fontawesome.min.css')}}">
 <link rel="stylesheet" href="{{asset ('/plugins/fontawesome/css/all.min.css')}}">
 
-<link rel="stylesheet" href="{{asset ('/css/style.css')}}">
+<link rel="stylesheet" href="{{asset ('/css/style32.css')}}">
 </head>
 <body>
 

@@ -24,7 +24,7 @@
 
 <link rel="stylesheet" href="assets/plugins/select2/css/select2.min.css">
 
-<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/style32.css">
 </head>
 <body>
 

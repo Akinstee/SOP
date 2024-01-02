@@ -20,7 +20,7 @@
 
 <link rel="stylesheet" href=" {{ asset('/plugins/datatables/datatables.min.css') }}">
 
-<link rel="stylesheet" href=" {{ asset('/css/style.css') }}">
+<link rel="stylesheet" href=" {{ asset('/css/style32.css') }}">
 </head>
 <body>
 

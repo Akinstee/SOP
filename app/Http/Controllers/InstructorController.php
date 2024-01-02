@@ -5,6 +5,7 @@ use App\Models\Course;
 use App\Models\Invoice;
 use App\Models\Instructor;
 use Illuminate\Http\Request;
+use Symfony\Component\Mime\Email;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -180,9 +181,28 @@ class InstructorController extends Controller
     //     return view('instructor.inbox', compact('inboxData'));
     // }
 
+    // public function inbox()
+    // {
+    //     return view('instructor.inbox');
+    // }
     public function inbox()
     {
-        return view('instructor.inbox');
+        $emails = Email::all(); // Fetch emails from the database
+
+        return view('instructor.inbox', compact('emails'));
+    }
+
+    public function compose(Request $request)
+    {
+        // Handle form submission and save data to the database
+        // Assuming you have a 'emails' table and Email model
+        Email::create([
+            'sender' => $request->input('sender'),
+            'subject' => $request->input('subject'),
+            // Add more fields as needed
+        ]);
+
+        return redirect()->route('inbox.instructor');
     }
 
     public function profile()

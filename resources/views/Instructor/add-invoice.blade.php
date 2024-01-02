@@ -24,7 +24,7 @@
 
 <link rel="stylesheet" href="{{ asset('/css/bootstrap-datetimepicker.min.css')}}">
 
-<link rel="stylesheet" href="{{ asset('/css/style.css')}}">
+<link rel="stylesheet" href="{{ asset('/css/style32.css')}}">
 </head>
 <body>
     <div class="main-wrapper">

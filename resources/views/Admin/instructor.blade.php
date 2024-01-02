@@ -20,7 +20,7 @@
 
 <link rel="stylesheet" href="assets/plugins/datatables/datatables.min.css">
 
-<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/style32.css">
 </head>
 <body>
 

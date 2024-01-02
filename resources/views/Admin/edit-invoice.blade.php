@@ -24,13 +24,16 @@
 
 <link rel="stylesheet" href="{{ asset('/css/bootstrap-datetimepicker.min.css')}}">
 
-<link rel="stylesheet" href="{{ asset('/css/style32.css') }}">
+<link rel="stylesheet" href="{{ asset('/css/style.css') }}">
 </head>
 <body>
 
     <div class="main-wrapper">
+
+
         <div class="page-wrapper">
             <div class="content container-fluid">
+
                 <div class="page-header invoices-page-header">
                     <div class="row align-items-center">
                         <div class="col">
