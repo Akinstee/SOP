@@ -5,6 +5,7 @@ use App\Models\Course;
 use App\Models\Invoice;
 use App\Models\Instructor;
 use Illuminate\Http\Request;
+use App\Models\InvoiceSettings;
 use Symfony\Component\Mime\Email;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -214,6 +215,36 @@ class InstructorController extends Controller
     // {
     //     return view('instructor.live-class');
     // }
+
+    public function showSettingsForm()
+    {
+        // Fetch settings from the database
+        $settings = InvoiceSettings::first(); // Adjust the query based on your database structure
+
+        return view('instructor.settings', compact('settings'));
+    }
+
+    public function saveSettings(Request $request)
+    {
+        // Validate the form data
+        $request->validate([
+            'invoice_status' => 'boolean',
+            'invoice_amount' => 'numeric',
+            'invoice_number_prefix' => 'string',
+            // Add validation rules for other fields
+        ]);
+
+        // Save the settings to the database
+        $settings = InvoiceSettings::firstOrNew(); // Assuming you have a model named InvoiceSettings
+        $settings->invoice_status = $request->input('invoice_status');
+        $settings->invoice_amount = $request->input('invoice_amount');
+        $settings->invoice_number_prefix = $request->input('invoice_number_prefix');
+        // Set other fields accordingly
+
+        $settings->save();
+
+        return redirect()->route('instructor.settings')->with('success', 'Settings saved successfully!');
+    }
 
 }
 
