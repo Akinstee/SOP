@@ -129,12 +129,45 @@ class AdminController extends Controller
         return view('instructor.live-class');
     }
 
-    public function showProfile()
+    public function profile()
     {
         // Fetch instructor details from the database
         $admin = auth()->user();
 
         return view('admin.profile', compact('admin'));
+    }
+
+    public function edit()
+    {
+        // Assuming you want to edit the currently authenticated admin's profile
+        $admin = auth()->user(); // Adjust this according to your authentication logic
+
+        if ($admin) {
+            return view('admin.edit', compact('admin'));
+        } else {
+            return redirect()->route('login'); // Redirect to login or handle as appropriate
+        }
+
+        // return view('admin.edit', compact('admin'));
+    }
+
+    public function update(Request $request)
+    {
+        // Validate the form data
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'date_of_birth' => 'date',
+            'email' => 'required|email|unique:admins,email,' . auth()->id(),
+            'mobile' => 'required|string|max:15',
+            'address' => 'required|string|max:255',
+            // Add other fields as needed
+        ]);
+
+        // Update the admin profile
+        $admin = auth()->user();
+        $admin->update($request->all());
+
+        return redirect()->route('admin.profile')->with('success', 'Profile updated successfully!');
     }
 
     public function changePassword(Request $request)
@@ -151,7 +184,7 @@ class AdminController extends Controller
             'password' => bcrypt($request->input('new_password')),
         ]);
 
-        return redirect()->route('admin.profile.show')->with('success', 'Password changed successfully!');
+        return redirect()->route('admin.profile')->with('success', 'Password changed successfully!');
     }
 
     public function inbox()

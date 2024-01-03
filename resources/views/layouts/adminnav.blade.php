@@ -156,7 +156,7 @@
                         <p class="text-muted mb-0">Administrator</p>
                     </div>
                 </div>
-                <a class="dropdown-item" href="{{ route('admin.profile')}}">My Profile</a>
+                <a class="dropdown-item" href="{{ route('admin.profile') }}">My Profile</a>
                 <a class="dropdown-item" href="{{ route('admin.inbox')}}">Inbox</a>
                 <a class="dropdown-item" href="{{ route ('admin.login')}}">Logout</a>
             </div>

@@ -87,6 +87,7 @@
                                                         <span>Personal Details</span>
                                                         <a class="edit-link" data-bs-toggle="modal" href="{{ route('admin.edit') }}"><i class="far fa-edit me-1"></i>Edit</a>
                                                     </h5>
+                                                    @if($admin)
                                                     <div class="row">
                                                         <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">Name</p>
                                                         <p class="col-sm-9">{{ $admin->name }}</p>
@@ -107,6 +108,9 @@
                                                         <p class="col-sm-3 text-muted text-sm-end mb-0">Address</p>
                                                         <p class="col-sm-9 mb-0">{{ $admin->address }}</p>
                                                     </div>
+                                                    @else
+                                                        <p>No admin data found.</p>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
@@ -127,11 +131,15 @@
                                                         <span>Skills </span>
                                                         <a class="edit-link" href="{{ route('admin.edit') }}"><i class="far fa-edit me-1"></i> Edit</a>
                                                     </h5>
+                                                    @if($admin && $admin->skills)
                                                     <div class="skill-tags">
                                                         @foreach($admin->skills as $skill)
                                                             <span>{{ $skill }}</span>
                                                         @endforeach
                                                     </div>
+                                                    @else
+                                                    <p>No skills found.</p>
+                                                @endif
                                                 </div>
                                             </div>
                                         </div>

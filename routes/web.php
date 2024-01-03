@@ -165,8 +165,11 @@ Route::post('/admin/submit', [AdminController::class, 'submit'])->name('admin.su
 Route::get('/admin/edit', [AdminController::class, 'editProfile'])->name('instructor.edit');
 Route::post('/admin/change-password', [AdminController::class, 'changePassword'])->name('instructor.change.password');
 
-Route::get('/admin/profile', [AdminController::class, 'showProfile'])->name('admin.profile.show');
+// Route::get('/admin/profile', [AdminController::class, 'showProfile'])->name('admin.profile.show');
+Route::get('/admin/profile', [AdminController::class, 'profile'])->name('admin.profile');
 Route::post('/admin/change-password', [AdminController::class, 'changePassword'])->name('admin.change.password');
+Route::get('/admin/edit', [AdminController::class, 'edit'])->name('admin.edit');
+
 
 Route::get('/admin/instructors', [AdminController::class, 'instructors'])->name('admin.instructors');
 Route::get('/admin/instructor-details', [AdminController::class, 'instructorDetails'])->name('admin.instructorDetails');
