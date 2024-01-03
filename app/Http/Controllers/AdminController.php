@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\User;
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -16,6 +17,17 @@ class AdminController extends Controller
     {
         return view('admin.dashboard');
     }
+
+    public function submit(Request $request)
+    {
+        // Handle form submission and database interaction here
+        // Example: Save data to the database
+        Admin::create($request->all());
+
+        // Redirect back or to a different page after submission
+        return redirect()->route('admin.dashboard')->with('success', 'Data submitted successfully!');
+    }
+    
 
     public function adminLogin()
     {
@@ -115,6 +127,36 @@ class AdminController extends Controller
     public function liveClass()
     {
         return view('instructor.live-class');
+    }
+
+    public function showProfile()
+    {
+        // Fetch instructor details from the database
+        $admin = auth()->user();
+
+        return view('admin.profile', compact('admin'));
+    }
+
+    public function changePassword(Request $request)
+    {
+        // Validate the form data
+        $request->validate([
+            'old_password' => 'required',
+            'new_password' => 'required|min:8|confirmed',
+        ]);
+
+        // Update instructor password in the database
+        $admin = auth()->user();
+        $admin->update([
+            'password' => bcrypt($request->input('new_password')),
+        ]);
+
+        return redirect()->route('admin.profile.show')->with('success', 'Password changed successfully!');
+    }
+
+    public function inbox()
+    {
+        return view('admin.settings');
     }
 
     public function logout()

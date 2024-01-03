@@ -206,9 +206,29 @@ class InstructorController extends Controller
         return redirect()->route('inbox.instructor');
     }
 
-    public function profile()
+    public function showProfile()
     {
-        return view('instructor.profile');
+        // Fetch instructor details from the database
+        $instructor = auth()->user();
+
+        return view('instructor.profile', compact('instructor'));
+    }
+
+    public function changePassword(Request $request)
+    {
+        // Validate the form data
+        $request->validate([
+            'old_password' => 'required',
+            'new_password' => 'required|min:6|confirmed',
+        ]);
+
+        // Update instructor password in the database
+        $instructor = auth()->user();
+        $instructor->update([
+            'password' => bcrypt($request->input('new_password')),
+        ]);
+
+        return redirect()->route('instructor.profile.show')->with('success', 'Password changed successfully!');
     }
 
     // public function liveClass()

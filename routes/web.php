@@ -136,29 +136,60 @@ Route::middleware('auth')->prefix('/student')->name('student.dashboard')->group(
 
 //Admin Panel
 Route::middleware(['auth:admin'])->group(function () {
-    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    //Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 
-    Route::get('/admin/students', [AdminController::class, 'students'])->name('admin.students');
-    Route::get('/admin/student-details', [AdminController::class, 'studentDetails'])->name('admin.studentDetails');
-    Route::get('/admin/add-student', [AdminController::class, 'addStudent'])->name('admin.addStudent');
-    Route::get('/admin/edit-student', [AdminController::class, 'editStudent'])->name('admin.editStudent');
+   
 
-    Route::get('/admin/instructors', [AdminController::class, 'instructors'])->name('admin.instructors');
-    Route::get('/admin/instructor-details', [AdminController::class, 'instructorDetails'])->name('admin.instructorDetails');
-    Route::get('/admin/add-instructor', [AdminController::class, 'addInstructor'])->name('admin.addInstructor');
-    Route::get('/admin/edit-instructor', [AdminController::class, 'editInstructor'])->name('admin.editInstructor');
+    // Route::get('/admin/instructors', [AdminController::class, 'instructors'])->name('admin.instructors');
+    // Route::get('/admin/instructor-details', [AdminController::class, 'instructorDetails'])->name('admin.instructorDetails');
+    // Route::get('/admin/add-instructor', [AdminController::class, 'addInstructor'])->name('admin.addInstructor');
+    // Route::get('/admin/edit-instructor', [AdminController::class, 'editInstructor'])->name('admin.editInstructor');
 
-    Route::get('/admin/courses', [AdminController::class, 'courses'])->name('admin.courses');
-    Route::get('/admin/add-course', [AdminController::class, 'addCourse'])->name('admin.addCourse');
-    Route::get('/admin/edit-courses', [AdminController::class, 'editCourses'])->name('admin.editCourses');
+    // Route::get('/admin/courses', [AdminController::class, 'courses'])->name('admin.courses');
+    // Route::get('/admin/add-course', [AdminController::class, 'addCourse'])->name('admin.addCourse');
+    // Route::get('/admin/edit-courses', [AdminController::class, 'editCourses'])->name('admin.editCourses');
 
-    Route::get('/admin/invoices', [AdminController::class, 'invoices'])->name('admin.invoices');
+    // Route::get('/admin/invoices', [AdminController::class, 'invoices'])->name('admin.invoices');
 
-    Route::get('/admin/settings', [AdminController::class, 'settings'])->name('admin.settings');
-    Route::get('/live-class', [AdminController::class, 'liveClass'])->name('admin.live-class');
+    // Route::get('/admin/settings', [AdminController::class, 'settings'])->name('admin.settings');
+    // Route::get('/live-class', [AdminController::class, 'liveClass'])->name('admin.live-class');
 
-    Route::get('/logout', [AdminController::class, 'logout'])->name('admin.logout');
+    // Route::get('/logout', [AdminController::class, 'logout'])->name('admin.logout');
 });
+
+Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+Route::post('/admin/submit', [AdminController::class, 'submit'])->name('admin.submit');
+
+//Route::get('/admin/profile', [AdminController::class, 'profile'])->name('admin.profile');
+
+Route::get('/admin/edit', [AdminController::class, 'editProfile'])->name('instructor.edit');
+Route::post('/admin/change-password', [AdminController::class, 'changePassword'])->name('instructor.change.password');
+
+Route::get('/admin/profile', [AdminController::class, 'showProfile'])->name('admin.profile.show');
+Route::post('/admin/change-password', [AdminController::class, 'changePassword'])->name('admin.change.password');
+
+Route::get('/admin/instructors', [AdminController::class, 'instructors'])->name('admin.instructors');
+Route::get('/admin/instructor-details', [AdminController::class, 'instructorDetails'])->name('admin.instructorDetails');
+Route::get('/admin/add-instructor', [AdminController::class, 'addInstructor'])->name('admin.addInstructor');
+Route::get('/admin/edit-instructor', [AdminController::class, 'editInstructor'])->name('admin.editInstructor');
+
+Route::get('/admin/students', [AdminController::class, 'students'])->name('admin.students');
+Route::get('/admin/student-details', [AdminController::class, 'studentDetails'])->name('admin.studentDetails');
+Route::get('/admin/add-student', [AdminController::class, 'addStudent'])->name('admin.addStudent');
+Route::get('/admin/edit-student', [AdminController::class, 'editStudent'])->name('admin.editStudent');
+
+Route::get('/admin/courses', [AdminController::class, 'courses'])->name('admin.courses');
+Route::get('/admin/add-course', [AdminController::class, 'addCourse'])->name('admin.addCourse');
+Route::get('/admin/edit-courses', [AdminController::class, 'editCourses'])->name('admin.editCourses');
+
+Route::get('/admin/invoices', [AdminController::class, 'invoices'])->name('admin.invoices');
+
+Route::get('/admin/settings', [AdminController::class, 'settings'])->name('admin.settings');
+Route::get('/admin/live-class', [AdminController::class, 'liveClass'])->name('admin.live-class');
+Route::get('/admin/inbox', [AdminController::class, 'inbox'])->name('admin.inbox');
+
+Route::get('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
+
 
 // Route::middleware('auth:instructor')->prefix('/instructor')->name('instructor.')->group(function () {
 Route::middleware(['auth:instructor', 'instructor'])->prefix('/instructor')->name('instructor.')->group(function () {
@@ -167,7 +198,7 @@ Route::middleware(['auth:instructor', 'instructor'])->prefix('/instructor')->nam
     Route::get('/error-404', [InstructorController::class, 'error-404'])->name('error-404');
     Route::get('/settings', [InstructorController::class, 'settings'])->name('settings');
     // New routes for courses
-    Route::get('/courses', [InstructorController::class, 'courses'])->name('courses');
+   // Route::get('/courses', [InstructorController::class, 'courses'])->name('courses');
     Route::get('/add-course', [InstructorController::class, 'addCourse'])->name('add-course');
     Route::get('/edit-course', [InstructorController::class, 'editCourse'])->name('edit-course');
     // New routes for invoices
@@ -184,6 +215,19 @@ Route::middleware(['auth:instructor', 'instructor'])->prefix('/instructor')->nam
 });
 
 
-Route::get('instructor/add-course', [CourseController::class, 'showForm'])->name('instructor.show_form');
-Route::post('instructor/add-course', [CourseController::class, 'store'])->name('instructor.store_course');
+// Route::get('instructor/add-course', [CourseController::class, 'showForm'])->name('instructor.show_form');
+// Route::post('instructor/add-course', [CourseController::class, 'store'])->name('instructor.store_course');
 
+Route::get('/instructor/courses', [InstructorController::class, 'courses'])->name('instructor.courses');
+Route::get('/instructor/invoices', [StudentController::class, 'invoices'])->name('instructor.invoices');
+Route::get('/instructor/add-invoice', [StudentController::class, 'add-invoice'])->name('instructor.add-invoice');
+Route::get('/instructor/edit-invoice', [StudentController::class, 'edit-invoice'])->name('instructor.edit-invoice');
+Route::get('/instructor/settings', [InstructorController::class, 'settings'])->name('instructor.settings');
+Route::get('/instructor/forgot-password', [InstructorController::class, 'forgot-password'])->name('instructor.forgot-password');
+
+// Route::get('/instructor/profile', [InstructorController::class, 'showProfile'])->name('instructor.profile.show');
+// Route::post('/instructor/change-password', [InstructorController::class, 'changePassword'])->name('instructor.change.password');
+
+Route::get('/instructor/profile', [InstructorController::class, 'showProfile'])->name('instructor.profile');
+    Route::get('/instructor/edit', [InstructorController::class, 'editProfile'])->name('instructor.edit');
+    Route::post('/instructor/change-password', [InstructorController::class, 'changePassword'])->name('instructor.change.password');
