@@ -24,12 +24,19 @@
 
 <link rel="stylesheet" href="{{ asset('/css/bootstrap-datetimepicker.min.css')}}">
 
-<link rel="stylesheet" href="{{ asset('/css/style.css') }}">
+<link rel="stylesheet" href="{{ asset('/css/style32.css') }}">
 </head>
 <body>
 
     <div class="main-wrapper">
 
+        <!--Header Navbar Start-->
+        @include('layouts.adminnav')
+        <!--Header Navbar End-->
+
+        {{-- Sidebar Start --}}
+        @include('layouts.adminside')
+        {{-- Sidebar Ends --}}
 
         <div class="page-wrapper">
             <div class="content container-fluid">
@@ -389,7 +396,7 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="invoice-logo">
-                                                        <img src="assets/img/logo.png" alt="logo">
+                                                        <img src="{{ asset('/img/logo.png')}}" alt="logo">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -405,8 +412,8 @@
 
                                         <div class="invoice-item invoice-item-bg">
                                             <div class="invoice-circle-img">
-                                                <img src="assets/img/invoice-circle1.png" alt="" class="invoice-circle1">
-                                                <img src="assets/img/invoice-circle2.png" alt="" class="invoice-circle2">
+                                                <img src="{{ asset('/img/invoice-circle1.png')}}" alt="" class="invoice-circle1">
+                                                <img src="{{ asset('/img/invoice-circle2.png')}}" alt="" class="invoice-circle2">
                                             </div>
                                             <div class="row">
                                                 <div class="col-lg-4 col-md-12">
@@ -532,7 +539,7 @@
                                                 </div>
                                                 <div class="col-lg-4 col-md-4">
                                                     <div class="invoice-sign text-end">
-                                                        <img class="img-fluid d-inline-block" src="assets/img/signature.png" alt="sign">
+                                                        <img class="img-fluid d-inline-block" src="{{ asset('/img/signature.png')}}" alt="sign">
                                                         <span class="d-block">Harristemp</span>
                                                     </div>
                                                 </div>

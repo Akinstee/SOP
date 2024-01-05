@@ -266,6 +266,76 @@ class InstructorController extends Controller
         return redirect()->route('instructor.settings')->with('success', 'Settings saved successfully!');
     }
 
+    // public function edit_invoice($id)
+    // {
+    //     // Retrieve the invoice with the given ID from the database
+    //     $invoice = Invoice::findOrFail($id);
+
+    //     // You can add additional checks, such as verifying that the current user has permission to edit this invoice
+
+    //     // Pass the invoice data to the view
+    //     return view('instructor.edit-invoice', ['invoice' => $invoice]);
+    // }
+
+    // // ... Other methods in your controller ...
+
+    // // Example of an update method (you can modify this based on your needs)
+    // public function update_invoice(Request $request, $id)
+    // {
+    //     // Validate the form data (customize this based on your requirements)
+    //     $request->validate([
+    //         'invoice_number' => 'required',
+    //         'amount' => 'required|numeric',
+    //         // Add more validation rules as needed
+    //     ]);
+
+    //     // Find the invoice with the given ID
+    //     $invoice = Invoice::findOrFail($id);
+
+    //     // Update the invoice data based on the form input
+    //     $invoice->update([
+    //         'invoice_number' => $request->input('invoice_number'),
+    //         'amount' => $request->input('amount'),
+    //         // Update other fields as needed
+    //     ]);
+
+    //     // Redirect to a page indicating the update was successful
+    //     return redirect()->route('invoices.index')->with('success', 'Invoice updated successfully');
+    // }
+
+    public function invoicesSettings()
+    {
+        return view('invoices.settings');
+    }
+
+    public function showInvoicesSettings()
+    {
+        return view('instructor.invoices-settings');
+    }
+
+    public function showTaxSettings()
+    {
+        return view('instructor.tax-settings');
+    }
+
+    public function showBankSettings()
+    {
+        return view('instructor.bank-settings');
+    }
+
+    public function updateInvoiceSettings(Request $request)
+    {
+        // Handle form submission and update settings in the database
+        // You can access form data using $request->input('input_name')
+
+        // Add your logic to update the settings
+
+        // Redirect back with a success message
+        return redirect()->back()->with('success', 'Settings updated successfully');
+    }
+   
+    
+
 }
 
 

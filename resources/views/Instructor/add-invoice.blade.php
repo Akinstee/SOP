@@ -384,7 +384,7 @@
                                         <div class="{{ asset('invoice-item invoice-item-bg')}}">
                                             <div class="invoice-circle-img">
                                                 <img src="{{ asset(/img/invoice-circle1.png)}}" alt="" class="invoice-circle1">
-                                                <img src="assets/img/invoice-circle2.png" alt="" class="invoice-circle2">
+                                                <img src="{{ asset('/img/invoice-circle2.png')}}" alt="" class="invoice-circle2">
                                             </div>
                                             <div class="row">
                                                 <div class="col-lg-4 col-md-12">
@@ -508,7 +508,7 @@
                                                 </div>
                                                 <div class="col-lg-4 col-md-4">
                                                     <div class="invoice-sign text-end">
-                                                        <img class="img-fluid d-inline-block" src="assets/img/signature.png" alt="sign">
+                                                        <img class="img-fluid d-inline-block" src="{{ asset('/img/signature.png')}}" alt="sign">
                                                         <span class="d-block">Harristemp</span>
                                                     </div>
                                                 </div>

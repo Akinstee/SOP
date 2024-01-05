@@ -23,7 +23,14 @@
 <body>
 
     <div class="main-wrapper">
-
+            <!--Header Navbar Start-->
+         @include('layouts.instructornav')
+         <!--Header Navbar End-->
+ 
+         {{-- Sidebar Start --}}
+         @include('layouts.instructorside')
+         {{-- Sidebar Ends --}}
+ 
         <div class="page-wrapper">
             <div class="content container-fluid">
 

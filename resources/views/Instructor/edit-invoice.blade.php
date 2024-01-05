@@ -60,7 +60,8 @@
                         <div class="col-md-12">
                             <div class="card invoices-add-card">
                                 <div class="card-body">
-                                    <form action="#" class="invoices-form">
+                                    {{-- <form action="#" class="invoices-form"> --}}
+                                    <form action="{{ route('edit-invoice') }}" method="POST">
                                         <div class="invoices-main-form">
                                             <div class="row">
                                                 <div class="col-xl-4 col-md-6 col-sm-12 col-12">
@@ -386,7 +387,7 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="invoice-logo">
-                                                        <img src="assets/img/logo.png" alt="logo">
+                                                        <img src="{{ asset('/img/logo.png')}}" alt="logo">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -402,8 +403,8 @@
 
                                         <div class="invoice-item invoice-item-bg">
                                             <div class="invoice-circle-img">
-                                                <img src="assets/img/invoice-circle1.png" alt="" class="invoice-circle1">
-                                                <img src="assets/img/invoice-circle2.png" alt="" class="invoice-circle2">
+                                                <img src="{{ asset('/img/invoice-circle1.png')}}" alt="" class="invoice-circle1">
+                                                <img src="{{ asset('/img/invoice-circle2.png')}}" alt="" class="invoice-circle2">
                                             </div>
                                             <div class="row">
                                                 <div class="col-lg-4 col-md-12">
@@ -529,7 +530,7 @@
                                                 </div>
                                                 <div class="col-lg-4 col-md-4">
                                                     <div class="invoice-sign text-end">
-                                                        <img class="img-fluid d-inline-block" src="assets/img/signature.png" alt="sign">
+                                                        <img class="img-fluid d-inline-block" src="{{ asset('/img/signature.png')}}" alt="sign">
                                                         <span class="d-block">Harristemp</span>
                                                     </div>
                                                 </div>

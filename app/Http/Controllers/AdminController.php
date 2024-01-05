@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Admin;
+use App\Models\Course;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -64,10 +65,10 @@ class AdminController extends Controller
         return view('admin.students');
     }
 
-    public function studentDetails()
-    {
-        return view('admin.student-details');
-    }
+    // public function studentDetails()
+    // {
+    //     return view('admin.student-details');
+    // }
 
     public function addStudent()
     {
@@ -84,30 +85,17 @@ class AdminController extends Controller
         return view('admin.instructors');
     }
 
-    public function instructorDetails()
-    {
-        return view('admin.instructor-details');
-    }
-
-    public function addInstructor()
-    {
-        return view('admin.add-instructor');
-    }
-
-    public function editInstructor()
-    {
-        return view('admin.edit-instructor');
-    }
+    
 
     public function courses()
     {
         return view('admin.courses');
     }
 
-    public function addCourse()
-    {
-        return view('admin.add-course');
-    }
+    // public function addCourse()
+    // {
+    //     return view('admin.add-course');
+    // }
 
     public function editCourses()
     {
@@ -197,7 +185,73 @@ class AdminController extends Controller
         Auth::logout();
         return Redirect::route('index'); // Replace 'home' with your desired redirect path
     }
+
+    public function instructor()
+    {
+        return view('admin.instructor');
+    }
+
+    public function instructorList()
+    {
+        // Your logic for the instructor list page
+        return view('admin.instructor');
+    }
+
+    public function addInstructor()
+    {
+        // Your logic for the add instructor page
+        return view('admin.add-instructor');
+    }
+
+    public function editInstructor()
+    {
+        // Your logic for the edit instructor page
+        return view('admin.edit-instructor');
+    }
+
+
+
+    public function instructorDetails()
+    {
+        // Your logic for the instructor details page
+        return view('admin.instructor-details');
+    }
+
+    public function studentDetails()
+    {
+        // Your logic for the instructor details page
+        return view('admin.student-details');
+    }
+    public function addCourse()
+    {
+        // Your logic for the instructor details page
+        return view('admin.add-course');
+    }
+
+    public function storeCourse(Request $request)
+        {
+            // Validate the form data
+            $request->validate([
+                'course_name' => 'required|string|max:255',
+                // Add more validation rules as needed
+            ]);
+
+            // Create a new course instance
+            $course = new Course();
+
+            // Set the attributes based on the form data
+            $course->course_name = $request->input('course_name');
+            // Add more attributes as needed
+
+            // Save the course to the database
+            $course->save();
+
+            // Redirect back with a success message
+            return redirect()->back()->with('success', 'Course stored successfully');
+        }
 }
+
+
 
 
 

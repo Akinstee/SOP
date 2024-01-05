@@ -91,6 +91,7 @@
                                                     <div class="row">
                                                         <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">Name</p>
                                                         <p class="col-sm-9">{{ $admin->name }}</p>
+                                                        {{-- <p class="col-sm-9">{{Auth::guard('admin')->user()->name}}</p> --}}
                                                     </div>
                                                     <div class="row">
                                                         <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">Date of Birth</p>

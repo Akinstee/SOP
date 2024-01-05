@@ -24,10 +24,6 @@ use App\Http\Controllers\InstructorController;
 |
 */
 
-// Route::middleware('guest')->prefix('/admin')->name('admin.')->controller(LoginController::class)->group(function () {
-//     Route::get('/login', 'adminLogin')->name('login');
-//     Route::post('/check', 'adminCheck')->name('check');
-// });
 
 Route::middleware('guest:admin')->prefix('/admin')->name('admin.')->controller(LoginController::class)->group(function () {
     Route::get('/login', [AdminController::class, 'adminLogin'])->name('login');
@@ -43,16 +39,7 @@ Route::middleware('guest')->prefix('/student')->name('student.')->controller(Stu
     Route::post('/save', 'save')->name('save');
 });
 
-// Route::middleware('guest')->prefix('/student')->name('student.')->controller(LoginController::class)->group(function () {
-//     Route::get('/login', 'studentLogin')->name('login');
-//     Route::post('/check', 'studentCheck')->name('check');
-// });
 
-//Instructor Registration and Login Route
-// Route::middleware('guest')->prefix('/instructor')->name('instructor.')->controller(LoginController::class)->group(function () {
-//     Route::get('/login', 'instructorLogin')->name('login');
-//     Route::post('/check', 'instructorCheck')->name('check');
-// });
 
 Route::middleware('guest')->prefix('/instructor')->name('instructor.')->controller(InstructorController::class)->group(function () {
     Route::get('/login', 'instructorLogin')->name('login');
@@ -96,7 +83,6 @@ Route::get('/my-certificate', [StudentController::class, 'myCertificate']);
 // My Courses
 Route::get('/my-courses', [StudentController::class, 'myCourses']);
 
-//Route::get('/student/dashboard', [StudentController::class, 'dashboard'])->name('student.dashboard');
 Route::get('/student/my-learning', [StudentController::class, 'myLearning'])->name('student.my-learning');
 Route::get('/student/my-cart', [StudentController::class, 'myCart'])->name('student.my-cart');
 Route::get('/student/wishlist', [StudentController::class, 'wishlist'])->name('student.wishlist');
@@ -120,7 +106,6 @@ Route::post('/student/profile/update', [StudentController::class, 'updateProfile
 Route::post('/student/profile/update-image', [StudentController::class, 'updateProfileImage'])->name('profile.update_image');
 
 
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::middleware('guest')->prefix('/student')->name('student.')->group(function () {
     Route::get('/login', [StudentController::class, 'studentLogin'])->name('login');
@@ -136,54 +121,29 @@ Route::middleware('auth')->prefix('/student')->name('student.dashboard')->group(
 
 //Admin Panel
 Route::middleware(['auth:admin'])->group(function () {
-    //Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-
-   
-
-    // Route::get('/admin/instructors', [AdminController::class, 'instructors'])->name('admin.instructors');
-    // Route::get('/admin/instructor-details', [AdminController::class, 'instructorDetails'])->name('admin.instructorDetails');
-    // Route::get('/admin/add-instructor', [AdminController::class, 'addInstructor'])->name('admin.addInstructor');
-    // Route::get('/admin/edit-instructor', [AdminController::class, 'editInstructor'])->name('admin.editInstructor');
-
-    // Route::get('/admin/courses', [AdminController::class, 'courses'])->name('admin.courses');
-    // Route::get('/admin/add-course', [AdminController::class, 'addCourse'])->name('admin.addCourse');
-    // Route::get('/admin/edit-courses', [AdminController::class, 'editCourses'])->name('admin.editCourses');
-
-    // Route::get('/admin/invoices', [AdminController::class, 'invoices'])->name('admin.invoices');
-
-    // Route::get('/admin/settings', [AdminController::class, 'settings'])->name('admin.settings');
-    // Route::get('/live-class', [AdminController::class, 'liveClass'])->name('admin.live-class');
-
-    // Route::get('/logout', [AdminController::class, 'logout'])->name('admin.logout');
+    
 });
 
 Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 Route::post('/admin/submit', [AdminController::class, 'submit'])->name('admin.submit');
 
-//Route::get('/admin/profile', [AdminController::class, 'profile'])->name('admin.profile');
 
 Route::get('/admin/edit', [AdminController::class, 'editProfile'])->name('instructor.edit');
 Route::post('/admin/change-password', [AdminController::class, 'changePassword'])->name('instructor.change.password');
 
-// Route::get('/admin/profile', [AdminController::class, 'showProfile'])->name('admin.profile.show');
 Route::get('/admin/profile', [AdminController::class, 'profile'])->name('admin.profile');
 Route::post('/admin/change-password', [AdminController::class, 'changePassword'])->name('admin.change.password');
 Route::get('/admin/edit', [AdminController::class, 'edit'])->name('admin.edit');
 
 
-Route::get('/admin/instructors', [AdminController::class, 'instructors'])->name('admin.instructors');
-Route::get('/admin/instructor-details', [AdminController::class, 'instructorDetails'])->name('admin.instructorDetails');
-Route::get('/admin/add-instructor', [AdminController::class, 'addInstructor'])->name('admin.addInstructor');
-Route::get('/admin/edit-instructor', [AdminController::class, 'editInstructor'])->name('admin.editInstructor');
+
 
 Route::get('/admin/students', [AdminController::class, 'students'])->name('admin.students');
-Route::get('/admin/student-details', [AdminController::class, 'studentDetails'])->name('admin.studentDetails');
-Route::get('/admin/add-student', [AdminController::class, 'addStudent'])->name('admin.addStudent');
-Route::get('/admin/edit-student', [AdminController::class, 'editStudent'])->name('admin.editStudent');
+
 
 Route::get('/admin/courses', [AdminController::class, 'courses'])->name('admin.courses');
-Route::get('/admin/add-course', [AdminController::class, 'addCourse'])->name('admin.addCourse');
-Route::get('/admin/edit-courses', [AdminController::class, 'editCourses'])->name('admin.editCourses');
+// Route::get('/admin/add-course', [AdminController::class, 'addCourse'])->name('admin.add-course');
+// Route::get('/admin/edit-courses', [AdminController::class, 'editCourses'])->name('admin.editCourses');
 
 Route::get('/admin/invoices', [AdminController::class, 'invoices'])->name('admin.invoices');
 
@@ -191,46 +151,72 @@ Route::get('/admin/settings', [AdminController::class, 'settings'])->name('admin
 Route::get('/admin/live-class', [AdminController::class, 'liveClass'])->name('admin.live-class');
 Route::get('/admin/inbox', [AdminController::class, 'inbox'])->name('admin.inbox');
 
+Route::get('/admin/students', [AdminController::class, 'students'])->name('admin.students');
+Route::get('/admin/student-details', [AdminController::class, 'student-details'])->name('admin.student-details');
+Route::get('/admin/add-student', [AdminController::class, 'add-student'])->name('admin.add-student');
+Route::get('/admin/edit-student', [AdminController::class, 'edit-student'])->name('admin.edit-student');
+Route::get('/admin/instructor', [AdminController::class, 'instructor'])->name('admin.instructor');
+Route::get('/admin/add-student', [AdminController::class, 'add-student'])->name('admin.add-student');
+
+
+Route::get('/admin/add-course', [AdminController::class, 'addCourse'])->name('admin.add-course');
+Route::get('/admin/edit-courses', [AdminController::class, 'editInstructor'])->name('admin.edit-courses');
+
+Route::get('/admin/add-invoice', [AdminController::class, 'AddInvoice'])->name('admin.add-invoice');
+Route::get('/admin/edit-invoice', [AdminController::class, 'EditInvoice'])->name('admin.edit-invoice');
+Route::get('/admin/view-invoice', [AdminController::class, 'ViewInvoice'])->name('admin.view-invoice');
+Route::get('/admin/invoices-settings', [AdminController::class, 'InvoicesSettings'])->name('admin.invoices-settings');
+Route::get('/admin/settings', [AdminController::class, 'Settings'])->name('admin.settings');
+Route::get('/admin/forgot-password', [AdminController::class, 'ForgotPassword'])->name('admin.forgot-password');
+Route::get('/admin/error-404', [AdminController::class, 'error-404'])->name('admin.error-404');
+
 Route::get('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
 
 
-// Route::middleware('auth:instructor')->prefix('/instructor')->name('instructor.')->group(function () {
-Route::middleware(['auth:instructor', 'instructor'])->prefix('/instructor')->name('instructor.')->group(function () {
-    Route::get('/settings', [InstructorController::class, 'settings'])->name('settings');
-    Route::get('/forgot-password', [InstructorController::class, 'forgot-password'])->name('forgot-password');
-    Route::get('/error-404', [InstructorController::class, 'error-404'])->name('error-404');
-    Route::get('/settings', [InstructorController::class, 'settings'])->name('settings');
-    // New routes for courses
-   // Route::get('/courses', [InstructorController::class, 'courses'])->name('courses');
-    Route::get('/add-course', [InstructorController::class, 'addCourse'])->name('add-course');
-    Route::get('/edit-course', [InstructorController::class, 'editCourse'])->name('edit-course');
-    // New routes for invoices
-    Route::get('/invoices', [InstructorController::class, 'invoices'])->name('invoices');
-    Route::get('/add-invoice', [InstructorController::class, 'addInvoice'])->name('add-invoice');
-    Route::get('/edit-invoice', [InstructorController::class, 'editInvoice'])->name('edit-invoice');
-    Route::get('/view-invoice', [InstructorController::class, 'viewInvoice'])->name('view-invoice');
-    Route::get('/invoices-settings', [InstructorController::class, 'invoicesSettings'])->name('invoices-settings');
-    Route::get('/live-class', [InstructorController::class, 'liveClass'])->name('instructor.live-class');
-    Route::get('/logout', [InstructorController::class, 'logout'])->name('instructor.logout');
-    Route::get('/profile', [InstructorController::class, 'profile'])->name('profile');
-    Route::get('/inbox', [InstructorController::class, 'inbox'])->name('inbox');
-    
-});
 
 
-// Route::get('instructor/add-course', [CourseController::class, 'showForm'])->name('instructor.show_form');
-// Route::post('instructor/add-course', [CourseController::class, 'store'])->name('instructor.store_course');
+
+
+
+
 
 Route::get('/instructor/courses', [InstructorController::class, 'courses'])->name('instructor.courses');
-Route::get('/instructor/invoices', [StudentController::class, 'invoices'])->name('instructor.invoices');
-Route::get('/instructor/add-invoice', [StudentController::class, 'add-invoice'])->name('instructor.add-invoice');
-Route::get('/instructor/edit-invoice', [StudentController::class, 'edit-invoice'])->name('instructor.edit-invoice');
+Route::get('/instructor/invoices', [InstructorController::class, 'invoices'])->name('instructor.invoices');
+Route::get('/instructor/add-invoice', [InstructorController::class, 'add-invoice'])->name('instructor.add-invoice');
+Route::get('/instructor/edit-invoice', [InstructorController::class, 'edit-invoice'])->name('instructor.edit-invoice');
+Route::get('/instructor/view-invoice', [InstructorController::class, 'viewInvoice'])->name('instructor.view-invoice');
+
+
+
+Route::get('/instructor/invoice-settings', [InstructorController::class, 'invoicesSettings'])->name('instructor.invoices-settings');
+
+
 Route::get('/instructor/settings', [InstructorController::class, 'settings'])->name('instructor.settings');
 Route::get('/instructor/forgot-password', [InstructorController::class, 'forgot-password'])->name('instructor.forgot-password');
 
-// Route::get('/instructor/profile', [InstructorController::class, 'showProfile'])->name('instructor.profile.show');
-// Route::post('/instructor/change-password', [InstructorController::class, 'changePassword'])->name('instructor.change.password');
-
 Route::get('/instructor/profile', [InstructorController::class, 'showProfile'])->name('instructor.profile');
-    Route::get('/instructor/edit', [InstructorController::class, 'editProfile'])->name('instructor.edit');
-    Route::post('/instructor/change-password', [InstructorController::class, 'changePassword'])->name('instructor.change.password');
+Route::get('/instructor/edit', [InstructorController::class, 'editProfile'])->name('instructor.edit');
+Route::post('/instructor/change-password', [InstructorController::class, 'changePassword'])->name('instructor.change.password');
+
+
+
+
+
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/instructor', [AdminController::class, 'instructorList'])->name('instructor');
+    Route::get('/instructor-details', [AdminController::class, 'instructorDetails'])->name('instructor-details');
+    Route::get('/add-instructor', [AdminController::class, 'addInstructor'])->name('add-instructor');
+    Route::get('/edit-instructor', [AdminController::class, 'editInstructor'])->name('edit-instructor');
+    // ... other routes
+
+    Route::get('/student-details', [AdminController::class, 'studentDetails'])->name('student-details');
+    Route::get('/add-student', [AdminController::class, 'addStudent'])->name('add-student');
+    Route::get('/edit-student', [AdminController::class, 'editStudent'])->name('edit-student');
+
+
+    // Route::post('/store-course', [AdminController::class, 'storeCourse'])->name('admin.store_course');
+    Route::post('/store-course', [AdminController::class, 'storeCourse'])->name('store_course');
+
+
+});
+

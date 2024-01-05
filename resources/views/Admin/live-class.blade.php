@@ -1,3 +1,10 @@
+<!--Header Navbar Start-->
+@include('layouts.adminnav')
+<!--Header Navbar End-->
+
+{{-- Sidebar Start --}}
+@include('layouts.adminside')
+{{-- Sidebar Ends --}}
 <div class="live-class-container">
     <h2>Live Class</h2>
     <p>Welcome to the live class session. Join the discussion and enhance your learning experience!</p>

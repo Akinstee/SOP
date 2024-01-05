@@ -26,7 +26,7 @@
                         <li><a href="{{ route('instructor.add-invoice')}}">Add Invoices</a></li>
                         <li><a href="{{ route('instructor.edit-invoice')}}">Edit Invoices</a></li>
                         <li><a href="{{ route('instructor.view-invoice')}}">Invoices Details</a></li>
-                        <li><a href="{{ route('instructor.invoices-settings')}}">Invoices Settings</a></li>
+                        <li><a href="{{ route('instructor.invoices-settings') }}">Invoice Settings</a></li>
                     </ul>
                 </li>
                 <li class="submenu">
