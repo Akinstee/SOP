@@ -2,7 +2,7 @@
 
     <div class="header-left">
         <a href="{{ route('admin.dashboard')}}" class="logo">
-            <img src="{{asset ('/img/logo.png')}}" alt="Logo">
+            <img src="{{asset ('/img/SOPS.png')}}" alt="Logo">
         </a>
         <a href="{{ route('admin.dashboard')}}" class="logo logo-small">
             <img src="{{asset ('/img/logo-small.png')}}" alt="Logo" width="30" height="30">

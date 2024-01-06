@@ -29,6 +29,16 @@
     <body>
 
         <div class="main-wrapper">
+
+            <!--Header Navbar Start-->
+            @include('layouts.adminnav')
+            <!--Header Navbar End-->
+
+            {{-- Sidebar Start --}}
+            @include('layouts.adminside')
+            {{-- Sidebar Ends --}}
+
+            
             <div class="page-wrapper">
                 <div class="content container-fluid">
                     <div class="page-header">
@@ -36,7 +46,7 @@
                             <div class="col">
                                 <h3 class="page-title">Invoice settings</h3>
                                 <ul class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="{{ route('instructor.dashboard')}}">Dashboard</a>
+                                    <li class="breadcrumb-item"><a href="{{ route('admin.dashboard')}}">Dashboard</a>
                                     </li>
                                     <li class="breadcrumb-item active">General Settings</li>
                                 </ul>
@@ -49,17 +59,17 @@
                             <div class="widget settings-menu">
                                 <ul>
                                     <li class="nav-item">
-                                        <a href="{{ route('instructor.settings')}}" class="nav-link active">
+                                        <a href="{{ route('admin.settings')}}" class="nav-link active">
                                             <i class="fe fe-git-commit"></i> <span>General Settings</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{ route('instructor.tax-settings')}}" class="nav-link">
+                                        <a href="{{ route('admin.tax-settings')}}" class="nav-link">
                                             <i class="fe fe-bookmark"></i> <span>Tax Settings</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{ route('instructor.bank-settings')}}" class="nav-link">
+                                        <a href="{{ route('admin.bank-settings')}}" class="nav-link">
                                             <i class="fas fa-university"></i> <span>Bank Settings</span>
                                         </a>
                                     </li>

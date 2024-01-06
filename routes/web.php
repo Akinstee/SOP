@@ -165,9 +165,9 @@ Route::get('/admin/edit-courses', [AdminController::class, 'editInstructor'])->n
 Route::get('/admin/add-invoice', [AdminController::class, 'AddInvoice'])->name('admin.add-invoice');
 Route::get('/admin/edit-invoice', [AdminController::class, 'EditInvoice'])->name('admin.edit-invoice');
 Route::get('/admin/view-invoice', [AdminController::class, 'ViewInvoice'])->name('admin.view-invoice');
-Route::get('/admin/invoices-settings', [AdminController::class, 'InvoicesSettings'])->name('admin.invoices-settings');
+// Route::get('/admin/invoices-settings', [AdminController::class, 'InvoicesSettings'])->name('admin.invoices-settings');
 Route::get('/admin/settings', [AdminController::class, 'Settings'])->name('admin.settings');
-Route::get('/admin/forgot-password', [AdminController::class, 'ForgotPassword'])->name('admin.forgot-password');
+// Route::get('/admin/forgot-password', [AdminController::class, 'ForgotPassword'])->name('admin.forgot-password');
 Route::get('/admin/error-404', [AdminController::class, 'error-404'])->name('admin.error-404');
 
 Route::get('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
@@ -217,6 +217,28 @@ Route::prefix('admin')->name('admin.')->group(function () {
     // Route::post('/store-course', [AdminController::class, 'storeCourse'])->name('admin.store_course');
     Route::post('/store-course', [AdminController::class, 'storeCourse'])->name('store_course');
 
+    Route::get('/forgot-password', [AdminController::class, 'forgotPassword'])->name('forgot-password');
+
+    // Route::get('/invoices-settings', [AdminController::class, 'invoicesSettings'])->name('admin.invoices-settings');
+    //Route::get('admin/tax-settings', [AdminController::class, 'TaxSettings'])->name('admin.tax-settings');
+    Route::get('/tax-settings', [AdminController::class, 'taxSettings'])->name('tax-settings');
+    Route::get('/bank-settings', [AdminController::class, 'bankSettings'])->name('bank-settings');
+
+    Route::get('/invoices-settings', [AdminController::class, 'invoicesSettings'])->name('invoices-settings');
+    
+    Route::get('/localization-details', [AdminController::class, 'localizatioDetails'])->name('localization-details');
+
+    Route::get('/payment-settings', [AdminController::class, 'paymentSettings'])->name('payment-settings');
+    
+    Route::get('/email-settings', [AdminController::class, 'emailSettings'])->name('email-settings');
+
+    Route::get('/social-settings', [AdminController::class, 'socialSettings'])->name('social-settings');
+
+    Route::get('/social-links', [AdminController::class, 'socialLinks'])->name('social-links');
+
+    Route::get('/seo-settings', [AdminController::class, 'seoSettings'])->name('seo-settings');
+
+    Route::get('/others-settings', [AdminController::class, 'othersSettings'])->name('others-settings');
+
 
 });
-

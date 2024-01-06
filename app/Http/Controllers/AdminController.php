@@ -228,6 +228,13 @@ class AdminController extends Controller
         return view('admin.add-course');
     }
 
+    // public function forgotPassword()
+    // {
+    //     // Your logic for the instructor details page
+    //     return view('admin.forgot-password');
+    // }
+
+
     public function storeCourse(Request $request)
         {
             // Validate the form data
@@ -249,9 +256,101 @@ class AdminController extends Controller
             // Redirect back with a success message
             return redirect()->back()->with('success', 'Course stored successfully');
         }
+
+        // public function invoicesSettings()
+        // {
+        //     // Your logic for the instructor details page
+        //     return view('admin.invoices-settings');
+        // }
+
+    // public function forgotPassword()
+    // {
+    //     // Your logic for the instructor details page
+    //     return view('admin.forgot-password');
+    // }
+
+    public function forgotPassword()
+    {
+        // Your logic for the forgot password page
+        return view('admin.forgot-password'); // Adjust the view name accordingly
+    }
+
+    // public function taxSettings()
+    // {
+    //     // Your logic for the instructor details page
+    //     return view('admin.tax-settings');
+    // }
+
+    //     public function taxSettings()
+    // {
+    //     // Your logic for the tax settings page
+    //     return view('admin.tax-settings'); // Adjust the view name accordingly
+    // }
+
+    public function generalSettings()
+    {
+        // Your logic for the general settings page
+        return view('admin.general-settings'); // Adjust the view name accordingly
+    }
+
+    public function taxSettings()
+    {
+        // Your logic for the tax settings page
+        return view('admin.tax-settings'); // Adjust the view name accordingly
+    }
+
+    public function bankSettings()
+    {
+        // Your logic for the bank settings page
+        return view('admin.bank-settings'); // Adjust the view name accordingly
+    }
+
+    public function invoicesSettings()
+        {
+            // Your logic for the invoices settings page
+            return view('admin.invoices-settings'); // Adjust the view name accordingly
+        }
+
+    public function localizatioDetails()
+        {
+            // Your logic for the invoices settings page
+            return view('admin.localization-details'); // Adjust the view name accordingly
+        }
+
+    public function paymentSettings()
+        {
+            // Your logic for the invoices settings page
+            return view('admin.payment-settings'); // Adjust the view name accordingly
+        }
+
+    public function emailSettings()
+        {
+            // Your logic for the invoices settings page
+            return view('admin.email-settings'); // Adjust the view name accordingly
+        }
+
+    public function socialSettings()
+        {
+            // Your logic for the invoices settings page
+            return view('admin.social-settings'); // Adjust the view name accordingly
+        }
+
+        public function socialLinks()
+        {
+            // Your logic for the invoices settings page
+            return view('admin.social-links'); // Adjust the view name accordingly
+        }
+
+        public function seoSettings()
+        {
+            // Your logic for the invoices settings page
+            return view('admin.seo-settings'); // Adjust the view name accordingly
+        }
+
+        public function othersSettings()
+        {
+            // Your logic for the invoices settings page
+            return view('admin.others-settings'); // Adjust the view name accordingly
+        }
+
 }
-
-
-
-
-
