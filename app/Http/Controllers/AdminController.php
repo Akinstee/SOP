@@ -127,13 +127,13 @@ class AdminController extends Controller
 
     public function edit()
     {
-        // Assuming you want to edit the currently authenticated admin's profile
-        $admin = auth()->user(); // Adjust this according to your authentication logic
+        
+        $admin = auth()->user(); 
 
         if ($admin) {
             return view('admin.edit', compact('admin'));
         } else {
-            return redirect()->route('login'); // Redirect to login or handle as appropriate
+            return redirect()->route('login'); 
         }
 
         // return view('admin.edit', compact('admin'));
@@ -148,7 +148,7 @@ class AdminController extends Controller
             'email' => 'required|email|unique:admins,email,' . auth()->id(),
             'mobile' => 'required|string|max:15',
             'address' => 'required|string|max:255',
-            // Add other fields as needed
+            
         ]);
 
         // Update the admin profile
@@ -228,12 +228,7 @@ class AdminController extends Controller
         return view('admin.add-course');
     }
 
-    // public function forgotPassword()
-    // {
-    //     // Your logic for the instructor details page
-    //     return view('admin.forgot-password');
-    // }
-
+    
 
     public function storeCourse(Request $request)
         {
@@ -257,35 +252,12 @@ class AdminController extends Controller
             return redirect()->back()->with('success', 'Course stored successfully');
         }
 
-        // public function invoicesSettings()
-        // {
-        //     // Your logic for the instructor details page
-        //     return view('admin.invoices-settings');
-        // }
-
-    // public function forgotPassword()
-    // {
-    //     // Your logic for the instructor details page
-    //     return view('admin.forgot-password');
-    // }
-
     public function forgotPassword()
     {
         // Your logic for the forgot password page
         return view('admin.forgot-password'); // Adjust the view name accordingly
     }
 
-    // public function taxSettings()
-    // {
-    //     // Your logic for the instructor details page
-    //     return view('admin.tax-settings');
-    // }
-
-    //     public function taxSettings()
-    // {
-    //     // Your logic for the tax settings page
-    //     return view('admin.tax-settings'); // Adjust the view name accordingly
-    // }
 
     public function generalSettings()
     {

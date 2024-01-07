@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-<title>Preskool - Subject</title>
+<title>SOPS - COurses</title>
 
-<link rel="shortcut icon" href="{{ asset('/img/favicon.png') }}">
+<link rel="shortcut icon" href="{{ asset('/img/SOPS.png') }}">
 
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700&display=swap" rel="stylesheet">
 
@@ -39,7 +39,7 @@
                     <div class="col">
                         <h3 class="page-title">Edit Course</h3>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('instructor.course') }}">Course</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('instructor.courses') }}">Course</a></li>
                             <li class="breadcrumb-item active">Edit Course</li>
                         </ul>
                     </div>

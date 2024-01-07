@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
 <title>SOPS - Forgot Password</title>
-<link rel="shortcut icon" href="{{asset ('/img/favicon.png')}}">
+<link rel="shortcut icon" href="{{asset ('/img/SOPS.png')}}">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700&display=swap"rel="stylesheet">
     <link rel="stylesheet" href="{{asset('/plugins/bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset ('/plugins/feather/feather.css')}}">
@@ -21,7 +21,7 @@
             <div class="container">
                 <div class="loginbox">
                     <div class="login-left">
-                        <img class="img-fluid" src="{{ asset('/img/login.png')}}" alt="Logo">
+                        <img class="img-fluid" src="{{ asset('/img/SOPS.png')}}" alt="Logo">
                         </div>
                         <div class="login-right">
                         <div class="login-right-wrap">

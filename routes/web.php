@@ -142,8 +142,7 @@ Route::get('/admin/students', [AdminController::class, 'students'])->name('admin
 
 
 Route::get('/admin/courses', [AdminController::class, 'courses'])->name('admin.courses');
-// Route::get('/admin/add-course', [AdminController::class, 'addCourse'])->name('admin.add-course');
-// Route::get('/admin/edit-courses', [AdminController::class, 'editCourses'])->name('admin.editCourses');
+
 
 Route::get('/admin/invoices', [AdminController::class, 'invoices'])->name('admin.invoices');
 
@@ -165,9 +164,9 @@ Route::get('/admin/edit-courses', [AdminController::class, 'editInstructor'])->n
 Route::get('/admin/add-invoice', [AdminController::class, 'AddInvoice'])->name('admin.add-invoice');
 Route::get('/admin/edit-invoice', [AdminController::class, 'EditInvoice'])->name('admin.edit-invoice');
 Route::get('/admin/view-invoice', [AdminController::class, 'ViewInvoice'])->name('admin.view-invoice');
-// Route::get('/admin/invoices-settings', [AdminController::class, 'InvoicesSettings'])->name('admin.invoices-settings');
+
 Route::get('/admin/settings', [AdminController::class, 'Settings'])->name('admin.settings');
-// Route::get('/admin/forgot-password', [AdminController::class, 'ForgotPassword'])->name('admin.forgot-password');
+
 Route::get('/admin/error-404', [AdminController::class, 'error-404'])->name('admin.error-404');
 
 Route::get('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
@@ -175,28 +174,27 @@ Route::get('/admin/logout', [AdminController::class, 'logout'])->name('admin.log
 
 
 
-
-
-
-
-
 Route::get('/instructor/courses', [InstructorController::class, 'courses'])->name('instructor.courses');
+Route::get('/instructor/edit-courses', [InstructorController::class, 'editCourses'])->name('instructor.edit-course');
+Route::get('/instructor/add-course', [InstructorController::class, 'addCourse'])->name('instructor.add-course');
 Route::get('/instructor/invoices', [InstructorController::class, 'invoices'])->name('instructor.invoices');
-Route::get('/instructor/add-invoice', [InstructorController::class, 'add-invoice'])->name('instructor.add-invoice');
-Route::get('/instructor/edit-invoice', [InstructorController::class, 'edit-invoice'])->name('instructor.edit-invoice');
+Route::get('/instructor/invoices-paid', [InstructorController::class, 'invoicesPaid'])->name('instructor.invoices-paid');
+Route::get('/instructor/add-invoice', [InstructorController::class, 'addInvoice'])->name('instructor.add-invoice');
+Route::get('/instructor/edit-invoice', [InstructorController::class, 'editInvoice'])->name('instructor.edit-invoice');
 Route::get('/instructor/view-invoice', [InstructorController::class, 'viewInvoice'])->name('instructor.view-invoice');
-
-
-
+Route::get('/instructor/store_invoice', [InstructorController::class, 'storeInvoice'])->name('instructor.store_invoice');
 Route::get('/instructor/invoice-settings', [InstructorController::class, 'invoicesSettings'])->name('instructor.invoices-settings');
 
 
 Route::get('/instructor/settings', [InstructorController::class, 'settings'])->name('instructor.settings');
-Route::get('/instructor/forgot-password', [InstructorController::class, 'forgot-password'])->name('instructor.forgot-password');
+Route::get('/instructor/forgot-password', [InstructorController::class, 'forgotPassword'])->name('instructor.forgot-password');
+Route::get('/instructor/error-404', [InstructorController::class, 'error404'])->name('instructor.error-404');
 
 Route::get('/instructor/profile', [InstructorController::class, 'showProfile'])->name('instructor.profile');
 Route::get('/instructor/edit', [InstructorController::class, 'editProfile'])->name('instructor.edit');
 Route::post('/instructor/change-password', [InstructorController::class, 'changePassword'])->name('instructor.change.password');
+
+Route::get('/instructor/inbox', [InstructorController::class, 'inbox'])->name('instructor.inbox');
 
 
 
@@ -213,14 +211,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/add-student', [AdminController::class, 'addStudent'])->name('add-student');
     Route::get('/edit-student', [AdminController::class, 'editStudent'])->name('edit-student');
 
-
-    // Route::post('/store-course', [AdminController::class, 'storeCourse'])->name('admin.store_course');
     Route::post('/store-course', [AdminController::class, 'storeCourse'])->name('store_course');
 
     Route::get('/forgot-password', [AdminController::class, 'forgotPassword'])->name('forgot-password');
 
-    // Route::get('/invoices-settings', [AdminController::class, 'invoicesSettings'])->name('admin.invoices-settings');
-    //Route::get('admin/tax-settings', [AdminController::class, 'TaxSettings'])->name('admin.tax-settings');
     Route::get('/tax-settings', [AdminController::class, 'taxSettings'])->name('tax-settings');
     Route::get('/bank-settings', [AdminController::class, 'bankSettings'])->name('bank-settings');
 

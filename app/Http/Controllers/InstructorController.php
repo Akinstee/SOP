@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+//use function;
 use App\Models\Course;
 use App\Models\Invoice;
 use App\Models\Instructor;
@@ -92,11 +93,10 @@ class InstructorController extends Controller
 
     public function courses()
     {
-        // Your controller logic for the 'Courses' menu item
-        // Fetching data from the database
+        
         $courses = Course::all();
 
-        // Returning the 'courses.blade.php' view with the data
+        
         return view('instructor.courses', ['courses' => $courses]);
     }
 
@@ -128,20 +128,39 @@ class InstructorController extends Controller
     }
 
     // Example method for the 'Forgot Password' menu item
-    public function forgotPasswordForm()
+    // public function forgotPasswordForm()
+    // {
+    //     // Your controller logic for the 'Forgot Password' menu item
+    //     // This might be a simple forgot password form without specific data
+    //     // Returning the 'forgot-password.blade.php' view
+    //     return view('instructor.forgot-password');
+    // }
+
+    public function forgotPassword()
     {
-        // Your controller logic for the 'Forgot Password' menu item
-        // This might be a simple forgot password form without specific data
-        // Returning the 'forgot-password.blade.php' view
-        return view('instructor.forgot-password');
+        // Your logic for the forgot password page
+        return view('instructor.forgot-password'); // Adjust the view name accordingly
+    }
+    public function addInvoice()
+    {
+        
+        return view('instructor.add-invoice'); 
     }
 
-    // Example method for the 'Error Page' menu item
+    public function editInvoice()
+    {
+        return view('instructor.edit-invoice');
+    }
+
+    public function viewInvoice()
+    {
+        return view('instructor.view-invoice');
+    }
+
+    
     public function errorPage()
     {
-        // Your controller logic for the 'Error Page' menu item
-        // This might be a simple error page without specific data
-        // Returning the 'error-404.blade.php' view
+        
         return view('instructor.error-404');
     }
 
@@ -153,54 +172,41 @@ class InstructorController extends Controller
     public function logout()
     {
         Auth::logout();
-        return Redirect::route('index'); // Replace 'home' with your desired redirect path
+        return Redirect::route('index'); 
     }
 
-    // public function profile()
-    // {
-    //     // Get the authenticated instructor
-    //     $instructor = Auth::guard('instructor')->user();
+    public function storeInvoice(Request $request)
+{
+    // Validate the form data
+    $request->validate([
+        'invoice_number' => 'required|string|max:255', // Adjust validation rules as needed
+        // Add more validation rules for other fields
+    ]);
 
-    //     // Check if the instructor is authenticated
-    //     if (!$instructor) {
-    //         return redirect()->route('login'); // Redirect to login if not authenticated
-    //     }
+    // Create a new invoice instance
+    $invoice = new Invoice();
 
-    //     return view('instructor.profile', compact('instructor'));
-    // }
+    // Set the attributes based on the form data
+    $invoice->invoice_number = $request->input('invoice_number');
 
-    // public function inbox()
-    // {
-    //     // Get the authenticated instructor's inbox data
-    //     $inboxData = []; // Replace with your inbox fetching logic
+    
+    $invoice->save();
 
-    //     // Check if the instructor is authenticated
-    //     if (!Auth::guard('instructor')->check()) {
-    //         return redirect()->route('login'); // Redirect to login if not authenticated
-    //     }
+    return redirect()->back()->with('success', 'Invoice stored successfully');
+}
 
-    //     return view('instructor.inbox', compact('inboxData'));
-    // }
-
-    // public function inbox()
-    // {
-    //     return view('instructor.inbox');
-    // }
     public function inbox()
     {
-        $emails = Email::all(); // Fetch emails from the database
-
-        return view('instructor.inbox', compact('emails'));
+        return view('instructor.inbox');
     }
-
+    
     public function compose(Request $request)
     {
-        // Handle form submission and save data to the database
-        // Assuming you have a 'emails' table and Email model
+        
         Email::create([
             'sender' => $request->input('sender'),
             'subject' => $request->input('subject'),
-            // Add more fields as needed
+            
         ]);
 
         return redirect()->route('inbox.instructor');
@@ -325,21 +331,13 @@ class InstructorController extends Controller
 
     public function updateInvoiceSettings(Request $request)
     {
-        // Handle form submission and update settings in the database
-        // You can access form data using $request->input('input_name')
-
-        // Add your logic to update the settings
-
-        // Redirect back with a success message
         return redirect()->back()->with('success', 'Settings updated successfully');
     }
    
+    public function editCourses()
+    {
+        return view('instructor.edit-course');
+    }
     
 
 }
-
-
-
-
-
-
