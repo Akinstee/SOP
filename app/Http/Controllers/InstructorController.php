@@ -195,22 +195,74 @@ class InstructorController extends Controller
     return redirect()->back()->with('success', 'Invoice stored successfully');
 }
 
+    // public function inbox()
+    // {
+    //     return view('instructor.inbox');
+    // }
+
+    // public function inbox()
+    // {
+    //     // Retrieve emails from the database
+    //     $emails = Email::all(); // This assumes you have an Email model and emails table
+
+    //     // Pass the emails variable to the view
+    //     return view('inbox.instructor', ['emails' => $emails]);
+    // }
     public function inbox()
     {
-        return view('instructor.inbox');
+        return view('instructor.settings');
     }
     
+    // public function compose(Request $request)
+    // {
+        
+    //     Email::create([
+    //         'sender' => $request->input('sender'),
+    //         'subject' => $request->input('subject'),
+            
+    //     ]);
+
+    //     return redirect()->route('inbox.instructor');
+    // }
+
+    // public function compose(Request $request)
+    // {
+    //     // Validate the form data if needed
+    //     $request->validate([
+    //         'sender' => 'required|string|max:255',
+    //         'subject' => 'required|string|max:255',
+    //         // Add more validation rules as needed
+    //     ]);
+
+    //     // Create a new email instance
+    //     Email::create([
+    //         'sender' => $request->input('sender'),
+    //         'subject' => $request->input('subject'),
+    //         // Add more fields as needed
+    //     ]);
+
+    //     return redirect()->route('inbox.instructor');
+    // }
+
     public function compose(Request $request)
     {
-        
+        // Validate the form data if needed
+        $request->validate([
+            'sender' => 'required|string|max:255',
+            'subject' => 'required|string|max:255',
+            // Add more validation rules as needed
+        ]);
+
+        // Create a new email instance
         Email::create([
             'sender' => $request->input('sender'),
             'subject' => $request->input('subject'),
-            
+            // Add more fields as needed
         ]);
 
-        return redirect()->route('inbox.instructor');
+        return redirect()->route('instructor.compose');
     }
+
 
     public function showProfile()
     {
@@ -311,7 +363,7 @@ class InstructorController extends Controller
 
     public function invoicesSettings()
     {
-        return view('invoices.settings');
+        return view('instructor.invoices-settings');
     }
 
     public function showInvoicesSettings()
@@ -319,12 +371,12 @@ class InstructorController extends Controller
         return view('instructor.invoices-settings');
     }
 
-    public function showTaxSettings()
+    public function taxSettings()
     {
         return view('instructor.tax-settings');
     }
 
-    public function showBankSettings()
+    public function bankSettings()
     {
         return view('instructor.bank-settings');
     }

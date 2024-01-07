@@ -184,7 +184,11 @@ Route::get('/instructor/edit-invoice', [InstructorController::class, 'editInvoic
 Route::get('/instructor/view-invoice', [InstructorController::class, 'viewInvoice'])->name('instructor.view-invoice');
 Route::get('/instructor/store_invoice', [InstructorController::class, 'storeInvoice'])->name('instructor.store_invoice');
 Route::get('/instructor/invoice-settings', [InstructorController::class, 'invoicesSettings'])->name('instructor.invoices-settings');
+Route::get('/instructor/tax-settings', [InstructorController::class, 'taxSettings'])->name('instructor.tax-settings');
+Route::get('/instructor/bank-settings', [InstructorController::class, 'bankSettings'])->name('instructor.bank-settings');
+//Route::post('/compose', [InstructorController::class, 'compose'])->name('inbox.instructor.compose');
 
+Route::post('/inbox/instructor/compose', [InstructorController::class, 'compose'])->name('instructor.compose');
 
 Route::get('/instructor/settings', [InstructorController::class, 'settings'])->name('instructor.settings');
 Route::get('/instructor/forgot-password', [InstructorController::class, 'forgotPassword'])->name('instructor.forgot-password');
