@@ -34,7 +34,7 @@
                             class="menu-arrow"></span></a>
                     <ul>
                         <li><a href="{{ route('instructor.forgot-password')}}">Forgot Password</a></li>
-                        <li><a href="{{ route('instructor.error-404')}}">Error Page</a></li>
+
                     </ul>
                 </li>
                 

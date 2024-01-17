@@ -119,29 +119,19 @@ class StudentController extends Controller
         return view('students.my-learning', compact('courses'));
     }
 
+    public function courses()
+    {
+        
+        $courses = Course::all();
 
-    // public function myLearning()
-    // {
-    //     // Dummy courses for tech and marketing-related subjects
-    //     $courses = [
-    //         ['name' => 'Web Development Fundamentals', 'author' => 'John Doe', 'rating' => 4.5, 'price' => 19.99],
-    //         ['name' => 'Digital Marketing Essentials', 'author' => 'Jane Smith', 'rating' => 4.2, 'price' => 24.99],
-    //         ['name' => 'Python Programming for Beginners', 'author' => 'Alan Johnson', 'rating' => 4.8, 'price' => 29.99],
-    //         ['name' => 'Social Media Marketing Mastery', 'author' => 'Emily Brown', 'rating' => 4.6, 'price' => 22.99],
-    //         ['name' => 'JavaScript Advanced Techniques', 'author' => 'Chris Wilson', 'rating' => 4.7, 'price' => 27.99],
-    //         // Add more dummy courses as needed
-    //     ];
+        
+        return view('instructor.courses', ['courses' => $courses]);
+    }
 
-    //     // Save dummy courses to the database (for simplicity, not recommended in a real-world scenario)
-    //     foreach ($courses as $courseData) {
-    //         Course::create($courseData);
-    //     }
-
-    //     // Fetch courses from the database
-    //     $coursesFromDB = Course::all();
-
-    //     return view('students.my-learning', compact('coursesFromDB'));
-    // }
+    public function editCourses()
+    {
+        return view('student.edit-course');
+    }
 
     public function messages()
     {
@@ -302,6 +292,16 @@ class StudentController extends Controller
         return view('students.my-cart', compact('cartItems'));
     }
 
+    // public function forgotPassword()
+    // {
+    //     // Your logic for the forgot password page
+    //     return view('student.forgot-password'); // Adjust the view name accordingly
+    // }
+    public function forgotPassword()
+    {
+        // Your logic for the forgot password page
+        return view('students.forgot-password');
+    }
     public function logout()
     {
         Auth::logout();

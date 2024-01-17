@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
     <title>Instructor Dashboard</title>
-    <link rel="shortcut icon" href="{{asset ('/img/favicon.png')}}">
+    <link rel="shortcut icon" href="{{asset ('/img/SOPS.png')}}">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700&display=swap"rel="stylesheet">
     <link rel="stylesheet" href="{{asset('plugins/bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset ('plugins/feather/feather.css')}}">
@@ -52,7 +52,7 @@
                                 <div class="db-widgets d-flex justify-content-between align-items-center">
                                     <div class="db-info">
                                         <h6>Active COurses</h6>
-                                        <h3>50055</h3>
+                                        <h3>{{ $activeCoursesCount }}</h3>
                                     </div>
                                     <div class="db-icon">
                                         <img src="{{asset ('/img/icons/dash-icon-01.svg')}}" alt="Dashboard Icon">
@@ -67,7 +67,7 @@
                                 <div class="db-widgets d-flex justify-content-between align-items-center">
                                     <div class="db-info">
                                         <h6>Paid Courses</h6>
-                                        <h3>50+</h3>
+                                        <h3>{{ $paidCoursesCount }}</h3>
                                     </div>
                                     <div class="db-icon">
                                         <img src="{{asset ('/img/icons/dash-icon-02.svg')}}" alt="Dashboard Icon">
@@ -82,7 +82,7 @@
                                 <div class="db-widgets d-flex justify-content-between align-items-center">
                                     <div class="db-info">
                                         <h6>Free Courses</h6>
-                                        <h3>30+</h3>
+                                        <h3>{{ $freeCoursesCount }}</h3>
                                     </div>
                                     <div class="db-icon">
                                         <img src="{{asset ('/img/icons/dash-icon-03.svg')}}" alt="Dashboard Icon">
@@ -97,7 +97,7 @@
                                 <div class="db-widgets d-flex justify-content-between align-items-center">
                                     <div class="db-info">
                                         <h6>Revenue</h6>
-                                        <h3>$505</h3>
+                                        <h3>{{ $totalRevenue }}</h3>
                                     </div>
                                     <div class="db-icon">
                                         <img src="{{asset ('/img/icons/dash-icon-04.svg')}}" alt="Dashboard Icon">
@@ -183,96 +183,24 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td class="text-nowrap">
-                                                    <div>PRE2209</div>
-                                                </td>
-                                                <td class="text-nowrap">
-                                                    <a href="{{ route('instructor.profile')}}">
-                                                        <img class="rounded-circle"
-                                                            src="{{asset ('/img/profiles/avatar-02.jpg')}}" width="25"
-                                                            alt="Star Students">
-                                                        John Smith
-                                                    </a>
-                                                </td>
-                                                <td class="text-center">1185</td>
-                                                <td class="text-center">98%</td>
-                                                <td class="text-end">
-                                                    <div>2019</div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-nowrap">
-                                                    <div>PRE1245</div>
-                                                </td>
-                                                <td class="text-nowrap">
-                                                    <a href="{{ route('instructor.profile')}}">
-                                                        <img class="rounded-circle"
-                                                            src="{{asset ('/img/profiles/avatar-01.jpg')}}" width="25"
-                                                            alt="Star Students">
-                                                        Jolie Hoskins
-                                                    </a>
-                                                </td>
-                                                <td class="text-center">1195</td>
-                                                <td class="text-center">99.5%</td>
-                                                <td class="text-end">
-                                                    <div>2018</div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-nowrap">
-                                                    <div>PRE1625</div>
-                                                </td>
-                                                <td class="text-nowrap">
-                                                    <a href="{{ route('instructor.profile')}}">
-                                                        <img class="rounded-circle"
-                                                            src="{{asset ('/img/profiles/avatar-03.jpg')}}" width="25"
-                                                            alt="Star Students">
-                                                        Pennington Joy
-                                                    </a>
-                                                </td>
-                                                <td class="text-center">1196</td>
-                                                <td class="text-center">99.6%</td>
-                                                <td class="text-end">
-                                                    <div>2017</div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-nowrap">
-                                                    <div>PRE2516</div>
-                                                </td>
-                                                <td class="text-nowrap">
-                                                    <a href="{{ route('instructor.profile')}}">
-                                                        <img class="rounded-circle"
-                                                            src="{{asset ('/img/profiles/avatar-04.jpg')}}" width="25"
-                                                            alt="Star Students">
-                                                        Millie Marsden
-                                                    </a>
-                                                </td>
-                                                <td class="text-center">1187</td>
-                                                <td class="text-center">98.2%</td>
-                                                <td class="text-end">
-                                                    <div>2016</div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-nowrap">
-                                                    <div>PRE2209</div>
-                                                </td>
-                                                <td class="text-nowrap">
-                                                    <a href="{{ route('instructor.profile')}}">
-                                                        <img class="rounded-circle"
-                                                            src="{{asset ('/img/profiles/avatar-05.jpg')}}" width="25"
-                                                            alt="Star Students">
-                                                        John Smith
-                                                    </a>
-                                                </td>
-                                                <td class="text-center">1185</td>
-                                                <td class="text-center">98%</td>
-                                                <td class="text-end">
-                                                    <div>2015</div>
-                                                </td>
-                                            </tr>
+                                            @foreach ($starStudents as $student)
+                                                <tr>
+                                                    <td class="text-nowrap">
+                                                        <div>{{ $student->id }}</div>
+                                                    </td>
+                                                    <td class="text-nowrap">
+                                                        <a href="{{ route('instructor.profile') }}">
+                                                            <img class="rounded-circle" src="{{ asset('/img/profiles/avatar-02.jpg') }}" width="25" alt="Star Students">
+                                                            {{ $student->name }}
+                                                        </a>
+                                                    </td>
+                                                    <td class="text-center">{{ $student->marks }}</td>
+                                                    <td class="text-center">{{ $student->percentage }}%</td>
+                                                    <td class="text-end">
+                                                        <div>{{ $student->year }}</div>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -291,56 +219,21 @@
                                 </ul>
                             </div>
                             <div class="card-body">
-                                <div class="activity-groups">
+                                @foreach ($studentActivities as $activity)
                                     <div class="activity-awards">
                                         <div class="award-boxs">
-                                            <img src="{{asset ('/img/icons/award-icon-01.svg')}}" alt="Award">
+                                            <!-- You may need to adjust the icons based on your actual activities -->
+                                            <img src="{{ asset('/img/icons/award-icon-01.svg') }}" alt="Award">
                                         </div>
                                         <div class="award-list-outs">
-                                            <h4>1st place in "Chess”</h4>
-                                            <h5>John Doe won 1st place in "Chess"</h5>
+                                            <h4>{{ $activity->title }}</h4>
+                                            <h5>{{ $activity->description }}</h5>
                                         </div>
                                         <div class="award-time-list">
-                                            <span>1 Day ago</span>
+                                            <span>{{ $activity->created_at->diffForHumans() }}</span>
                                         </div>
                                     </div>
-                                    <div class="activity-awards">
-                                        <div class="award-boxs">
-                                            <img src="{{asset ('/img/icons/award-icon-02.svg')}}" alt="Award">
-                                        </div>
-                                        <div class="award-list-outs">
-                                            <h4>Participated in "Carrom"</h4>
-                                            <h5>Justin Lee participated in "Carrom"</h5>
-                                        </div>
-                                        <div class="award-time-list">
-                                            <span>2 hours ago</span>
-                                        </div>
-                                    </div>
-                                    <div class="activity-awards">
-                                        <div class="award-boxs">
-                                            <img src="{{asset ('/img/icons/award-icon-03.svg')}}" alt="Award">
-                                        </div>
-                                        <div class="award-list-outs">
-                                            <h4>Internation conference in "St.John School"</h4>
-                                            <h5>Justin Leeattended internation conference in "St.John School"</h5>
-                                        </div>
-                                        <div class="award-time-list">
-                                            <span>2 Week ago</span>
-                                        </div>
-                                    </div>
-                                    <div class="activity-awards mb-0">
-                                        <div class="award-boxs">
-                                            <img src="{{asset ('/img/icons/award-icon-04.svg')}}" alt="Award">
-                                        </div>
-                                        <div class="award-list-outs">
-                                            <h4>Won 1st place in "Chess"</h4>
-                                            <h5>John Doe won 1st place in "Chess"</h5>
-                                        </div>
-                                        <div class="award-time-list">
-                                            <span>3 Day ago</span>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
 

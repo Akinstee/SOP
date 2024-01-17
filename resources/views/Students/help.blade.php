@@ -13,8 +13,13 @@
 
 
   <div class="container">
-        <!-- Sidebar content goes here -->
-        @include('layouts.sidebars')
+        <!--Header Navbar Start-->
+        @include('layouts.studentnav')
+        <!--Header Navbar End-->
+    
+        {{-- Sidebar Start --}}
+        @include('layouts.studentside')
+        {{-- Sidebar Ends --}}
    
 
         <div class="faq-header">Frequently Asked Questions</div>

@@ -105,6 +105,11 @@ Route::get('/student/profile', [StudentController::class, 'profile'])->name('stu
 Route::post('/student/profile/update', [StudentController::class, 'updateProfile'])->name('profile.update');
 Route::post('/student/profile/update-image', [StudentController::class, 'updateProfileImage'])->name('profile.update_image');
 
+Route::get('/student/inbox', [StudentController::class, 'inbox'])->name('student.inbox');
+Route::get('/student/courses', [StudentController::class, 'courses'])->name('student.courses');
+Route::get('/student/edit-course', [StudentController::class, 'editCourse'])->name('student.edit-course');
+
+Route::get('/student/forgot-password', [StudentController::class, 'forgotPassword'])->name('students.forgot-password');
 
 
 Route::middleware('guest')->prefix('/student')->name('student.')->group(function () {
@@ -186,9 +191,6 @@ Route::get('/instructor/store_invoice', [InstructorController::class, 'storeInvo
 Route::get('/instructor/invoice-settings', [InstructorController::class, 'invoicesSettings'])->name('instructor.invoices-settings');
 Route::get('/instructor/tax-settings', [InstructorController::class, 'taxSettings'])->name('instructor.tax-settings');
 Route::get('/instructor/bank-settings', [InstructorController::class, 'bankSettings'])->name('instructor.bank-settings');
-//Route::post('/compose', [InstructorController::class, 'compose'])->name('inbox.instructor.compose');
-
-Route::post('/inbox/instructor/compose', [InstructorController::class, 'compose'])->name('instructor.compose');
 
 Route::get('/instructor/settings', [InstructorController::class, 'settings'])->name('instructor.settings');
 Route::get('/instructor/forgot-password', [InstructorController::class, 'forgotPassword'])->name('instructor.forgot-password');
@@ -199,6 +201,20 @@ Route::get('/instructor/edit', [InstructorController::class, 'editProfile'])->na
 Route::post('/instructor/change-password', [InstructorController::class, 'changePassword'])->name('instructor.change.password');
 
 Route::get('/instructor/inbox', [InstructorController::class, 'inbox'])->name('instructor.inbox');
+
+Route::get('/localization-details', [InstructorController::class, 'localizatioDetails'])->name('instructor.localization-details');
+
+Route::get('/instructor/payment-settings', [InstructorController::class, 'paymentSettings'])->name('instructor.payment-settings');
+    
+Route::get('/instructor/email-settings', [InstructorController::class, 'emailSettings'])->name('instructor.email-settings');
+
+Route::get('/instructor/social-settings', [InstructorController::class, 'socialSettings'])->name('instructor.social-settings');
+
+Route::get('/instructor/social-links', [InstructorController::class, 'socialLinks'])->name('instructor.social-links');
+
+Route::get('/instructor/seo-settings', [InstructorController::class, 'seoSettings'])->name('instructor.seo-settings');
+
+Route::get('/instructor/others-settings', [InstructorController::class, 'othersSettings'])->name('instructor.others-settings');
 
 
 
@@ -221,6 +237,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     Route::get('/tax-settings', [AdminController::class, 'taxSettings'])->name('tax-settings');
     Route::get('/bank-settings', [AdminController::class, 'bankSettings'])->name('bank-settings');
+
+
+    Route::post('/store-invoice', [AdminController::class, 'storeInvoice'])->name('store_invoice');
 
     Route::get('/invoices-settings', [AdminController::class, 'invoicesSettings'])->name('invoices-settings');
     

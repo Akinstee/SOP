@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Admin;
 use App\Models\Course;
+use App\Models\Invoice;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -105,6 +106,39 @@ class AdminController extends Controller
     public function invoices()
     {
         return view('admin.invoices');
+    }
+
+    public function addInvoice()
+    {
+        
+        return view('admin.add-invoice'); 
+    }
+
+    public function storeInvoice(Request $request)
+    {
+        // Validate the request data
+        $validatedData = $request->validate([
+            'invoice_number' => 'required',
+            'amount' => 'required|numeric',
+            // Add more validation rules as needed
+        ]);
+
+        // Create a new Invoice instance
+        $invoice = new Invoice();
+        $invoice->invoice_number = $validatedData['invoice_number'];
+        $invoice->amount = $validatedData['amount'];
+        // Set other properties as needed
+
+        // Save the invoice to the database
+        $invoice->save();
+
+        // Redirect or return a response as needed
+        return redirect()->route('admin.dashboard')->with('success', 'Invoice stored successfully');
+    }
+
+    public function editInvoice()
+    {
+        return view('admin.edit-invoice');
     }
 
     public function settings()

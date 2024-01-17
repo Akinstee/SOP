@@ -12,7 +12,13 @@
 <body>
     
     <div class="container">
-        @include('layouts.sidebars')
+        <!--Header Navbar Start-->
+        @include('layouts.studentnav')
+        <!--Header Navbar End-->
+    
+        {{-- Sidebar Start --}}
+        @include('layouts.studentside')
+        {{-- Sidebar Ends --}}
 
         <div class="cart-container">
             <div class="cart-header">

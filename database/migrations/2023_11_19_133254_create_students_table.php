@@ -31,6 +31,7 @@ return new class extends Migration
             $table->string('how_did_you_hear_about_us')->nullable();
             $table->string('acknowledge_terms_and_privacy')->default(false);
             $table->string('contact_me_about_application')->default(false);
+            $table->integer('marks')->default(0);
             $table->timestamps();
         });
     }
@@ -38,8 +39,10 @@ return new class extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down()
     {
-        Schema::dropIfExists('students');
+        Schema::table('students', function (Blueprint $table) {
+            $table->dropColumn('marks');
+        });
     }
 };

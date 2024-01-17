@@ -1,62 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0, user-scalable=0"
-        />
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0"/>
         <title>SOPS - Invoices</title>
 
-        <link rel="shortcut icon" href="{{ asset('/img/favicon.png')}}" />
+        <link rel="shortcut icon" href="{{ asset('/img/SOPS.png')}}" />
 
-        <link
-            href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700&display=swap"
-            rel="stylesheet"
-        />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700&display=swap" rel="stylesheet"/>
 
-        <link
-            rel="stylesheet"
-            href="{{ asset('/plugins/bootstrap/css/bootstrap.min.css')}}"
-        />
+        <link rel="stylesheet" href="{{ asset('/plugins/bootstrap/css/bootstrap.min.css')}}"/>
 
-        <link
-            rel="stylesheet"
-            href="{{ asset('/plugins/feather/feather.css')}}"
-        />
+        <link rel="stylesheet" href="{{ asset('/plugins/feather/feather.css')}}"/>
 
-        <link
-            rel="stylesheet"
-            href="{{ asset('/plugins/icons/flags/flags.css')}}"
-        />
+        <link rel="stylesheet" href="{{ asset('/plugins/icons/flags/flags.css')}}"/>
 
         <link rel="stylesheet" href="{{ asset('/css/feather.css')}}" />
 
-        <link
-            rel="stylesheet"
-            href="{{ asset('/plugins/fontawesome/css/fontawesome.min.css')}}"
-        />
-        <link
-            rel="stylesheet"
-            href="{{ asset('/plugins/fontawesome/css/all.min.css')}}"
-        />
+        <link rel="stylesheet" href="{{ asset('/plugins/fontawesome/css/fontawesome.min.css')}}"/>
+        <link rel="stylesheet" href="{{ asset('/plugins/fontawesome/css/all.min.css')}}"/>
 
-        <link
-            rel="stylesheet"
-            href="{{ asset('/plugins/select2/css/select2.min.css')}}"
-        />
+        <link rel="stylesheet" href="{{ asset('/plugins/select2/css/select2.min.css')}}"/>
 
-        <link
-            rel="stylesheet"
-            href="{{ asset('/plugins/datatables/datatables.min.css')}}"
-        />
+        <link rel="stylesheet" href="{{ asset('/plugins/datatables/datatables.min.css')}}"/>
 
-        <link
-            rel="stylesheet"
-            href="{{ asset('/css/bootstrap-datetimepicker.min.css')}}"
-        />
+        <link rel="stylesheet" href="{{ asset('/css/bootstrap-datetimepicker.min.css')}}"/>
 
-        <link rel="stylesheet" href="{{ asset('/css/style32.css')}}" />
+        <link rel="stylesheet" href="{{ asset('/css/style32.css')}}"/>
     </head>
     <body>
         <div class="main-wrapper">
@@ -541,52 +511,35 @@
                                                                 Repairs
                                                             </label>
                                                             <label
-                                                                class="custom_check w-100"
-                                                            >
+                                                                class="custom_check w-100">
                                                                 <input
-                                                                    type="checkbox"
-                                                                    name="category"
-                                                                />
+                                                                    type="checkbox" name="category"/>
                                                                 <span
                                                                     class="checkmark"
                                                                 ></span>
                                                                 Software
                                                             </label>
                                                             <label
-                                                                class="custom_check w-100"
-                                                            >
+                                                                class="custom_check w-100">
                                                                 <input
                                                                     type="checkbox"
-                                                                    name="category"
-                                                                />
+                                                                    name="category"/>
                                                                 <span
-                                                                    class="checkmark"
-                                                                ></span>
+                                                                    class="checkmark"></span>
                                                                 Stationary
                                                             </label>
                                                             <label
-                                                                class="custom_check w-100"
-                                                            >
-                                                                <input
-                                                                    type="checkbox"
-                                                                    name="category"
-                                                                />
+                                                                class="custom_check w-100">
+                                                                <input type="checkbox" name="category"/>
                                                                 <span
-                                                                    class="checkmark"
-                                                                ></span>
+                                                                    class="checkmark"></span>
                                                                 Travel
                                                             </label>
                                                         </div>
-                                                        <button
-                                                            type="submit"
-                                                            class="btn w-100 btn-primary"
-                                                        >
+                                                        <button type="submit" class="btn w-100 btn-primary">
                                                             Apply
                                                         </button>
-                                                        <button
-                                                            type="reset"
-                                                            class="btn w-100 btn-grey"
-                                                        >
+                                                        <button type="reset" class="btn w-100 btn-grey">
                                                             Reset
                                                         </button>
                                                     </form>
@@ -596,11 +549,8 @@
                                         <li>
                                             <div class="report-btn">
                                                 <a href="#" class="btn">
-                                                    <img
-                                                        src="{{ asset('/img/icons/invoices-icon5.png')}}"
-                                                        alt=""
-                                                        class="me-2"
-                                                    />
+                                                    <img src="{{ asset('/img/icons/invoices-icon5.png')}}"
+                                                        alt="" class="me-2"/>
                                                     Generate report
                                                 </a>
                                             </div>

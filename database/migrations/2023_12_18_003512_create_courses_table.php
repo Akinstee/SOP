@@ -17,6 +17,10 @@ return new class extends Migration
             $table->string('author');
             $table->float('rating');
             $table->float('price');
+            $table->string('payment_status')->default('unpaid');
+            $table->decimal('revenue', 8, 2)->default(0);
+            $table->string('status')->default('active');
+
             $table->timestamps();
         });
     }
@@ -24,8 +28,16 @@ return new class extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    
+
+     public function down()
     {
-        Schema::dropIfExists('courses');
+        Schema::table('courses', function (Blueprint $table) {
+            $table->dropColumn('payment_status');
+            $table->dropColumn('revenue');
+            $table->dropColumn('status');
+        });
+
     }
+
 };

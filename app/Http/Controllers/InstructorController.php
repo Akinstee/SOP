@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 //use function;
 use App\Models\Course;
 use App\Models\Invoice;
+use App\Models\Student;
 use App\Models\Instructor;
 use Illuminate\Http\Request;
 use App\Models\InvoiceSettings;
@@ -81,9 +82,32 @@ class InstructorController extends Controller
         return redirect()->route('instructor.login')->withInput($request->only('email'))->withErrors(['email' => 'Invalid credentials.']);
     }
 
+
     public function dashboard()
     {
-        return view('instructor.dashboard');
+        // Fetch data from the database
+        $activeCoursesCount = Course::where('status', 'active')->count();
+        $paidCoursesCount = Course::where('payment_status', 'paid')->count();
+        $freeCoursesCount = Course::where('payment_status', 'free')->count();
+        $totalRevenue = Course::sum('revenue');
+
+        // You need to define the logic to fetch data for charts (e.g., using Eloquent)
+
+        // Fetch star students from the database
+        $starStudents = Student::orderBy('marks', 'desc')->limit(5)->get();
+
+        // Fetch recent student activities from the database (you need to adjust this)
+        $studentActivities = []; // Implement the logic to fetch activities
+
+        // Pass data to the view
+        return view('instructor.dashboard', [
+            'activeCoursesCount' => $activeCoursesCount,
+            'paidCoursesCount' => $paidCoursesCount,
+            'freeCoursesCount' => $freeCoursesCount,
+            'totalRevenue' => $totalRevenue,
+            'starStudents' => $starStudents,
+            'studentActivities' => $studentActivities,
+        ]);
     }
 
     public function instructorLogin()
@@ -102,8 +126,6 @@ class InstructorController extends Controller
 
     public function invoices()
     {
-        // Your controller logic for the 'Invoices' menu item
-        // Fetching data from the database
         $invoices = Invoice::all();
 
         // Returning the 'invoices.blade.php' view with the data
@@ -112,29 +134,15 @@ class InstructorController extends Controller
 
     public function settings()
     {
-        // Your controller logic for the 'Settings' menu item
-        // This can be any logic specific to settings
-        // Returning the 'settings.blade.php' view
         return view('instructor.settings');
     }
 
     // Example method for the 'Login' menu item
     public function loginForm()
     {
-        // Your controller logic for the 'Login' menu item
-        // This might be a simple login form without specific data
-        // Returning the 'login.blade.php' view
+        
         return view('instructor.login');
     }
-
-    // Example method for the 'Forgot Password' menu item
-    // public function forgotPasswordForm()
-    // {
-    //     // Your controller logic for the 'Forgot Password' menu item
-    //     // This might be a simple forgot password form without specific data
-    //     // Returning the 'forgot-password.blade.php' view
-    //     return view('instructor.forgot-password');
-    // }
 
     public function forgotPassword()
     {
@@ -176,73 +184,30 @@ class InstructorController extends Controller
     }
 
     public function storeInvoice(Request $request)
-{
-    // Validate the form data
-    $request->validate([
-        'invoice_number' => 'required|string|max:255', // Adjust validation rules as needed
-        // Add more validation rules for other fields
-    ]);
+    {
+        // Validate the form data
+        $request->validate([
+            'invoice_number' => 'required|string|max:255', // Adjust validation rules as needed
+            // Add more validation rules for other fields
+        ]);
 
-    // Create a new invoice instance
-    $invoice = new Invoice();
+        // Create a new invoice instance
+        $invoice = new Invoice();
 
-    // Set the attributes based on the form data
-    $invoice->invoice_number = $request->input('invoice_number');
+        // Set the attributes based on the form data
+        $invoice->invoice_number = $request->input('invoice_number');
+
+        
+        $invoice->save();
+
+        return redirect()->back()->with('success', 'Invoice stored successfully');
+    }
 
     
-    $invoice->save();
-
-    return redirect()->back()->with('success', 'Invoice stored successfully');
-}
-
-    // public function inbox()
-    // {
-    //     return view('instructor.inbox');
-    // }
-
-    // public function inbox()
-    // {
-    //     // Retrieve emails from the database
-    //     $emails = Email::all(); // This assumes you have an Email model and emails table
-
-    //     // Pass the emails variable to the view
-    //     return view('inbox.instructor', ['emails' => $emails]);
-    // }
     public function inbox()
     {
         return view('instructor.settings');
     }
-    
-    // public function compose(Request $request)
-    // {
-        
-    //     Email::create([
-    //         'sender' => $request->input('sender'),
-    //         'subject' => $request->input('subject'),
-            
-    //     ]);
-
-    //     return redirect()->route('inbox.instructor');
-    // }
-
-    // public function compose(Request $request)
-    // {
-    //     // Validate the form data if needed
-    //     $request->validate([
-    //         'sender' => 'required|string|max:255',
-    //         'subject' => 'required|string|max:255',
-    //         // Add more validation rules as needed
-    //     ]);
-
-    //     // Create a new email instance
-    //     Email::create([
-    //         'sender' => $request->input('sender'),
-    //         'subject' => $request->input('subject'),
-    //         // Add more fields as needed
-    //     ]);
-
-    //     return redirect()->route('inbox.instructor');
-    // }
 
     public function compose(Request $request)
     {
@@ -324,43 +289,6 @@ class InstructorController extends Controller
         return redirect()->route('instructor.settings')->with('success', 'Settings saved successfully!');
     }
 
-    // public function edit_invoice($id)
-    // {
-    //     // Retrieve the invoice with the given ID from the database
-    //     $invoice = Invoice::findOrFail($id);
-
-    //     // You can add additional checks, such as verifying that the current user has permission to edit this invoice
-
-    //     // Pass the invoice data to the view
-    //     return view('instructor.edit-invoice', ['invoice' => $invoice]);
-    // }
-
-    // // ... Other methods in your controller ...
-
-    // // Example of an update method (you can modify this based on your needs)
-    // public function update_invoice(Request $request, $id)
-    // {
-    //     // Validate the form data (customize this based on your requirements)
-    //     $request->validate([
-    //         'invoice_number' => 'required',
-    //         'amount' => 'required|numeric',
-    //         // Add more validation rules as needed
-    //     ]);
-
-    //     // Find the invoice with the given ID
-    //     $invoice = Invoice::findOrFail($id);
-
-    //     // Update the invoice data based on the form input
-    //     $invoice->update([
-    //         'invoice_number' => $request->input('invoice_number'),
-    //         'amount' => $request->input('amount'),
-    //         // Update other fields as needed
-    //     ]);
-
-    //     // Redirect to a page indicating the update was successful
-    //     return redirect()->route('invoices.index')->with('success', 'Invoice updated successfully');
-    // }
-
     public function invoicesSettings()
     {
         return view('instructor.invoices-settings');
@@ -390,6 +318,48 @@ class InstructorController extends Controller
     {
         return view('instructor.edit-course');
     }
+
+    public function localizatioDetails()
+        {
+            // Your logic for the invoices settings page
+            return view('instructor.localization-details'); // Adjust the view name accordingly
+        }
+
+    public function paymentSettings()
+        {
+            // Your logic for the invoices settings page
+            return view('instructor.payment-settings'); // Adjust the view name accordingly
+        }
+
+    public function emailSettings()
+        {
+            // Your logic for the invoices settings page
+            return view('instructor.email-settings'); // Adjust the view name accordingly
+        }
+
+    public function socialSettings()
+        {
+            // Your logic for the invoices settings page
+            return view('instructor.social-settings'); // Adjust the view name accordingly
+        }
+
+        public function socialLinks()
+        {
+            // Your logic for the invoices settings page
+            return view('instructor.social-links'); // Adjust the view name accordingly
+        }
+
+        public function seoSettings()
+        {
+            // Your logic for the invoices settings page
+            return view('instructor.seo-settings'); // Adjust the view name accordingly
+        }
+
+        public function othersSettings()
+        {
+            // Your logic for the invoices settings page
+            return view('instructor.others-settings'); // Adjust the view name accordingly
+        }
     
 
 }

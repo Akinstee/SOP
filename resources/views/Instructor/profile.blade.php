@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-<title>Preskool - Profile</title>
+<title>SOPS - Profile</title>
 
-<link rel="shortcut icon" href="{{ asset('/img/favicon.png')}}">
+<link rel="shortcut icon" href="{{ asset('/img/SOPS.png')}}">
 
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700&display=swap" rel="stylesheet">
 
@@ -87,9 +87,11 @@
                                                         <span>Personal Details</span>
                                                         <a class="edit-link" data-bs-toggle="modal" href="{{ route('instructor.edit') }}"><i class="far fa-edit me-1"></i>Edit</a>
                                                     </h5>
+                                                    @if($instructor)
                                                     <div class="row">
                                                         <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">Name</p>
                                                         <p class="col-sm-9">{{ $instructor->name }}</p>
+                                                        {{-- <p class="col-sm-9">{{Auth::guard('instructor')->user()->name}}</p> --}}
                                                     </div>
                                                     <div class="row">
                                                         <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">Date of Birth</p>
@@ -107,6 +109,9 @@
                                                         <p class="col-sm-3 text-muted text-sm-end mb-0">Address</p>
                                                         <p class="col-sm-9 mb-0">{{ $instructor->address }}</p>
                                                     </div>
+                                                    @else
+                                                        <p>No instructor data found.</p>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
@@ -127,11 +132,15 @@
                                                         <span>Skills </span>
                                                         <a class="edit-link" href="{{ route('instructor.edit') }}"><i class="far fa-edit me-1"></i> Edit</a>
                                                     </h5>
+                                                    @if($instructor && $instructor->skills)
                                                     <div class="skill-tags">
                                                         @foreach($instructor->skills as $skill)
                                                             <span>{{ $skill }}</span>
                                                         @endforeach
                                                     </div>
+                                                    @else
+                                                    <p>No skills found.</p>
+                                                @endif
                                                 </div>
                                             </div>
                                         </div>
