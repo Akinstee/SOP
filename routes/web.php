@@ -111,11 +111,19 @@ Route::get('/student/edit-course', [StudentController::class, 'editCourse'])->na
 
 Route::get('/student/forgot-password', [StudentController::class, 'forgotPassword'])->name('students.forgot-password');
 
-Route::get('/student/modules', [StudentController::class, 'modules'])->name('students.modules');
+Route::get('/student/modules', [StudentController::class, 'modules'])->name('student.modules');
+
+Route::get('/student/intro-module', [StudentController::class, 'introModule'])->name('students.introModule');
+
+// Route::get('/student/intro-module', [StudentController::class, 'introModule'])->name('students.intro-module');
+// Route::post('/student/submit-quiz', [StudentController::class, 'submitQuiz'])->name('student.submitQuiz');
+Route::post('/student/submit-quiz', [StudentController::class, 'submitQuiz'])->name('submitQuiz');
+Route::post('/student/send-message', [StudentController::class, 'sendMessage'])->name('sendMessage');
 
 Route::middleware('guest')->prefix('/student')->name('student.')->group(function () {
     Route::get('/login', [StudentController::class, 'studentLogin'])->name('login');
     Route::post('/check', [StudentController::class, 'studentCheck'])->name('check');
+
 });
 
 Route::middleware('auth')->prefix('/student')->name('student.dashboard')->group(function () {

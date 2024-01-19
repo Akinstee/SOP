@@ -208,19 +208,19 @@
                                 <div class="box">
                                     <h3>HTML</h3>
                                     <p>80% - progress</p>
-                                    <a href="{{ route('courses.modules') }}"><button>Continue</button></a>
+                                    <a href="{{ route('student.modules') }}"><button>Continue</button></a>
                                     <i class="fab fa-html5 html"></i>
                                 </div>
                                 <div class="box">
                                     <h3>CSS</h3>
                                     <p>50% - progress</p>
-                                    <a href="{{ route('courses.modules') }}"><button>Continue</button></a>
+                                    <a href="{{ route('student.modules') }}"><button>Continue</button></a>
                                     <i class="fab fa-css3-alt css"></i>
                                 </div>
                                 <div class="box">
                                     <h3>JavaScript</h3>
                                     <p>30% - progress</p>
-                                    <a href="{{ route('courses.modules') }}"><button>Continue</button></a>
+                                    <a href="{{ route('student.modules') }}"><button>Continue</button></a>
                                     <i class="fab fa-js-square js"></i>
                                 </div>
                             </div>

@@ -11,6 +11,7 @@ use App\Models\Student;
 use App\Models\CartItem;
 use App\Models\Notification;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
@@ -313,8 +314,59 @@ class StudentController extends Controller
     //     return view('student.live-class');
     // }
 
+    public function submitQuiz(Request $request)
+    {
+        // Validate the quiz answers
+        $request->validate([
+            'question1' => 'required',
+            'question2' => 'required',
+            'question3' => 'required',
+            'question4' => 'required',
+            'question5' => 'required',
+        ]);
+
+        // Assuming the answers are correct for demonstration purposes
+        $quizResult = new QuizResult([
+            'question1' => $request->input('question1'),
+            'question2' => $request->input('question2'),
+            'question3' => $request->input('question3'),
+            'question4' => $request->input('question4'),
+            'question5' => $request->input('question5'),
+        ]);
+
+        // Save the quiz results to the database
+        auth()->user()->quizResults()->save($quizResult);
+
+        // Redirect the user to the next video or appropriate page
+        return redirect()->route('nextVideo')->with('success', 'Quiz submitted successfully');
+    }
+
     public function modules()
     {
-        return view('student.modules');
+        return view('students.modules');
+    }
+
+    public function introModule()
+    {
+        return view('students.intro-module');
+    }
+
+    public function sendMessage(Request $request)
+    {
+        // Validate the message
+        $request->validate([
+            'message' => 'required',
+        ]);
+
+        // Create a new message
+        $message = new Message([
+            'content' => $request->input('message'),
+        ]);
+
+        // Save the message to the database
+        auth()->user()->messages()->save($message);
+
+        // Redirect back with success message
+        return back()->with('success', 'Message sent successfully');
     }
 }
