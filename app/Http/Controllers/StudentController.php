@@ -312,4 +312,9 @@ class StudentController extends Controller
     // {
     //     return view('student.live-class');
     // }
+
+    public function modules()
+    {
+        return view('student.modules');
+    }
 }

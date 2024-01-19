@@ -78,7 +78,7 @@ a:hover{
 }
 
 /* Main Section */
-.main{
+/* .main{
   position: relative;
   padding: 20px;
   width: 100%;
@@ -128,7 +128,7 @@ a:hover{
 .main-skills .card i{
   font-size: 22px;
   padding: 10px;
-}
+} */
 
 /* Courses */
 .main-course{

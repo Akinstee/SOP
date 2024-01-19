@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{{ asset('/plugins/fontawesome/css/all.min.css')}}">
     <link rel="stylesheet" href="{{ asset('/plugins/simple-calendar/simple-calendar.css')}}">
     <link rel="stylesheet" href="{{ asset('/css/style32.css')}}">
-    {{-- <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}" /> --}}
+    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 </head>
 
@@ -181,6 +181,7 @@
                                         <h6>IOS dev</h6>
                                         <p><b>Join Over 1 million Students.</b></p>
                                         <a href="#" style="display: inline-block; padding: 10px 30px; font-size: 12px; text-align: center; text-decoration: none; background-color: red; color: #ffffff; border-radius: 3px; border: 1px solid red;">Get Started</a>
+                                        
                                     </div>
                                     <div class="db-icon">
                                         <img src="{{ asset('/img/icons/app-store.svg')}}" alt="Dashboard Icon">
@@ -193,35 +194,33 @@
 
                 
 
-                <section class="main">
+                
 
+                <section class="main">
                     <section class="main-course">
                         <h1>My courses</h1>
                         <div class="course-box">
                             <ul>
                                 <li class="active">In progress</li>
-                                {{-- <li><a href="#">explore</a></li>
-                                <li><a href="#">incoming</a></li> --}}
-                                {{-- <li><a href="#">finished</a></li> --}}
                                 <li>finished</li>
                             </ul>
                             <div class="course">
                                 <div class="box">
                                     <h3>HTML</h3>
                                     <p>80% - progress</p>
-                                    <button>continue</button>
+                                    <a href="{{ route('courses.modules') }}"><button>Continue</button></a>
                                     <i class="fab fa-html5 html"></i>
                                 </div>
                                 <div class="box">
                                     <h3>CSS</h3>
                                     <p>50% - progress</p>
-                                    <button>continue</button>
+                                    <a href="{{ route('courses.modules') }}"><button>Continue</button></a>
                                     <i class="fab fa-css3-alt css"></i>
                                 </div>
                                 <div class="box">
                                     <h3>JavaScript</h3>
                                     <p>30% - progress</p>
-                                    <button>continue</button>
+                                    <a href="{{ route('courses.modules') }}"><button>Continue</button></a>
                                     <i class="fab fa-js-square js"></i>
                                 </div>
                             </div>

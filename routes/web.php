@@ -111,6 +111,7 @@ Route::get('/student/edit-course', [StudentController::class, 'editCourse'])->na
 
 Route::get('/student/forgot-password', [StudentController::class, 'forgotPassword'])->name('students.forgot-password');
 
+Route::get('/student/modules', [StudentController::class, 'modules'])->name('students.modules');
 
 Route::middleware('guest')->prefix('/student')->name('student.')->group(function () {
     Route::get('/login', [StudentController::class, 'studentLogin'])->name('login');
@@ -259,3 +260,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
 
 });
+
+Route::get('/courses', [CourseController::class, 'index']);
+Route::get('/courses/intro', [CourseController::class, 'intro']);
+Route::get('/courses/intro/video', [CourseController::class, 'introVideo']);
+
+Route::get('/courses/css', [CourseController::class, 'css'])->name('courses.css');
+Route::get('/courses/javascript', [CourseController::class, 'javascript']) ->name('courses.javascript');
+Route::get('/courses/modules', [CourseController::class, 'showModulesScreen'])->name('courses.modules');

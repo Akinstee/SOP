@@ -7,6 +7,32 @@ use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
+    public function index()
+    {
+        $courses = Course::all();
+        return view('instructor.courses', compact('courses'));
+    }
+
+    public function intro()
+    {
+        return view('courses.intro');
+    }
+
+    public function introVideo()
+    {
+        return view('courses.introVideo');
+    }
+
+    public function css()
+    {
+        return view('courses.css');
+    }
+
+    public function javascript()
+    {
+        return view('courses.javascript');
+    }
+    
     public function showForm()
     {
         return view('instructor.add_course');
@@ -28,10 +54,9 @@ class CourseController extends Controller
 
         return redirect()->route('instructor.courses')->with('success', 'Course added successfully');
     }
-    public function index()
-    {
-        $courses = Course::all(); // Fetch all courses from the database
-        return view('instructor.courses', compact('courses'));
-    }
 
+    public function showModulesScreen()
+    {
+        return view('courses.modules');
+    }
 }
