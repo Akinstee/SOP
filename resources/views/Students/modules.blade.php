@@ -38,7 +38,7 @@
 
                 <div class="card">
                     <h3>Intro Module</h3>
-                    <a href="{{ route('students.intro-module') }}" style="display: inline-block; padding: 10px 30px; font-size: 12px; text-align: center; text-decoration: none; background-color: black; color: #ffffff; border-radius: 3px; border: 1px solid black;">continue</a>
+                    <a href="{{ route('students.introModule') }}" style="display: inline-block; padding: 10px 30px; font-size: 12px; text-align: center; text-decoration: none; background-color: black; color: #ffffff; border-radius: 3px; border: 1px solid black;">continue</a>
                      
                 </div>
         
