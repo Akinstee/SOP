@@ -269,7 +269,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
 });
 
-Route::get('/courses', [CourseController::class, 'index']);
+Route::get('/courses', [CourseController::class, 'index'])->name('courses');
+// Route::get('/courses', [CourseController::class, 'index']);
 Route::get('/courses/intro', [CourseController::class, 'intro']);
 Route::get('/courses/intro/video', [CourseController::class, 'introVideo']);
 
