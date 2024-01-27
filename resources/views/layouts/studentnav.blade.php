@@ -157,7 +157,7 @@
                     </div>
                 </div>
                 <a class="dropdown-item" href="{{ route('student.profile') }}">My Profile</a>
-                <a class="dropdown-item" href="{{ route('student.inbox')}}">Inbox</a>
+                <a class="dropdown-item" href="{{ route('student.messages')}}">Inbox</a>
                 <a class="dropdown-item" href="{{ route ('student.login')}}">Logout</a>
             </div>
         </li>
