@@ -67,7 +67,7 @@ class StudentController extends Controller
 
             // Send confirmation email or perform other actions
 
-            return redirect()->route('student.login')->with('success', 'Student registered successfully!');
+            return redirect()->route('student.login')->withInput()->with('success', 'Student registered successfully!');
         } else {
             return redirect()->back()->with('fail', 'passwords dont match')->withInput();
         }
@@ -84,13 +84,18 @@ class StudentController extends Controller
     {
         $credentials = $request->only('email', 'password');
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::guard('student')->attempt($credentials)) {
+
             // Authentication passed
-            return redirect()->route('students.dashboard'); // Replace 'dashboard' with your actual dashboard route
+            $request->session()->regenerate();
+
+            return redirect()->intended('students.dashboard'); // Replace 'dashboard' with your actual dashboard route
+        }else{
+            return redirect()->back()->with('error', 'Invalid credentials');
         }
 
         // Authentication failed
-        return redirect()->route('student.dashboard')->with('error', 'Invalid credentials');
+
     }
 
 
@@ -122,10 +127,10 @@ class StudentController extends Controller
 
     public function courses()
     {
-        
+
         $courses = Course::all();
 
-        
+
         return view('instructor.courses', ['courses' => $courses]);
     }
 
@@ -269,7 +274,7 @@ class StudentController extends Controller
         $languages = ['en', 'es', 'fr']; // Example array of supported languages
         $notifications = ['email', 'sms', 'push'];
 
-       
+
         return view('students.settings', [
             'languages' => $languages,
             'notifications' => $notifications,

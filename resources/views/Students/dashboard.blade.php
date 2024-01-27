@@ -26,7 +26,7 @@
         <!--Header Navbar Start-->
         @include('layouts.studentnav')
         <!--Header Navbar End-->
-    
+
         {{-- Sidebar Start --}}
         @include('layouts.studentside')
         {{-- Sidebar Ends --}}
@@ -38,7 +38,7 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="page-sub-header">
-                                <h3 class="page-title">Welcome Bruklin!</h3>
+                                <h3 class="page-title">Welcome {{ Auth::guard('student')->user()->email }}!</h3>
                                 <ul class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{ route('student.dashboard')}}">Home</a></li>
                                     <li class="breadcrumb-item active">Student</li>
@@ -181,7 +181,7 @@
                                         <h6>IOS dev</h6>
                                         <p><b>Join Over 1 million Students.</b></p>
                                         <a href="#" style="display: inline-block; padding: 10px 30px; font-size: 12px; text-align: center; text-decoration: none; background-color: red; color: #ffffff; border-radius: 3px; border: 1px solid red;">Get Started</a>
-                                        
+
                                     </div>
                                     <div class="db-icon">
                                         <img src="{{ asset('/img/icons/app-store.svg')}}" alt="Dashboard Icon">
@@ -192,9 +192,9 @@
                     </div>
                 </div>
 
-                
 
-                
+
+
 
                 <section class="main">
                     <section class="main-course">

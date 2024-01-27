@@ -6,7 +6,7 @@
                     <span>Main Menu</span>
                 </li>
                 <li class="submenu active">
-                    <a href="{{ route('student.dashboard') }}">Dashboard</a><i class="feather-grid"></i> <span> student</span></a>        
+                    <a href="{{ route('student.dashboard') }}">Dashboard</a><i class="feather-grid"></i> <span> student</span></a>
                 </li>
                 <li class="submenu">
                     <a href="#"><i class="fas fa-book-reader"></i> <span> Courses</span> <span
@@ -17,7 +17,7 @@
                         <li><a href="{{ route('student.edit-course') }}">Courses Edit</a></li>
                     </ul>
                 </li>
-                
+
                 <li><a href="{{route('student.my-learning')}}">
                     <i class="fas fa-book"></i>
                     <span class="nav-item">My Learning</span>
@@ -39,11 +39,11 @@
                     <a href="{{ route('student.settings')}}"><i class="fas fa-shield-alt"></i> <span> Settings </span> <span
                             class="menu-arrow"></span></a>
                     <ul>
-                        <li><a href="{{ route('students.forgot-password')}}">Forgot Password</a></li>
+                        <li><a href="{{ route('student.forgot-password')}}">Forgot Password</a></li>
 
                     </ul>
                 </li>
-                
+
             </ul>
         </div>
     </div>
