@@ -126,17 +126,17 @@
         
                 <div class="form-group">
                   <label for="first_name">First Name:</label>
-                  <input type="text" class="form-control" id="first_name" name="first_name" value="First_name" readonly>
+                  <input type="text" class="form-control" id="first_name" name="first_name" value="{{ Auth::guard('student')->user()->first_name }}" readonly>
               </div>
       
               <div class="form-group">
                   <label for="last_name">Last Name:</label>
-                  <input type="text" class="form-control" id="last_name" name="last_name" value="last_name" readonly>
+                  <input type="text" class="form-control" id="last_name" name="last_name" value="{{ Auth::guard('student')->user()->last_name }}" readonly>
               </div>
       
               <div class="form-group">
                   <label for="email">Email Address:</label>
-                  <input type="email" class="form-control" id="email" name="email" value="email" readonly>
+                  <input type="email" class="form-control" id="email" name="email" value="{{ Auth::guard('student')->user()->email }}" readonly>
               </div>
       
               <div class="form-group">
@@ -151,7 +151,7 @@
       
               <div class="form-group">
                   <label for="gender">Gender:</label>
-                  <input type="text" class="form-control" id="gender" name="gender" value="gender" readonly>
+                  <input type="text" class="form-control" id="gender" name="gender" value="{{ Auth::guard('student')->user()->gender }}" readonly>
               </div>
       
               <div class="form-group">

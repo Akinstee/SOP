@@ -44,7 +44,7 @@
                       <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
           
                         <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-                        <h2>Kevin Anderson</h2>
+                        <h2>{{ Auth::guard('student')->user()->name }}</h2>
                         <h3>Web Designer</h3>
                         <div class="social-links mt-2">
                           <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
@@ -91,7 +91,7 @@
           
                             <div class="row">
                               <div class="col-lg-3 col-md-4 label ">Full Name</div>
-                              <div class="col-lg-9 col-md-8">Kevin Anderson</div>
+                              <div class="col-lg-9 col-md-8">{{ Auth::guard('student')->user()->name }}</div>
                             </div>
           
                             <div class="row">
