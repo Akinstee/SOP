@@ -32,38 +32,38 @@ Route::middleware('guest:student')->prefix('/student')->name('student.')->contro
     Route::post('/check', 'studentCheck')->name('check');
 });
 Route::middleware('auth:student')->prefix('/student')->name('student.')->controller(StudentController::class)->group(function () {
-    Route::get('/student/dashboard', 'dashboard')->name('dashboard');
+    Route::get('/dashboard', 'dashboard')->name('dashboard');
     // Live Class
     Route::get('/live-class',  'liveClass');
     // My Certificate
     Route::get('/my-certificate',  'myCertificate');
     // My Courses
     Route::get('/my-courses',  'myCourses');
-    Route::get('/student/my-learning',  'myLearning')->name('my-learning');
-    Route::get('/student/my-cart',  'myCart')->name('my-cart');
-    Route::get('/student/wishlist',  'wishlist')->name('wishlist');
-    Route::get('/student/notifications',  'notifications')->name('notifications');
-    Route::get('/student/messages',  'messages')->name('messages');
-    Route::get('/student/edit-profile',  'editProfile')->name('edit_profile');
-    Route::get('/student/wallet',  'wallet')->name('wallet');
-    Route::get('/student/analytics',  'analytics')->name('analytics');
-    Route::get('/student/tasks',  'tasks')->name('tasks');
-    Route::get('/student/settings',  'settings')->name('settings');
-    Route::get('/student/help',  'help')->name('help');
-    Route::get('/student/live-class',  'liveClass')->name('live-class');
-    Route::get('/student/logout',  'logout')->name('logout');
-    Route::post('/student/save-settings',  'saveSettings')->name('save_settings');
-    Route::get('/student/profile',  'profile')->name('profile');
-    Route::post('/student/profile/update',  'updateProfile')->name('profile.update');
-    Route::post('/student/profile/update-image',  'updateProfileImage')->name('profile.update_image');
-    Route::get('/student/inbox',  'inbox')->name('inbox');
-    Route::get('/student/courses',  'courses')->name('courses');
-    Route::get('/student/edit-course',  'editCourse')->name('edit-course');
-    Route::get('/student/forgot-password',  'forgotPassword')->name('forgot-password');
-    Route::get('/student/modules',  'modules')->name('modules');
-    Route::get('/student/intro-module',  'introModule')->name('introModule');
-    Route::post('/student/submit-quiz',  'submitQuiz')->name('submitQuiz');
-    Route::post('/student/send-message',  'sendMessage')->name('sendMessage');
+    Route::get('/my-learning',  'myLearning')->name('my-learning');
+    Route::get('/my-cart',  'myCart')->name('my-cart');
+    Route::get('/wishlist',  'wishlist')->name('wishlist');
+    Route::get('/notifications',  'notifications')->name('notifications');
+    Route::get('/messages',  'messages')->name('messages');
+    Route::get('/edit-profile',  'editProfile')->name('edit_profile');
+    Route::get('/wallet',  'wallet')->name('wallet');
+    Route::get('/analytics',  'analytics')->name('analytics');
+    Route::get('/tasks',  'tasks')->name('tasks');
+    Route::get('/settings',  'settings')->name('settings');
+    Route::get('/help',  'help')->name('help');
+    Route::get('/live-class',  'liveClass')->name('live-class');
+    Route::get('/logout',  'logout')->name('logout');
+    Route::post('/save-settings',  'saveSettings')->name('save_settings');
+    Route::get('/profile',  'profile')->name('profile');
+    Route::post('/profile/update',  'updateProfile')->name('profile.update');
+    Route::post('/profile/update-image',  'updateProfileImage')->name('profile.update_image');
+    Route::get('/inbox',  'inbox')->name('inbox');
+    Route::get('/courses',  'courses')->name('courses');
+    Route::get('/edit-course',  'editCourse')->name('edit-course');
+    Route::get('/forgot-password',  'forgotPassword')->name('forgot-password');
+    Route::get('/modules',  'modules')->name('modules');
+    Route::get('/intro-module',  'introModule')->name('introModule');
+    Route::post('/submit-quiz',  'submitQuiz')->name('submitQuiz');
+    Route::post('/send-message',  'sendMessage')->name('sendMessage');
 });
 Route::middleware('guest:instructor')->prefix('/instructor')->name('instructor.')->controller(InstructorController::class)->group(function () {
     Route::get('/register', 'index')->name('register');
