@@ -38,7 +38,7 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="page-sub-header">
-                                <h3 class="page-title">Welcome {{ Auth::guard('student')->user()->email }}!</h3>
+                                <h3 class="page-title">Welcome {{ Auth::guard('student')->user()->first_name }}!</h3>
                                 <ul class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{ route('student.dashboard')}}">Home</a></li>
                                     <li class="breadcrumb-item active">Student</li>
