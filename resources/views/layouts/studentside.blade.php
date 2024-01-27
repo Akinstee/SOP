@@ -77,7 +77,7 @@
                             </ul>
                             
                 </li>
-                <li>
+                <li class="{{ request()->is('student/analytics*') ? 'active' : '' }}">
                         <a href="{{route('student.analytics')}}">
                             <i class="fas fa-chart-bar"></i>
                             <span class="nav-item">Analytics</span>

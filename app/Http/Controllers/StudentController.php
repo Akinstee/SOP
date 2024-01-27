@@ -102,7 +102,7 @@ class StudentController extends Controller
 
     public function dashboard()
     {
-        return view('Students.dashboard');
+        return view('students.dashboard');
     }
 
     public function liveClass()
