@@ -33,4 +33,9 @@ class Instructor extends Authenticatable
             'digital_marketing' => 'Digital Marketing',
         ];
     }
+
+    public function getNameAttribute()
+    {
+        return $this->attributes['first_name'] . ' ' . $this->attributes['last_name'];
+    }
 }
