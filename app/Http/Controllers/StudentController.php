@@ -89,7 +89,7 @@ class StudentController extends Controller
             // Authentication passed
             $request->session()->regenerate();
 
-            return redirect()->intended('students.dashboard'); // Replace 'dashboard' with your actual dashboard route
+            return redirect()->intended('student/dashboard'); // Replace 'dashboard' with your actual dashboard route
         }else{
             return redirect()->back()->with('error', 'Invalid credentials');
         }
@@ -102,7 +102,8 @@ class StudentController extends Controller
 
     public function dashboard()
     {
-        return view('students.dashboard');
+        $courses = Course::all();
+        return view('students.dashboard', compact('courses'));
     }
 
     public function liveClass()
@@ -298,6 +299,20 @@ class StudentController extends Controller
         return view('students.my-cart', compact('cartItems'));
     }
 
+        /**
+     * Destroy an authenticated session.
+     */
+    public function logout(Request $request)
+    {
+       Auth::guard('web')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/about');
+    }
+
     // public function forgotPassword()
     // {
     //     // Your logic for the forgot password page
@@ -308,11 +323,7 @@ class StudentController extends Controller
         // Your logic for the forgot password page
         return view('students.forgot-password');
     }
-    public function logout()
-    {
-        Auth::logout();
-        return Redirect::route('index'); // Replace 'home' with your desired redirect path
-    }
+
 
     // public function liveClass()
     // {
