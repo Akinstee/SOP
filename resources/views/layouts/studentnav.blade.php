@@ -140,7 +140,7 @@
                     <img class="rounded-circle" src="{{asset ('/img/profiles/avatar-01.jpg')}}" width="31"
                         alt="Temitayo">
                     <div class="user-text">
-                        <h6>Temitayo</h6>
+                        <h6>{{ Auth::guard('student')->user()->name }}</h6>
                         <p class="text-muted mb-0">Student</p>
                     </div>
                 </span>
@@ -152,13 +152,13 @@
                             class="avatar-img rounded-circle">
                     </div>
                     <div class="user-text">
-                        <h6>Temitayo</h6>
+                        <h6>{{ Auth::guard('student')->user()->name }}</h6>
                         <p class="text-muted mb-0">Student</p>
                     </div>
                 </div>
                 <a class="dropdown-item" href="{{ route('student.profile') }}">My Profile</a>
-                <a class="dropdown-item" href="{{ route('student.inbox')}}">Inbox</a>
-                <a class="dropdown-item" href="{{ route ('student.login')}}">Logout</a>
+                <a class="dropdown-item" href="{{ route('student.messages')}}">Inbox</a>
+                <a class="dropdown-item" method="post" href="{{ route ('student.logout')}}">Logout</a>
             </div>
         </li>
 

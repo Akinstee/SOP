@@ -31,16 +31,36 @@
         {{-- Sidebar Start --}}
         @include('layouts.studentside')
         {{-- Sidebar Ends --}}
-        <div class="courses-container">
-            @foreach ($courses as $course)
-                <div class="course">
-                    <img src="{{ asset('course_images/' . $course->id . '.jpg') }}" alt="{{ $course->name }} Image">
-                    <h2>{{ $course->name }}</h2>
-                    <p>Author: {{ $course->author }}</p>
-                    <p>Rating: {{ $course->rating }}</p>
-                    <p>Price: ${{ $course->price }}</p>
+        <div class="page-wrapper">
+
+            <div class="courses-container">
+            <div class="content container-fluid">
+            <div class="page-header">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="page-sub-header">
+                                <h3 class="page-title">Hi {{ Auth::guard('student')->user()->first_name }}!</h3>
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="{{ route('student.dashboard')}}">Home</a></li>
+                                    <li class="breadcrumb-item active">My Learning</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            @endforeach
+                @forelse ($courses as $course)
+                    <div class="course">
+                        <img src="{{ asset('course_images/' . $course->id . '.jpg') }}" alt="{{ $course->name }} Image">
+                        <h2>{{ $course->name }}</h2>
+                        <p>Author: {{ $course->author }}</p>
+                        <p>Rating: {{ $course->rating }}</p>
+                        <p>Price: ${{ $course->price }}</p>
+                    </div>
+                @empty
+                    <p>No available courses at the moment. Check back later!</p>
+                @endforelse
+            </div>
+            </div>
         </div>
     </div>
 

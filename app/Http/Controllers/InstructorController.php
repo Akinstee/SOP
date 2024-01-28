@@ -24,21 +24,46 @@ class InstructorController extends Controller
 
     public function save(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
-            'email' => 'required|email|unique:instructors',
-            'phone_number' => 'required|string',
-            'highest_qualification' => 'required|string',
-            'years_of_experience' => 'required|integer',
-            'areas_of_expertise' => 'required|array',
-            'curriculum_vitae' => 'required|file',
-            'password' => 'required|string|min:8|confirmed',
-        ]);
+       
+        // $resume = $request->file('curriculum_vitae');
+        // $resumeSaveAsName = time() . Auth::id() . "-resume." . 
+        //                               $resume->getClientOriginalExtension();
+        // $upload_path = 'public/';
+        // $resume_url = $upload_path . $resumeSaveAsName;
+        // $success = $resume->move($upload_path, $resumeSaveAsName);
 
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
+        // $Instructo = Instructor::create([
+        //     'first_name' => $request['first_name'],
+        //     'last_name' => $request->input('last_name'),
+        //     'email' => $request['email'],
+        //     'phone_number' => $request['phone_number'],
+        //     'highest_qualification' => $request['highest_qualification'],
+        //     'years_of_experience' => $request['years_of_experience'],
+        //     'areas_of_expertise' => $request['areas_of_expertise'],
+        //     'curriculum_vitae' => $resume_url,
+        //     'password' => Hash::make($request['password']),
+        // ]);
+
+        //  dd($Instructo);
+
+        //return dd($request);
+        // $validator = Validator::make($request->all(), [
+        //     'first_name' => ['required', 'string', 'max:255'],
+        //     'last_name' => ['required', 'string', 'max:255'],
+        //     'email' => ['required', 'email', 'max:255', 'unique:instructors'],
+        //     'phone_number' => ['required', 'string', 'max:25'],
+        //     'highest_qualification' => ['required', 'string'],
+        //     'years_of_experience' => ['required', 'integer', 'max:25'],
+        //     'areas_of_expertise' => ['required', 'array'],
+        //     'curriculum_vitae' => ['required', 'file'],
+        //     'password' => 'required|string|min:8|confirmed',
+        // ]);
+
+        // if ($validator->fails()) {
+        //     return redirect()->back()->withErrors($validator)->withInput();
+        // }
+
+        
 
         // Handle file upload for curriculum vitae
         $curriculumVitaePath = $request->file('curriculum_vitae')->store('curriculum_vitae', 'public');
@@ -55,31 +80,46 @@ class InstructorController extends Controller
             'password' => Hash::make($request->input('password')),
         ]);
 
+       
         // Redirect or perform any additional logic after registration
-        return redirect()->route('instructor.login')->with('success', 'Registration successful!');
+        return redirect()->route('instructor.login')->withInput()->with('success', 'Registration successful!');
+    
     }
 
     public function instructorCheck(Request $request)
     {
-        $credentials = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
+        $credentials = $request->only('email', 'password');
 
-        if (Auth::attempt($credentials)) {
-            // Check if the authenticated user has the 'instructor' role
-            if (auth()->user()->hasRole('instructor')) {
-                // Redirect to the instructor dashboard
-                return redirect()->route('instructor.dashboard');
-            }
+        if (Auth::guard('instructor')->attempt($credentials)) {
 
-            // If the user is not an instructor, log them out and show an error message
-            Auth::logout();
-            return redirect()->route('instructor.login')->withInput($request->only('email'))->withErrors(['email' => 'You do not have instructor access.']);
+            // Authentication passed
+            $request->session()->regenerate();
+
+            return redirect()->intended('instructor/dashboard'); // Replace 'dashboard' with your actual dashboard route
+        }else{
+            return redirect()->back()->with('error', 'Invalid credentials');
         }
 
-        // If login fails, redirect back with an error message
-        return redirect()->route('instructor.login')->withInput($request->only('email'))->withErrors(['email' => 'Invalid credentials.']);
+
+        // $credentials = $request->validate([
+        //     'email' => 'required|email',
+        //     'password' => 'required',
+        // ]);
+
+        // if (Auth::attempt($credentials)) {
+        //     // Check if the authenticated user has the 'instructor' role
+        //     if (auth()->user()->hasRole('instructor')) {
+        //         // Redirect to the instructor dashboard
+        //         return redirect()->route('instructor.dashboard');
+        //     }
+
+        //     // If the user is not an instructor, log them out and show an error message
+        //     Auth::logout();
+        //     return redirect()->route('instructor.login')->withInput($request->only('email'))->withErrors(['email' => 'You do not have instructor access.']);
+        // }
+
+        // // If login fails, redirect back with an error message
+        // return redirect()->route('instructor.login')->withInput($request->only('email'))->withErrors(['email' => 'Invalid credentials.']);
     }
 
 
@@ -236,6 +276,13 @@ class InstructorController extends Controller
 
         return view('instructor.profile', compact('instructor'));
     }
+    public function editProfile()
+    {
+        // Fetch instructor details from the database
+        $instructor = auth()->user();
+
+        return view('instructor.profile', compact('instructor'));
+    }
 
     public function changePassword(Request $request)
     {
@@ -317,6 +364,25 @@ class InstructorController extends Controller
     public function editCourses()
     {
         return view('instructor.edit-course');
+    }
+    public function addCourse()
+    {
+        $Instructors = Instructor::all()->pluck('id', 'name');
+        return view('instructor.add-course', compact('Instructors'));
+    }
+    public function storeCourse(Request $request)
+    {
+
+        $courseData = [
+            'name' => $request->input('name'), 
+            'author' => $request->input('author'),
+            'rating' => $request->input('rating'),
+            'price' => $request->input('price'),
+        ];
+
+       Course::create($courseData);
+        
+       return redirect()->route('instructor.courses');
     }
 
     public function localizatioDetails()

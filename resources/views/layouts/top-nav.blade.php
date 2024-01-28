@@ -17,6 +17,7 @@
                     <div class="dropdown-menu fade-down m-0">
                         <a href="{{ route('team') }}" class="dropdown-item">Our Team</a>
                         <a href="{{ route('testimonial') }}" class="dropdown-item">Testimonial</a>
+                        <a href="{{ route('student.login') }}" class="dropdown-item">Student Login</a>
                     </div>
                 </div>
                 <a href="{{ route('contact') }}" class="nav-item nav-link">Contact</a>

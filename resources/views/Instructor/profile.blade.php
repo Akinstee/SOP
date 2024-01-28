@@ -55,7 +55,7 @@
                                         </a>
                                     </div>
                                     <div class="col ms-md-n2 profile-user-info">
-                                        <h4 class="user-name mb-0">John Doe</h4>
+                                        <h4 class="user-name mb-0">{{ Auth::guard('instructor')->user()->name }}</h4>
                                         <h6 class="text-muted">UI/UX Design Team</h6>
                                         <div class="user-Location"><i class="fas fa-map-marker-alt"></i> Florida, United States</div>
                                         <div class="about-text">Lorem ipsum dolor sit amet.</div>
@@ -103,7 +103,19 @@
                                                     </div>
                                                     <div class="row">
                                                         <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">Mobile</p>
-                                                        <p class="col-sm-9">{{ $instructor->mobile }}</p>
+                                                        <p class="col-sm-9">{{ $instructor->phone_number }}</p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">Qualification</p>
+                                                        <p class="col-sm-9">{{ $instructor->hightest_qualification }}</p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">Years Of Experience</p>
+                                                        <p class="col-sm-9">{{ $instructor->years_of_experience }}</p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">Arears Of Expertise</p>
+                                                        <p class="col-sm-9">{{ $instructor->areas_of_expertise }}</p>
                                                     </div>
                                                     <div class="row">
                                                         <p class="col-sm-3 text-muted text-sm-end mb-0">Address</p>

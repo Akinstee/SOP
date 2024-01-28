@@ -38,7 +38,7 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="page-sub-header">
-                                <h3 class="page-title">Welcome {{ Auth::guard('student')->user()->email }}!</h3>
+                                <h3 class="page-title">Welcome {{ Auth::guard('student')->user()->first_name }}!</h3>
                                 <ul class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{ route('student.dashboard')}}">Home</a></li>
                                     <li class="breadcrumb-item active">Student</li>
@@ -56,7 +56,7 @@
                                 <div class="db-widgets d-flex justify-content-between align-items-center">
                                     <div class="db-info">
                                         <h6>All Courses</h6>
-                                        <h3>04/06</h3>
+                                        <h3>04/ {{ count($courses) }}</h3>
                                     </div>
                                     <div class="db-icon">
                                         <img src="{{ asset('/img/icons/teacher-icon-01.svg')}}" alt="Dashboard Icon">
@@ -120,7 +120,7 @@
                     <i class="fas fa-user-cog"></i>
                 </div>
 
-                <div class="row">
+                <div class="row" style="display:none">
                     <div class="col-xl-3 col-sm-6 col-12 d-flex">
                         <div class="card bg-comman w-100">
                             <div class="card-body">

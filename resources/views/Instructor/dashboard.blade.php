@@ -34,10 +34,10 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="page-sub-header">
-                                <h3 class="page-title">Welcome Instructor!</h3>
+                                <h3 class="page-title">Welcome {{ Auth::guard('instructor')->user()->first_name }}!</h3>
                                 <ul class="breadcrumb">
-                                    <a href="{{ route('instructor.dashboard') }}"></a>Home</a></li>
-                                    <li class="breadcrumb-item active">Instructor</li>
+                                   
+                                    <li class="breadcrumb-item active"> <Dashbaord href="{{ route('instructor.dashboard') }}">Dashbaord</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -51,7 +51,7 @@
                             <div class="card-body">
                                 <div class="db-widgets d-flex justify-content-between align-items-center">
                                     <div class="db-info">
-                                        <h6>Active COurses</h6>
+                                        <h6>Active Courses</h6>
                                         <h3>{{ $activeCoursesCount }}</h3>
                                     </div>
                                     <div class="db-icon">
@@ -190,7 +190,7 @@
                                                     </td>
                                                     <td class="text-nowrap">
                                                         <a href="{{ route('instructor.profile') }}">
-                                                            <img class="rounded-circle" src="{{ asset('/img/profiles/avatar-02.jpg') }}" width="25" alt="Star Students">
+                                                            <!-- <img class="rounded-circle" src="{{ asset('/img/profiles/avatar-02.jpg') }}" width="25" alt="Star Students"> -->
                                                             {{ $student->name }}
                                                         </a>
                                                     </td>
