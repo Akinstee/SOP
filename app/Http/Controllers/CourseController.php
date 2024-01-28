@@ -59,4 +59,41 @@ class CourseController extends Controller
     {
         return view('courses.modules');
     }
+
+    // Display the form to edit a course
+    public function edit($id)
+    {
+        $course = Course::findOrFail($id);
+        return view('instructor.edit-course', compact('course'));
+    }
+
+    // Update a course after editing
+    public function update(Request $request, $id)
+    {
+        // $request->validate([
+        //     'name' => 'required|string|max:255',
+        //     'author' => 'required|string|max:255',
+        //     'rating' => 'required|string|max:255',
+        //     'price' => 'required|numeric',
+        // ]);
+
+        $course = Course::findOrFail($id);
+        $course->update([
+            'name' => $request->input('name'),
+            'author' => $request->input('author'),
+            'rating' => $request->input('rating'),
+            'price' => $request->input('price'),
+        ]);
+
+        return redirect()->route('instructor.courses')->with('success', 'Course updated successfully!');
+    }
+
+    // Delete a course
+    public function destroy($id)
+    {
+        $course = Course::findOrFail($id);
+        $course->delete();
+
+        return redirect()->route('courses.index')->with('success', 'Course deleted successfully!');
+    }
 }
