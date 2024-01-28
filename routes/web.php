@@ -71,11 +71,13 @@ Route::middleware('guest:instructor')->prefix('/instructor')->name('instructor.'
     Route::get('/login', 'instructorLogin')->name('login');
     Route::post('/check', 'instructorCheck')->name('check');
 });
+
 Route::middleware('auth:instructor')->prefix('/instructor')->name('instructor.')->controller(InstructorController::class)->group(function () {
     Route::get('/dashboard', 'dashboard')->name('dashboard');
     Route::get('/courses', 'courses')->name('courses');
     Route::get('/edit-courses', 'editCourses')->name('edit-course');
     Route::get('/add-course', 'addCourse')->name('add-course');
+    Route::post('/addstore', 'storeCourse')->name('add-store');
     Route::get('/invoices', 'invoices')->name('invoices');
     Route::get('/invoices-paid', 'invoicesPaid')->name('invoices-paid');
     Route::get('/add-invoice', 'addInvoice')->name('add-invoice');
@@ -89,7 +91,7 @@ Route::middleware('auth:instructor')->prefix('/instructor')->name('instructor.')
     Route::get('/forgot-password', 'forgotPassword')->name('forgot-password');
     Route::get('/error-404', 'error404')->name('error-404');
     Route::get('/profile', 'showProfile')->name('profile');
-    Route::get('/edit', 'editProfile')->name('edit');
+    Route::get('/profile-edit', 'editProfile')->name('edit');
     Route::post('/change-password', 'changePassword')->name('change.password');
     Route::get('/inbox', 'inbox')->name('inbox');
     Route::get('/localization-details', 'localizatioDetails')->name('localization-details');
@@ -177,8 +179,19 @@ Route::prefix('courses')->controller(CourseController::class)->group(function ()
     Route::get('/courses', 'index')->name('courses');
     // Route::get('/courses', 'index');
     Route::get('/courses/intro', 'intro');
+    Route::post('/store', 'store');
     Route::get('/courses/intro/video', 'introVideo');
     Route::get('/courses/css', 'css')->name('courses.css');
     Route::get('/courses/javascript', 'javascript')->name('courses.javascript');
     Route::get('/courses/modules', 'showModulesScreen')->name('courses.modules');
 });
+
+
+// Route for displaying the form to edit a course
+Route::get('/courses/{id}/edit', [CourseController::class, 'edit'])->name('courses.edit');
+
+// Route for updating a course after editing
+Route::put('/courses/{id}', [CourseController::class, 'update'])->name('courses.update');
+
+// Route for deleting a course
+Route::delete('/courses/{id}', [CourseController::class, 'destroy'])->name('courses.destroy');
