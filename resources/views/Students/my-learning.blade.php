@@ -31,16 +31,21 @@
         {{-- Sidebar Start --}}
         @include('layouts.studentside')
         {{-- Sidebar Ends --}}
-        <div class="courses-container">
-            @foreach ($courses as $course)
-                <div class="course">
-                    <img src="{{ asset('course_images/' . $course->id . '.jpg') }}" alt="{{ $course->name }} Image">
-                    <h2>{{ $course->name }}</h2>
-                    <p>Author: {{ $course->author }}</p>
-                    <p>Rating: {{ $course->rating }}</p>
-                    <p>Price: ${{ $course->price }}</p>
-                </div>
-            @endforeach
+        <div class="page-wrapper">
+
+            <div class="courses-container">
+                @forelse ($courses as $course)
+                    <div class="course">
+                        <img src="{{ asset('course_images/' . $course->id . '.jpg') }}" alt="{{ $course->name }} Image">
+                        <h2>{{ $course->name }}</h2>
+                        <p>Author: {{ $course->author }}</p>
+                        <p>Rating: {{ $course->rating }}</p>
+                        <p>Price: ${{ $course->price }}</p>
+                    </div>
+                @empty
+                    <p>No available courses at the moment. Check back later!</p>
+                @endforelse
+            </div>
         </div>
     </div>
 
