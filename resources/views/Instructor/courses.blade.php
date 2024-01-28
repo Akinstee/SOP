@@ -105,6 +105,34 @@
                                             <th class="text-end">Action</th>
                                         </tr>
                                     </thead>
+                                    <tbody>
+                                        @foreach($courses as $course)
+                                            <tr>
+                                                <td>
+                                                    <div class="form-check check-tables">
+                                                        <input class="form-check-input" type="checkbox" value="{{ $course->id }}">
+                                                    </div>
+                                                </td>
+                                                <td>{{ $course->id }}</td>
+                                                <td>{{ $course->name }}</td>
+                                                <td>{{ $course->rating }}</td>
+                                                <td class="text-end">
+                                                    <!-- Add your actions here, e.g., edit and delete links/buttons -->
+                                                    <!-- Edit button with icon and tooltip -->
+                                                    <a href="{{ route('courses.edit', ['id' => $course->id]) }}" class="btn btn-primary text-white" data-bs-toggle="tooltip" title="Edit Course">
+                                                            <i class="fas fa-edit"></i>
+                                                        </a>
+
+                                                        <!-- Delete button with icon and tooltip (conditionally shown) -->
+                                                        @if(auth()->user()->name === $course->author)
+                                                            <a href="{{ route('courses.destroy', ['id' => $course->id]) }}" class="btn btn-danger text-white" data-bs-toggle="tooltip" title="Delete Course">
+                                                                <i class="fas fa-trash-alt"></i>
+                                                            </a>
+                                                        @endif
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
