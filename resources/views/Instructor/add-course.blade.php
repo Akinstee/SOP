@@ -51,7 +51,7 @@
                     <div class="col-sm-12">
                         <div class="card">
                             <div class="card-body">
-                                <form action="{{ route('instructor.store_course') }}" method="post">
+                                <form action="{{ route('instructor.add-store') }}" method="post">
                                     @csrf
                                     <div class="row">
                                         <div class="col-12">
@@ -60,31 +60,31 @@
                                         <div class="col-12 col-sm-4">
                                             <div class="form-group local-forms">
                                                 <label>Course ID <span class="login-danger">*</span></label>
-                                                <input type="text" class="form-control">
+                                                <input type="text" class="form-control" name="id" required>
                                             </div>
                                         </div>
                                         <div class="col-12 col-sm-4">
                                             <div class="form-group local-forms">
                                                 <label>Course Name <span class="login-danger">*</span></label>
-                                                <input type="text" class="form-control">
+                                                <input type="text" class="form-control"  name="name" required>
                                             </div>
                                         </div>
                                         <div class="col-12 col-sm-4">
                                             <div class="form-group local-forms">
                                                 <label>Course Author <span class="login-danger">*</span></label>
-                                                <input type="text" class="form-control">
+                                                <input readonly type="text" class="form-control"  name="author" required value="{{ Auth::guard('instructor')->user()->name }}">
                                             </div>
                                         </div>
                                         <div class="col-12 col-sm-4">
                                             <div class="form-group local-forms">
                                                 <label>Course rating <span class="login-danger">*</span></label>
-                                                <input type="text" class="form-control">
+                                                <input type="text" class="form-control"  name="rating" required>
                                             </div>
                                         </div>
                                         <div class="col-12 col-sm-4">
                                             <div class="form-group local-forms">
                                                 <label>Course price <span class="login-danger">*</span></label>
-                                                <input type="text" class="form-control">
+                                                <input type="text" class="form-control"  name="price" required>
                                             </div>
                                         </div>
                                         <div class="col-12">

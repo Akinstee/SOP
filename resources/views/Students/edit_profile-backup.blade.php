@@ -1,11 +1,12 @@
-@extends('layouts.innershell')
-
-<!--  -->
-@section('styles')
-<!-- Template Main CSS File -->
-<link rel="stylesheet" href="{{ asset('css/dashboard.css') }}" />
+<span style="font-family: verdana, geneva, sans-serif;"><!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <title>Dashboard | By SOP</title>
+      <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}" />
       <!-- Font Awesome Cdn Link -->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+
       <style>
         form {
           display: flex;
@@ -50,11 +51,74 @@
           cursor: pointer;
         }
         </style>
-endsection
-      
-@section('content')
-    <!-- Your page content goes here -->
-    <div class="container">
+        
+    </head>
+    <body>
+      <div class="container">
+        <nav>
+          <ul>
+            <li><a href="#" class="logo">
+              <img src="/logo.jpg" alt="">
+              <span class="nav-item">DashBoard</span>
+            </a></li>
+            <li><a href="#">
+              <i class="fas fa-home"></i>
+              <span class="nav-item">Home</span>
+            </a></li>
+            <li><a href="">
+                <i class="fas fa-book"></i>
+                <span class="nav-item">My Learning</span>
+              </a></li>
+              <li><a href="">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="nav-item">My Cart</span>
+              </a></li>
+              <li><a href="">
+                <i class="fas fa-heart"></i>
+                <span class="nav-item">Wishlist</span>
+              </a></li>
+              <li><a href="">
+                <i class="fas fa-bell"></i>
+                <span class="nav-item">Notification</span>
+              </a></li>
+              <li><a href="">
+                <i class="fas fa-envelope"></i>
+                <span class="nav-item">Messages</span>
+              </a></li>
+            <li><a href="">
+              <i class="fas fa-user"></i>
+              <span class="nav-item">Profile</span>
+            </a></li>
+            <li><a href="edit_profile.blade.php">
+                <i class="fas fa-user-edit"></i>
+                <span class="nav-item">Edit Profile</span>
+              </a></li>
+            <li><a href="">
+              <i class="fas fa-wallet"></i>
+              <span class="nav-item">Wallet</span>
+            </a></li>
+            <li><a href="">
+              <i class="fas fa-chart-bar"></i>
+              <span class="nav-item">Analytics</span>
+            </a></li>
+            <li><a href="">
+              <i class="fas fa-tasks"></i>
+              <span class="nav-item">Tasks</span>
+            </a></li>
+            <li><a href="">
+              <i class="fas fa-cog"></i>
+              <span class="nav-item">Settings</span>
+            </a></li>
+            <li><a href="">
+              <i class="fas fa-question-circle"></i>
+              <span class="nav-item">Help</span>
+            </a></li>
+            <li><a href="" class="logout">
+              <i class="fas fa-sign-out-alt"></i>
+              <span class="nav-item">Log out</span>
+            </a></li>
+          </ul>
+        </nav>
             <h1>Edit Profile</h1>
         
             <form method="post" action="{{ url('/edit-profile/update') }}">
@@ -161,20 +225,6 @@ endsection
         
                 
             </form>
-      </div> 
-@endsection
-
-@section('scripts')
-    <!-- Add your page-specific scripts here -->
-       <!-- Vendor JS Files -->
-       <script src="{{ asset('vendor/apexcharts/apexcharts.min.js') }}"></script>
-        <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-        <script src="{{ asset('vendor/chart.js/chart.umd.js') }}"></script>
-        <script src="{{ asset('echarts/echarts.min.js') }}"></script>
-        <script src="{{ asset('vendor/quill/quill.min.js') }}"></script>
-        <script src="{{ asset('vendor/simple-datatables/simple-datatables.js') }}"></script>
-        <script src="{{ asset('vendor/tinymce/tinymce.min.js') }}"></script>
-        <script src="{{ asset('vendor/php-email-form/validate.js') }}"></script>
-
-@endsection
-
+      </div>
+    </body>
+    </html></span>

@@ -71,34 +71,36 @@ Route::middleware('guest:instructor')->prefix('/instructor')->name('instructor.'
     Route::get('/login', 'instructorLogin')->name('login');
     Route::post('/check', 'instructorCheck')->name('check');
 });
-Route::middleware('auth:instuctor')->prefix('/instructor')->name('instructor.')->controller(InstructorController::class)->group(function () {
-    Route::get('/instuctor/dashboard', 'dashboard')->name('dashboard');
-    Route::get('/instructor/courses', 'courses')->name('courses');
-    Route::get('/instructor/edit-courses', 'editCourses')->name('edit-course');
-    Route::get('/instructor/add-course', 'addCourse')->name('add-course');
-    Route::get('/instructor/invoices', 'invoices')->name('invoices');
-    Route::get('/instructor/invoices-paid', 'invoicesPaid')->name('invoices-paid');
-    Route::get('/instructor/add-invoice', 'addInvoice')->name('add-invoice');
-    Route::get('/instructor/edit-invoice', 'editInvoice')->name('edit-invoice');
-    Route::get('/instructor/view-invoice', 'viewInvoice')->name('view-invoice');
-    Route::get('/instructor/store_invoice', 'storeInvoice')->name('store_invoice');
-    Route::get('/instructor/invoice-settings', 'invoicesSettings')->name('invoices-settings');
-    Route::get('/instructor/tax-settings', 'taxSettings')->name('tax-settings');
-    Route::get('/instructor/bank-settings', 'bankSettings')->name('bank-settings');
-    Route::get('/instructor/settings', 'settings')->name('settings');
-    Route::get('/instructor/forgot-password', 'forgotPassword')->name('forgot-password');
-    Route::get('/instructor/error-404', 'error404')->name('error-404');
-    Route::get('/instructor/profile', 'showProfile')->name('profile');
-    Route::get('/instructor/edit', 'editProfile')->name('edit');
-    Route::post('/instructor/change-password', 'changePassword')->name('change.password');
-    Route::get('/instructor/inbox', 'inbox')->name('inbox');
+
+Route::middleware('auth:instructor')->prefix('/instructor')->name('instructor.')->controller(InstructorController::class)->group(function () {
+    Route::get('/dashboard', 'dashboard')->name('dashboard');
+    Route::get('/courses', 'courses')->name('courses');
+    Route::get('/edit-courses', 'editCourses')->name('edit-course');
+    Route::get('/add-course', 'addCourse')->name('add-course');
+    Route::post('/addstore', 'storeCourse')->name('add-store');
+    Route::get('/invoices', 'invoices')->name('invoices');
+    Route::get('/invoices-paid', 'invoicesPaid')->name('invoices-paid');
+    Route::get('/add-invoice', 'addInvoice')->name('add-invoice');
+    Route::get('/edit-invoice', 'editInvoice')->name('edit-invoice');
+    Route::get('/view-invoice', 'viewInvoice')->name('view-invoice');
+    Route::get('/store_invoice', 'storeInvoice')->name('store_invoice');
+    Route::get('/invoice-settings', 'invoicesSettings')->name('invoices-settings');
+    Route::get('/tax-settings', 'taxSettings')->name('tax-settings');
+    Route::get('/bank-settings', 'bankSettings')->name('bank-settings');
+    Route::get('/settings', 'settings')->name('settings');
+    Route::get('/forgot-password', 'forgotPassword')->name('forgot-password');
+    Route::get('/error-404', 'error404')->name('error-404');
+    Route::get('/profile', 'showProfile')->name('profile');
+    Route::get('/profile-edit', 'editProfile')->name('edit');
+    Route::post('/change-password', 'changePassword')->name('change.password');
+    Route::get('/inbox', 'inbox')->name('inbox');
     Route::get('/localization-details', 'localizatioDetails')->name('localization-details');
-    Route::get('/instructor/payment-settings', 'paymentSettings')->name('payment-settings');
-    Route::get('/instructor/email-settings', 'emailSettings')->name('email-settings');
-    Route::get('/instructor/social-settings', 'socialSettings')->name('social-settings');
-    Route::get('/instructor/social-links', 'socialLinks')->name('social-links');
-    Route::get('/instructor/seo-settings', 'seoSettings')->name('seo-settings');
-    Route::get('/instructor/others-settings', 'othersSettings')->name('others-settings');
+    Route::get('/payment-settings', 'paymentSettings')->name('payment-settings');
+    Route::get('/email-settings', 'emailSettings')->name('email-settings');
+    Route::get('/social-settings', 'socialSettings')->name('social-settings');
+    Route::get('/social-links', 'socialLinks')->name('social-links');
+    Route::get('/seo-settings', 'seoSettings')->name('seo-settings');
+    Route::get('/others-settings', 'othersSettings')->name('others-settings');
 });
 Route::middleware('guest:admin')->prefix('/admin')->name('admin.')->controller(AdminController::class)->group(function () {
     Route::get('/login', 'adminLogin')->name('login');
@@ -106,34 +108,34 @@ Route::middleware('guest:admin')->prefix('/admin')->name('admin.')->controller(A
 });
 Route::middleware('auth:admin')->prefix('/admin')->name('admin.')->controller(AdminController::class)->group(function () {
     //Dashboard
-    Route::get('/admin/dashboard', 'dashboard')->name('dashboard');
-    Route::get('/admin/dashboard', 'dashboard')->name('admin.dashboard');
-    Route::post('/admin/submit', 'submit')->name('admin.submit');
-    Route::get('/admin/edit', 'editProfile')->name('instructor.edit');
-    Route::post('/admin/change-password', 'changePassword')->name('instructor.change.password');
-    Route::get('/admin/profile', 'profile')->name('admin.profile');
-    Route::post('/admin/change-password', 'changePassword')->name('admin.change.password');
-    Route::get('/admin/edit', 'edit')->name('admin.edit');
-    Route::get('/admin/students', 'students')->name('admin.students');
-    Route::get('/admin/courses', 'courses')->name('admin.courses');
-    Route::get('/admin/invoices', 'invoices')->name('admin.invoices');
-    Route::get('/admin/settings', 'settings')->name('admin.settings');
-    Route::get('/admin/live-class', 'liveClass')->name('admin.live-class');
-    Route::get('/admin/inbox', 'inbox')->name('admin.inbox');
-    Route::get('/admin/students', 'students')->name('admin.students');
-    Route::get('/admin/student-details', 'student-details')->name('admin.student-details');
-    Route::get('/admin/add-student', 'add-student')->name('admin.add-student');
-    Route::get('/admin/edit-student', 'edit-student')->name('admin.edit-student');
-    Route::get('/admin/instructor', 'instructor')->name('admin.instructor');
-    Route::get('/admin/add-student', 'add-student')->name('admin.add-student');
-    Route::get('/admin/add-course', 'addCourse')->name('admin.add-course');
-    Route::get('/admin/edit-courses', 'editInstructor')->name('admin.edit-courses');
-    Route::get('/admin/add-invoice', 'AddInvoice')->name('admin.add-invoice');
-    Route::get('/admin/edit-invoice', 'EditInvoice')->name('admin.edit-invoice');
-    Route::get('/admin/view-invoice', 'ViewInvoice')->name('admin.view-invoice');
-    Route::get('/admin/settings', 'Settings')->name('admin.settings');
-    Route::get('/admin/error-404', 'error-44')->name('admin.error-404');
-    Route::get('/admin/logout', 'logout')->name('admin.logout');
+    Route::get('/dashboard', 'dashboard')->name('dashboard');
+    Route::get('/dashboard', 'dashboard')->name('admin.dashboard');
+    Route::post('/submit', 'submit')->name('admin.submit');
+    Route::get('/edit', 'editProfile')->name('instructor.edit');
+    Route::post('/change-password', 'changePassword')->name('instructor.change.password');
+    Route::get('/profile', 'profile')->name('admin.profile');
+    Route::post('/change-password', 'changePassword')->name('admin.change.password');
+    Route::get('/edit', 'edit')->name('admin.edit');
+    Route::get('/students', 'students')->name('admin.students');
+    Route::get('/courses', 'courses')->name('admin.courses');
+    Route::get('/invoices', 'invoices')->name('admin.invoices');
+    Route::get('/settings', 'settings')->name('admin.settings');
+    Route::get('/live-class', 'liveClass')->name('admin.live-class');
+    Route::get('/inbox', 'inbox')->name('admin.inbox');
+    Route::get('/students', 'students')->name('admin.students');
+    Route::get('/student-details', 'student-details')->name('admin.student-details');
+    Route::get('/add-student', 'add-student')->name('admin.add-student');
+    Route::get('/edit-student', 'edit-student')->name('admin.edit-student');
+    Route::get('/instructor', 'instructor')->name('admin.instructor');
+    Route::get('/add-student', 'add-student')->name('admin.add-student');
+    Route::get('/add-course', 'addCourse')->name('admin.add-course');
+    Route::get('/edit-courses', 'editInstructor')->name('admin.edit-courses');
+    Route::get('/add-invoice', 'AddInvoice')->name('admin.add-invoice');
+    Route::get('/edit-invoice', 'EditInvoice')->name('admin.edit-invoice');
+    Route::get('/view-invoice', 'ViewInvoice')->name('admin.view-invoice');
+    Route::get('/settings', 'Settings')->name('admin.settings');
+    Route::get('/error-404', 'error-44')->name('admin.error-404');
+    Route::get('/logout', 'logout')->name('admin.logout');
     Route::get('/instructor', 'instructorList')->name('instructor');
     Route::get('/instructor-details', 'instructorDetails')->name('instructor-details');
     Route::get('/add-instructor', 'addInstructor')->name('add-instructor');
@@ -177,8 +179,19 @@ Route::prefix('courses')->controller(CourseController::class)->group(function ()
     Route::get('/courses', 'index')->name('courses');
     // Route::get('/courses', 'index');
     Route::get('/courses/intro', 'intro');
+    Route::post('/store', 'store');
     Route::get('/courses/intro/video', 'introVideo');
     Route::get('/courses/css', 'css')->name('courses.css');
     Route::get('/courses/javascript', 'javascript')->name('courses.javascript');
     Route::get('/courses/modules', 'showModulesScreen')->name('courses.modules');
 });
+
+
+// Route for displaying the form to edit a course
+Route::get('/courses/{id}/edit', [CourseController::class, 'edit'])->name('courses.edit');
+
+// Route for updating a course after editing
+Route::put('/courses/{id}', [CourseController::class, 'update'])->name('courses.update');
+
+// Route for deleting a course
+Route::delete('/courses/{id}', [CourseController::class, 'destroy'])->name('courses.destroy');

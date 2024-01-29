@@ -140,7 +140,7 @@
                     <img class="rounded-circle" src="{{asset ('/img/profiles/avatar-01.jpg')}}" width="31"
                         alt="Temitayo">
                     <div class="user-text">
-                        <h6>Temitayo</h6>
+                        <h6>{{ Auth::guard('instructor')->user()->name }}</h6>
                         <p class="text-muted mb-0">Instructor</p>
                     </div>
                 </span>
@@ -152,7 +152,7 @@
                             class="avatar-img rounded-circle">
                     </div>
                     <div class="user-text">
-                        <h6>Temitayo</h6>
+                        <h6>{{ Auth::guard('instructor')->user()->name }}</h6>
                         <p class="text-muted mb-0">Instructor</p>
                     </div>
                 </div>

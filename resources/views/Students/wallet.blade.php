@@ -33,7 +33,7 @@
 
         <div class="page-wrapper">
             <div class="content container-fluid">               
-
+                <h1>Welcome To Your Wallet</h1>
             </div>
 
         </div>

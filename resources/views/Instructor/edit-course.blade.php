@@ -50,7 +50,10 @@
                     <div class="col-sm-12">
                         <div class="card">
                             <div class="card-body">
-                                <form>
+                                <form action="{{ route('courses.update', ['id' => $course->id])}}" method="post">
+                                @csrf
+                                @method('PUT') <!-- Add this line to set the form method to PUT -->
+
                                     <div class="row">
                                         <div class="col-12">
                                         <h5 class="form-title"><span>Course Information</span></h5>
@@ -58,20 +61,40 @@
                                         <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
                                         <label>Course ID <span class="login-danger">*</span></label>
-                                        <input type="text" class="form-control" value="PRE1534">
+                                        <input readonly type="text" class="form-control" value="{{ $course['id']}}">
                                         </div>
                                         </div>
                                         <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
                                         <label> Course Name <span class="login-danger">*</span></label>
-                                        <input type="text" class="form-control" value="Botony">
+                                        <input type="text" class="form-control" name="name" value="{{ $course['name']}}">
                                         </div>
                                         </div>
                                         <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
-                                        <label>Class <span class="login-danger">*</span></label>
-                                        <input type="text" class="form-control" value="9">
+                                        <label>Price <span class="login-danger">*</span></label>
+                                        <input type="text" class="form-control" name="price" value="{{ $course['price']}}">
                                         </div>
+                                        </div>
+                                        <div class="col-12 col-sm-4">
+                                        <div class="form-group local-forms">
+                                        <label>Course Aurthor <span class="login-danger">*</span></label>
+                                        <input readonly type="text" name="author" class="form-control" value="{{ $course['author']}}">
+                                        </div>
+                                        </div>
+                                        <div class="col-12 col-sm-4">
+                                        <div class="form-group local-forms">
+                                        <label> Course Rating <span class="login-danger">*</span></label>
+                                        <input type="text" readonly class="form-control" name="rating" value="{{ $course['rating']}}">
+                                        </div>
+                                        </div>
+                                        <div class="col-12 col-sm-4">
+                                        <div class="form-group local-forms">
+                                        <label>Course Status <span class="login-danger">*</span></label>
+                                        <select disabled class="form-control" name="status">
+                                            <option value="inactive" {{ $course['status'] === 'inactive' ? 'selected' : '' }}>Inactive</option>
+                                            <option value="active" {{ $course['status'] === 'active' ? 'selected' : '' }}>Active</option>
+                                        </select>
                                         </div>
                                         <div class="col-12">
                                         <div class="student-submit">

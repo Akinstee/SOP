@@ -67,14 +67,14 @@
     <div class="container">
         <h1>Instructor Registration Form</h1>
 
-        <form method="post" action="{{ route('instructor.save') }}">
+        <form method="post" action="{{ route('instructor.save') }}" enctype="multipart/form-data">
             @csrf
 
-            <label for="firstname">First Name</label>
-            <input type="text" class="form-control" id="firstname" name="firstname" placeholder="First Name" required>
+            <label for="first_name">First Name</label>
+            <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name" required>
 
-            <label for="lastname">Last Name</label>
-            <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Last Name" required>
+            <label for="last_name">Last Name</label>
+            <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name" required>
 
             <label for="email">Email Address</label>
             <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" required>
@@ -95,7 +95,7 @@
                 placeholder="Years of Experience" required>
 
             <label for="areas_of_expertise">Areas of Expertise</label>
-            <select name="areas_of_expertise[]" id="areas_of_expertise" class="form-control" multiple required>
+            <select name="areas_of_expertise[]" id="areas_of_expertise" class="form-control form-select form-select-lg" multiple required>
                 <option value="web_development">Web Development</option>
                 <option value="mobile_development">Mobile Development</option>
                 <option value="data_science">Data Science</option>
