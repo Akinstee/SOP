@@ -79,4 +79,9 @@ class Student extends Authenticatable
     {
         return $this->attributes['first_name'] . ' ' . $this->attributes['last_name'];
     }
+
+    public function courses()
+    {
+        return $this->belongsToMany(Course::class);
+    }
 }

@@ -41,7 +41,7 @@ Route::middleware('auth:student')->prefix('/student')->name('student.')->control
     Route::get('/my-courses',  'myCourses');
     Route::get('/my-learning',  'myLearning')->name('my-learning');
     Route::get('/my-cart',  'myCart')->name('my-cart');
-    Route::get('/wishlist',  'wishlist')->name('wishlist');
+    //Route::get('/wishlist',  'wishlist')->name('wishlist');
     Route::get('/notifications',  'notifications')->name('notifications');
     Route::get('/messages',  'messages')->name('messages');
     Route::get('/edit-profile',  'editProfile')->name('edit_profile');
@@ -60,10 +60,10 @@ Route::middleware('auth:student')->prefix('/student')->name('student.')->control
     Route::get('/courses',  'courses')->name('courses');
     Route::get('/edit-course',  'editCourse')->name('edit-course');
     Route::get('/forgot-password',  'forgotPassword')->name('forgot-password');
-    Route::get('/modules',  'modules')->name('modules');
-    Route::get('/intro-module',  'introModule')->name('introModule');
-    Route::post('/submit-quiz',  'submitQuiz')->name('submitQuiz');
-    Route::post('/send-message',  'sendMessage')->name('sendMessage');
+    //Route::get('/modules',  'modules')->name('modules');
+    //Route::get('/intro-module', 'introModule')->name('introModule');
+    //Route::post('/submit-quiz',  'submitQuiz')->name('submitQuiz');
+    //Route::post('/send-message',  'sendMessage')->name('sendMessage');
 });
 Route::middleware('guest:instructor')->prefix('/instructor')->name('instructor.')->controller(InstructorController::class)->group(function () {
     Route::get('/register', 'index')->name('register');
@@ -195,3 +195,30 @@ Route::put('/courses/{id}', [CourseController::class, 'update'])->name('courses.
 
 // Route for deleting a course
 Route::delete('/courses/{id}', [CourseController::class, 'destroy'])->name('courses.destroy');
+
+//Route for viewing Course detail
+Route::get('/courses/{id}/view', [CourseController::class, 'view'])->name('courses.view');
+
+// routes/web.php
+
+Route::middleware('auth')->group(function () {
+    Route::get('/buy-courses', 'StudentController@showBuy::class, Courses')->name('buy.courses');
+    Route::post('/checkout', 'StudentController@checkout')->name('checkout');
+    Route::post('/payment', 'PaymentController@payWithPayPal')->name('paypal.payment');
+});
+
+Route::post('/student/submit-quiz', [StudentController::class, 'submitQuiz'])->name('submitQuiz');
+Route::post('/student/send-message', [StudentController::class, 'sendMessage'])->name('sendMessage');
+Route::get('/student/modules', [StudentController::class, 'modules'])->name('students.modules');
+Route::get('/student/introModule', [StudentController::class, 'introModule'])->name('students.introModule');
+
+Route::get('/student/fundamental-module', [StudentController::class, 'showFundamentalModule'])->name('student.fundamental-module');
+Route::get('/tasks/submit', [StudentController::class, 'submitTask'])->name('tasks.submit');
+Route::post('/tasks/store', [StudentController::class, 'storeTaskResponse'])->name('tasks.store');
+
+Route::get('/course/{id}', [CourseController::class, 'show'])->name('course.detail');
+
+Route::prefix('student')->group(function () {
+    Route::get('/wishlist', [StudentController::class, 'showWishlist'])->name('student.wishlist');
+    Route::post('/wishlist/add', [StudentController::class, 'addToWishlist'])->name('student.wishlist.add');
+});

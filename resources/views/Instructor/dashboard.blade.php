@@ -37,7 +37,7 @@
                                 <h3 class="page-title">Welcome {{ Auth::guard('instructor')->user()->first_name }}!</h3>
                                 <ul class="breadcrumb">
                                    
-                                    <li class="breadcrumb-item active"> <Dashbaord href="{{ route('instructor.dashboard') }}">Dashbaord</a></li>
+                                    <li class="breadcrumb-item active"> <a href="{{ route('instructor.dashboard') }}">Dashbaord</a></li>
                                 </ul>
                             </div>
                         </div>

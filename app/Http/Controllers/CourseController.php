@@ -96,4 +96,28 @@ class CourseController extends Controller
 
         return redirect()->route('courses.index')->with('success', 'Course deleted successfully!');
     }
+
+    // public function view($id)
+    //     {
+    //         $course = Course::findOrFail($id);
+    //         return view('courses.view', compact('course'));
+    //     }
+
+    public function view($id)
+    {
+        $course = Course::findOrFail($id);
+        return view('instructor.view-course', compact('course'));
+    }
+
+    public function showActiveCourses()
+    {
+        $userId = auth()->user()->id;
+
+        // Assuming you have a relationship defined between User and Course models
+        $activeCoursesCount = Course::whereHas('students', function ($query) use ($userId) {
+            $query->where('user_id', $userId);
+        })->count();
+
+        return view('your.view.name')->with('activeCoursesCount', $activeCoursesCount);
+    }
 }

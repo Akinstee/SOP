@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Course extends Model
 {
     protected $fillable = ['name', 'author', 'rating', 'price'];
+
+    public function students()
+    {
+        return $this->belongsToMany(Student::class);
+    }
 }

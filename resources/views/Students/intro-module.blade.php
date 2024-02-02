@@ -1,51 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+        <title>SOPS - Dashboard</title>
+        <link rel="shortcut icon" href="{{ asset('/img/SOPS.png')}}">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700&display=swap"
+            rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('/plugins/bootstrap/css/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{ asset('/plugins/feather/feather.css')}}">
+        <link rel="stylesheet" href="{{ asset('/plugins/icons/flags/flags.css')}}">
+        <link rel="stylesheet" href="{{ asset('/plugins/fontawesome/css/fontawesome.min.css')}}">
+        <link rel="stylesheet" href="{{ asset('/plugins/fontawesome/css/all.min.css')}}">
+        <link rel="stylesheet" href="{{ asset('/plugins/simple-calendar/simple-calendar.css')}}">
+        <link rel="stylesheet" href="{{ asset('/css/style32.css')}}">
+        {{-- <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}" /> --}}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    </head>
 <body>
     <div class="container">
-        {{-- <section class="intro-module">
+        @include('layouts.studentnav')
+        <!-- Include the content of intro_module.blade.php -->
+        <div class="intro-module" style="float: left; width: 70%; padding-right: 20px;">
             <h2>Introductory Module</h2>
     
             <!-- Video Player -->
             <div class="video-player">
-                <!-- Your video player code goes here -->
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_id" frameborder="0" allowfullscreen></iframe>
             </div>
     
             <!-- Transcript -->
-            <div class="transcript">
-                <!-- Transcript content goes here -->
+            <div class="transcript" style="margin-top: 20px;">
+                <p>This is a dummy transcript for the introduction to web development video. It provides an overview of key concepts and technologies in the field.</p>
+                <!-- Add more transcript content as needed -->
             </div>
     
             <!-- Quiz Section -->
-            <div class="quiz">
-                <!-- Quiz questions and options go here -->
-                <!-- Add a form for submitting quiz answers -->
-                <form action="{{ route('submitQuiz') }}" method="post">
+            <div class="quiz" style="margin-top: 20px;">
+                <form id="quizForm" action="{{ route('submitQuiz') }}" method="post">
                     @csrf
-                    <!-- Add quiz questions and options input fields here -->
-                    <button type="submit">Submit Quiz</button>
+                    <label onclick="toggleOptions(1)">1. What does HTML stand for?</label>
+                    <input type="radio" name="question1" value="a" onclick="toggleOptions(1)"> (a) Hyper Text Markup Language<br>
+                    <input type="radio" name="question1" value="b" onclick="toggleOptions(1)"> (b) Hyper Transfer Markup Language<br>
+                    <!-- Add more questions and options as needed -->
+    
+                    <button type="button" onclick="submitQuizAsync()">Submit Quiz</button>
                 </form>
             </div>
     
             <!-- Messaging Section -->
-            <div class="messaging">
-                <!-- Messaging features go here -->
+            <div class="messaging" style="margin-top: 20px;">
+                <h3>Message Instructor</h3>
+                <form action="{{ route('sendMessage') }}" method="post">
+                    @csrf
+                    <textarea name="message" rows="4" cols="50" placeholder="Type your message here"></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
             </div>
-        </section> --}}
-
-
-        <section class="main-course">
+        </div>
+    
+        <div class="main-course" style="float: right; width: 30%;">
             <h1>My courses</h1>
     
             <div class="course-box">
-                <ul>
+                <ul style="list-style: none; padding: 0; margin: 0;">
                     <li class="active">In progress</li>
-                    <li>finished</li>
+                    <li>Finished</li>
                 </ul>
                 <div class="course">
                     <div class="box">
@@ -68,46 +89,10 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
     
-        <!-- Include the content of intro_module.blade.php -->
-        <section class="intro-module">
-            <h2>Introductory Module</h2>
+    </div>
     
-            <!-- Video Player -->
-            <div class="video-player">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_id" frameborder="0" allowfullscreen></iframe>
-            </div>
-    
-            <!-- Transcript -->
-            <div class="transcript">
-                <p>This is a dummy transcript for the introduction to web development video. It provides an overview of key concepts and technologies in the field.</p>
-                <!-- Add more transcript content as needed -->
-            </div>
-    
-            <!-- Quiz Section -->
-            <div class="quiz">
-                <form id="quizForm" action="{{ route('submitQuiz') }}" method="post">
-                    @csrf
-                    <label onclick="toggleOptions(1)">1. What does HTML stand for?</label>
-                    <input type="radio" name="question1" value="a" onclick="toggleOptions(1)"> (a) Hyper Text Markup Language<br>
-                    <input type="radio" name="question1" value="b" onclick="toggleOptions(1)"> (b) Hyper Transfer Markup Language<br>
-                    <!-- Add more questions and options as needed -->
-    
-                    <button type="button" onclick="submitQuizAsync()">Submit Quiz</button>
-                </form>
-            </div>
-    
-            <!-- Messaging Section -->
-            <div class="messaging">
-                <h3>Message Instructor</h3>
-                <form action="{{ route('sendMessage') }}" method="post">
-                    @csrf
-                    <textarea name="message" rows="4" cols="50" placeholder="Type your message here"></textarea>
-                    <button type="submit">Send Message</button>
-                </form>
-            </div>
-        </section>
     
     <script>
         // Example JavaScript forinteractivit
@@ -136,7 +121,22 @@
                 });
         }
     </script>
+    <script src="{{ asset('/js/jquery-3.6.0.min.js')}}"></script>
 
-    </div>
+    <script src="{{ asset('/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+
+    <script src="{{ asset('/js/feather.min.js')}}"></script>
+
+    <script src="{{ asset('/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
+
+    <script src="{{ asset('/plugins/apexchart/apexcharts.min.js')}}"></script>
+    <script src="{{ asset('/plugins/apexchart/chart-data.js')}}"></script>
+
+    <script src="{{ asset('/plugins/simple-calendar/jquery.simple-calendar.js')}}"></script>
+    <script src="{{ asset('/js/calander.js')}}"></script>
+
+    <script src="{{ asset('/js/circle-progress.min.js')}}"></script>
+
+    <script src="{{ asset('/js/script.js')}}"></script>
 </body>
 </html>

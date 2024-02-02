@@ -55,8 +55,8 @@
                             <div class="card-body">
                                 <div class="db-widgets d-flex justify-content-between align-items-center">
                                     <div class="db-info">
-                                        <h6>All Courses</h6>
-                                        <h3>04/ {{ count($courses) }}</h3>
+                                        <h6>ENROLLED COURSES</h6>
+                                        <h3>{{ count($courses) }}</h3>
                                     </div>
                                     <div class="db-icon">
                                         <img src="{{ asset('/img/icons/teacher-icon-01.svg')}}" alt="Dashboard Icon">
@@ -70,9 +70,13 @@
                         <div class="card bg-comman w-100">
                             <div class="card-body">
                                 <div class="db-widgets d-flex justify-content-between align-items-center">
-                                    <div class="db-info">
-                                        <h6>All Projects</h6>
+                                    {{-- <div class="db-info">
+                                        <h6>ACTIVE COURSES</h6>
                                         <h3>40/60</h3>
+                                    </div> --}}
+                                    <div class="db-info">
+                                        <h6>ACTIVE COURSES</h6>
+                                        <h3>{{ $activeCoursesCount }}/60</h3>
                                     </div>
                                     <div class="db-icon">
                                         <img src="{{ asset('/img/icons/teacher-icon-02.svg')}}" alt="Dashboard Icon">
@@ -87,7 +91,7 @@
                             <div class="card-body">
                                 <div class="db-widgets d-flex justify-content-between align-items-center">
                                     <div class="db-info">
-                                        <h6>Test Attended</h6>
+                                        <h6>IN-PROGRESS COURSES</h6>
                                         <h3>30/50</h3>
                                     </div>
                                     <div class="db-icon">
@@ -103,7 +107,7 @@
                             <div class="card-body">
                                 <div class="db-widgets d-flex justify-content-between align-items-center">
                                     <div class="db-info">
-                                        <h6>Test Passed</h6>
+                                        <h6>COMPLETED COURSES</h6>
                                         <h3>15/20</h3>
                                     </div>
                                     <div class="db-icon">
@@ -208,19 +212,19 @@
                                 <div class="box">
                                     <h3>HTML</h3>
                                     <p>80% - progress</p>
-                                    <a href="{{ route('student.modules') }}"><button>Continue</button></a>
+                                    <a href="{{ route('students.modules') }}"><button>Continue</button></a>
                                     <i class="fab fa-html5 html"></i>
                                 </div>
                                 <div class="box">
                                     <h3>CSS</h3>
                                     <p>50% - progress</p>
-                                    <a href="{{ route('student.modules') }}"><button>Continue</button></a>
+                                    <a href="{{ route('students.modules') }}"><button>Continue</button></a>
                                     <i class="fab fa-css3-alt css"></i>
                                 </div>
                                 <div class="box">
                                     <h3>JavaScript</h3>
                                     <p>30% - progress</p>
-                                    <a href="{{ route('student.modules') }}"><button>Continue</button></a>
+                                    <a href="{{ route('students.modules') }}"><button>Continue</button></a>
                                     <i class="fab fa-js-square js"></i>
                                 </div>
                             </div>

@@ -129,6 +129,13 @@
                                                                 <i class="fas fa-trash-alt"></i>
                                                             </a>
                                                         @endif
+
+                                                        {{-- <a href="{{ route('courses.view', ['id' => $course->id]) }}" class="btn btn-danger text-white" data-bs-toggle="tooltip" title="View Course"> 
+                                                            <i class="fas fa-eye"></i></a> --}}
+
+                                                        <a href="{{ route('courses.view', ['id' => $course->id]) }}" class="btn btn-info text-white" data-bs-toggle="tooltip" title="View Course">
+                                                                <i class="fas fa-eye"></i>
+                                                            </a>
                                                 </td>
                                             </tr>
                                         @endforeach

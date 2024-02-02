@@ -14,9 +14,11 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\CheckoutRequest;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Console\View\Components\Task;
 
 class StudentController extends Controller
 {
@@ -163,32 +165,32 @@ class StudentController extends Controller
         return view('students.messages', compact('messagesFromDB'));
     }
 
-    public function wishlist()
-    {
-        $courses = [
-            [
-                'name' => 'Introduction to Web Development',
-                'description' => 'Learn the basics of web development.',
-                'price' => 49.99,
-                'image' => 'images/course1.jpg',
-            ],
-            [
-                'name' => 'Laravel Fundamentals',
-                'description' => 'Learn the basics ofLaravel 10.',
-                'price' => 99.99,
-                'image' => 'images/course1.jpg',
-            ],
-            [
-                'name' => 'Introduction to Web3 ',
-                'description' => 'Learn the basics of web 3.',
-                'price' => 99.99,
-                'image' => 'images/course1.jpg',
-            ],
-            // Add more courses as needed
-        ];
+    // public function wishlist()
+    // {
+    //     $courses = [
+    //         [
+    //             'name' => 'Introduction to Web Development',
+    //             'description' => 'Learn the basics of web development.',
+    //             'price' => 49.99,
+    //             'image' => 'images/course1.jpg',
+    //         ],
+    //         [
+    //             'name' => 'Laravel Fundamentals',
+    //             'description' => 'Learn the basics ofLaravel 10.',
+    //             'price' => 99.99,
+    //             'image' => 'images/course1.jpg',
+    //         ],
+    //         [
+    //             'name' => 'Introduction to Web3 ',
+    //             'description' => 'Learn the basics of web 3.',
+    //             'price' => 99.99,
+    //             'image' => 'images/course1.jpg',
+    //         ],
+    //         // Add more courses as needed
+    //     ];
 
-        return view('students.wishlist', compact('courses'));
-    }
+    //     return view('students.wishlist', compact('courses'));
+    // }
 
     public function notifications()
     {
@@ -313,22 +315,11 @@ class StudentController extends Controller
         return redirect('/about');
     }
 
-    // public function forgotPassword()
-    // {
-    //     // Your logic for the forgot password page
-    //     return view('student.forgot-password'); // Adjust the view name accordingly
-    // }
     public function forgotPassword()
     {
         // Your logic for the forgot password page
         return view('students.forgot-password');
     }
-
-
-    // public function liveClass()
-    // {
-    //     return view('student.live-class');
-    // }
 
     public function submitQuiz(Request $request)
     {
@@ -356,6 +347,11 @@ class StudentController extends Controller
         // Redirect the user to the next video or appropriate page
         return redirect()->route('nextVideo')->with('success', 'Quiz submitted successfully');
     }
+
+    // public function modules()
+    // {
+    //     return view('student.modules');
+    // }
 
     public function modules()
     {
@@ -385,4 +381,137 @@ class StudentController extends Controller
         // Redirect back with success message
         return back()->with('success', 'Message sent successfully');
     }
+
+    public function checkout(CheckoutRequest $request)
+    {
+        // Validation passed, process checkout
+        $course = Course::findOrFail($request->course_id);
+
+        // Update database accordingly (e.g., mark course as purchased for the student)
+        
+        // Redirect to payment page
+        return redirect()->route('paypal.payment');
+    }
+
+    public function updateDashboard(Request $request)
+    {
+        // Update student's dashboard after successful payment
+    }
+
+    public function showFundamentalModule()
+    {
+        return view('students.fundamental-module');
+    }
+
+    public function submitTask()
+    {
+        return view('tasks.submit');
+    }
+
+    public function storeTaskResponse(Request $request)
+    {
+        // Validate request data
+        $request->validate([
+            'response' => 'required',
+            // Add more validation rules as needed
+        ]);
+
+        // Store task response to the database
+        $task = new Task();
+        $task->response = $request->response;
+        $task->save();
+
+        return redirect()->back()->with('success', 'Task response submitted successfully.');
+    }
+
+    // public function addToWishlist(Request $request)
+    // {
+    //     // Validate the request
+    //     $request->validate([
+    //         'course_id' => 'required|integer|exists:courses,id',
+    //     ]);
+
+    //     // Store the course ID in the database or perform any other necessary actions
+    //     // For example:
+    //     $wishlist = new Wishlist();
+    //     $wishlist->course_id = $request->input('course_id');
+    //     $wishlist->save();
+
+    //     return redirect()->back()->with('success', 'Course added to wishlist successfully.');
+    // }
+
+    
+
+    public function showWishlist()
+    {
+        $courses = Course::all();
+        return view('students.wishlist', compact('courses'));
+    }
+
+    // public function addToWishlist(Request $request)
+    // {
+    //     // Validate the request
+    //     $request->validate([
+    //         'course_id' => 'required|exists:courses,id',
+    //     ]);
+
+    //     // Logic to add course to wishlist (store in database, etc.)
+    //     // Example:
+    //     // $wishlist = new Wishlist();
+    //     // $wishlist->course_id = $request->course_id;
+    //     // $wishlist->save();
+
+    //     return redirect()->back()->with('success', 'Course added to wishlist successfully.');
+    // }
+
+    public function addToWishlist(Request $request)
+    {
+        // Validate the request
+        $request->validate([
+            'course_id' => 'required|exists:courses,id',
+        ]);
+    
+        // Check if the course is already in the wishlist
+        $wishlistExists = Wishlist::where('user_id', auth()->user()->id)
+                                    ->where('course_id', $request->course_id)
+                                    ->exists();
+    
+        // If the course is not already in the wishlist, add it
+        if (!$wishlistExists) {
+            // Create a new wishlist entry
+            $wishlist = new Wishlist();
+            $wishlist->user_id = auth()->user()->id;
+            $wishlist->course_id = $request->course_id;
+            $wishlist->save();
+    
+            return redirect()->back()->with('success', 'Course added to wishlist successfully.');
+        }
+    
+        return redirect()->back()->with('error', 'Course is already in the wishlist.');
+    }
+
+    // public function showActiveCourses()
+    // {
+    //     $userId = auth()->user()->id;
+
+    //     // Assuming you have a relationship defined between User and Course models
+    //     $activeCoursesCount = Course::whereHas('students', function ($query) use ($userId) {
+    //         $query->where('user_id', $userId);
+    //     })->count();
+
+    //     return view('your.view.name', compact('activeCoursesCount'));
+    // }
+
+    public function showActiveCourses()
+    {
+        $userId = auth()->user()->id;
+
+        // Assuming you have a relationship defined between User and Course models
+        $activeCoursesCount = Course::whereHas('students', function ($query) use ($userId) {
+            $query->where('user_id', $userId);
+        })->count();
+
+        return view('your.view.name')->with('activeCoursesCount', $activeCoursesCount);
+    }
+
 }

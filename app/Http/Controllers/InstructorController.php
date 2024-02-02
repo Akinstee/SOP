@@ -301,11 +301,6 @@ class InstructorController extends Controller
         return redirect()->route('instructor.profile.show')->with('success', 'Password changed successfully!');
     }
 
-    // public function liveClass()
-    // {
-    //     return view('instructor.live-class');
-    // }
-
     public function showSettingsForm()
     {
         // Fetch settings from the database
@@ -365,6 +360,11 @@ class InstructorController extends Controller
     {
         return view('instructor.edit-course');
     }
+
+    // public function viewCourses()
+    // {
+    //     return view('instructor.view-course');
+    // }
     public function addCourse()
     {
         $Instructors = Instructor::all()->pluck('id', 'name');
@@ -426,6 +426,4 @@ class InstructorController extends Controller
             // Your logic for the invoices settings page
             return view('instructor.others-settings'); // Adjust the view name accordingly
         }
-    
-
 }
