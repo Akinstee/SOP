@@ -90,8 +90,7 @@ class StudentController extends Controller
 
             // Authentication passed
             $request->session()->regenerate();
-
-            return redirect()->intended('student/dashboard'); // Replace 'dashboard' with your actual dashboard route
+            return redirect()->route('student.dashboard'); // Replace 'dashboard' with your actual dashboard route
         }else{
             return redirect()->back()->with('error', 'Invalid credentials');
         }
