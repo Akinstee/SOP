@@ -489,28 +489,20 @@ class StudentController extends Controller
         return redirect()->back()->with('error', 'Course is already in the wishlist.');
     }
 
-    // public function showActiveCourses()
-    // {
-    //     $userId = auth()->user()->id;
+    // public function showDashboard()
+    //     {
+    //         $activeCoursesCount = // Logic to retrieve active courses count
 
-    //     // Assuming you have a relationship defined between User and Course models
-    //     $activeCoursesCount = Course::whereHas('students', function ($query) use ($userId) {
-    //         $query->where('user_id', $userId);
-    //     })->count();
+    //         return view('student.dashboard', compact('activeCoursesCount'));
+    //     }
 
-    //     return view('your.view.name', compact('activeCoursesCount'));
-    // }
-
-    public function showActiveCourses()
+    public function showStudentPage()
     {
-        $userId = auth()->user()->id;
-
-        // Assuming you have a relationship defined between User and Course models
-        $activeCoursesCount = Course::whereHas('students', function ($query) use ($userId) {
-            $query->where('user_id', $userId);
-        })->count();
-
-        return view('your.view.name')->with('activeCoursesCount', $activeCoursesCount);
+        // Assuming $activeCoursesCount is calculated or retrieved from somewhere
+        $activeCoursesCount = Course::where('status', 'active')->count(); // Example: Retrieving count of active courses
+    
+        return view('student.view', compact('activeCoursesCount'));
     }
+
 
 }

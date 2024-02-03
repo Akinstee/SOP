@@ -109,15 +109,5 @@ class CourseController extends Controller
         return view('instructor.view-course', compact('course'));
     }
 
-    public function showActiveCourses()
-    {
-        $userId = auth()->user()->id;
-
-        // Assuming you have a relationship defined between User and Course models
-        $activeCoursesCount = Course::whereHas('students', function ($query) use ($userId) {
-            $query->where('user_id', $userId);
-        })->count();
-
-        return view('your.view.name')->with('activeCoursesCount', $activeCoursesCount);
-    }
+    
 }

@@ -76,7 +76,7 @@
                                     </div> --}}
                                     <div class="db-info">
                                         <h6>ACTIVE COURSES</h6>
-                                        <h3>{{ $activeCoursesCount }}/60</h3>
+                                        <h3>{{ isset($activeCoursesCount) ? $activeCoursesCount : 'N/A' }}</h3>
                                     </div>
                                     <div class="db-icon">
                                         <img src="{{ asset('/img/icons/teacher-icon-02.svg')}}" alt="Dashboard Icon">
