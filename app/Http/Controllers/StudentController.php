@@ -402,6 +402,12 @@ class StudentController extends Controller
         return view('students.fundamental-module');
     }
 
+
+    public function showFullskillModule()
+    {
+        return view('students.fullskill-module');
+    }
+
     public function submitTask()
     {
         return view('tasks.submit');
@@ -422,23 +428,6 @@ class StudentController extends Controller
 
         return redirect()->back()->with('success', 'Task response submitted successfully.');
     }
-
-    // public function addToWishlist(Request $request)
-    // {
-    //     // Validate the request
-    //     $request->validate([
-    //         'course_id' => 'required|integer|exists:courses,id',
-    //     ]);
-
-    //     // Store the course ID in the database or perform any other necessary actions
-    //     // For example:
-    //     $wishlist = new Wishlist();
-    //     $wishlist->course_id = $request->input('course_id');
-    //     $wishlist->save();
-
-    //     return redirect()->back()->with('success', 'Course added to wishlist successfully.');
-    // }
-
     
 
     public function showWishlist()
@@ -447,21 +436,6 @@ class StudentController extends Controller
         return view('students.wishlist', compact('courses'));
     }
 
-    // public function addToWishlist(Request $request)
-    // {
-    //     // Validate the request
-    //     $request->validate([
-    //         'course_id' => 'required|exists:courses,id',
-    //     ]);
-
-    //     // Logic to add course to wishlist (store in database, etc.)
-    //     // Example:
-    //     // $wishlist = new Wishlist();
-    //     // $wishlist->course_id = $request->course_id;
-    //     // $wishlist->save();
-
-    //     return redirect()->back()->with('success', 'Course added to wishlist successfully.');
-    // }
 
     public function addToWishlist(Request $request)
     {
@@ -489,12 +463,7 @@ class StudentController extends Controller
         return redirect()->back()->with('error', 'Course is already in the wishlist.');
     }
 
-    // public function showDashboard()
-    //     {
-    //         $activeCoursesCount = // Logic to retrieve active courses count
-
-    //         return view('student.dashboard', compact('activeCoursesCount'));
-    //     }
+    
 
     public function showStudentPage()
     {

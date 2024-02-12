@@ -215,6 +215,8 @@ Route::get('/student/introModule', [StudentController::class, 'introModule'])->n
 Route::get('/student/fundamental-module', [StudentController::class, 'showFundamentalModule'])->name('student.fundamental-module');
 Route::get('/tasks/submit', [StudentController::class, 'submitTask'])->name('tasks.submit');
 Route::post('/tasks/store', [StudentController::class, 'storeTaskResponse'])->name('tasks.store');
+Route::get('/student/fullskill-module', [StudentController::class, 'showFullskillModule'])->name('student.fullskill-module');
+
 
 Route::get('/course/{id}', [CourseController::class, 'show'])->name('course.detail');
 
