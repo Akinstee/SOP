@@ -11,7 +11,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\InstructorController;
-
+use App\Http\Controllers\SuperAdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -102,9 +102,16 @@ Route::middleware('auth:instructor')->prefix('/instructor')->name('instructor.')
     Route::get('/seo-settings', 'seoSettings')->name('seo-settings');
     Route::get('/others-settings', 'othersSettings')->name('others-settings');
 });
+Route::middleware('guest:superadmin')->prefix('/superadmin')->name('superadmin.')->controller(SuperAdminController::class)->group(function () {
+    Route::get('/login', 'index')->name('login');
+    Route::post('/check', 'check')->name('check');
+});
 Route::middleware('guest:admin')->prefix('/admin')->name('admin.')->controller(AdminController::class)->group(function () {
     Route::get('/login', 'adminLogin')->name('login');
     Route::post('/check', 'adminCheck')->name('check');
+});
+Route::middleware('auth:superadmin')->prefix('/superadmin')->name('superadmin.')->controller(SuperAdminController::class)->group(function () {
+    Route::get('/dashboard', 'dashboard')->name('dashboard');
 });
 Route::middleware('auth:admin')->prefix('/admin')->name('admin.')->controller(AdminController::class)->group(function () {
     //Dashboard
