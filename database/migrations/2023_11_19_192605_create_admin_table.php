@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('admin', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->date('date_of_birth')->nullable();
+            $table->string('email')->unique();
+            $table->string('mobile');
+            $table->text('address');
+            // Add other fields as needed
+
             $table->timestamps();
         });
     }

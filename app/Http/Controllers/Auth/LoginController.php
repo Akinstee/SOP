@@ -3,84 +3,38 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
 {
-    public function adminLogin(){
-        return view("Admin.login");
-    }
+    /*
+    |--------------------------------------------------------------------------
+    | Login Controller
+    |--------------------------------------------------------------------------
+    |
+    | This controller handles authenticating users for the application and
+    | redirecting them to your home screen. The controller uses a trait
+    | to conveniently provide its functionality to your applications.
+    |
+    */
 
-    public function instructorLogin(){
-        return view("Instructors.login");
-    }
-
-    public function studentLogin(){
-        return view("Students.login");
-    }
-
-    public function adminCheck(Request $request){
-
-    }
-
-    public function instructorCheck(Request $request){
-
-    }
-
-    public function studentCheck(Request $request){
-
-    }
+    use AuthenticatesUsers;
 
     /**
-     * Show the application's login form.
+     * Where to redirect users after login.
      *
-     * @return \Illuminate\View\View
+     * @var string
      */
-    public function showLoginForm()
-    {
-        return view('auth.login');
-    }
+    protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
-     * Handle a login request to the application.
+     * Create a new controller instance.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return void
      */
-    public function login(Request $request)
+    public function __construct()
     {
-        $credentials = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
-
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-
-            return redirect()->intended('/dashboard');
-        }
-
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ]);
-    }
-
-    /**
-     * Log the user out of the application.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function logout(Request $request)
-    {
-        Auth::logout();
-
-        $request->session()->invalidate();
-
-        $request->session()->regenerateToken();
-
-        return redirect('/');
+        $this->middleware('guest')->except('logout');
     }
 }
-  

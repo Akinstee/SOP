@@ -1,0 +1,99 @@
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+  body{
+    background: #dfe9f5;
+  }
+  .cart-container {
+    max-width: 1500px;
+    margin: 20px auto;
+}
+
+.cart-header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+.cart-header h1 {
+    margin: 0;
+}
+
+.courses-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.course {
+    width: calc(25% - 20px); /* 25% width for each course with margin */
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.course img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+}
+
+.course h2 {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: 1.2em;
+}
+
+.course p {
+    margin: 5px 0;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.remove-btn {
+    background-color: #ff6347; /* Tomato Red */
+    color: #fff;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.save-btn {
+    background-color: #32cd32; /* Lime Green */
+    color: #fff;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.wishlist-btn {
+    background-color: #4169e1; /* Royal Blue */
+    color: #fff;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+.remove-btn:hover,
+.save-btn:hover,
+.wishlist-btn:hover {
+    opacity: 0.8;
+}

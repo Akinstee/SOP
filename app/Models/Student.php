@@ -64,4 +64,24 @@ class Student extends Authenticatable
     {
         return self::validator($data)->validate();
     }
+
+    protected $hidden = [
+        'password',
+        'api_token',
+    ];
+
+    public function profile()
+    {
+        return $this->hasOne(Student::class);
+    }
+
+    public function getNameAttribute()
+    {
+        return $this->attributes['first_name'] . ' ' . $this->attributes['last_name'];
+    }
+
+    public function courses()
+    {
+        return $this->belongsToMany(Course::class);
+    }
 }

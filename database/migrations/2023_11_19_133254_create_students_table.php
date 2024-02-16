@@ -19,27 +19,30 @@ return new class extends Migration
             $table->string('password');
             $table->string('api_token', 80)->unique()->nullable();
             $table->string('gender')->nullable();
-            $table->date('date_of_birth')->nullable();
+            $table->dateTime('date_of_birth')->nullable();
             $table->string('phone_number')->nullable();
-            $table->boolean('available_on_whatsapp')->default(false);
+            $table->string('available_on_whatsapp')->default(false);
             $table->string('city_from')->nullable();
             $table->string('current_city')->nullable();
             $table->string('employment_status')->nullable();
             $table->string('study_status')->nullable();
-            $table->boolean('has_computer_and_internet')->default(false);
+            $table->string('has_computer_and_internet')->default(false);
             $table->string('skill_experience')->nullable();
             $table->string('how_did_you_hear_about_us')->nullable();
-            $table->boolean('acknowledge_terms_and_privacy')->default(false);
-            $table->boolean('contact_me_about_application')->default(false);
+            $table->string('acknowledge_terms_and_privacy')->default(false);
+            $table->string('contact_me_about_application')->default(false);
+            $table->integer('marks')->default(0);
             $table->timestamps();
-        });        
+        });
     }
 
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down()
     {
-        Schema::dropIfExists('students');
+        Schema::table('students', function (Blueprint $table) {
+            $table->dropColumn('marks');
+        });
     }
 };

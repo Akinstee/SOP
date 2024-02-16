@@ -48,9 +48,13 @@ return [
             'driver' => 'session',
             'provider' => 'admins',
         ],
-        'teacher' => [
+        'superadmin' => [
             'driver' => 'session',
-            'provider' => 'instructors',
+            'provider' => 'superadmin',
+        ],
+        'instructor' => [
+            'driver' => 'session',
+            'provider' => 'instructors', // Change this to your actual instructor provider
         ],
     ],
 
@@ -84,9 +88,13 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
         ],
+        'superadmin' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\SuperAdmin::class,
+        ],
         'instructors' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Instructor::class,
+            'model' => App\Models\Instructor::class, // Change this to your actual instructor model
         ],
 
         // 'users' => [
@@ -135,6 +143,12 @@ return [
         ],
         'instructors' => [
             'provider' => 'instructors',
+            'table' => 'password_reset_tokens',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'superadmin' => [
+            'provider' => 'superadmin',
             'table' => 'password_reset_tokens',
             'expire' => 60,
             'throttle' => 60,
