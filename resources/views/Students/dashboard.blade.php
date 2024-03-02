@@ -203,7 +203,7 @@
                 <section class="main">
                     <section class="main-course">
                         <h1>My courses</h1>
-                        <div class="course-box">
+                        <div class="course-box" style="margin: auto; height: 100%;">
                             <ul>
                                 <li class="active">In progress</li>
                                 <li>finished</li>
@@ -233,7 +233,8 @@
                 </section>
 
 
-                <div class="row">
+                
+                <div class="row" style="margin-top: 50px;">
                     <div class="col-12 col-lg-12 col-xl-8">
                         <div class="card flex-fill comman-shadow">
                             <div class="card-header">
