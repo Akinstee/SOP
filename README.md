@@ -64,3 +64,17 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+## Instructions
+To start project, run the following command from within the project's directory
+`php artisan serve`
+
+To run all migrations 
+`php artisan migrate`
+
+To check Migration status 
+`php artisan migrate:status`
+
+To create a new migration 
+`php artisan make:migration MIGRATION-NAME`
